@@ -977,13 +977,14 @@ Our aim is to be compatible with both Schema.org and W3C PROV. Provenance Run Cr
   \centering
   \caption{
   {\bf Mapping between W3C PROV concepts and their equivalents in Workflow Run RO-Crate.}}
-  \begin{tabular}{p{35mm}|p{60mm}|l}
+  \begin{tabular}{p{35mm}|p{40mm}|p{40mm}}
   \hline
   {\bf W3C PROV} & {\bf RO-Crate} & \textbf{Relationship} \\
   \thickhline
   
-  \emph{activity} (workflow/ \newline process execution) & \emph{CreateAction} & Broader than \\ \hline
-  \emph{agent} (WMS) & \emph{OrganizeAction} & Equivalent \\ \hline
+  \emph{activity} (workflow/ \newline process execution) 
+    & \emph{CreateAction}, \emph{OrganizeAction} & Broader than \\ \hline
+  \emph{agent} (WMS) & \emph{instrument} of \emph{OrganizeAction} & Equivalent \\ \hline
   \emph{agent} -- \emph{Person} & \emph{Person}  & Equivalent \\ \hline
   \emph{agent} -- \emph{Organization} & \emph{Organization}  & Equivalent \\ \hline
   \emph{agent} -- \emph{SoftwareAgent} & \emph{SoftwareApplication}  & Broader than \\ \hline
@@ -994,7 +995,12 @@ Our aim is to be compatible with both Schema.org and W3C PROV. Provenance Run Cr
   \emph{wasStartedBy} & \emph{agent} and \emph{startTime} on  \emph{CreateAction} & Narrower than  \\ \hline
   \emph{wasEndedBy} & \emph{agent} and \emph{endTime} on  \emph{CreateAction} & Narrower than \\ \hline
   \emph{wasAssociatedWith} & \emph{agent} and \emph{instrument} on  \emph{CreateAction} & Broader than \\ \hline
-
+  \emph{hadPlan} + \emph{Association} &  \emph{instrument} on \emph{CreateAction} & 
+    Complex mapping: an instrument implies the existence of a qualified association (\texttt{prov:Association}) linked to a \texttt{prov:Plan} through \texttt{prov:hadPlan}
+    \\ \hline
+  \emph{Agent} + \emph{Association} &  \emph{agent} on \emph{CreateAction} & 
+    Complex mapping: an agent implies the existence of a qualified association (\texttt{prov:Association}) linked to a \texttt{prov:Plan} through \texttt{prov:agent}
+    \\ \hline  
   \emph{used} & \emph{object} on \emph{CreateAction} & Equivalent \\ \hline 
   \emph{wasGeneratedBy} & \emph{result} on  \emph{CreateAction} & Equivalent \\ \hline
   
