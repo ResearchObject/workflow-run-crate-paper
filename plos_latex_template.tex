@@ -335,16 +335,16 @@ This approach, while appropriate for workflow languages where the execution plan
 This makes the implementation of CWLProv challenging, as shown by the fact that at the time of writing the format is supported only by cwltool.
 Finally, being based on the PROV model, CWLProv is highly focused on the interaction between agents, processes and related entities, while support for contextual metadata (such as workflow authors, licence or creation date) in the Research Object is limited (\url{https://w3id.org/bundle/contexthttps}) and stored in a separate manifest file.
 
-RO-Crate~\cite{Soiland-Reyes 2022a} is a recent approach to packaging research data together with their metadata extending Schema.org~\cite{Guha 2015}, a popular vocabulary for describing resources on the Web.
+RO-Crate~\cite{Soiland-Reyes 2022a} is a recent approach to packaging research data together with their metadatal; it extends Schema.org~\cite{Guha 2015}, a popular vocabulary for describing resources on the Web.
 In its simplest form, an RO-Crate is a directory structure that contains a single JSON-LD metadata file at the top level.
-The metadata file describes all entities stored in the RO-Crate as well as their relationships; it is both machine-readable and human-readable.
+The metadata file describes all entities stored in the RO-Crate along with as their relationships; it is both machine-readable and human-readable.
 The format is general enough to be able to describe any dataset, but can also be made as specific as needed through the use of extensions called
 \emph{profiles}.
-At the same time, the broad set of types and properties from Schema.org, complemented by a few additional terms from other vocabularies, make the RO-Crate model capable of expressing a wide range of contextual information that complements and enriches the core information regulated by the profile.
+At the same time, the broad set of types and properties from Schema.org, complemented by a few additional terms from other vocabularies, make the RO-Crate model capable of expressing a wide range of contextual information that complements and enriches the core information specified by the profile.
 This might include, for instance, the workflow authors and their affiliations, associated publications, licensing information, related software, etc.
 
 In this work, we present Workflow Run RO-Crate (WRROC), an extension of RO-Crate for representing computational workflow provenance.
-Our contributions are the following:
+Our main contributions are the following:
 
 \begin{itemize}
 \item   A collection of RO-Crate profiles to represent both the prospective and the retrospective provenance of a computational   workflow run in a way that is machine-actionable,  independent of the specific  workflow language or   execution system, and including support for rerunnability.
@@ -352,10 +352,10 @@ Our contributions are the following:
 \item   A governance and sustainability environment to discuss extensions,  issues and new implementations for the proposed   profiles, possible thanks to the WRROC community.
 \end{itemize}
 
-To foster usability, the profiles are characterised by different levels of detail, and the number of required items is kept to a minimum in order to ease the implementation.
+To foster usability, the profiles are characterised by different levels of detail, and set of mandatory metadata items is kept to a minimum in order to ease the implementation.
 This flexible approach increases the model's adaptability to the diverse landscape of WMSs used in practice.
 The base profile, in particular, is applicable to any kind of computational process, not necessarily described in a formal workflow language.
-We describe several current or planned implementations as well as demonstrations of the profiles' application to multiple use cases.
+In this work we describe several implementations and demonstrate the application to multiple use cases.
 
 The rest of this paper is organised as follows: we first describe the Workflow Run RO-Crate profiles; we then illustrate implementations and usage examples; this is followed by a discussion and plans for future work.
 
@@ -363,21 +363,28 @@ The rest of this paper is organised as follows: we first describe the Workflow R
 %% 
 \section{The Workflow Run RO-Crate profiles}\label{the-workflow-run-ro-crate-profiles}
 
-An RO-Crate profile is an extension of the base RO-Crate specification that describes how to represent the entities and relationships that appear in a specific domain or use case.
-An RO-Crate conforming to a profile is not just machine-readable, but also actionable as a digital object whose type is represented by the profile itself~\cite{Soiland-Reyes 2022c}.
+The Workflow Run RO-Crate profiles are a set of RO-Crate profiles, 
+extensions of the base RO-Crate specification that describes how to represent the entities and relationships that appear in a specific domain or use case.
+An RO-Crate conforming to a profile is not just machine-readable, but also machine-actionable as a digital object whose type is represented by the profile itself~\cite{Soiland-Reyes 2022c}.
 
-The Workflow Run RO-Crate profiles are the main outcome of the activities of an open working group that includes workflow users and developers, WMS users and developers, and researchers and software engineers interested in workflow execution provenance and FAIR approaches for data and software.
-As requirements were being defined, it became apparent that one single profile would not have been sufficient to cater for all possible usage scenarios.
+The Workflow Run RO-Crate profiles are the main outcome of the Workflow Run RO-Crate Community (\url{https://www.researchobject.org/workflow-run-crate}), an open working group that includes workflow users and developers, WMS users and developers, and researchers and software engineers interested in workflow execution provenance and FAIR approaches for data and software.
+In order to develop the Workflow-Run RO-Crate profile, one of the first community efforts was to compile a list of requirements in the form of competency questions (\url{https://www.researchobject.org/workflow-run-crate/requirements}) to be addressed by the model.
+Each requirement was backed up by a rationale and linked to a GitHub issue to drive the discussion forward. When a requirement was addressed, related changes were integrated into the profiles and the relevant issue was closed. Many of the original issues are now closed, and the profiles have had two official releases.
+
+
+As requirements were being defined, it became apparent that one single profile would not have been sufficient to cater to all possible usage scenarios.
 In particular, while some use cases required a detailed description of all computations orchestrated by the workflow, others were only concerned with a ``black box'' representation of the workflow and its execution as a whole.
-Additionally, some computations, while involving a data flow across multiple applications, are executed without the aid of a WMS and thus are not formally described in a standard workflow language.
-This led to the development of three profiles: Process Run Crate (\url{https://w3id.org/ro/wfrun/process/0.1})
+Additionally, some computations involve a data flow across multiple applications; that are executed without the aid of a WMS and thus are not formally described in a standard workflow language.
+These observations led to the development of three profiles: 
+(1) Process Run Crate (\url{https://w3id.org/ro/wfrun/process/0.1})
 \cite{Workflow Run RO-Crate working group 2023a} to describe the execution of one or more tools that contribute to a computation;
-Workflow Run Crate (\url{https://w3id.org/ro/wfrun/workflow/0.1})
-\cite{Workflow Run RO-Crate working group 2023b} to describe a computation orchestrated by a predefined workflow; Provenance Run Crate (\url{https://w3id.org/ro/wfrun/provenance/0.1})
+(2) Workflow Run Crate (\url{https://w3id.org/ro/wfrun/workflow/0.1})
+\cite{Workflow Run RO-Crate working group 2023b} to describe a computation orchestrated by a predefined workflow; 
+(3) Provenance Run Crate (\url{https://w3id.org/ro/wfrun/provenance/0.1})
 \cite{Workflow Run RO-Crate working group 2023c} to describe a workflow computation including the internal details of individual step executions.
 
-In the rest of this section we describe each of the above profiles in detail; we also highlight their synergy with a profile to reference distributed provenance representations and briefly touch on an extension focused on workflows that handle sensitive data.
-We use italics to denote the types and properties used to describe entities and their relationships: these are defined in the RO-Crate JSON-LD context (\url{https://www.researchobject.org/ro-crate/1.1/context.jsonld}), which is largely based on Schema.org.
+In the rest of this section we describe each of the above profiles in detail.
+We use italics to denote the types and properties used to describe entities and their relationships: these are defined in the RO-Crate JSON-LD context (\url{https://www.researchobject.org/ro-crate/1.1/context.jsonld}), which extends Schema.org with terms from the Bioschemas \cite{Gray 2017} ComputationalWorkflow profile (\url{https://bioschemas.org/profiles/ComputationalWorkflow/1.0-RELEASE}) and other vocabularies. More specifically, we use the \emph{ComputationalWorkflow} and \emph{FormalParameter} types as well as the \emph{input} and \emph{output} properties. We also developed a context extension through a dedicated "workflow-run" namespace in ro-terms (https://w3id.org/ro/terms/workflow-run#) to represent concepts that are not captured by terms in the RO-Crate context.
 
 \subsection{Process Run Crate}\label{process-run-crate}
 
@@ -400,16 +407,19 @@ Fig~\ref{fig:process_crate_er} shows the entities used in Process Run Crate toge
 \caption{{\bf Entity-Relationship diagram for Process Run Crate.}
 The central entity is the \emph{CreateAction}, which represents the execution of an application.
 It relates with the application itself via \emph{instrument}, with the entity that executed it via \emph{agent} and with its inputs and outputs via \emph{object}
-and \emph{result}, respectively.}
+and \emph{result}, respectively. 
+\emph{File} is an RO-Crate alias for Schema.org's \emph{MediaObject}}
 \label{fig:process_crate_er}
 \end{figure}
 
-
-Suppose a user called John Doe runs the ``head'' tool to extract the first ten lines of an input file called lines.txt, storing the result in another file called selection.txt.
+As an example,
+suppose a user called John Doe runs the ``head'' UNIX command to extract the first ten lines of an input file called lines.txt, storing the result in another file called selection.txt.
 Then, the same user runs the ``sort''
-tool on selection.txt, storing the sorted output in a file called sorted\_selection.txt.
+command on selection.txt, storing the sorted output in a file called sorted\_selection.txt.
 Fig~\ref{fig:head_sort} contains a diagram of the two actions and their relationships to the other entities involved.
 Note how the actions are connected by the fact that the output of ``Run Head'' is also the input of ``Run Sort'': they form an ``implicit workflow'', whose steps have been executed manually rather than by a higher level software tool.
+
+%%
 
 \begin{figure}[!h]
 \includegraphics[width=29em]{image2.png}
