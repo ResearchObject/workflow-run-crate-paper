@@ -1008,39 +1008,39 @@ Our aim is to be compatible with both Schema.org and W3C PROV. Provenance Run Cr
   %\begin{flushleft} Table notes \end{flushleft}
   \label{rocrate_prov_mapping}
   \end{adjustwidth}
-  \end{table}
+\end{table}
   
     
-  \subsection{Synergy with the CPM RO-Crate profile}\label{synergy-with-the-cpm-ro-crate-profile}
+\subsection{Synergy with the CPM RO-Crate profile}\label{synergy-with-the-cpm-ro-crate-profile}
   
-  The Common Provenance Model (CPM)~\cite{Wittner 2022}, an extension of the W3C PROV model~\cite{Moreau 2013}, is a recently developed provenance model that enables the representation of distributed provenance.
-  Distributed provenance is created when an object involved in the research process, either digital or physical (e.g., biological material), is exchanged between organisations, so that each organisation can document only a portion of the object's life cycle.
-  Individual provenance components are generated, stored, and managed individually by each organisation, and are linked together in a \emph{chain}.
-  The CPM prescribes how to represent such provenance, and how to enable its traversal and processing using a common algorithm, independently from the type of object being described.
-  In addition, the CPM defines a notion of meta-provenance, which contains metadata about the history of individual provenance components.
+The Common Provenance Model (CPM)~\cite{Wittner 2022}, an extension of the W3C PROV model~\cite{Moreau 2013}, is a recently developed provenance model that enables the representation of distributed provenance.
+Distributed provenance is created when an object involved in the research process, either digital or physical (e.g., biological material), is exchanged between organisations, so that each organisation can document only a portion of the object's life cycle.
+Individual provenance components are generated, stored, and managed individually by each organisation, and are linked together in a \emph{chain}.
+The CPM prescribes how to represent such provenance, and how to enable its traversal and processing using a common algorithm, independently from the type of object being described.
+In addition, the CPM defines a notion of meta-provenance, which contains metadata about the history of individual provenance components.
+
+CPM RO-Crate (\url{https://w3id.org/cpm/ro-crate}) is an RO-Crate profile that supports the identification of CPM-based provenance and meta-provenance files within an RO-Crate, allowing to pack data, metadata, and CPM-based provenance information together.
+An RO-Crate generated according to the CPM-RO-Crate profile embeds parts of the distributed provenance, which may be linked to the provenance of precursors and successors of the packed data.
   
-  CPM RO-Crate (\url{https://w3id.org/cpm/ro-crate}) is an RO-Crate profile that supports the identification of CPM-based provenance and meta-provenance files within an RO-Crate, allowing to pack data, metadata, and CPM-based provenance information together.
-  An RO-Crate generated according to the CPM-RO-Crate profile embeds parts of the distributed provenance, which may be linked to the provenance of precursors and successors of the packed data.
-  
-  The CPM-RO-Crate profile synergises well with Process Run Crate, since the former can add references to CPM-based provenance descriptions of computational executions described with the latter, integrating them in the distributed provenance.
-  Since CPM-based provenance and meta-provenance files are typically themselves produced by computations, Process Run Crate allows to represent these along with the main computations that produce the datasets being exchanged, providing the full picture in a cohesive ensemble.
-  An example of such an RO-Crate is presented in section~\cite{Process Run Crate and CPM RO-Crate}.
-  
-  \subsection{Trusted Workflow Run Crate}\label{trusted-workflow-run-crate}
-  
-  The TRE-FX project (\url{https://trefx.uk/}) has developed \emph{Trusted Workflow Run Crate}
-  (\url{https://w3id.org/trusted-wfrun-crate/0.3}), a profile that extends the Workflow Run Crate profile for use in
-  \emph{Trusted Research Environments} (TRE) to handle sensitive health data in federated workflow execution across TREs in the UK following the Five Safes Framework~\cite{Desai et al 2016}.
-  
-  In this scenario, a crate with a workflow run request references a pre-approved workflow and project details for manual and automated assessment according to the TRE's agreement policy for the sensitive dataset.
-  
-  The crate goes through multiple phases internal to the TRE, including validation, sign-off, workflow execution and disclosure control.
-  At this stage the crate is also conforming to the Workflow Run Crate profile.
-  The final crate is then safe to be made public.
-  This extension of Workflow Run Crate documents and supports the human review process --
-  important for transparency on TRE data usage.
-  TRE-FX is implementing this profile using WfExS as the workflow execution backend.
-  
+The CPM-RO-Crate profile synergises well with Process Run Crate, since the former can add references to CPM-based provenance descriptions of computational executions described with the latter, integrating them in the distributed provenance.
+Since CPM-based provenance and meta-provenance files are typically themselves produced by computations, Process Run Crate allows to represent these along with the main computations that produce the datasets being exchanged, providing the full picture in a cohesive ensemble.
+An example of such an RO-Crate is presented in section~\cite{Process Run Crate and CPM RO-Crate}.
+
+\subsection{Trusted Workflow Run Crate}\label{trusted-workflow-run-crate}
+
+The TRE-FX project (\url{https://trefx.uk/}) has developed \emph{Trusted Workflow Run Crate}
+(\url{https://w3id.org/trusted-wfrun-crate/0.3}), a profile that extends the Workflow Run Crate profile for use in
+\emph{Trusted Research Environments} (TRE) to handle sensitive health data in federated workflow execution across TREs in the UK following the Five Safes Framework~\cite{Desai et al 2016}.
+
+In this scenario, a crate with a workflow run request references a pre-approved workflow and project details for manual and automated assessment according to the TRE's agreement policy for the sensitive dataset.
+
+The crate goes through multiple phases internal to the TRE, including validation, sign-off, workflow execution and disclosure control.
+At this stage the crate is also conforming to the Workflow Run Crate profile.
+The final crate is then safe to be made public.
+This extension of Workflow Run Crate documents and supports the human review process --
+important for transparency on TRE data usage.
+TRE-FX is implementing this profile using WfExS as the workflow execution backend.
+
   
 
 \hypertarget{conclusion}{%
