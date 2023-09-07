@@ -274,19 +274,18 @@ Stian Soiland-Reyes\textsuperscript{17,18}
 % Please keep the abstract below 300 words
 \section*{Abstract}
 Recording the provenance of scientific computation results is
-fundamental to support traceability, reproducibility and quality
-assessment of data products. Several models have been explored to
+key to the support of traceability, reproducibility and quality
+assessment of data products. Several data models have been explored to
 address this need, providing representations of workflow plans and their
 executions as well as means of packaging the resulting information for
-archiving and sharing. However, they lack interoperability, flexibility
-and support from workflow management systems. In this work we present
+archiving and sharing. However, existing approaches tend to lack fine-grained interoperability and adoption from workflow management systems. In this work we present
 Workflow Run RO-Crate, an extension of RO-Crate (Research Object Crate)
 to capture the provenance of the execution of computational workflows at
-different levels of granularity. We describe the model, as well as its
-implementations in workflow systems, and show its applicability to
-machine learning for digital pathology use cases. The model is developed
+different levels of granularity an bundle together all their associated products (inputs, outputs, code etc.). We describe the model, as well as its
+implementations in six workflow systems, and show its applicability to
+machine learning for digital pathology use cases. The model is supported
 by a diverse, open community that runs regular meetings, discussing
-requirements and practical aspects. The format is already in use in
+development, maintenance and adoption  aspects. The format is already implemented by
 several workflow managers, including Galaxy, allowing interoperable
 comparisons between runs from heterogeneous systems.
 
@@ -296,7 +295,7 @@ comparisons between runs from heterogeneous systems.
 
 
 
-\emph{The below is a snapshot as of 2023-08-03 from
+\emph{The below is a snapshot as of 2023-09-07 from
 \url{https://docs.google.com/document/d/1rq22Vu_lmmRLkmnZivsKVdRidq4aoePs-l20gHFYpu0/edit}}.
 
 \section{Introduction}\label{introduction}
@@ -309,31 +308,32 @@ Provenance is instrumental to activities such as traceability, reproducibility, 
 The constantly growing size and complexity of scientific datasets and the analysis that is required to extract useful information from them has made science increasingly dependent on advanced automated processing techniques in order to get from experimental data to final results~\cite{Himanen 2019, Gauthier 2019, Huntingford 2019}.
 Consequently, a large part of the provenance information for scientific outputs consists of descriptions of complex computer-aided data processing steps.
 
-In order to homogenise the collection and interchange of provenance records, the W3C consortium proposed the PROV-O standard~\cite{Lebo 2013}, a machine-readable representation for provenance in the Web.
-PROV-O has been widely extended for workflows, where provenance information is collected in two main forms: prospective and retrospective~\cite{Freire 2008}. \emph{Prospective provenance}, i.e.~the execution plan, is essentially the workflow itself: it includes a machine-readable specification with the steps to perform and the data and software dependencies to carry out a computation.
+In order to homogenise the collection and interchange of provenance records, the W3C consortium proposed the PROV-O standard~\cite{Lebo 2013}, a machine-readable OWL \cite{W3C OWL Working Group 2012} representation of PROV for provenance in the Web.
+PROV-O has been widely extended for workflows (D-PROV \cite{Missier 2013}, ProvONE \cite{Cuevas-Vicenttín 2016}, OPMW \cite{Garijo 2011}, P-PLAN \cite{Garijo 2012}), where provenance information is collected in two main forms: prospective and retrospective~\cite{Freire 2008}. \emph{Prospective provenance}, i.e.~the execution plan, is essentially the workflow itself: it includes a machine-readable specification with the processing steps to perform and the data and software dependencies to carry out each computation.
 \emph{Retrospective provenance} refers to what actually happened during an execution, i.e.~what were the values of the input parameters, which outputs were produced, which tools were executed, how much time did the execution take, whether the execution was successful or not, etc.
 Retrospective provenance can also be represented at different levels of abstraction depending on available computing resources, e.g.~by the workflow execution becoming a single activity which produces results, by specifying the individual execution of each workflow step, or by going a step further and indicating how each step is further divided into sub-processes when a workflow is deployed in a cluster.
 
-Different workflow systems have adopted and extended PROV to the workflow domain~\cite{Belhajjame 2013b, pegasus, Vistrails etc.}, in order to ease the burden of provenance collection from tool developers to workflow management systems (WMSs)~\cite{Atkinson 2017}.
-For example,
-\cite{REF D-PROV, PROV-ONE, OPMW-PROV, P-Plan, additionals?} propose alternate representations of workflow plans and their respective executions, taking into account the features of the workflow systems implementing them (e.g., hierarchical representations, sub-processes, etc.).
+Different workflow systems have adopted and extended PROV (and its PROV-O representation) to the workflow domain (Pegasus \cite{Deelman 2005}, VsTrails \cite{Scheidegger 2008}), in order to ease the burden of provenance collection from tool developers to workflow management systems (WMSs) \cite{Atkinson 2017}.
+
+D-PROV, PROV-ONE, OPMW-PROV, P-Plan propose representations of workflow plans and their respective executions, taking into account the features of the workflow systems implementing them (e.g., hierarchical representations, sub-processes, etc.).
 Other data models like \emph{wfprov} and \emph{wfdesc}
 \cite{Belhajjame 2015} go a step further by considering not only the link between plans and executions, but how to package everything as a Research Object~\cite{Bechhofer 2013} in order to ease portability while keeping the context of a digital experiment.
 However, while these data models address some workflow provenance representation issues, they have two main limitations: first, the extensions are not interoperable at lower levels of granularity, due to different assumptions in workflow representation.
-second, they lack support from state of the art workflow systems, which aim for more lightweight representations.
+Second, they lack support from workflow management systems (WMS).
 
 These problems have been partially addressed by CWLProv~\cite{Khan 2019}, which represents the workflow enactment as ROs serialised according to the BDBag approach~\cite{Chard 2016}.
 The resulting format is a folder containing several data and metadata files~\cite{Soiland-Reyes 2018}.
 CWLProv also extends PROV with a representation of executed processes (activities), their inputs and outputs (entities) and their executors (agents), together with their Common Workflow Language specification
 \cite{Crusoe 2022}, a standard workflow specification adopted by at least a dozen different workflow systems (\url{https://www.commonwl.org/implementations/}). Although CWLProv includes a prospective provenance as a \emph{plan}
-within the PROV (based on the \emph{wfdesc} model), this does not include tool definitions or file formats.
-In order for CWLProv consumers to reconstruct the full perspective for understanding the workflow, they would also need to inspect the separate workflow definition in the WMS's native language.
-Additionally, the CWLProv RO can include several other BagIt metadata files and PROV serialisations conforming to different formats, complicating its generation and consumption.
-Moreover, CWLProv in practice records the details of all task executions together with the intermediate data, requiring substantial support from the WMS
+within PROV (based on the \emph{wfdesc} model), in practice its implementation does not include tool definitions or file formats, as proposed by the wfdesc extension Roterms (\url{https://wf4ever.github.io/ro/2016-01-28/roterms}).
+In order for CWLProv consumers to reconstruct the full prospective provenance for understanding the workflow, they would also need to inspect the separate workflow definition in the WMS's native language.
+Additionally, the CWLProv RO may include several other BagIt metadata files and PROV serialisations conforming to different formats, complicating its generation and consumption.
+CWLProv proposed multiple levels of provenance \cite[figure 2]{Khan 2019}, from Level 0 (capturing workflow definition) to Level 3 (domain-specific annotations). 
+In practice, the CWL reference implementation \emph{cwltool} \cite{Amstutz 2023} records provenance details of all task executions together with the intermediate data and any nested workflows (CWLProv level 2), a granularity level that requires substantial support from the WMS
 \cite{Soiland-Reyes 2022a}.
 This approach, while appropriate for workflow languages where the execution plan, including its distribution among the various tasks, is well known in advance (such as CWL), can be at odds with other systems where the execution is more dynamic, depending on the verification of specific runtime conditions, such as the size and distribution of the data (e.g., COMPSs~\cite{Lordan 2014}).
-This makes the implementation of CWLProv challenging, as shown by the fact that at the time of writing the format is supported only by cwltool~\cite{Amstutz 2023}.
-Finally, being based on the PROV model, CWLProv is highly focused on the interaction between agents, processes and related entities, while support for contextual metadata (e.g., workflow authors) is limited and stored in a separate manifest file.
+This makes the implementation of CWLProv challenging, as shown by the fact that at the time of writing the format is supported only by cwltool.
+Finally, being based on the PROV model, CWLProv is highly focused on the interaction between agents, processes and related entities, while support for contextual metadata (such as workflow authors, licence or creation date) in the Research Object is limited (\url{https://w3id.org/bundle/contexthttps}) and stored in a separate manifest file.
 
 RO-Crate~\cite{Soiland-Reyes 2022a} is a recent approach to packaging research data together with their metadata extending Schema.org~\cite{Guha 2015}, a popular vocabulary for describing resources on the Web.
 In its simplest form, an RO-Crate is a directory structure that contains a single JSON-LD metadata file at the top level.
