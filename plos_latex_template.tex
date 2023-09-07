@@ -333,7 +333,7 @@ In practice, the CWL reference implementation \emph{cwltool} \cite{Amstutz 2023}
 \cite{Soiland-Reyes 2022a}.
 This approach, while appropriate for workflow languages where the execution plan, including its distribution among the various tasks, is well known in advance (such as CWL), can be at odds with other systems where the execution is more dynamic, depending on the verification of specific runtime conditions, such as the size and distribution of the data (e.g., COMPSs~\cite{Lordan 2014}).
 This makes the implementation of CWLProv challenging, as shown by the fact that at the time of writing the format is supported only by cwltool.
-Finally, being based on the PROV model, CWLProv is highly focused on the interaction between agents, processes and related entities, while support for contextual metadata (such as workflow authors, licence or creation date) in the Research Object is limited (\url{https://w3id.org/bundle/contexthttps}) and stored in a separate manifest file.
+Finally, being based on the PROV model, CWLProv is highly focused on the interaction between agents, processes and related entities, while support for contextual metadata (such as workflow authors, licence or creation date) in the Research Object is limited (\url{https://w3id.org/bundle/context}) and stored in a separate manifest file.
 
 RO-Crate~\cite{Soiland-Reyes 2022a} is a recent approach to packaging research data together with their metadatal; it extends Schema.org~\cite{Guha 2015}, a popular vocabulary for describing resources on the Web.
 In its simplest form, an RO-Crate is a directory structure that contains a single JSON-LD metadata file at the top level.
@@ -384,7 +384,7 @@ These observations led to the development of three profiles:
 \cite{Workflow Run RO-Crate working group 2023c} to describe a workflow computation including the internal details of individual step executions.
 
 In the rest of this section we describe each of the above profiles in detail.
-We use italics to denote the types and properties used to describe entities and their relationships: these are defined in the RO-Crate JSON-LD context (\url{https://www.researchobject.org/ro-crate/1.1/context.jsonld}), which extends Schema.org with terms from the Bioschemas \cite{Gray 2017} ComputationalWorkflow profile (\url{https://bioschemas.org/profiles/ComputationalWorkflow/1.0-RELEASE}) and other vocabularies. More specifically, we use the \emph{ComputationalWorkflow} and \emph{FormalParameter} types as well as the \emph{input} and \emph{output} properties. We also developed a context extension through a dedicated "workflow-run" namespace in ro-terms (https://w3id.org/ro/terms/workflow-run#) to represent concepts that are not captured by terms in the RO-Crate context.
+We use italics to denote the types and properties used to describe entities and their relationships: these are defined in the RO-Crate JSON-LD context (\url{https://www.researchobject.org/ro-crate/1.1/context.jsonld}), which extends Schema.org with terms from the Bioschemas \cite{Gray 2017} ComputationalWorkflow profile (\url{https://bioschemas.org/profiles/ComputationalWorkflow/1.0-RELEASE}) and other vocabularies. More specifically, we use the \emph{ComputationalWorkflow} and \emph{FormalParameter} types as well as the \emph{input} and \emph{output} properties. We also developed a context extension through a dedicated "workflow-run" namespace in ro-terms (https://w3id.org/ro/terms/workflow-run\#) to represent concepts that are not captured by terms in the RO-Crate context.
 
 \subsection{Process Run Crate}\label{process-run-crate}
 
@@ -419,12 +419,12 @@ command on selection.txt, storing the sorted output in a file called sorted\_sel
 Fig~\ref{fig:head_sort} contains a diagram of the two actions and their relationships to the other entities involved.
 Note how the actions are connected by the fact that the output of ``Run Head'' is also the input of ``Run Sort'': they form an ``implicit workflow'', whose steps have been executed manually rather than by a higher level software tool.
 
-%%
+%% gdoc updates until here
 
 \begin{figure}[!h]
 \includegraphics[width=29em]{image2.png}
-\caption{{\bf Diagram of a simple ``implicit workflow''} where the head and sort programs were run manually by a user.
-The executions are connected by the fact that the file output by head was used as input for sort.
+\caption{{\bf Diagram of a simple workflow} where the head and sort programs were run manually by a user.
+The executions of the individual software programs are connected by the fact that the file output by head was used as input for sort, documenting the computational flow in an implicit way.
 Such executions can be represented with Process Run Crate.}
 \label{fig:head_sort}
 \end{figure}
@@ -433,29 +433,30 @@ Such executions can be represented with Process Run Crate.}
 Process Run Crate extends the RO-Crate guidelines on representing software used to create files with additional requirements and conventions.
 This arrangement is typical of the RO-Crate approach, where the base specification provides general recommendations to allow for high flexibility, while profiles, being more concerned with the representation of specific domains and machine actionability, provide more detailed and structured definitions.
 Nevertheless, in order to be broadly applicable, profiles also need to avoid the specification of too many strict requirements, trying to strike a good trade-off between flexibility and actionability.
-One of the implications of this approach is that consumers need to code defensively, avoiding unwarranted assumptions.
+One of the implications of this approach is that consumers need to code defensively, avoiding unwarranted assumptions – e.g., by verifying that a value exists for an optional property before trying to retrieve it and use it.
 
-While an input or output parameter is usually a single file or directory, some applications expect a ``composite'' dataset consisting of multiple files and directories, which is treated as a single unit;
-this happens, for instance, with some digital image formats where a single image can be stored across multiple data and metadata files.
+While containing its degree of complexity, the Process Run Crate profile already addresses many of the requirements collected through the community competency questions. 
+For instance, the profile can be used to work with “composite” datasets consisting of multiple files and directories to be treated as a single unit – as opposed to more conventional input or output parameters consisting of a single file;
+this occurs, for instance, with some digital image formats where a single image can be stored across multiple data and metadata files.
 The profile specifies that such datasets should be represented by a
 \emph{Collection} entity linking to individual files and directories via the \emph{hasPart} property, and referencing the main part (if any) via the \emph{mainEntity} property.
-An example of such a dataset is discussed in the section \nameref{provenance-run-crate-for-digital-pathology}.
+An example of such a dataset is discussed in section \nameref{provenance-run-crate-for-digital-pathology}.
 Some inputs (and, less commonly, outputs), however, are not stored as files or directories, but passed to the application (e.g., via a command line interface) as single values of various types (e.g., a number or string).
 In this case, the profile recommends a representation via \emph{PropertyValue}.
 
 \subsection{Workflow Run Crate}\label{workflow-run-crate}
 
-This profile combines Process Run Crate and Workflow RO-Crate (\url{https://w3id.org/workflowhub/workflow-ro-crate/1.0}) to describe the execution of workflows -- i.e., high-level applications that coordinate multiple tools and manage intermediate outputs in order to produce the final results.
+The Workflow Run Crate profile combines the Process Run Crate and Workflow RO-Crate (\url{https://w3id.org/workflowhub/workflow-ro-crate/1.0}) profiles to describe the execution of “proper” computational workflows managed by a workflow management system.
 Such workflows are typically written in a special-purpose language, such as CWL or Snakemake
 \cite{Koster 2012}, and run by one or more WMS (e.g., StreamFlow
 \cite{Streamflow}, Galaxy~\cite{Galaxy 2022}.
-Like in Process Run Crate, the execution is described by a \emph{CreateAction}
+As in Process Run Crate, the execution is described by a \emph{CreateAction}
 that links to the application via \emph{instrument}, but in this case the application must be a workflow, as prescribed by Workflow RO-Crate.
 More specifically, Workflow RO-Crate states that the RO-Crate must contain a main workflow typed as \emph{File}, \emph{SoftwareSourceCode}
 and \emph{ComputationalWorkflow}.
-The execution of the individual workflow steps, instead, is not represented: that is left to the Provenance Run Crate profile.
+The execution of the individual workflow steps, instead, is not represented: that is left to the more detailed Provenance Run Crate profile (described in the next section).
 
-The Workflow Run RO-Crate profile also contains recommendations on how to represent the workflow's input and output parameters, based on the Bioschemas~\cite{Gray 2017} ComputationalWorkflow profile (\url{https://bioschemas.org/profiles/ComputationalWorkflow/1.0-RELEASE}) (which, despite being part of Bioschemas, is not domain-specific).
+The Workflow Run RO-Crate profile also contains recommendations on how to represent the workflow's input and output parameters, based on the aforementioned Bioschemas~\cite{Gray 2017} ComputationalWorkflow profile (which, despite being part of Bioschemas, is not specific to the life sciences).
 All these elements are represented via the \emph{FormalParameter} entity and are referenced from the main workflow via the \emph{input} and
 \emph{output} properties.
 While the entities referenced from
@@ -501,7 +502,8 @@ The Provenance Run Crate profile extends Workflow Run Crate by adding specificat
 Individual tool executions are represented by additional \emph{CreateAction} instances that refer to the tool itself via \emph{instrument} -- analogously to its use in Process Run Crate.
 The workflow is required to refer to the tools it orchestrates through the \emph{hasPart} property, in line with recommendations from the Bioschemas ComputationalWorkflow profile.
 
-To represent the logical steps defined by the workflow, this profile introduces the usage of \emph{HowToStep} instances, which point to the corresponding tools via the \emph{workExample} property and are referenced from the workflow via the \emph{step} property; the execution of a step is represented by a \emph{ControlAction} pointing to the
+To represent the logical steps defined by the workflow, this profile introduces the usage of \emph{HowToStep} i.e., “A step in the instructions for how to achieve a result” (\url{https://schema.org/HowToStep}).
+Steps point to the corresponding tools via the \emph{workExample} property and are referenced from the workflow via the \emph{step} property; the execution of a step is represented by a \emph{ControlAction} pointing to the
 \emph{HowToStep} via \emph{instrument} and to the \emph{CreateAction}
 instance(s) that represent the corresponding tool execution(s) via
 \emph{object}.
@@ -537,15 +539,11 @@ Provenance Run Crate provides a formalism to represent such connections.}
 \end{figure}
 
 A representation of parameter connections is particularly useful for traceability, since it allows to document the inputs and tools on which workflow outputs depend.
-However, the current RO-Crate context has no suitable terms for the description of such relationships.
-This gap led us to the development of a context extension through a dedicated "workflow-run" namespace in ro-terms (\url{https://github.com/ResearchObject/ro-terms}).
-The extension defines a new \emph{ParameterConnection} type with
+Since the current RO-Crate context has no suitable terms for the description of such relationships, 
+we added appropriate ones to the aforementioned  "workflow-run" context extension (namespace \url{https://w3id.org/ro/terms/workflow-run}):
+a \emph{ParameterConnection} type with
 \emph{sourceParameter} and \emph{targetParameter} attributes that respectively map to the source and target formal parameters, and a
 \emph{connection} property to link from the relevant step or workflow to the \emph{ParameterConnection} instances.
-
-Provenance Run Crate is the profile that most closely matches the level of detail provided by CWLProv, which extends W3C PROV.
-Table
-\cite{rocrate\_prov\_mapping} shows how the main entities and relationships represented by Provenance Run Crate map to PROV constructs.
 
 \begin{table}[!ht]
 %\begin{adjustwidth}{-2.25in}{0in} % Comment out/remove adjustwidth environment if 
