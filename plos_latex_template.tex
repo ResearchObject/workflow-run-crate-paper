@@ -402,7 +402,7 @@ The \emph{Person} or
 \emph{Organization} entity that performed the action is referred to via the \emph{agent} property.
 Fig~\ref{fig:process_crate_er} shows the entities used in Process Run Crate together with their relationships.
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \includegraphics[width=\textwidth]{image1.png}
 \caption{{\bf Entity-Relationship diagram for Process Run Crate.}
 The central entity is the \emph{CreateAction}, which represents the execution of an application.
@@ -419,9 +419,7 @@ command on selection.txt, storing the sorted output in a file called sorted\_sel
 Fig~\ref{fig:head_sort} contains a diagram of the two actions and their relationships to the other entities involved.
 Note how the actions are connected by the fact that the output of ``Run Head'' is also the input of ``Run Sort'': they form an ``implicit workflow'', whose steps have been executed manually rather than by a higher level software tool.
 
-%% gdoc updates until here
-
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \includegraphics[width=29em]{image2.png}
 \caption{{\bf Diagram of a simple workflow} where the head and sort programs were run manually by a user.
 The executions of the individual software programs are connected by the fact that the file output by head was used as input for sort, documenting the computational flow in an implicit way.
@@ -449,7 +447,7 @@ In this case, the profile recommends a representation via \emph{PropertyValue}.
 The Workflow Run Crate profile combines the Process Run Crate and Workflow RO-Crate (\url{https://w3id.org/workflowhub/workflow-ro-crate/1.0}) profiles to describe the execution of “proper” computational workflows managed by a workflow management system.
 Such workflows are typically written in a special-purpose language, such as CWL or Snakemake
 \cite{Koster 2012}, and run by one or more WMS (e.g., StreamFlow
-\cite{Streamflow}, Galaxy~\cite{Galaxy 2022}.
+\cite{Colonnelli 2020}, Galaxy~\cite{Galaxy 2022}.
 As in Process Run Crate, the execution is described by a \emph{CreateAction}
 that links to the application via \emph{instrument}, but in this case the application must be a workflow, as prescribed by Workflow RO-Crate.
 More specifically, Workflow RO-Crate states that the RO-Crate must contain a main workflow typed as \emph{File}, \emph{SoftwareSourceCode}
@@ -509,7 +507,7 @@ instance(s) that represent the corresponding tool execution(s) via
 \emph{object}.
 Note that a step execution does not coincide with a tool execution: an example where this distinction is apparent is when a step maps to multiple executions of the same tool over a list of inputs (the "scattering" feature in CWL).
 
-An RO-Crate following this profile can also represent the execution of the WMS itself (e.g., cwltool, Nextflow~\cite{Di Tommaso 2017}) via
+An RO-Crate following this profile can also represent the execution of the WMS itself (e.g., cwltool) via
 \emph{OrganizeAction}, pointing to a representation of the WMS via
 \emph{instrument}, to the steps via \emph{object} and to the workflow run via \emph{result}.
 The \emph{object} attribute of the
@@ -582,7 +580,7 @@ We compared the CWLProv RDF provenance graph with the RO-Crate metadata file.
 Because runcrate only generates RO-Crates \emph{after} workflow execution, we only considered components that in CWLProv were at least partially represented in structured format (CWL-specific or RDF), and analyzed their presence in RDF in RO-Crate (the packed CWL workflow is identical between CWLProv and RO-Crate).
 
 The results of the analysis are summarised in Table
-\cite{analysis\_table}.
+\ref{analysis_table}.
 Overall, most of the information contained in CWLProv RDF is transferred to the RO-Crate metadata.
 In addition, the representation of some categories of metadata has improved, notably Workflow parameters (WF2), which were insufficiently described in CWLProv RDF but defined with type and format in RO-Crate.
 Moreover, the format of input files (D2), which was absent in CWLProv RDF, is represented in RO-Crate.
@@ -1023,7 +1021,7 @@ CPM RO-Crate (\url{https://w3id.org/cpm/ro-crate}) is an RO-Crate profile that s
 An RO-Crate generated according to the CPM-RO-Crate profile embeds parts of the distributed provenance, which may be linked to the provenance of precursors and successors of the packed data.
 
 The CPM-RO-Crate profile synergises well with Process Run Crate, since the former can add references to CPM-based provenance descriptions of computational executions described with the latter, integrating them in the distributed provenance.
-Since CPM-based provenance and meta-provenance files are typically themselves produced by computations, Process Run Crate allows to represent these along with the main computations that produce the datasets being exchanged, providing the full picture in a cohesive ensemble. An example of such an RO-Crate is presented in  section~\cite{Process Run Crate and CPM RO-Crate}.
+Since CPM-based provenance and meta-provenance files are typically themselves produced by computations, Process Run Crate allows to represent these along with the main computations that produce the datasets being exchanged, providing the full picture in a cohesive ensemble. An example of such an RO-Crate is presented in section \nameref{process-run-crate-and-cpm-ro-crate-for-cancer-detection}.
 
 \subsection{Trusted Workflow Run Crate}\label{trusted-workflow-run-crate}
 
@@ -1052,7 +1050,7 @@ The runcrate toolkit is planned to be expanded both to better support the curren
 Another line of future work is the support of Wf Run RO-Crate with cwltool.
 
 Finally, we are currently exploring the cloud execution of Workflow Run RO-Crates.
-On the one hand, the Workflow Execution Service (WES) specification is used by the Global Alliance for Genomics and Health (GA4GH) \cite{GA4GH} to enable WMS-agnostic interpretation of workflows and scheduling of task execution. On the other hand, the Task Execution Service (TES) specification enables the execution of individual, atomic, containerized tasks in a compute backend-independent manner.
+On the one hand, the Workflow Execution Service (WES) specification is used by the Global Alliance for Genomics and Health (GA4GH) \cite{Rehm 2021} to enable WMS-agnostic interpretation of workflows and scheduling of task execution. On the other hand, the Task Execution Service (TES) specification enables the execution of individual, atomic, containerized tasks in a compute backend-independent manner.
 
 We are planning to undertake an in-depth analysis of the degree of interoperability between the TES and WES API standards -- roughly the equivalents of Process and Workflow Run Crates, respectively – by placing their focus on the actual execution of tasks/processes and workflows in cloud environments and lialising with the GA4GH Cloud community to align schemas where necessary.
 We will then build an interconversion library that attempts to (1) construct WES workflow and TES task run requests from RO-Crates containing Provenance, Workflow or Process Run requests and therefore allow their easy (re)execution on any GA4GH Cloud API-powered infrastructure, and (2) bundle information from the WES and TES (as well as other GA4GH Cloud API resources, where available) to create or extend RO-Crates with standards-compliant Process, Workflow or even Provenance RO-Crates.
