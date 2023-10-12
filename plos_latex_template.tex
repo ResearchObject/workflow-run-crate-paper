@@ -826,8 +826,9 @@ The listing below shows the output of the
 \emph{runcrate report} command for the StreamFlow RO-Crate. 
 For each action (workflow or tool run), the tool reports the associated instrument (workflow or tool), the starting and ending time and the list of inputs and outputs, with arrows pointing from the formal parameter to the corresponding actual value taken during the execution of the action.
 
-\begin{adjustwidth}{-1.5cm}{0in}
+\begin{adjustwidth}{-0.5cm}{0in}
 \label{lst:ml_pipeline_streamflow_report}
+\begin{small}
 \begin{verbatim}
 action: #30a65cba-1b75-47dc-ad47-1d33819cf156
   instrument: predictions.cwl (['SoftwareSourceCode', 
@@ -847,7 +848,6 @@ action: #30a65cba-1b75-47dc-ad47-1d33819cf156
   outputs:
     06133ec5f8973ec3cc5281e5df56421c3228c221 <- predictions.cwl#tissue
     4fd6110ee3c544182027f82ffe84b5ae7db5fb81 <- predictions.cwl#tumor
-
 action: #457c80d0-75e8-46d6-bada-b3fe82ea0ef1
   step: predictions.cwl#extract-tissue-low
   instrument: extract_tissue.cwl (['SoftwareApplication', 'File'])
@@ -859,7 +859,6 @@ action: #457c80d0-75e8-46d6-bada-b3fe82ea0ef1
     #af0253d688f3409a2c6d24bf6b35df7c4e271292 <- extract_tissue.cwl#src
   outputs:
     6b15de40dd0ee3234062d0f261c77575a60de0f2 <- extract_tissue.cwl#tissue
-
 action: #d09a8355-1a14-4ea4-b00b-122e010e5cc9
   step: predictions.cwl#extract-tissue-high
   instrument: extract_tissue.cwl (['SoftwareApplication', 'File'])
@@ -873,7 +872,6 @@ action: #d09a8355-1a14-4ea4-b00b-122e010e5cc9
     #af0253d688f3409a2c6d24bf6b35df7c4e271292 <- extract_tissue.cwl#src
   outputs:
     06133ec5f8973ec3cc5281e5df56421c3228c221 <- extract_tissue.cwl#tissue
-
 action: #ae2163a8-1a2a-4d78-9c81-caad76a72e47
   step: predictions.cwl#classify-tumor
   instrument: classify_tumor.cwl (['SoftwareApplication', 'File'])
@@ -888,6 +886,7 @@ action: #ae2163a8-1a2a-4d78-9c81-caad76a72e47
   outputs:
     4fd6110ee3c544182027f82ffe84b5ae7db5fb81 <- classify_tumor.cwl#tumor
 \end{verbatim}
+\end{small}
 \end{adjustwidth}
 
 
@@ -1020,7 +1019,7 @@ An RO-Crate generated according to the CPM-RO-Crate profile embeds parts of the 
 The CPM-RO-Crate profile synergises well with Process Run Crate, since the former can add references to CPM-based provenance descriptions of computational executions described with the latter, integrating them in the distributed provenance.
 Since CPM-based provenance and meta-provenance files are typically themselves produced by computations, Process Run Crate allows to represent these along with the main computations that produce the datasets being exchanged, providing the full picture in a cohesive ensemble. An example of such an RO-Crate is presented in section \nameref{process-run-crate-and-cpm-ro-crate-for-cancer-detection}.
 
-\subsection{Fuve Safes Workflow Run Crate}\label{trusted-workflow-run-crate}
+\subsection{Five Safes Workflow Run Crate}\label{trusted-workflow-run-crate}
 
 The TRE-FX project (\url{https://trefx.uk/}) has developed Five Safes RO-Crate (\url{https://w3id.org/5s-crate/0.4}), a profile that extends the Workflow Run RO- Crate profile for use in Trusted Research Environments (TRE) to handle sensitive health data in federated workflow execution across TREs in the UK following the Five Safes Framework \cite{Desai 2016}.
 A crate with a workflow run request references a pre-approved workflow and project details for manual and automated assessment according to the TRE's agreement policy for the sensitive dataset. 
@@ -1029,6 +1028,12 @@ At this stage the crate is also conforming to the Workflow Run Crate profile.
 The final crate is then safe to be made public.
 This extension of Workflow Run Crate documents and supports the human review process -- important for transparency on TRE data usage. 
 TRE-FX is implementing this profile using WfExS as the workflow execution backend, and this approach will form the basis for further work on implementing federated workflow execution in the British initiatives DARE UK and HDR UK.    
+
+
+\subsection{Biocompute Object RO-Crate}\label{bco-crate}
+IEEE 2791-2020 \cite{Mazumder 2020}, colloquially \emph{Biocompute Objects} (BCO), is a standard for representing provenance of a genomic sequencing pipeline, intended for submission of the workflow to regularly bodies, e.g. as part of a personalised medical treatment method \cite{Alterovitz 2018}. The BCO is represented as a single JSON file which includes description of the workflow and its steps and  intended purpose, as well as references for tools used and data sources accessed. There is overlap in the goals of BCO and Workflow Run Crate profiles, however their intentions and focus are different. BCO is primarily conveying a computational method for the purpose of manual regulatory review and further reuse, with any values provided as an exemplar run.  A Workflow Run Crate however is primarily documenting a particular workflow execution, and the workflow is associated to facilitate rerun rather than reuse. 
+
+Previously, a guide to packaging BioCompute Objects using RO-Crate (\url{https://biocompute-objects.github.io/bco-ro-crate/}) was developed as a profile to combine both standards \cite{Soiland-Reyes 2021}. In this early approach, RO-Crate was primarily a vessel to transport the BCO along with its constituent resources, including the workflow and data files, as well as provide these resources with additional typing and licence metadata that is not captured by the BCO JSON. Further work is being planned with the BCO community to update the BCO-RO profile to align with the newer Workflow Run Crate profiles. 
 
 \hypertarget{conclusion}{%
 \section{Conclusion and Future Work}\label{conclusion}}
@@ -1143,6 +1148,12 @@ The authors acknowledge funding from:
 
 
 %% Our referencces
+
+\bibitem{Alterovitz 2018}
+Gil Alterovitz, Dennis A Dean II, Carole Goble, Michael R Crusoe, Stian Soiland-Reyes, Amanda Bell, Anais Hayes, Anita Suresh, Charles Hadley S King IV, Dan Taylor, KanakaDurga Addepalli, Elaine Johanson, Elaine E Thompson, Eric Donaldson, Hiroki Morizono, Hsinyi Tsang, Jeet K Vora, Jeremy Goecks, Jianchao Yao, Jonas S Almeida, Jonathon Keeney, KanakaDurga Addepalli, Konstantinos Krampis, Krista Smith, Lydia Guo, Mark Walderhaug, Marco Schito, Matthew Ezewudo, Nuria Guimera, Paul Walsh, Robel Kahsay, Srikanth Gottipati, Timothy C Rodwell, Toby Bloom, Yuching Lai, Vahan Simonyan, Raja Mazumder (2018):\\
+\textbf{Enabling Precision Medicine via standard communication of NGS provenance, analysis, and results}.\\
+\emph{PLOS Biology} \textbf{16}(12):e3000099 \\
+\url{https://doi.org/10.1371/journal.pbio.3000099}
 
 \bibitem{Amstutz 2023}
 Peter Amstutz, Michael R. Crusoe, Farah Zaib Khan, Stian Soiland-Reyes, Manvendra Singh, Kapil kumar, John Chilton, Thomas Hickman, boysha, Tomoya Tanjo, Rupert Nash, Kevin Hannon, ash, Michael Kotliar, Brad Chapman, Andrey Kartashov, Guillermo Carrasco, Dan Leehr, Nebojsa Tijanic, Joshua C. Randall, Miguel Boland, bogdang989, Chuck McCallum, Hervé Ménager, Pau Ruiz Safont, Bruno P. Kinoshita, Denis Yuen, Gijs Molenaar (2023):\\
@@ -1462,6 +1473,12 @@ Domingo Manubens-Gil, Javier Vegas-Regidor, Chloe Prodhomme, Oriol Mula-Valls, F
 %\emph{Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences} \textbf{380}(2233)\\
 %\url{https://doi.org/10.1098/rsta.2021.0300}
 
+\bibitem{Mazumder 2020}
+Raja Mazumder, Vahan Simonyan (eds), IEEE P2791 BioCompute Working Group (BCOWG) (2020):\\
+\textbf{IEEE Standard for Bioinformatics Analyses Generated by High-Throughput Sequencing (HTS) to Facilitate Communication}.\\
+\emph{IEEE} Std 2791-2020. IEEE SA Standards Board.\\
+\url{https://doi.org/10.1109/IEEESTD.2020.9094416}
+
 \bibitem{Missier 2013}
 Paolo Missier, Saumen Dey, Khalid Belhajjame, Víctor Cuevas-Vicenttín, and Bertram Ludäscher (2013):\\
 \textbf{D-PROV: extending the PROV provenance model with workflow structure}.\\
@@ -1535,6 +1552,13 @@ Stian Soiland-Reyes, Farah Zaib Khan, Michael R Crusoe (2018):\\
 \emph{Zenodo}.\\
 \url{https://doi.org/10.5281/zenodo.1471585}
 
+\bibitem{Soiland-Reyes 2021}
+Stian Soiland-Reyes (2021):\\
+\textbf{Describing and packaging workflows using RO-Crate and BioCompute Objects}.\\
+Webinar, U.S. Food and Drug Administration (FDA), 2021-05-12.\\
+\url{https://doi.org/10.5281/zenodo.4633732}
+
+
 \bibitem{Soiland-Reyes 2022a}
 Stian Soiland-Reyes, Peter Sefton, Mercè
 Crosas, Leyla Jael Castro, Frederik Coppens, José M. Fernández, Daniel
@@ -1558,6 +1582,8 @@ Groth (2022):\\
 \textbf{Creating lightweight FAIR Digital Objects with RO-Crate.}\\
 Research Ideas and Outcomes \textbf{8}:e93937.\\
 \url{https://doi.org/10.3897/rio.8.e93937}
+
+
 
 \bibitem{Suetake 2022a}
  Hirotaka Suetake, Tomoya Tanjo, Manabu Ishii, Bruno
