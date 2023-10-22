@@ -14,9 +14,9 @@ prov:Plan	Plan	skos:narrowMatch	schema:HowTo	How-to	semapv:ManualMappingCuration
 prov:Entity	Entity	skos:narrowMatch	schema:MediaObject	File (Media object)	semapv:ManualMappingCuration	2023-10-22	orcid:0000-0001-9842-9718	orcid:0000-0003-0454-7145	0.95	Assuming non-Plan entity
 prov:Entity	Entity	skos:narrowMatch	schema:Dataset	Dataset	semapv:ManualMappingCuration	2023-10-22	orcid:0000-0001-9842-9718	orcid:0000-0003-0454-7145	0.95	Assuming non-Plan entity
 prov:Entity	Entity	skos:narrowMatch	schema:relatedMatch	Property value	semapv:ManualMappingCuration	2023-10-22	orcid:0000-0001-9842-9718	orcid:0000-0003-0454-7145	0.95	Assuming non-Plan entity
-prov:wasStartedBy	was started by	skos:relatedMatch	schema:agent	agent	semapv:ManualMappingCuration	2023-10-22	orcid:0000-0001-9842-9718	orcid:0000-0003-0454-7145 orcid:0000-0001-9842-9718	0.95	
+prov:wasStartedBy	was started by	skos:relatedMatch	schema:agent	agent	semapv:ManualMappingCuration	2023-10-22	orcid:0000-0001-9842-9718	orcid:0000-0003-0454-7145|orcid:0000-0001-9842-9718	0.95	
 prov:startedAtTime	was started by	skos:narrowMatch	schema:startTime	start time	semapv:ManualMappingCuration	2023-10-22	orcid:0000-0001-9842-9718	orcid:0000-0001-9842-9718	0.95	
-prov:wasEndedBy	was ended by	skos:relatedMatch	schema:agent	agent	semapv:ManualMappingCuration	2023-10-22	orcid:0000-0001-9842-9718	orcid:0000-0003-0454-7145 orcid:0000-0001-9842-9718	0.95	
+prov:wasEndedBy	was ended by	skos:relatedMatch	schema:agent	agent	semapv:ManualMappingCuration	2023-10-22	orcid:0000-0001-9842-9718	orcid:0000-0003-0454-7145|orcid:0000-0001-9842-9718	0.95	
 prov:endedAtTime	was ended by	skos:narrowMatch	schema:endTime	end time	semapv:ManualMappingCuration	2023-10-22	orcid:0000-0001-9842-9718	orcid:0000-0001-9842-9718	0.95	
 prov:wasAssociatedWith	was associated with	skos:narrowMatch	schema:agent	agent	semapv:ManualMappingCuration	2023-10-22	orcid:0000-0001-9842-9718	orcid:0000-0003-0454-7145	0.95	
 prov:wasAssociatedWith	was associated with	skos:narrowMatch	schema:instrument	instrument	semapv:ManualMappingCuration	2023-10-22	orcid:0000-0001-9842-9718	orcid:0000-0003-0454-7145	0.95	
