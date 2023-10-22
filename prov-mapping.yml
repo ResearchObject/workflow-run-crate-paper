@@ -3,6 +3,7 @@ curie_map:
   schema: http://schema.org/
   wfrun: https://w3id.org/ro/terms/workflow-run
   skos: http://www.w3.org/2004/02/skos/core
+  bioschema:  https://bioschemas.org/
 license: https://creativecommons.org/publicdomain/zero/1.0/
 mapping_set_group: researchobject.org
 mapping_set_id: prov_wfrun
