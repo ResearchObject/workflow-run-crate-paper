@@ -86,6 +86,8 @@
                 }
             ],
             "hasPart": [
+                { "@id": "mapping/environment.yml" },
+                { "@id": "mapping/environment.lock.yml" },
                 { "@id": "mapping/prov-mapping.tsv" },
                 { "@id": "mapping/prov-mapping.yml" },
                 { "@id": "mapping/prov-mapping-w-metadata.tsv" },
@@ -93,6 +95,25 @@
                 { "@id": "mapping/prov-mapping.rdf" },
                 { "@id": "mapping/prov-mapping.json" }
             ]
+        },
+        {
+            "@id": "mapping/environment.yml",
+            "@type": ["File"],
+            "name": "Conda environment for sssom",
+            "encodingFormat": "application/yaml",
+            "conformsTo": "https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually"
+        },
+        {
+            "@id": "mapping/environment.lock.yml",
+            "@type": ["File"],
+            "name": "Conda environment for sssom, version-pinned",
+            "encodingFormat": "application/yaml",
+            "conformsTo": "https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually"
+        },
+        {
+            "@id": "https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually",
+            "@type": "CreativeWork",
+            "name": "Conda environment file format"
         },
         {
             "@id": "mapping/prov-mapping.tsv",
