@@ -1,5 +1,9 @@
 {
-    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@context": [
+        "https://w3id.org/ro/crate/1.1/context",
+        {"sssom": "https://w3id.org/sssom/schema/"
+        }
+    ],
     "@graph": [
         {
             "@id": "ro-crate-metadata.json",
@@ -12,6 +16,9 @@
             },
             "conformsTo": {
                 "@id": "https://w3id.org/ro/crate/1.1"
+            },
+            "author": {
+                "@id": "https://orcid.org/0000-0001-9842-9718"
             }
         },
         {
@@ -77,7 +84,78 @@
                 {
                     "@id": "https://orcid.org/0000-0001-9842-9718"
                 }
+            ],
+            "hasPart": [
+                { "@id": "mapping/prov-mapping.tsv" },
+                { "@id": "mapping/prov-mapping.yml" },
+                { "@id": "mapping/prov-mapping-w-metadata.tsv" },
+                { "@id": "mapping/prov-mapping.ttl" },
+                { "@id": "mapping/prov-mapping.rdf" },
+                { "@id": "mapping/prov-mapping.json" }
             ]
+        },
+        {
+            "@id": "mapping/prov-mapping.tsv",
+            "@type": ["File", "sssom:MappingSet"],
+            "name": "PROV mapping",
+            "author": [
+                {"@id": "https://orcid.org/0000-0003-0454-7145"},
+                {"@id": "https://orcid.org/0000-0001-9842-9718"}
+
+            ],            
+            "creator": {
+                "@id": "https://orcid.org/0000-0001-9842-9718"
+            },
+            "encodingFormat": "text/tab-separated-values",
+            "conformsTo": "https://w3id.org/sssom/"
+        },
+        {
+            "@id": "mapping/prov-mapping.rdf", 
+            "@type": ["File", "sssom:MappingSet"],
+            "name": "PROV mapping",
+            "encodingFormat": "application/rdf+xml",
+            "isBasedOn": {"@id": "mapping/prov-mapping-w-metadata.tsv"},
+            "conformsTo": "https://w3id.org/sssom/"
+        },
+        {
+            "@id": "mapping/prov-mapping.ttl", 
+            "@type": ["File", "sssom:MappingSet"],
+            "name": "PROV mapping",
+            "encodingFormat": "text/turtle",
+            "isBasedOn": {"@id": "mapping/prov-mapping-w-metadata.tsv"},
+            "conformsTo": "https://w3id.org/sssom/"
+        },
+        {
+            "@id": "mapping/prov-mapping-w-metadata.tsv", 
+            "@type": ["File", "sssom:MappingSet"],
+            "name": "PROV mapping",
+            "encodingFormat": "text/tab-separated-values",
+            "isBasedOn": [
+                { "@id": "mapping/prov-mapping.tsv"},
+                { "@id": "mapping/prov-mapping.yml"}
+            ],
+            "conformsTo": "https://w3id.org/sssom/"
+        },        
+        {
+            "@id": "mapping/prov-mapping.json", 
+            "@type": ["File", "sssom:MappingSet"],
+            "name": "PROV mapping",
+            "isBasedOn": {"@id": "mapping/prov-mapping-w-metadata.tsv"},
+            "encodingFormat": "application/json",
+            "conformsTo": "https://w3id.org/sssom/"
+        },
+        {
+            "@id": "mapping/prov-mapping.yml", 
+            "@type": ["File", "sssom:MappingSet"],
+            "name": "PROV mapping",
+            "encodingFormat": "text/yaml",
+            "conformsTo": "https://w3id.org/sssom/"
+        },
+        {
+            "@id": "https://w3id.org/sssom/",
+            "@type": "CreativeWork", 
+            "name": "Simple Standard for Sharing Ontological Mappings",
+            "version": "0.15.0"
         },
         {
             "@id": "https://researchobject.org/workflow-run-crate/",
@@ -211,6 +289,6 @@
                 "Department of Computer Science, The University of Manchester, Manchester, United Kingdom",
                 "Informatics Institute, University of Amsterdam, Amsterdam, The Netherlands"
             ]
-        },
+        }
     ]
 }
