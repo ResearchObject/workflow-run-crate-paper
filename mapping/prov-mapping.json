@@ -137,7 +137,7 @@
     },
     {
       "subject_id": "prov:Organization",
-      "predicate_id": "skos:closeMatch",
+      "predicate_id": "skos:exactMatch",
       "object_id": "schema:Organization",
       "mapping_justification": "semapv:ManualMappingCuration",
       "subject_label": "Organization",
@@ -153,7 +153,7 @@
     },
     {
       "subject_id": "prov:Person",
-      "predicate_id": "skos:closeMatch",
+      "predicate_id": "skos:exactMatch",
       "object_id": "schema:Person",
       "mapping_justification": "semapv:ManualMappingCuration",
       "subject_label": "Person",
@@ -316,7 +316,7 @@
     },
     {
       "subject_id": "prov:used",
-      "predicate_id": "skos:closeMatch",
+      "predicate_id": "skos:exactMatch",
       "object_id": "schema:object",
       "mapping_justification": "semapv:ManualMappingCuration",
       "subject_label": "used",
@@ -393,7 +393,8 @@
         "orcid:0000-0001-9842-9718"
       ],
       "mapping_date": "2023-10-22",
-      "confidence": 0.95
+      "confidence": 0.95,
+      "comment": "Note inverse properties:   :ent prov:wasGeneratedBy :act   vs   :act schema:result :ent"
     },
     {
       "subject_id": "prov:wasStartedBy",
