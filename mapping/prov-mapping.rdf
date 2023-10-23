@@ -18,83 +18,15 @@
     sssom:mapping_set_id "prov_wfrun"^^xsd:anyURI ;
     sssom:mappings [ a owl:Axiom ;
             dc1:creator orcid:0000-0001-9842-9718 ;
-            pav:authoredBy orcid:0000-0003-0454-7145 ;
-            pav:authoredOn "2023-10-22"^^xsd:date ;
-            owl:annotatedProperty skos:narrowMatch ;
-            owl:annotatedSource prov:wasAssociatedWith ;
-            owl:annotatedTarget schema1:instrument ;
-            sssom:confidence 9.5e-01 ;
-            sssom:mapping_justification semapv:ManualMappingCuration ;
-            sssom:object_label "instrument" ;
-            sssom:subject_label "was associated with" ],
-        [ a owl:Axiom ;
-            dc1:creator orcid:0000-0001-9842-9718 ;
-            pav:authoredBy orcid:0000-0001-9842-9718,
-                orcid:0000-0003-0454-7145 ;
-            pav:authoredOn "2023-10-22"^^xsd:date ;
-            owl:annotatedProperty skos:relatedMatch ;
-            owl:annotatedSource prov:wasEndedBy ;
-            owl:annotatedTarget schema1:agent ;
-            sssom:confidence 9.5e-01 ;
-            sssom:mapping_justification semapv:ManualMappingCuration ;
-            sssom:object_label "agent" ;
-            sssom:subject_label "was ended by" ],
-        [ a owl:Axiom ;
-            dc1:creator orcid:0000-0001-9842-9718 ;
-            pav:authoredBy orcid:0000-0001-9842-9718 ;
-            pav:authoredOn "2023-10-22"^^xsd:date ;
-            owl:annotatedProperty skos:narrowMatch ;
-            owl:annotatedSource prov:Agent ;
-            owl:annotatedTarget schema1:Organization ;
-            sssom:confidence 1e+00 ;
-            sssom:mapping_justification semapv:ManualMappingCuration ;
-            sssom:object_label "Organization" ;
-            sssom:subject_label "Agent" ],
-        [ a owl:Axiom ;
-            dc1:creator orcid:0000-0001-9842-9718 ;
-            pav:authoredBy orcid:0000-0003-0454-7145 ;
-            pav:authoredOn "2023-10-22"^^xsd:date ;
-            rdfs:comment "Assuming non-Plan entity" ;
-            owl:annotatedProperty skos:narrowMatch ;
-            owl:annotatedSource prov:Entity ;
-            owl:annotatedTarget schema1:Dataset ;
-            sssom:confidence 9.5e-01 ;
-            sssom:mapping_justification semapv:ManualMappingCuration ;
-            sssom:object_label "Dataset" ;
-            sssom:subject_label "Entity" ],
-        [ a owl:Axiom ;
-            dc1:creator orcid:0000-0001-9842-9718 ;
             pav:authoredBy orcid:0000-0001-9842-9718 ;
             pav:authoredOn "2023-10-22"^^xsd:date ;
             owl:annotatedProperty skos:closeMatch ;
-            owl:annotatedSource prov:startedAtTime ;
-            owl:annotatedTarget schema1:startTime ;
+            owl:annotatedSource prov:endedAtTime ;
+            owl:annotatedTarget schema1:endTime ;
             sssom:confidence 9.5e-01 ;
             sssom:mapping_justification semapv:ManualMappingCuration ;
-            sssom:object_label "start time" ;
-            sssom:subject_label "started at time" ],
-        [ a owl:Axiom ;
-            dc1:creator orcid:0000-0001-9842-9718 ;
-            pav:authoredBy orcid:0000-0003-0454-7145 ;
-            pav:authoredOn "2023-10-22"^^xsd:date ;
-            owl:annotatedProperty skos:narrowMatch ;
-            owl:annotatedSource prov:Plan ;
-            owl:annotatedTarget schema1:SoftwareApplication ;
-            sssom:confidence 9.5e-01 ;
-            sssom:mapping_justification semapv:ManualMappingCuration ;
-            sssom:object_label "Software application" ;
-            sssom:subject_label "Plan" ],
-        [ a owl:Axiom ;
-            dc1:creator orcid:0000-0001-9842-9718 ;
-            pav:authoredBy orcid:0000-0001-9842-9718 ;
-            pav:authoredOn "2023-10-22"^^xsd:date ;
-            owl:annotatedProperty skos:narrowMatch ;
-            owl:annotatedSource prov:Agent ;
-            owl:annotatedTarget schema1:Person ;
-            sssom:confidence 1e+00 ;
-            sssom:mapping_justification semapv:ManualMappingCuration ;
-            sssom:object_label "Person" ;
-            sssom:subject_label "Agent" ],
+            sssom:object_label "end time" ;
+            sssom:subject_label "ended at time" ],
         [ a owl:Axiom ;
             dc1:creator orcid:0000-0001-9842-9718 ;
             pav:authoredBy orcid:0000-0001-9842-9718,
@@ -112,46 +44,34 @@
             pav:authoredBy orcid:0000-0003-0454-7145 ;
             pav:authoredOn "2023-10-22"^^xsd:date ;
             owl:annotatedProperty skos:narrowMatch ;
-            owl:annotatedSource prov:wasAssociatedWith ;
-            owl:annotatedTarget schema1:agent ;
-            sssom:confidence 9.5e-01 ;
-            sssom:mapping_justification semapv:ManualMappingCuration ;
-            sssom:object_label "agent" ;
-            sssom:subject_label "was associated with" ],
-        [ a owl:Axiom ;
-            dc1:creator orcid:0000-0001-9842-9718 ;
-            pav:authoredBy orcid:0000-0003-0454-7145 ;
-            pav:authoredOn "2023-10-22"^^xsd:date ;
-            owl:annotatedProperty skos:narrowMatch ;
             owl:annotatedSource prov:Plan ;
-            owl:annotatedTarget schema1:HowTo ;
+            owl:annotatedTarget schema1:SoftwareApplication ;
             sssom:confidence 9.5e-01 ;
             sssom:mapping_justification semapv:ManualMappingCuration ;
-            sssom:object_label "How-to" ;
+            sssom:object_label "Software application" ;
             sssom:subject_label "Plan" ],
         [ a owl:Axiom ;
             dc1:creator orcid:0000-0001-9842-9718 ;
-            pav:authoredBy orcid:0000-0003-0454-7145 ;
+            pav:authoredBy orcid:0000-0001-9842-9718 ;
             pav:authoredOn "2023-10-22"^^xsd:date ;
-            owl:annotatedProperty skos:closeMatch ;
-            owl:annotatedSource prov:wasGeneratedBy ;
-            owl:annotatedTarget schema1:result ;
-            sssom:confidence 9.5e-01 ;
+            owl:annotatedProperty skos:relatedMatch ;
+            owl:annotatedSource prov:Agent ;
+            owl:annotatedTarget schema1:SoftwareApplication ;
+            sssom:confidence 7.5e-01 ;
             sssom:mapping_justification semapv:ManualMappingCuration ;
-            sssom:object_label "object_label" ;
-            sssom:subject_label "was generated by" ],
+            sssom:object_label "Software application" ;
+            sssom:subject_label "Agent" ],
         [ a owl:Axiom ;
             dc1:creator orcid:0000-0001-9842-9718 ;
-            pav:authoredBy orcid:0000-0003-0454-7145 ;
+            pav:authoredBy orcid:0000-0001-9842-9718 ;
             pav:authoredOn "2023-10-22"^^xsd:date ;
-            rdfs:comment "Assuming activity is workflow/process execution" ;
             owl:annotatedProperty skos:narrowMatch ;
-            owl:annotatedSource prov:Activity ;
-            owl:annotatedTarget schema1:CreateAction ;
-            sssom:confidence 9.5e-01 ;
+            owl:annotatedSource prov:Agent ;
+            owl:annotatedTarget schema1:Organization ;
+            sssom:confidence 1e+00 ;
             sssom:mapping_justification semapv:ManualMappingCuration ;
-            sssom:object_label "Create action" ;
-            sssom:subject_label "Activity" ],
+            sssom:object_label "Organization" ;
+            sssom:subject_label "Agent" ],
         [ a owl:Axiom ;
             dc1:creator orcid:0000-0001-9842-9718 ;
             pav:authoredBy orcid:0000-0003-0454-7145 ;
@@ -168,12 +88,92 @@
             pav:authoredBy orcid:0000-0003-0454-7145 ;
             pav:authoredOn "2023-10-22"^^xsd:date ;
             owl:annotatedProperty skos:closeMatch ;
+            owl:annotatedSource prov:Person ;
+            owl:annotatedTarget schema1:Person ;
+            sssom:confidence 9.5e-01 ;
+            sssom:mapping_justification semapv:ManualMappingCuration ;
+            sssom:object_label "Person" ;
+            sssom:subject_label "Person" ],
+        [ a owl:Axiom ;
+            dc1:creator orcid:0000-0001-9842-9718 ;
+            pav:authoredBy orcid:0000-0001-9842-9718 ;
+            pav:authoredOn "2023-10-22"^^xsd:date ;
+            owl:annotatedProperty skos:narrowMatch ;
+            owl:annotatedSource prov:Agent ;
+            owl:annotatedTarget schema1:Person ;
+            sssom:confidence 1e+00 ;
+            sssom:mapping_justification semapv:ManualMappingCuration ;
+            sssom:object_label "Person" ;
+            sssom:subject_label "Agent" ],
+        [ a owl:Axiom ;
+            dc1:creator orcid:0000-0001-9842-9718 ;
+            pav:authoredBy orcid:0000-0003-0454-7145 ;
+            pav:authoredOn "2023-10-22"^^xsd:date ;
+            rdfs:comment "Assuming activity is workflow/process execution" ;
+            owl:annotatedProperty skos:narrowMatch ;
+            owl:annotatedSource prov:Activity ;
+            owl:annotatedTarget schema1:OrganizeAction ;
+            sssom:confidence 9.5e-01 ;
+            sssom:mapping_justification semapv:ManualMappingCuration ;
+            sssom:object_label "Organize action" ;
+            sssom:subject_label "Activity" ],
+        [ a owl:Axiom ;
+            dc1:creator orcid:0000-0001-9842-9718 ;
+            pav:authoredBy orcid:0000-0003-0454-7145 ;
+            pav:authoredOn "2023-10-22"^^xsd:date ;
+            owl:annotatedProperty skos:narrowMatch ;
+            owl:annotatedSource prov:Plan ;
+            owl:annotatedTarget schema1:HowTo ;
+            sssom:confidence 9.5e-01 ;
+            sssom:mapping_justification semapv:ManualMappingCuration ;
+            sssom:object_label "How-to" ;
+            sssom:subject_label "Plan" ],
+        [ a owl:Axiom ;
+            dc1:creator orcid:0000-0001-9842-9718 ;
+            pav:authoredBy orcid:0000-0003-0454-7145 ;
+            pav:authoredOn "2023-10-22"^^xsd:date ;
+            owl:annotatedProperty skos:closeMatch ;
             owl:annotatedSource prov:Organization ;
             owl:annotatedTarget schema1:Organization ;
             sssom:confidence 9.5e-01 ;
             sssom:mapping_justification semapv:ManualMappingCuration ;
             sssom:object_label "Organization" ;
             sssom:subject_label "Organization" ],
+        [ a owl:Axiom ;
+            dc1:creator orcid:0000-0001-9842-9718 ;
+            pav:authoredBy orcid:0000-0001-9842-9718 ;
+            pav:authoredOn "2023-10-22"^^xsd:date ;
+            owl:annotatedProperty skos:closeMatch ;
+            owl:annotatedSource prov:startedAtTime ;
+            owl:annotatedTarget schema1:startTime ;
+            sssom:confidence 9.5e-01 ;
+            sssom:mapping_justification semapv:ManualMappingCuration ;
+            sssom:object_label "start time" ;
+            sssom:subject_label "started at time" ],
+        [ a owl:Axiom ;
+            dc1:creator orcid:0000-0001-9842-9718 ;
+            pav:authoredBy orcid:0000-0001-9842-9718,
+                orcid:0000-0003-0454-7145 ;
+            pav:authoredOn "2023-10-22"^^xsd:date ;
+            owl:annotatedProperty skos:relatedMatch ;
+            owl:annotatedSource prov:wasEndedBy ;
+            owl:annotatedTarget schema1:agent ;
+            sssom:confidence 9.5e-01 ;
+            sssom:mapping_justification semapv:ManualMappingCuration ;
+            sssom:object_label "agent" ;
+            sssom:subject_label "was ended by" ],
+        [ a owl:Axiom ;
+            dc1:creator orcid:0000-0001-9842-9718 ;
+            pav:authoredBy orcid:0000-0003-0454-7145 ;
+            pav:authoredOn "2023-10-22"^^xsd:date ;
+            rdfs:comment "Complex mapping: an instrument implies the existence of a qualified association (prov:Association) linked to a prov:Plan through prov:hadPlan" ;
+            owl:annotatedProperty skos:relatedMatch ;
+            owl:annotatedSource prov:hadPlan ;
+            owl:annotatedTarget schema1:instrument ;
+            sssom:confidence 9.5e-01 ;
+            sssom:mapping_justification semapv:ManualMappingCuration ;
+            sssom:object_label "instrument" ;
+            sssom:subject_label "hadPlan" ],
         [ a owl:Axiom ;
             dc1:creator orcid:0000-0001-9842-9718 ;
             pav:authoredBy orcid:0000-0003-0454-7145 ;
@@ -189,14 +189,14 @@
             dc1:creator orcid:0000-0001-9842-9718 ;
             pav:authoredBy orcid:0000-0003-0454-7145 ;
             pav:authoredOn "2023-10-22"^^xsd:date ;
-            rdfs:comment "Assuming activity is workflow/process execution" ;
-            owl:annotatedProperty skos:narrowMatch ;
-            owl:annotatedSource prov:Activity ;
-            owl:annotatedTarget schema1:OrganizeAction ;
+            rdfs:comment "Complex mapping: an agent implies the existence of a qualified association (prov:Association) linked to a prov:Agent through prov:agent" ;
+            owl:annotatedProperty skos:relatedMatch ;
+            owl:annotatedSource prov:agent ;
+            owl:annotatedTarget schema1:agent ;
             sssom:confidence 9.5e-01 ;
             sssom:mapping_justification semapv:ManualMappingCuration ;
-            sssom:object_label "Organize action" ;
-            sssom:subject_label "Activity" ],
+            sssom:object_label "agent" ;
+            sssom:subject_label "agent" ],
         [ a owl:Axiom ;
             dc1:creator orcid:0000-0001-9842-9718 ;
             pav:authoredBy orcid:0000-0003-0454-7145 ;
@@ -225,14 +225,13 @@
             dc1:creator orcid:0000-0001-9842-9718 ;
             pav:authoredBy orcid:0000-0003-0454-7145 ;
             pav:authoredOn "2023-10-22"^^xsd:date ;
-            rdfs:comment "Complex mapping: an instrument implies the existence of a qualified association (prov:Association) linked to a prov:Plan through prov:hadPlan" ;
-            owl:annotatedProperty skos:relatedMatch ;
-            owl:annotatedSource prov:hadPlan ;
+            owl:annotatedProperty skos:narrowMatch ;
+            owl:annotatedSource prov:wasAssociatedWith ;
             owl:annotatedTarget schema1:instrument ;
             sssom:confidence 9.5e-01 ;
             sssom:mapping_justification semapv:ManualMappingCuration ;
             sssom:object_label "instrument" ;
-            sssom:subject_label "hadPlan" ],
+            sssom:subject_label "was associated with" ],
         [ a owl:Axiom ;
             dc1:creator orcid:0000-0001-9842-9718 ;
             pav:authoredBy orcid:0000-0003-0454-7145 ;
@@ -248,14 +247,48 @@
             dc1:creator orcid:0000-0001-9842-9718 ;
             pav:authoredBy orcid:0000-0003-0454-7145 ;
             pav:authoredOn "2023-10-22"^^xsd:date ;
-            rdfs:comment "Complex mapping: an agent implies the existence of a qualified association (prov:Association) linked to a prov:Agent through prov:agent" ;
-            owl:annotatedProperty skos:relatedMatch ;
-            owl:annotatedSource prov:agent ;
+            rdfs:comment "Assuming activity is workflow/process execution" ;
+            owl:annotatedProperty skos:narrowMatch ;
+            owl:annotatedSource prov:Activity ;
+            owl:annotatedTarget schema1:CreateAction ;
+            sssom:confidence 9.5e-01 ;
+            sssom:mapping_justification semapv:ManualMappingCuration ;
+            sssom:object_label "Create action" ;
+            sssom:subject_label "Activity" ],
+        [ a owl:Axiom ;
+            dc1:creator orcid:0000-0001-9842-9718 ;
+            pav:authoredBy orcid:0000-0003-0454-7145 ;
+            pav:authoredOn "2023-10-22"^^xsd:date ;
+            rdfs:comment "Assuming non-Plan entity" ;
+            owl:annotatedProperty skos:narrowMatch ;
+            owl:annotatedSource prov:Entity ;
+            owl:annotatedTarget schema1:Dataset ;
+            sssom:confidence 9.5e-01 ;
+            sssom:mapping_justification semapv:ManualMappingCuration ;
+            sssom:object_label "Dataset" ;
+            sssom:subject_label "Entity" ],
+        [ a owl:Axiom ;
+            dc1:creator orcid:0000-0001-9842-9718 ;
+            pav:authoredBy orcid:0000-0003-0454-7145 ;
+            pav:authoredOn "2023-10-22"^^xsd:date ;
+            owl:annotatedProperty skos:narrowMatch ;
+            owl:annotatedSource prov:wasAssociatedWith ;
             owl:annotatedTarget schema1:agent ;
             sssom:confidence 9.5e-01 ;
             sssom:mapping_justification semapv:ManualMappingCuration ;
             sssom:object_label "agent" ;
-            sssom:subject_label "agent" ],
+            sssom:subject_label "was associated with" ],
+        [ a owl:Axiom ;
+            dc1:creator orcid:0000-0001-9842-9718 ;
+            pav:authoredBy orcid:0000-0003-0454-7145 ;
+            pav:authoredOn "2023-10-22"^^xsd:date ;
+            owl:annotatedProperty skos:closeMatch ;
+            owl:annotatedSource prov:wasGeneratedBy ;
+            owl:annotatedTarget schema1:result ;
+            sssom:confidence 9.5e-01 ;
+            sssom:mapping_justification semapv:ManualMappingCuration ;
+            sssom:object_label "object_label" ;
+            sssom:subject_label "was generated by" ],
         [ a owl:Axiom ;
             dc1:creator orcid:0000-0001-9842-9718 ;
             pav:authoredBy orcid:0000-0003-0454-7145 ;
@@ -267,51 +300,7 @@
             sssom:confidence 9.5e-01 ;
             sssom:mapping_justification semapv:ManualMappingCuration ;
             sssom:object_label "instrument" ;
-            sssom:subject_label "agent" ],
-        [ a owl:Axiom ;
-            dc1:creator orcid:0000-0001-9842-9718 ;
-            pav:authoredBy orcid:0000-0001-9842-9718 ;
-            pav:authoredOn "2023-10-22"^^xsd:date ;
-            owl:annotatedProperty skos:relatedMatch ;
-            owl:annotatedSource prov:Agent ;
-            owl:annotatedTarget schema1:SoftwareApplication ;
-            sssom:confidence 7.5e-01 ;
-            sssom:mapping_justification semapv:ManualMappingCuration ;
-            sssom:object_label "Software application" ;
-            sssom:subject_label "Agent" ],
-        [ a owl:Axiom ;
-            dc1:creator orcid:0000-0001-9842-9718 ;
-            pav:authoredBy orcid:0000-0003-0454-7145 ;
-            pav:authoredOn "2023-10-22"^^xsd:date ;
-            owl:annotatedProperty skos:closeMatch ;
-            owl:annotatedSource prov:Person ;
-            owl:annotatedTarget schema1:Person ;
-            sssom:confidence 9.5e-01 ;
-            sssom:mapping_justification semapv:ManualMappingCuration ;
-            sssom:object_label "Person" ;
-            sssom:subject_label "Person" ],
-        [ a owl:Axiom ;
-            dc1:creator orcid:0000-0001-9842-9718 ;
-            pav:authoredBy orcid:0000-0001-9842-9718 ;
-            pav:authoredOn "2023-10-22"^^xsd:date ;
-            owl:annotatedProperty skos:closeMatch ;
-            owl:annotatedSource prov:endedAtTime ;
-            owl:annotatedTarget schema1:endTime ;
-            sssom:confidence 9.5e-01 ;
-            sssom:mapping_justification semapv:ManualMappingCuration ;
-            sssom:object_label "end time" ;
-            sssom:subject_label "ended at time" ],
-        [ a owl:Axiom ;
-            dc1:creator orcid:0000-0001-9842-9718 ;
-            pav:authoredBy orcid:0000-0001-9842-9718 ;
-            pav:authoredOn "2023-10-22"^^xsd:date ;
-            owl:annotatedProperty skos:closeMatch ;
-            owl:annotatedSource prov:Activity ;
-            owl:annotatedTarget schema1:Action ;
-            sssom:confidence 9.5e-01 ;
-            sssom:mapping_justification semapv:ManualMappingCuration ;
-            sssom:object_label "Action" ;
-            sssom:subject_label "Activity" ] ;
+            sssom:subject_label "agent" ] ;
     sssom:object_source <https://w3id.org/ro/wfrun/provenance/0.3> ;
     sssom:object_source_version 3e-01 ;
     sssom:subject_source <http://www.w3.org/ns/prov-o#> ;

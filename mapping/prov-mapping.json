@@ -4,22 +4,6 @@
   "mappings": [
     {
       "subject_id": "prov:Activity",
-      "predicate_id": "skos:closeMatch",
-      "object_id": "schema:Action",
-      "mapping_justification": "semapv:ManualMappingCuration",
-      "subject_label": "Activity",
-      "object_label": "Action",
-      "author_id": [
-        "orcid:0000-0001-9842-9718"
-      ],
-      "creator_id": [
-        "orcid:0000-0001-9842-9718"
-      ],
-      "mapping_date": "2023-10-22",
-      "confidence": 0.95
-    },
-    {
-      "subject_id": "prov:Activity",
       "predicate_id": "skos:narrowMatch",
       "object_id": "schema:CreateAction",
       "mapping_justification": "semapv:ManualMappingCuration",
