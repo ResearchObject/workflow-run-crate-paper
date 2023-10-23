@@ -1,5 +1,4 @@
 subject_id	subject_label	predicate_id	object_id	object_label	mapping_justification	mapping_date	creator_id	author_id	confidence	comment
-prov:Activity	Activity	skos:closeMatch	schema:Action	Action	semapv:ManualMappingCuration	2023-10-22	orcid:0000-0001-9842-9718	orcid:0000-0001-9842-9718	0.95	
 prov:Activity	Activity	skos:narrowMatch	schema:CreateAction	Create action	semapv:ManualMappingCuration	2023-10-22	orcid:0000-0001-9842-9718	orcid:0000-0003-0454-7145	0.95	Assuming activity is workflow/process execution
 prov:Activity	Activity	skos:narrowMatch	schema:OrganizeAction	Organize action	semapv:ManualMappingCuration	2023-10-22	orcid:0000-0001-9842-9718	orcid:0000-0003-0454-7145	0.95	Assuming activity is workflow/process execution
 prov:agent	agent	skos:narrowMatch	schema:instrument	instrument	semapv:ManualMappingCuration	2023-10-22	orcid:0000-0001-9842-9718	orcid:0000-0003-0454-7145	0.95	Assuming agent is a workflow management system
