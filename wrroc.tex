@@ -404,7 +404,8 @@ The \emph{Person} or
 Fig~\ref{fig:process_crate_er} shows the entities used in Process Run Crate together with their relationships.
 
 \begin{figure}[!ht]
-\includegraphics[width=\textwidth]{image1.png}
+%\includegraphics[width=\textwidth]{image1.png}
+\includegraphics[width=26em]{wrroc-figure1.drawio.pdf}
 \caption{{\bf Entity-Relationship diagram for Process Run Crate.}
 The central entity is the \emph{CreateAction}, which represents the execution of an application.
 It relates with the application itself via \emph{instrument}, with the entity that executed it via \emph{agent} and with its inputs and outputs via \emph{object}
@@ -423,7 +424,8 @@ Fig~\ref{fig:head_sort} contains a diagram of the two actions and their relation
 Note how the actions are connected by the fact that the output of ``Run Head'' is also the input of ``Run Sort'': they form an ``implicit workflow'', whose steps have been executed manually rather than by a higher level software tool.
 
 \begin{figure}[!ht]
-\includegraphics[width=29em]{image2.png}
+%\includegraphics[width=29em]{image2.png}
+\includegraphics[width=29em]{wrroc-figure-example.drawio.pdf}
 \caption{{\bf Diagram of a simple workflow} where the head and sort programs were run manually by a user.
 The executions of the individual software programs are connected by the fact that the file output by head was used as input for sort, documenting the computational flow in an implicit way.
 Such executions can be represented with Process Run Crate.}
@@ -482,7 +484,7 @@ Additionally, the inheritance mechanism allows to reuse the specifications alrea
 Fig~\ref{fig:workflow_crate_er} shows the entities used in Workflow Run Crate together with their relationships.
 
 \begin{figure}[!h]
-\includegraphics[width=22em]{image3.png}
+\includegraphics[width=26em]{wrroc-figure2.drawio.pdf}
 \caption{{\bf Entity-Relationship diagram for Workflow Run Crate.}
 The main differences with Process Run Crate are the representation of formal parameters and the fact that the application is expected to be an entity with types \emph{File}, \emph{SoftwareSourceCode} and \emph{ComputationalWorkflow}.
 Effectively, the entity belongs to all three types, and its properties are the union of the properties of the individual types.
@@ -513,7 +515,8 @@ The \emph{object} attribute of the
 Fig~\ref{fig:provenance_crate_er} shows the various entities involved in the representation of a workflow run via Provenance Run Crate together with their relationships.
 
 \begin{figure}[!h]
-\includegraphics[width=21em]{image4.png}
+%\includegraphics[width=21em]{image4.png}
+\includegraphics[width=\textwidth]{wrroc-figure3.drawio.pdf}
 \caption{{\bf Entity-Relationship diagram for Provenance Run Crate.}
 In addition to the workflow run, this profile represents the execution of individual steps and their related tools.}
 \label{fig:provenance_crate_er}
@@ -535,7 +538,8 @@ a \emph{ParameterConnection} type with
 This profile is the most detailed of the three, and offers the highest level of granularity. Fig.~\ref{fig:profile_venn} shows the relationship between the specifications of the profiles as a Venn diagram.
 
 \begin{figure}[!h]
-  \includegraphics[width=21em]{venn.png}
+%  \includegraphics[width=21em]{venn.png}
+  \includegraphics[width=26em]{wrroc-venn.drawio.pdf}
   \caption{{\bf Venn diagram of the specifications for the various RO-Crate profiles.}
   Workflow Run Crate inherits the specifications of both Process Run Crate and Workflow RO-Crate. Provenance Run Crate, in turn, inherits the specifications of Workflow Run Crate.}
   \label{fig:profile_venn}
