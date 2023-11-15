@@ -632,7 +632,7 @@ The analysis was based on a provenance taxonomy reflecting relevant provenance m
 We only considered provenance metadata which was already represented in CWLProv RDF or CWL-specific documents (packed.cwl, primary-job.json, and primary-output.json).
 Since packed.cwl is also included in RO-Crate, we only considered how the metadata was represented in ro-crate-metadata.json.\\
 For completeness we also show the theoretical capability of the Provenance Run Crate profile (WRROC column) assuming all its SHOULD are complete.
-\textbf{Legend:} $\bullet$ fully represented  $\;\;\circ$ partially represented  $\;\;\cdot$ optional (e.g. schema.org attribute)  $\;\;\cdot$ missing/unstructured representation
+\textbf{Legend:} $\bullet$ fully represented  $\;\;\circ$ partially represented  $\;\;\dot$ optional (e.g. schema.org attribute)  $\;\;\cdot$ missing/unstructured representation
 \end{flushleft}
 \label{analysis_table}
 \end{adjustwidth}
@@ -1018,6 +1018,8 @@ Our aim is to be compatible with both Schema.org and W3C PROV. Provenance Run Cr
   {\bf W3C PROV} & {\bf RO-Crate} & \textbf{Relationship} \\
   \thickhline
   
+%% OLD
+
   \emph{activity} (workflow/ \newline process execution) 
     & \emph{CreateAction}, \emph{OrganizeAction} & Broader than \\ \hline
   \emph{agent} (WMS) & \emph{instrument} of \emph{OrganizeAction} & Equivalent \\ \hline
@@ -1312,7 +1314,7 @@ Mauro Del Rio, Luca Lianas, Oskar Aspegren, Giovanni Busonera, Francesco Versaci
 \emph{Lecture Notes in Computer Science} \textbf{13373}\\
 \url{https://doi.org/10.1007/978-3-031-13321-3_48}
 
-\bibitem[Desai, Ritchie & Welpton, 2016]{Desai 2016}
+\bibitem[Desai, Ritchie \& Welpton, 2016]{Desai 2016}
 Tanvi Desai, Felix Ritchie, Richard Welpton (2016):\\
 \textbf{Five Safes: designing data access for research}.\\
 \emph{Economics Working Paper Series} \textbf{1601}.\\
@@ -1323,7 +1325,7 @@ Jorge Ejarque, Francesc Lordan, Rosa Maria Badia, Raul Sirvent, Daniele Lezzi, F
 \textbf{COMPSs}. bsc-wdc/compss. Version 3.2\\
 \url{https://doi.org/10.5281/zenodo.7975340}
 
-\bibitem[Feng, Misra & Rubenstein 2007]{Feng 2007}
+\bibitem[Feng, Misra \& Rubenstein 2007]{Feng 2007}
 Hanhua Feng, Vishal Misra, Dan Rubenstein (2007):\\
 \textbf{PBS: a unified priority-based scheduler}.
 \emph{Proceedings of the 2007 ACM SIGMETRICS international conference on Measurement and modeling of computer systems} (SIGMETRICS '07)\\
@@ -1346,20 +1348,20 @@ Juliana Freire, David Koop, Emanuele Santos, Cl Silva (2008):\\
 \emph{Computing in Science \& Engineering} \textbf{10}(3) 11-21\\
 \url{https://doi.org/10.1109/MCSE.2008.79}
 
-\bibitem[Garijo & Gil, 2011]{Garijo 2011} 
+\bibitem[Garijo \& Gil, 2011]{Garijo 2011} 
 Daniel Garijo, Yolanda Gil (2011):
 \textbf{A new approach for publishing workflows: abstractions, standards, and linked data}.\\
 \emph{Proceedings of the 6th workshop on Workflows in support of large-scale science (WORKS '11)}.\\
 \url{https://doi.org/10.1145/2110497.2110504}
 
-\bibitem[Garijo & Gil, 2012]{Garijo 2012}
+\bibitem[Garijo \& Gil, 2012]{Garijo 2012}
 Daniel Garijo, Yolanda Gil (2012):\\
 \textbf{Augmenting PROV with Plans in P-PLAN: Scientific Processes as Linked Data}.
 \emph{Proceedings of the Second International Workshop on Linked Science 2012 - Tackling Big Data}. (LISC 2021)\\
 \emph{CEUR Workshop Proceedings} \textbf{951}
 \url{https://ceur-ws.org/Vol-951/paper6.pdf}
 
-\bibitem[Garijo, Gil & Corcho, 2014]{Garijo 2014}
+\bibitem[Garijo, Gil \& Corcho, 2014]{Garijo 2014}
 [Garijo 2014] Daniel Garijo, Yolanda Gil, Oscar Corcho (2014):
 \textbf{Towards Workflow Ecosystems through Semantic and Standard Representations}.
 \emph{9th Workshop on Workflows in Support of Large-Scale Science (WORKS 2014)}\\
@@ -1421,13 +1423,13 @@ Bioschemas Community (2017):\\
 ISWC (Posters, Demos \& Industry Tracks)\\
 \url{https://iswc2017.semanticweb.org/paper-579/}
 
-\bibitem[Guha, Brickley & Macbeth, 2015]{Guha 2015}
+\bibitem[Guha, Brickley \& Macbeth, 2015]{Guha 2015}
 R.V. Guha, Dan Brickley and Steve Macbeth (2015):\\
 \textbf{Schema.org: Evolution of Structured Data on the Web: Big data makes common schemas even more necessary.}\\
 \emph{Queue} \textbf{13}(9):10--37\\
 \url{https://doi.org/doi:10.1145/2857274.2857276}
 
-\bibitem[Herschel, Diestelkämper & Ben Lahmar, 2017]{Herschel 2017}
+\bibitem[Herschel, Diestelkämper \& Ben Lahmar, 2017]{Herschel 2017}
  Melanie Herschel, Ralf Diestelkämper, Houssem Ben Lahmar (2017):\\
 \textbf{A survey on provenance: What for? What form? What from?}\\
 \emph{The VLDB Journal} \textbf{26}:881--906.\\
@@ -1445,7 +1447,7 @@ Lauri Himanen, Amber Geurts, Adam Stuart Foster, Patrick Rinke (2019):\\
 \emph{Environmental Research Letters} \textbf{14}(12):124007\\
 \url{https://doi.org/10.1088/1748-9326/ab4e55}
 
-\bibitem[Isaac & Summers]{Isaac 2009} 
+\bibitem[Isaac \& Summers]{Isaac 2009} 
 Antoine Isaac, Ed Summers (2009):\\
 \textbf{SKOS Simple Knowledge Organization System Primer}.\\
 \emph{W3C Note}\\
@@ -1459,7 +1461,7 @@ practices and their practical application in CWLProv}.\\
 \emph{GigaScience} \textbf{8}(11):giz095\\
 \url{https://doi.org/10.1093/gigascience/giz095}
 
-\bibitem[Kinoshita & Müller, 2023]{Kinoshita 2023}
+\bibitem[Kinoshita \& Müller, 2023]{Kinoshita 2023}
  Bruno de Paula Kinoshita, Sebastian Müller
 (2023):\\
 \textbf{auto-mhm-test-domains: Autosubmit mHM workflow with mHM test
@@ -1499,7 +1501,7 @@ Simone Leo (2023b):\\
 \emph{Galaxy Training Materials}.\\
 \url{https://training.galaxyproject.org/training-material/topics/fair/tutorials/ro-crate-workflow-run-ro-crate/tutorial.html} accessed 2023-10-19
 
-\bibitem[Leo & Soiland-Reyes 2023]{runcrate}
+\bibitem[Leo \& Soiland-Reyes 2023]{runcrate}
 Simone Leo, Stian Soiland-Reyes (2023):\\
 \textbf{Runcrate}.\\
 \emph{Zenodo}.\\
@@ -1514,7 +1516,7 @@ cloud.}\\
 \emph{Journal of Grid Computing}, 12(1)\\
 \url{https://doi.org/10.1007/s10723-013-9272-5}
 
-\bibitem[Magee, Pang & Salahi, 2018]{Magee 2018}
+\bibitem[Magee, Pang \& Salahi, 2018]{Magee 2018}
 Patrick Magee, Lee Pang, Sarah Salahi (2018):\\
 \textbf{Workflow Execution Service (WES)}. Version 1.0\\
 \emph{Global Alliance for Genomics \& Health} (GA4GH)\\
@@ -1561,7 +1563,7 @@ Natalia Poiata, Claudio Satriano, Jean-Pierre Vilotte, Pascal Bernard, Kazushige
 \emph{Geophysical Journal International} \textbf{205}(3)\\
 \url{https://doi.org/10.1093/gji/ggw071}
 
-\bibitem[Poiata, Satriano & Conejero, 2023]{Poiata 2023}
+\bibitem[Poiata, Satriano \& Conejero, 2023]{Poiata 2023}
 Natalia Poiata, Claudio Satriano, Javier Conejero (2023):\\
 \textbf{BackTrackBB: Multi-band array detection and location of seismic sources (PyCOMPSs implementation).}\\
 \emph{Zenodo}.\\
@@ -1580,7 +1582,7 @@ Luis Samaniego, Rohini Kumar, Sabine Attinger (2010):\\
 \url{https://doi.org/10.1029/2008WR007327}
 
 
-\bibitem[Scheidegger & Silva, 2008]{Scheidegger 2008} Carlos E. Scheidegger, Huy T. Vo, David Koop, Juliana Freire, Claudio T. Silva (2008):\\
+\bibitem[Scheidegger \& Silva, 2008]{Scheidegger 2008} Carlos E. Scheidegger, Huy T. Vo, David Koop, Juliana Freire, Claudio T. Silva (2008):\\
 \textbf{Querying and re-using workflows with VisTrails}.
 \emph{Proceedings of the 2008 ACM SIGMOD international conference on Management of data (SIGMOD '08)}.\\
 \url{https://doi.org/10.1145/1376616.1376747}
@@ -1598,13 +1600,13 @@ FAIR HPC Workflows.}\\
 %\textbf{Research Object Bundle 1.0.}\\
 %\url{https://doi.org/10.5281/zenodo.12586}
 
-\bibitem[Soiland-Reyes, Alper & Goble, 2016]{Soiland-Reyes 2016} 
+\bibitem[Soiland-Reyes, Alper \& Goble, 2016]{Soiland-Reyes 2016} 
 Stian Soiland-Reyes, Pinar Alper, Carole Goble (2016):\\
 \textbf{Tracking workflow execution with TavernaProv}.\\
 \emph{PROV: Three Years Later (P3YL)}, ProvenanceWeek 2016, Virginia, Washington DC, United States. \\
 \url{https://doi.org/10.5281/zenodo.51314}
 
-\bibitem[Soiland-Reyes, Khan & Crusoe, 2018]{Soiland-Reyes 2018}
+\bibitem[Soiland-Reyes, Khan \& Crusoe, 2018]{Soiland-Reyes 2018}
 Stian Soiland-Reyes, Farah Zaib Khan, Michael R Crusoe (2018):\\
 \textbf{common-workflow-language/cwlprov: CWLProv 0.6.0}.\\
 \emph{Zenodo}.\\
@@ -1716,7 +1718,7 @@ Life Sciences}.\\
 \emph{Zenodo}.\\
 \url{https://doi.org/10.5281/zenodo.7629863}
 
-\bibitem[Yoo, Jette & Grondona]{Yoo 2003} 
+\bibitem[Yoo, Jette \& Grondona, 2003]{Yoo 2003} 
 Andy B. Yoo, Morris A. Jette, Mark Grondona (2003):\\
 \textbf{SLURM: Simple Linux Utility for Resource Management}.\\
 \emph{Job Scheduling Strategies for Parallel Processing} (JSSPP 2003)\\
