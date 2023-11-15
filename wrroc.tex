@@ -831,7 +831,7 @@ We illustrate Workflow Run RO-Crate on two exemplary use cases, which are simila
 
 \subsection{Provenance Run Crate for Digital Pathology}\label{provenance-run-crate-for-digital-pathology}
 
-We present a use case that demonstrates the effectiveness of Provenance Run Crate at recording provenance data in the context of digital pathology.
+We present a use case that demonstrates the effectiveness of our most detailed profile Provenance Run Crate at recording provenance data in the context of digital pathology.
 More specifically, we demonstrate the generation of RO-Crates to save provenance data associated with the computational annotation of magnified prostate tissue areas and cancer subregions using deep learning models~\cite{Del Rio 2022}.
 The image annotation process is implemented in a CWL workflow consisting of three steps, each executing inference on an image using a deep learning model: inference of a low-resolution tissue mask to select areas for further processing;
 high-resolution tissue inference on areas identified in the previous step to refine borders; high-resolution cancer identification on areas identified in the first step.
@@ -960,9 +960,9 @@ This allowed us to describe all involved elements as a single aggregate, with en
 The RO-Crate discussed here is available from Zenodo~\cite{Wittner 2023a}.
 
 The CPM files complement the RO-Crate with internal details about the pipeline execution, such as how the input dataset was split into training and testing sets, or detailed information about each training iteration of the AI model.
-For instance, the entity \texttt{ns\_training:modelIter2} present in the \texttt{ns\_training:bundle\_training} bundle represents a checkpoint of the AI model after the second training iteration.
-The entity's attributes contain paths to the respective model stored as a file.
-The entity is related to the respective training iteration activity \texttt{ns\_training:trainIter1}, which contains the iteration parameters represented as an attribute list.
+For instance, it conteains a represention of a checkpoint of the AI model after the second training iteration.
+The corresponding entity's attributes contain paths to the respective model stored as a file.
+The entity is related to the respective training iteration activity, which contains the iteration parameters represented as an attribute list.
 In addition, the CPM generally provides means to link the input dataset provenance to the provenance of its precursors -- human prostate tissues and biological samples the tissues were derived from; this is not included in the example because we used a publicly available input database for which provenance of the precursors was not available.
 However, the linking mechanism for provenance precursors is exactly the same as between the bundles for the AI pipeline parts.
 While the RO-Crate is focused on the execution of the pipeline, the provenance included in the CPM files intends to be interlinked with provenance of the precursors or successors, providing means to traverse the whole provenance chain.
@@ -1074,12 +1074,12 @@ Further work is being planned with the BCO community to update the BCO-RO profil
 
 In this paper we presented Workflow Run RO-Crate, a collection of RO-Crate profiles to represent the provenance of the execution of computational workflows at different levels of granularity.
 We described each profile and their corresponding implementations, shown how they apply to real use cases and described the community behind their development process.
-Workflow Run RO-Crate has already been adopted by several WMSs, including Galaxy, StreamFlow and COMPSs. The flexibility of our model eases its implementation in more systems, allowing interoperability between workflow run descriptions.
+Workflow Run RO-Crate has already been adopted by several WMSs, including Galaxy, StreamFlow and COMPSs. The flexibility of our model eases its implementation in more systems, allowing interoperability between their workflow run descriptions.
 
 Workflow Run RO-Crate is an ongoing project driven by an open community.
 A natural consequence of this is that the profiles are not static entities, but keep being updated to cater for new requirements and use cases.
 In-progress features are tracked in the GitHub repository issues section (\url{https://github.com/ResearchObject/workflow-run-crate/issues}) and are open to discussion for the community.
-New features under discussion include a representation of the execution environment through a description of container images and recording workflow resource usage.
+New features under discussion include a representation of the execution environment and recording workflow resource usage.
 The runcrate toolkit is planned to be expanded both to better support the current features and to include new ones that may arise.
 
 Finally, we are currently exploring the cloud execution of Workflow Run RO-Crates.
@@ -1099,11 +1099,6 @@ We will then build an interconversion library that attempts to (1) construct WES
     \item Workflow Run RO-Crate Introduction \cite{runcrate-intro} (from Galaxy Smörgåsbord 2023) 
     \item Implementations and examples (Table \ref{implementation_summary_table})
 \end{itemize}
-
-% Include only the SI item label in the paragraph heading. Use the \nameref{label} command to cite SI items in the text.
-%\paragraph*{S1 Appendix.}
-%\label{S1_Appendix}
-%{\bf Lorem ipsum.} Maecenas convallis mauris sit amet sem ultrices gravida. Etiam eget sapien nibh. Sed ac ipsum eget enim egestas ullamcorper nec euismod ligula. Curabitur fringilla %pulvinar lectus consectetur pellentesque.
 
 
 \section*{Acknowledgments}
@@ -1211,6 +1206,12 @@ Ian Taylor (2017):\\
 \emph{Future Generation Computer Systems} \textbf{75}\\
 \url{https://doi.org/10.1016/j.future.2017.05.041}
 
+\bibitem[Bacall et al., 2022]{Bacall 2022} 
+Finn Bacall, Alan R. Williams, Stuart Owen, Stian Soiland-Reyes (2022):\\
+\textbf{Workflow RO-Crate Profile 1.0}.\\
+WorkflowHub community\\
+\url{https://w3id.org/workflowhub/workflow-ro-crate/1.0}
+
 \bibitem[Bahra, 2011]{Bahra 2011}
 Avi Bahra (2011):\\
 \textbf{Managing work flows with ecFlow.}\\
@@ -1231,18 +1232,17 @@ Owen, David Newman, Shoaib Sufi, Carole Goble (2013):\\
 Future Generation Computer Systems \textbf{29}(2):599-611\\
 \url{https://doi.org/10.1016/j.future.2011.08.004}
 
-%\bibitem[Belhajjame et al., 2013]{Belhajjame 2013}
-%Khalid Belhajjame, Jun Zhao, Daniel Garijo, Aleix Garrido, Stian Soiland-Reyes, Pinar Alper, Oscar Corcho (2013):\\
-%\textbf{A workflow PROV-corpus based on Taverna and Wings}.\\
-%\emph{Proceedings of the Joint EDBT/ICDT 2013 Workshops}\\
-%\url{https://doi.org/10.1145/2457317.2457376}
-
 \bibitem[Belhajjame et al., 2015]{Belhajjame 2015}
 Khalid Belhajjame, Jun Zhao, Daniel Garijo, Matthew Gamble, Kristina Hettne, Raul Palma, Eleni Mina, Oscar Corcho, José Manuel Gómez-Pérez, Sean Bechhofer, Graham Klyne, Carole Goble
 (2015):\\
 \textbf{Using a suite of ontologies for preserving workflow-centric research objects}.\\
 \emph{Web Semantics: Science, Services and Agents on the World Wide Web} \textbf{32}\\
 \url{https://doi.org/10.1016/j.websem.2015.01.003}
+
+\bibitem[Bouyssié et al., 2023]{Bouyssié 2023} David Bouyssié, Pınar Altıner, Salvador Capella-Gutierrez, José M. Fernández, Yanick Paco Hagemeijer, Peter Horvatovich, Martin Hubálek, Fredrik Levander, Pierluigi Mauri, Magnus Palmblad, Wolfgang Raffelsberger, Laura Rodríguez-Navas, Dario Di Silvestre, Balázs Tibor Kunkli, Julian Uszkoreit, Yves Vandenbrouck, Juan Antonio Vizcaíno, Dirk Winkelhardt, Veit Schwämmle
+WOMBAT-P: Benchmarking Label-Free Proteomics Data Analysis Workflows.
+bioRxiv 2023.10.02.560412
+https://doi.org/10.1101/2023.10.02.560412
 
 \bibitem[Chard et al., 2016]{Chard 2016}
 Kyle Chard, Mike D' Arcy, Ben Heavner, Ian Foster, Carl
@@ -1279,6 +1279,12 @@ Zenodo.\\
 \emph{Zenodo}\\
 \url{https://doi.org/10.5281/zenodo.7911905}
 
+\bibitem[Costa et al., 2013]{Costa 2013}
+Flavio Costa, Vítor Silva, Daniel de Oliveira, Kary Ocaña, Eduardo Ogasawara, Jonas Dias, Marta Mattoso (2013):\\
+\textbf{Capturing and querying workflow runtime provenance with PROV}: a practical approach.\\
+\emph{Proceedings of the Joint EDBT/ICDT 2013 Workshops (EDBT '13)}\\
+\url{https://doi.org/10.1145/2457317.2457365} 
+
 \bibitem[Crusoe et al., 2022]{Crusoe 2022}
 Michael R. Crusoe, Sanne Abeln, Alexandru Iosup, Peter Amstutz, John Chilton, Nebojša Tijanić, Hervé Ménager, Stian Soiland-Reyes, Bogdan Gavrilović, Carole Goble, The CWL Community
 (2022):\\
@@ -1299,7 +1305,6 @@ Ewa Deelman, Gurmeet Singh, Mei-Hui Su, James Blythe, Yolanda Gil, Carl Kesselma
 \emph{Scientific Programming} \textbf{13}(3) pp 219–237\\
 \url{https://doi.org/10.1155/2005/128026}
 
-
 \bibitem[Del Rio et al., 2022]{Del Rio 2022}
 Mauro Del Rio, Luca Lianas, Oskar Aspegren, Giovanni Busonera, Francesco Versaci, Renata Zelic, Per H. Vincent, Simone Leo, Andreas Pettersson, Olof Akre, Luca Pireddu (2022):\\
 \textbf{AI Support for Accelerating Histopathological Slide Examinations of Prostate Cancer in Clinical Studies.}\\
@@ -1312,6 +1317,28 @@ Tanvi Desai, Felix Ritchie, Richard Welpton (2016):\\
 \textbf{Five Safes: designing data access for research}.\\
 \emph{Economics Working Paper Series} \textbf{1601}.\\
 \url{https://econpapers.repec.org/RePEc:uwe:wpaper:20161601}
+
+\bibitem[Ejarque et al., 2023]{Ejarque 2023}
+Jorge Ejarque, Francesc Lordan, Rosa Maria Badia, Raul Sirvent, Daniele Lezzi, Fernando Vazquez, Fernando, Cristian Tatu,  Gabriel Puigdemunt, Nihad Mammadli (2023):\\
+\textbf{COMPSs}. bsc-wdc/compss. Version 3.2\\
+\url{https://doi.org/10.5281/zenodo.7975340}
+
+\bibitem[Feng, Misra & Rubenstein 2007]{Feng 2007}
+Hanhua Feng, Vishal Misra, Dan Rubenstein (2007):\\
+\textbf{PBS: a unified priority-based scheduler}.
+\emph{Proceedings of the 2007 ACM SIGMETRICS international conference on Measurement and modeling of computer systems} (SIGMETRICS '07)\\
+\url{https://doi.org/10.1145/1254882.1254906} 
+
+\bibitem[Fernández 2023a]{Fernández 2023a}
+José María Fernández, Laura Rodríguez-Navas, Adrián Muñoz-Cívico, Paula Iborra, Daniel Lea (2023):\\
+\textbf{inab/WfExS-backend}. Version 0.10.1\\
+\url{https://doi.org/10.5281/zenodo.10068956}
+
+\bibitem[Fernández 2023b]{Fernández 2023b}
+José María Fernández González (2023):\\
+\textbf{RO-Crate from staged WfExS working directory 047b6dfc-3547-4e09-92f8-df7143038ff4} (overbridging templon).\\
+\emph{Zenodo}
+\url{https://zenodo.org/doi/10.5281/zenodo.10091549}
 
 \bibitem[Freire et al., 2008]{Freire 2008}
 Juliana Freire, David Koop, Emanuele Santos, Cl Silva (2008):\\
