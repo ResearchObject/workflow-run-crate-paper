@@ -650,7 +650,7 @@ This feature provides a more interoperable alternative to the basic export of Ga
 \emph{invocations}: the workflow definition; a set of serialisations of the invocation-related metadata in Galaxy native, json-formatted files;
 and the input and output data files.
 This is achieved by extracting provenance from Galaxy entities related to the workflow run, along with associated metadata, converting them to RO-Crate metadata using the ro-crate-py library~\cite{De Geest 2022a}; by describing all files contained in the basic invocation export within the RO-crate metadata;
-and finally by making the Workflow Run Crate available for export to the user through Galaxy's web interface and API.
+and finally by making the Workflow Run Crate available for export to the user through Galaxy's web interface and API \cite{De Geest 2022b}.
 
 We extract the prospective provenance contained in Galaxy's YAML-based gxformat2
 (\url{https://galaxyproject.github.io/gxformat2/v19_09.html}) workflow definition, which includes details of the analysis pipeline such as the graph of tools that need to be executed, and metadata about the data types required.
@@ -676,7 +676,8 @@ The RO-Crate generation post-process uses information recorded by the runtime to
 
 Implementing Workflow Run Crate support in COMPSs required particular attention to the generation of a unique id for the \emph{CreateAction} representing the workflow run, combining hostname and queuing system job id for supercomputer executions (as extra information added), and just using generated UUIDs for distributed environments, to add information as available from the run while ensuring the id is unique.
 In the \emph{CreateAction}, the \emph{description} term includes system information, as well as relevant environment variables that provide details on the execution environment (e.g., node list, CPUs per node).
-Finally, a reference to the system's monitoring tool (when available) is also included in the \emph{subjectOf} clause, where authorised users can see detailed profiling of the corresponding job execution, as provided by the MareNostrum IV supercomputer (\url{https://bsc.es/supportkc/docs/MareNostrum4/intro/}).
+Finally, the \emph{subjectOf} property of the \emph{CreateAction} references the system’s monitoring tool (when available),
+where authorised users can see detailed profiling of the corresponding job execution, as provided by the MareNostrum IV supercomputer (\url{https://bsc.es/supportkc/docs/MareNostrum4/intro/}).
 
 To showcase the COMPSs adoption of the Workflow Run Crate profile, we provide as an example the execution of the BackTrackBB~\cite{Poiata 2016}
 application in the MareNostrum IV supercomputer.
@@ -688,32 +689,44 @@ The implementation of provenance recording following Workflow Run Crate has been
 
 \subsection{StreamFlow}\label{streamflow}
 
-The StreamFlow framework~\cite{Colonnelli 2020} is a container-native WMS based on the CWL standard.
+The StreamFlow framework~\cite{Colonnelli 2020} (\url{https://github.com/alpha-unito/streamflow}) is a container-native WMS based on the CWL standard.
 It has been designed around two primary principles: first, it allows the execution of tasks in multi-container environments, supporting the concurrent execution of communicating tasks in a multi-agent ecosystem; second, it relaxes the requirement of a single shared data space, allowing for hybrid workflow executions on top of multi-cloud, hybrid cloud/HPC, and federated infrastructures.
 StreamFlow orchestrates hybrid workflows by combining a \emph{workflow description} (e.g., a CWL workflow description and a set of input values) with one or more \emph{deployment descriptions} -- i.e.
 representations of the execution environments in terms of infrastructure-as-code (e.g., Docker Compose files, HPC batch scripts, and Helm charts).
 A streamflow.yml file -- the entry point of each StreamFlow execution -- binds each workflow step with the set of most suitable execution environments.
 At execution time, StreamFlow automatically takes care of all the secondary aspects, like scheduling, checkpointing, fault tolerance, and data movements.
 
-StreamFlow stores provenance data in a proprietary format into a persistent pluggable database (using sqlite3 as the default choice).
+StreamFlow stores prospective and retrospective provenance data in a proprietary format into a persistent pluggable database (using sqlite3 as the default choice).
 After a CWL workflow execution completes, users can generate an RO-Crate through the \texttt{streamflow prov <workflow\_name>}
 command, which extracts the provenance data stored in the database for one or more workflow executions and converts it to an RO-Crate archive that is fully compliant with the Provenance Run Crate Profile, including the details of each task run by the WMS.
-The StreamFlow configuration and a description of the hybrid execution environment are preserved by directly including the \texttt{streamflow.yml} file into the generated archive.
 Support for the format has been integrated into the main development branch and will be included in release 0.2.0.
+
+From the StreamFlow point of view, the main limitation in the actual version of the Provenance Run Crate standard is the lack of support for distributed provenance, i.e., a standard way to describe the set of locations involved in a workflow execution and their topology. As a temporary solution,
+the StreamFlow configuration and a description of the hybrid execution environment are preserved by directly including the \texttt{streamflow.yml} file into the generated archive.
+However, this product-specific solution prevents a wider adoption from other WMSs and forces agnostic frameworks (e.g., WorkflowHub) to provide ad-hoc plugins to interpret the StreamFlow format.
+Since the support for hybrid and cross-facility workflows is gaining traction in the WMSs ecosystem, we envision support for distributed provenance as a feature for future versions of Workflow Run RO-Crate.
 
 \subsection{WfExS}\label{wfexs}
 
-WfExS-backend (\url{https://github.com/inab/WfExS-backend}) is a FAIR workflow execution service that aims to address some of the difficulties found in analysing sensitive data in a secure manner.
-The WfExS-backend delegates the actual workflow execution to a specific workflow manager (e.g., Nextflow or cwltool).
-WfExS-backend fetches and materialises all the elements needed to run a workflow -- i.e.~the workflow itself, the WMS, the required software containers and the inputs.
-Of note, the orchestrator can consume RO-Crates from WorkflowHub to import workflows to be executed.
+WfExS-backend (\url{https://github.com/inab/WfExS-backend}) is a FAIR workflow execution orchestrator that aims to address some of the difficulties found in analysis reproducibility and analysis of sensitive data in a secure manner.
+WfExS-backend requires that the software used by workflow steps is available in publicly available software containers for reproducibility.
+Actual workflow execution is delegated to one of the supported workflow engines which matches with the workflow, right now either Nextflow or cwltool.
+The orchestrator prepares and stages all the elements needed to run the workflow – i.e. all the files of the workflow itself, the specific version of the workflow engine, the required software containers and the inputs.
+All these elements are referred through resolvable identifiers, ideally public, permanent ones.
+Due to this, the orchestrator can consume workflows which are originally available in different kinds of locations, like git repositories, Software Heritage, or even RO-Crates from WorkflowHub.
 
-Support has been added to the WfExS-backend to export provenance data as RO-Crates following the Workflow Run Crate profile, which has proven to be a mechanism suitable to semantically describe digital objects in a way that simplifies embedding key details involved in analysis reproducibility and replicability.
+WfExS-backend development milestones aim to reach FAIR workflow execution through the generation and consumption of RO-Crates following the latest Workflow Run Crate profiles, which have proven to be a mechanism suitable to semantically describe digital objects in a way that simplifies embedding key details involved in analysis reproducibility and replicability.
 
-The WfExS-backend records details relevant to the prospective provenance when a workflow is prepared for execution, such as the public URIs used to fetch input data and workflows, fingerprints, and metadata derived from workflow files, container images and input files.
-WfExS-backend has explicit commands to generate both prospective and retrospective provenance RO-Crates.
-If a workflow is executed more than once in the very same staged directory, run details from all the executions are represented in the retrospective provenance RO-Crate.
-Future developments will also add support for embedding output results that have been published to a suitable repository (like Zenodo DOIs, for instance).
+The orchestrator records details relevant to the prospective provenance when a workflow is prepared for execution, such as the public URIs used to fetch input data and workflows, content digestion fingerprints (typically sha256 checksums) and metadata derived from workflow files, container images and input files.
+Most of this metadata is represented in the generated RO-Crates. WfExS-backend has explicit commands to generate and publish both prospective and retrospective provenance RO-Crates based on a given existing staged execution scenario.
+These RO-Crates can selectively include copies of used elements as payloads.
+Workflows can be executed more than once in the same staged directory, with all the executions sharing the same inputs.
+Thus, run details from all the executions are represented in the retrospective provenance RO-Crate. Support for Workflow Run RO-Crate is available since WfExS-backend version 0.10.1 \cite{Fernández 2023a}.
+Future developments will also add support for embedding URIs of output results that have been deposited into a suitable repository (like Zenodo DOIs, for instance).
+Release 1.0 is aiming to include the consumption of previously produced RO-Crates.
+
+An example of Workflow Run Crate generated by WfExS-backend from a Nextflow workflow run [Bouyssié 2023] is available from Zenodo \cite{Fernández 2023b}.
+
 
 \subsection{Sapporo}\label{sapporo}
 
