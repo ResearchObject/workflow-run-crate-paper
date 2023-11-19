@@ -85,6 +85,11 @@
 
 % cite package, to clean up citations in the main text. Do not remove.
 \usepackage{cite}
+%% Let's match PeerJ Style:
+\renewcommand\citepunct{; }
+\renewcommand\citeleft{(}
+\renewcommand\citeright{)}
+\renewcommand\citemid{, }
 
 % Use nameref to cite supporting information files (see Supporting Information section for more info)
 \usepackage{nameref,hyperref}
@@ -803,10 +808,10 @@ Table \ref{implementation_summary_table} shows an overview of the different prof
   {\bf Workflow Run Crate implementation}}
   \begin{tabular}{l|l|l|l}
   \hline
-  {\bf Implementation} & {\bf Profile} & {\bf Version URL/DOI} &
+  {\bf Impl.} & {\bf Profile} & {\bf Version URL/DOI} &
   {\bf Example}\\
   \thickhline
-  runcrate & Provenance & \cite{Leo 2023a}  & \cite{run-pathology} \\
+  runcrate & Provenance & \cite{runcrate}  & \cite{run-pathology} \\
   Galaxy & Workflow & \tiny \url{https://github.com/galaxyproject/galaxy/releases/tag/v23.0.1} & \cite{De Geest 2023} \\
   COMPSs & Workflow & \cite{Ejarque 2023} & \cite{Poiata 2023} \\
   Streamflow & Provenance & \tiny \url{https://github.com/alpha-unito/streamflow/releases/tag/0.2.0.dev10} & \cite{Colonnelli 2023} \\
