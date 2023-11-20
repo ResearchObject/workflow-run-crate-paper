@@ -603,33 +603,32 @@ The full results of the analysis can be found at: \url{https://github.com/Renske
 \hline
 %% TODO: Check ticks are in right places
 {\bf Type} & {\bf Subtype} & {\bf Name} & {\bf CWL} & {\bf CWLProv} & {\bf RO-Crate} & {\bf WRROC}  \\ \thickhline
-T1 & SC1 & Workflow design & $\bullet$ &  $\cdot$  &  $\cdot$ & $\circ$ \\ 
-& SC2 & Entity annotations & $\circ$ &  $\cdot$  &  $\cdot$  & $\cdot$ \\ 
-& SC3 & Workflow execution ann.  &  $\cdot$  & $\cdot$ &  $\cdot$ & $\cdot$ \\ \hline
-T2 & D1 & Data identification & $\circ$ & $\cdot$ &  $\cdot$ & $\cdot$ \\
-& D2 & File characteristics & $\circ$ & $\circ$ & $\circ$ & $\cdot$ \\
-& D3 & Data access & $\circ$ &  $\cdot$  &  $\cdot$  & $\cdot$ \\ 
-& D4 & Parameter mapping & $\bullet$ & $\bullet$ & $\bullet$ & $\cdot$\\ \hline 
-T3 & SW1 & Software identification & $\circ$ &  $\cdot$  &  $\cdot$ & $\cdot$ \\ 
-& SW2 & Software documentation & $\circ$ &  $\cdot$  &  $\cdot$ & $\cdot$ \\  
-& SW3 & Software access & $\circ$ &  $\cdot$  &  $\cdot$ & $\cdot$ \\ \hline 
-T4 & WF1 & Workflow software & $\bullet$ & $\circ$ & $\circ$ & $\cdot$\\ 
-& WF2 & Workflow parameters & $\bullet$ & $\circ$ & $\circ$ & $\cdot$\\ 
-& WF3 & Workflow requirements & $\bullet$ &  $\cdot$  &  $\cdot$  & $\cdot$\\ \hline 
-T5 & ENV1 & Software environment & $\bullet$ & $\cdot$ &  $\cdot$ & $\cdot$ \\ 
-& ENV2 & Hardware environment & $\circ$ & $\cdot$ &  $\cdot$  & $\cdot$\\ 
-& ENV3 & Container image & $\circ$ & $\circ$ &  $\cdot$ & $\cdot$ \\ \hline 
-T6 & EX1 & Execution timestamps & $\bullet$ & $\bullet$ &  $\cdot$ & $\cdot$ \\ 
-& EX2 & Consumed resources &  $\cdot$  &  $\cdot$  &  $\cdot$& $\cdot$  \\ 
-& EX3 & Workflow engine & $\circ$ & $\bullet$ &  $\cdot$ & $\cdot$  \\  
-& EX4 & Human agent & $\bullet$ & $\bullet$ &  $\cdot$ & $\cdot$ \\ \hline
-%% FIXME: update from Google Docs!
+T1 & SC1 & Workflow design & $\bullet$ &  $\cdot$  &  $\cdot$ & $\dots$ \\ 
+& SC2 & Entity annotations & $\circ$ &  $\cdot$  &  $\cdot$  & $\dots$ \\ 
+& SC3 & Workflow execution ann.  &  $\circ$  & $\cdot$ &  $\cdot$ & $\dots$ \\ \hline
+T2 & D1 & Data identification & $\circ$ & $\cdot$ &  $\cdot$ & $\dots$ \\
+& D2 & File characteristics & $\circ$ & $\cdot$ & $\circ$ & $\circ$ \\
+& D3 & Data access & $\circ$ &  $\cdot$  &  $\cdot$  & $\dots$ \\ 
+& D4 & Parameter mapping & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ \\ \hline 
+T3 & SW1 & Software identification & $\circ$ &  $\cdot$ & $\cdot$ & $\dots$ \\ 
+& SW2 & Software documentation & $\circ$ &  $\cdot$ & $\cdot$ & $\dots$ \\  
+& SW3 & Software access & $\circ$ &  $\cdot$ & $\cdot$ & $\dots$ \\ \hline 
+T4 & WF1 & Workflow software & $\circ$ & $\circ$ & $\circ$ & $\dots$ \\ 
+& WF2 & Workflow parameters & $\circ$ & $\circ$ & $\bullet$ & $\bullet$ \\ 
+& WF3 & Workflow requirements & $\dots$ &  $\cdot$  &  $\circ$  & $\dots$ \\ \hline 
+T5 & ENV1 & Software environment & $\dots$ & $\cdot$ &  $\cdot$ & $\cdot$ \\ 
+& ENV2 & Hardware environment & $\dots$ & $\cdot$ &  $\cdot$  & $\cdot$\\ 
+& ENV3 & Container image & $\circ$ & $\circ$ &  $\circ$ & $\bullet$ \\ \hline 
+T6 & EX1 & Execution timestamps & $\cdot$ & $\bullet$ & $\bullet$ & $\bullet$ \\ 
+& EX2 & Consumed resources &  $\cdot$ & $\cdot$ & $\cdot$ & $\cdot$  \\ 
+& EX3 & Workflow engine & $\cdot$ & $\circ$ & $\circ$ & $\circ$  \\  
+& EX4 & Human agent & $\circ$ & $\bullet$ & $\bullet$ & $\bullet$ \\ \hline
 \end{tabular}
 \begin{flushleft} We compared RO-Crates with the CWLProv ROs from which they were generated.
 The analysis was based on a provenance taxonomy reflecting relevant provenance metadata based on realistic use cases for ROs associated with a real-life bioinformatics workflow.
 We only considered provenance metadata which was already represented in CWLProv RDF or CWL-specific documents (packed.cwl, primary-job.json, and primary-output.json).
 Since packed.cwl is also included in RO-Crate, we only considered how the metadata was represented in ro-crate-metadata.json.\\
-For completeness we also show the theoretical capability of the Provenance Run Crate profile (WRROC column) assuming all its SHOULD are complete.\\
+For completeness we also show the theoretical capability of the Provenance Run Crate profile (WRROC column) assuming only its MUST/SHOULD are complete.\\
 \textbf{Legend:} $\bullet$ fully represented  $\;\;\circ$ partially represented  $\;\;\dots$ optional (e.g. schema.org attribute) $\;\;\cdot$ missing or unstructured representation
 \end{flushleft}
 \label{analysis_table}
@@ -805,13 +804,13 @@ Table \ref{implementation_summary_table} shows an overview of the different impl
   {\bf Impl.} & {\bf Profile} & {\bf Version URL/DOI} &
   {\bf Example}\\
   \thickhline
-  runcrate & Provenance & \cite{runcrate}  & \cite{run-pathology} \\
-  Galaxy & Workflow & \tiny \url{https://github.com/galaxyproject/galaxy/releases/tag/v23.0.1} & \cite{De Geest 2023} \\
-  COMPSs & Workflow & \cite{Ejarque 2023} & \cite{Poiata 2023} \\
-  Streamflow & Provenance & \tiny \url{https://github.com/alpha-unito/streamflow/releases/tag/0.2.0.dev10} & \cite{Colonnelli 2023} \\
-  WfExS & Workflow & \cite{Fernández 2023a} & \cite{Fernández 2023b} \\
-  Sapporo & Workflow & \cite{Suetake 2023b} & \cite{Ohta 2023} \\
-  Autosubmit & Workflow & \tiny \url{https://earth.bsc.es/gitlab/es/autosubmit/-/merge_requests/317} & \cite{Kinoshita 2023} \\
+  runcrate & Provenance & \footnotesize \cite{runcrate}  & \footnotesize \cite{run-pathology} \\
+  Galaxy & Workflow & \tiny \url{https://github.com/galaxyproject/galaxy/releases/tag/v23.0.1} & \footnotesize \cite{De Geest 2023} \\
+  COMPSs & Workflow & \footnotesize \cite{Ejarque 2023} & \footnotesize \cite{Poiata 2023} \\
+  Streamflow & Provenance & \tiny \url{https://github.com/alpha-unito/streamflow/releases/tag/0.2.0.dev10} & \footnotesize \cite{Colonnelli 2023} \\
+  WfExS & Workflow & \footnotesize \cite{Fernández 2023a} & \footnotesize \cite{Fernández 2023b} \\
+  Sapporo & Workflow & \footnotesize \cite{Suetake 2023b} & \footnotesize \cite{Ohta 2023} \\
+  Autosubmit & Workflow & \tiny \url{https://earth.bsc.es/gitlab/es/autosubmit/-/merge_requests/317} & \footnotesize \cite{Kinoshita 2023} \\
   \end{tabular}
   \begin{flushleft} 
     Summary of each implementation together with the profiles it implements, the latest version URL/DOI and an example of its application. Runcrate is a toolkit that converts CWLProv ROs to Provenance Run Crates, while the others are WMS.
