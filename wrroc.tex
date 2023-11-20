@@ -286,13 +286,12 @@ executions as well as means of packaging the resulting information for
 archiving and sharing. However, existing approaches tend to lack interoperable adoption across workflow management systems. In this work we present
 Workflow Run RO-Crate, an extension of RO-Crate (Research Object Crate)
 to capture the provenance of the execution of computational workflows at
-different levels of granularity and bundle together all their associated products (inputs, outputs, code etc.). We describe the model, as well as its
-implementation in six workflow systems, and show its applicability to
-machine learning for digital pathology use cases. The model is supported
+different levels of granularity and bundle together all their associated products (inputs, outputs, code etc.). The model is supported
 by a diverse, open community that runs regular meetings, discussing
 development, maintenance and adoption  aspects. The format is already implemented by
 several workflow managers, allowing interoperable
 comparisons between runs from heterogeneous systems.
+We describe the model as well as its implementation in six workflow systems, and show its applicability to machine learning for digital pathology use cases.
 
 
 % Disable for preprint
@@ -318,27 +317,27 @@ PROV-O has been widely extended for workflows (D-PROV \cite{Missier 2013}, ProvO
 \emph{Retrospective provenance} refers to what actually happened during an execution, i.e.~what were the values of the input parameters, which outputs were produced, which tools were executed, how much time did the execution take, whether the execution was successful or not, etc.
 Retrospective provenance can also be represented at different levels of abstraction depending on available computing resources, e.g.~by the workflow execution becoming a single activity which produces results, by specifying the individual execution of each workflow step, or by going a step further and indicating how each step is further divided into sub-processes when a workflow is deployed in a cluster.
 
-Different workflow systems have adopted and extended PROV (and its PROV-O representation) to the workflow domain (Pegasus \cite{Deelman 2005}, WINGS \cite{Garijo 2014}, VisTrails \cite{Scheidegger 2008,Costa 2013}), in order to ease the burden of provenance collection from tool developers to workflow management systems (WMSs) \cite{Atkinson 2017,Pérez 2018}.
+Different workflow systems have adopted and extended PROV (and its PROV-O representation) to the workflow domain (Pegasus \cite{Deelman 2005}, WINGS \cite{Garijo 2014}, VisTrails \cite{Scheidegger 2008,Costa 2013}), in order to ease the burden of provenance collection from tool developers to workflow management systems (WMS) \cite{Atkinson 2017,Pérez 2018}.
 
 D-PROV, PROV-ONE, OPMW-PROV, P-Plan propose representations of workflow plans and their respective executions, taking into account the features of the workflow systems implementing them (e.g., hierarchical representations, sub-processes, etc.).
 Other data models like \emph{wfprov} and \emph{wfdesc}
 \cite{Belhajjame 2015} go a step further by considering not only the link between plans and executions, but how to package the various artefacts as a Research Object (RO) ~\cite{Bechhofer 2013} in order to ease portability while keeping the context of a digital experiment.
 
-However, while these models address some workflow provenance representation issues, they have two main limitations: firstly, the extensions of PROV are not directly interoperable because of differences in granularity or different assumptions in their workflow representations; secondly, their support from workflow management systems (WMS) are typically one system per model.  An early approach to unify and integrate workflow provenance traces across WMS was WEST (Workflow Ecosystems through STandards) \cite{Garijo 2014}, through the use of WINGS \cite{Gil 2011} to build workflow templates and different converters. In all of these workflow provenance models, the emphasis is on the workflow execution structure as a directed graph, with only partial references for the data items. Several do not bundle the executable workflow definition or actual output files in their provenance output.
+However, while these models address some workflow provenance representation issues, they have two main limitations: firstly, the extensions of PROV are not directly interoperable because of differences in granularity or different assumptions in their workflow representations; secondly, their support from WMS are typically one system per model.  An early approach to unify and integrate workflow provenance traces across WMS was WEST (Workflow Ecosystems through STandards) \cite{Garijo 2014}, through the use of WINGS \cite{Gil 2011} to build workflow templates and different converters. In all of these workflow provenance models, the emphasis is on the workflow execution structure as a directed graph, with only partial references for the data items. Several do not bundle the executable workflow definition or actual output files in their provenance output.
 
 These problems have been partially addressed by CWLProv~\cite{Khan 2019}, which represents workflow enactments as ROs serialised according to the BDBag approach~\cite{Chard 2016}.
 The resulting format is a folder containing several data and metadata files~\cite{Soiland-Reyes 2018}, expanding on the RO Bundle approach of Taverna \cite{Soiland-Reyes 2016}.
 CWLProv also extends PROV with a representation of executed processes (activities), their inputs and outputs (entities) and their executors (agents), together with their Common Workflow Language specification
 \cite{Crusoe 2022}, a standard workflow specification adopted by at least a dozen different workflow systems (\url{https://www.commonwl.org/implementations/}). Although CWLProv includes prospective provenance as a \emph{plan}
 within PROV (based on the \emph{wfdesc} model), in practice its implementation does not include tool definitions or file formats, as proposed by the wfdesc extension Roterms (\url{https://wf4ever.github.io/ro/2016-01-28/roterms}).
-In order for CWLProv consumers to reconstruct the full prospective provenance for understanding the workflow, they would also need to inspect the separate workflow definition in the WMS's native language.
+In order for CWLProv consumers to reconstruct the full prospective provenance for understanding the workflow, they would also need to inspect the separate workflow definition in the native language of the WMS.
 Additionally, the CWLProv RO may include several other BagIt metadata files and PROV serialisations conforming to different formats, complicating its generation and consumption.
 CWLProv proposed multiple levels of provenance \cite[figure 2]{Khan 2019}, from Level 0 (capturing workflow definition) to Level 3 (domain-specific annotations). 
 In practice, the CWL reference implementation \emph{cwltool} \cite{Amstutz 2023} and the corresponding CWLProv specification \cite{Soiland-Reyes 2018} records provenance details of all task executions together with the intermediate data (CWLProv level 2), a granularity level that requires substantial support from the WMS
 \cite{Soiland-Reyes 2022a}.
 This approach, while appropriate for workflow languages where the execution plan, including its distribution among the various tasks, is well known in advance (such as CWL), can be at odds with other systems where the execution is more dynamic, depending on the verification of specific runtime conditions, such as the size and distribution of the data (e.g., COMPSs~\cite{Lordan 2014}).
 This makes the implementation of CWLProv challenging, as shown by the fact that at the time of writing the format is supported only by cwltool.
-Finally, being based on the PROV model, CWLProv is highly focused on the interaction between agents, processes and related entities, while support for contextual metadata (such as workflow authors, licence or creation date) in the Research Object Bundle is limited (\url{https://w3id.org/bundle/context}) and stored in a separate manifest file, which includes the data identifier mapping to filenames.
+Finally, being based on the PROV model, CWLProv is highly focused on the interaction between agents, processes and related entities, while support for contextual metadata (such as workflow authors, licence or creation date) in the Research Object Bundle is limited (\url{https://w3id.org/bundle/context}) and stored in a separate manifest file, that includes the data identifier mapping to filenames.
 A project that uses Bagit-serialised ROs similar to those used by CWLProv is Whole Tale \cite{Chard 2019}, a web platform with a focus on the narrative around scientific studies and their reproducibility, where the serialised ROs are used to export data and metadata from the platform. In contrast, our work is primarily focused on the ability to capture the provenance of computational workflow execution including its data and executable workflow definitions.
 
 RO-Crate~\cite{Soiland-Reyes 2022a} is a recent approach to packaging research data together with their metadatal; it extends Schema.org~\cite{Guha 2015}, a popular vocabulary for describing resources on the Web.
@@ -360,7 +359,7 @@ Our main contributions are the following:
 \end{itemize}
 
 To foster usability, the profiles are characterised by different levels of detail, and the set of mandatory metadata items is kept to a minimum in order to ease the implementation.
-This flexible approach increases the model's adaptability to the diverse landscape of WMSs used in practice.
+This flexible approach increases the model's adaptability to the diverse landscape of WMS used in practice.
 The base profile, in particular, is applicable to any kind of computational process, not necessarily described in a formal workflow language.
 In this work we describe several implementations and demonstrate the application to multiple use cases.
 
@@ -557,7 +556,7 @@ This profile is the most detailed of the three, and offers the highest level of 
 \section{Implementations}\label{implementations}
 
 Support for the Workflow Run RO-Crate profiles presented in this work has been implemented in a number of systems, showing support from the community and demonstrating their usability in practice.
-All these implementations are described in the following sections.
+We describe seven of these implementations (one in a conversion tool and six in WMS) in the following sections.
 
 
 \subsection{Runcrate}\label{runcrate}
@@ -708,8 +707,8 @@ Support for the format has been integrated into the main development branch and 
 
 From the StreamFlow point of view, the main limitation in the actual version of the Provenance Run Crate standard is the lack of support for distributed provenance, i.e., a standard way to describe the set of locations involved in a workflow execution and their topology. As a temporary solution,
 the StreamFlow configuration and a description of the hybrid execution environment are preserved by directly including the \texttt{streamflow.yml} file into the generated archive.
-However, this product-specific solution prevents a wider adoption from other WMSs and forces agnostic frameworks (e.g., WorkflowHub) to provide ad-hoc plugins to interpret the StreamFlow format.
-Since the support for hybrid and cross-facility workflows is gaining traction in the WMSs ecosystem, we envision support for distributed provenance as a feature for future versions of Workflow Run RO-Crate.
+However, this product-specific solution prevents a wider adoption from other WMS and forces agnostic frameworks (e.g., WorkflowHub) to provide ad-hoc plugins to interpret the StreamFlow format.
+Since the support for hybrid and cross-facility workflows is gaining traction in the WMS ecosystem, we envision support for distributed provenance as a feature for future versions of Workflow Run RO-Crate.
 
 \subsection{WfExS}\label{wfexs}
 
@@ -737,7 +736,7 @@ An example of Workflow Run Crate generated by WfExS-backend from a Nextflow work
 
 Sapporo~\cite{Suetake 2022a} is an implementation of the Workflow Execution Service (WES) API specification \cite{Magee 2018}.
 WES is a standard proposed by the Global Alliance for Genomics and Health (GA4GH) for cloud-based data analysis platforms that receive requests to execute workflows.
-Sapporo supports the execution of several workflow types, including cwltool \cite{Amstutz 2023}, Toil \cite{Vivian 2017}, and StreamFlow \cite{Colonnelli 2020}.
+Sapporo supports the execution of several workflow engines, including cwltool \cite{Amstutz 2023}, Toil \cite{Vivian 2017}, and StreamFlow \cite{Colonnelli 2020}.
 Sapporo includes features specifically tailored to bioinformatics applications, including the calculation of feature statistics from specific types of outputs generated by workflow runs.
 For example, the system calculates the mapping rate of DNA sequence alignments from BAM format files.
 To describe the feature values, Sapporo uses the Workflow Run Crate profile extended with additional terms to represent these biological features (\url{https://github.com/ResearchObject/ro-terms/tree/master/sapporo}).
@@ -750,6 +749,8 @@ While Sapporo supports Workflow Run Crate, since WES is a WMS wrapper, it does n
 Instead, it embeds the information in the files passed by the WES request to record the provenance of execution rather than using the actual workflow parameters meant for the wrapped WMS.
 Therefore, the current implementation of Sapporo does not capture the connections between the inputs/outputs depicted in the workflow and the actual files used/generated during the run.
 Thus, the profile generated by Sapporo has fields representing input and output files, but they are not linked to formal parameters.
+
+Sapporo supports export to Workflow Run Crate since release 1.5.1 \cite{Suetake 2023b}. An example of RO-Crate generated by Sapporo is available on Zenodo \cite{Ohta 2023}.
 
 \subsection{Autosubmit}\label{autosubmit}
 
@@ -799,7 +800,7 @@ This validation was performed by the Workflow Run RO-Crate community in a public
 
 \subsection{Summary of implementations}
 
-Table \ref{implementation_summary_table} shows an overview of the different profiles presented in this section, with their corresponding version URL and examples used for profile and implementation validation.
+Table \ref{implementation_summary_table} shows an overview of the different implementations presented in this section, with their corresponding version URL and examples used for profile and implementation validation.
 
 \begin{table}[!ht]
   \begin{adjustwidth}{-1.4cm}{0in} % Comment out/remove adjustwidth environment if table fits in text column.
@@ -816,11 +817,11 @@ Table \ref{implementation_summary_table} shows an overview of the different prof
   COMPSs & Workflow & \cite{Ejarque 2023} & \cite{Poiata 2023} \\
   Streamflow & Provenance & \tiny \url{https://github.com/alpha-unito/streamflow/releases/tag/0.2.0.dev10} & \cite{Colonnelli 2023} \\
   WfExS & Workflow & \cite{Fernández 2023a} & \cite{Fernández 2023b} \\
-  Sapporo & Workflow & \tiny \url{https://github.com/sapporo-wes/sapporo-service/pull/32} & \tiny \url{https://github.com/sapporo-wes/sapporo-service/pull/32} \\
+  Sapporo & Workflow & \cite{Suetake 2023b} & \cite{Ohta 2023} \\
   Autosubmit & Workflow & \tiny \url{https://earth.bsc.es/gitlab/es/autosubmit/-/merge_requests/317} & \cite{Kinoshita 2023} \\
   \end{tabular}
   \begin{flushleft} 
-    Summary of each implementation together with the profiles it implements, the latest version URL/DOI and an example of its application.
+    Summary of each implementation together with the profiles it implements, the latest version URL/DOI and an example of its application. Runcrate is a toolkit that converts CWLProv ROs to Provenance Run Crates, while the others are WMS.
   \end{flushleft}
   \label{implementation_summary_table}
   \end{adjustwidth}
@@ -1127,7 +1128,7 @@ Further work is being planned with the BCO community to update the BCO-RO profil
 
 In this paper we presented Workflow Run RO-Crate, a collection of RO-Crate profiles to represent the provenance of the execution of computational workflows at different levels of granularity.
 We described each profile and their corresponding implementations, shown how they apply to real use cases and described the community behind their development process.
-Workflow Run RO-Crate has already been adopted by several WMSs, including Galaxy, StreamFlow and COMPSs. The flexibility of our model eases its implementation in more systems, allowing interoperability between their workflow run descriptions.
+Workflow Run RO-Crate has already been adopted by several WMS, including Galaxy, StreamFlow and COMPSs. The flexibility of our model eases its implementation in more systems, allowing interoperability between their workflow run descriptions.
 
 Workflow Run RO-Crate is an ongoing project driven by an open community.
 A natural consequence of this is that the profiles are not static entities, but keep being updated to cater for new requirements and use cases.
@@ -1419,6 +1420,7 @@ Tanvi Desai, Felix Ritchie, Richard Welpton (2016):\\
 \bibitem[Ejarque et al., 2023]{Ejarque 2023}
 Jorge Ejarque, Francesc Lordan, Rosa Maria Badia, Raul Sirvent, Daniele Lezzi, Fernando Vazquez, Fernando, Cristian Tatu,  Gabriel Puigdemunt, Nihad Mammadli (2023):\\
 \textbf{COMPSs}. bsc-wdc/compss. Version 3.2\\
+\emph{Zenodo}
 \url{https://doi.org/10.5281/zenodo.7975340}
 
 \bibitem[Feng, Misra \& Rubenstein 2007]{Feng 2007}
@@ -1430,13 +1432,14 @@ Hanhua Feng, Vishal Misra, Dan Rubenstein (2007):\\
 \bibitem[Fernández 2023a]{Fernández 2023a}
 José María Fernández, Laura Rodríguez-Navas, Adrián Muñoz-Cívico, Paula Iborra, Daniel Lea (2023):\\
 \textbf{inab/WfExS-backend}. Version 0.10.1\\
+\emph{Zenodo}
 \url{https://doi.org/10.5281/zenodo.10068956}
 
 \bibitem[Fernández 2023b]{Fernández 2023b}
 José María Fernández González (2023):\\
 \textbf{RO-Crate from staged WfExS working directory} 047b6dfc-3547-4e09-92f8-df7143038ff4 (overbridging templon).\\
 \emph{Zenodo}
-\url{https://zenodo.org/doi/10.5281/zenodo.10091549}
+\url{https://doi.org/10.5281/zenodo.10091549}
 
 \bibitem[Freire et al., 2008]{Freire 2008}
 Juliana Freire, David Koop, Emanuele Santos, Cl Silva (2008):\\
@@ -1641,6 +1644,12 @@ Luc Moreau, Paolo Missier, Khalid Belhajjame, Reza B'Far, James Cheney, Sam Copp
 \emph{W3C Recommendation 30 April 2013}.\\
 \url{https://www.w3.org/TR/2013/REC-prov-dm-20130430/}.
 
+\bibitem[Ohta & Suetake, 2023]{Ohta 2023}
+Tazro Ohta, Hirotaka Suetake (2023):\\
+\textbf{Example of Workflow Run RO-Crate Output in Sapporo}\\
+\emph{Zenodo}\\
+\url{https://doi.org/10.5281/zenodo.10134580}
+
 \bibitem[Oliver et al., 2023]{Oliver 2023}
 Hilary Oliver, Matthew Shin, David Matthews, Oliver Sanders, Sadie Bartholomew, Andrew Clark, Ben Fitzpatrick, Ronald van Haren, Rolf Hut, Niels Drost
 (2023).\\
@@ -1662,8 +1671,8 @@ Natalia Poiata, Claudio Satriano, Jean-Pierre Vilotte, Pascal Bernard, Kazushige
 \bibitem[Poiata, Satriano \& Conejero, 2023]{Poiata 2023}
 Natalia Poiata, Claudio Satriano, Javier Conejero (2023):\\
 \textbf{BackTrackBB: Multi-band array detection and location of seismic sources (PyCOMPSs implementation).}\\
-\emph{Zenodo}.\\
-\url{https://zenodo.org/record/7788030}
+\emph{Zenodo}\\
+\url{https://doi.org/10.5281/zenodo.7602137}
 
 \bibitem[Rehm et al., 2021]{Rehm 2021}
 Heidi L. Rehm, Angela J.H. Page, Lindsay Smith, Jeremy B. Adams, Gil Alterovitz, Lawrence J. Babb, Maxmillian P. Barkley, Michael Baudis, Michael J.S. Beauvais, Tim Beck, Jacques S. Beckmann, Sergi Beltran, David Bernick, Alexander Bernier, James K. Bonfield, Tiffany F. Boughtwood, Guillaume Bourque, Sarion R. Bowers, Anthony J. Brookes, Michael Brudno, Matthew H. Brush, David Bujold, Tony Burdett, Orion J. Buske, Moran N. Cabili, Daniel L. Cameron, Robert J. Carroll, Esmeralda Casas-Silva, Debyani Chakravarty, Bimal P. Chaudhari, Shu Hui Chen, J. Michael Cherry, Justina Chung, Melissa Cline, Hayley L. Clissold, Robert M. Cook-Deegan, Mélanie Courtot, Fiona Cunningham, Miro Cupak, Robert M. Davies, Danielle Denisko, Megan J. Doerr, Lena I. Dolman, Edward S. Dove, L. Jonathan Dursi, Stephanie O.M. Dyke, James A. Eddy, Karen Eilbeck, Kyle P. Ellrott, Susan Fairley, Khalid A. Fakhro, Helen V. Firth, Michael S. Fitzsimons, Marc Fiume, Paul Flicek, Ian M. Fore, Mallory A. Freeberg, Robert R. Freimuth, Lauren A. Fromont, Jonathan Fuerth, Clara L. Gaff, Weiniu Gan, Elena M. Ghanaim, David Glazer, Robert C. Green, Malachi Griffith, Obi L. Griffith, Robert L. Grossman, Tudor Groza, Jaime M. Guidry Auvil, Roderic Guigó, Dipayan Gupta, Melissa A. Haendel, Ada Hamosh, David P. Hansen, Reece K. Hart, Dean Mitchell Hartley, David Haussler, Rachele M. Hendricks-Sturrup, Calvin W.L. Ho, Ashley E. Hobb, Michael M. Hoffman, Oliver M. Hofmann, Petr Holub, Jacob Shujui Hsu, Jean-Pierre Hubaux, Sarah E. Hunt, Ammar Husami, Julius O. Jacobsen, Saumya S. Jamuar, Elizabeth L. Janes, Francis Jeanson, Aina Jené, Amber L. Johns, Yann Joly, Steven J.M. Jones, Alexander Kanitz, Kazuto Kato, Thomas M. Keane, Kristina Kekesi-Lafrance, Jerome Kelleher, Giselle Kerry, Seik-Soon Khor, Bartha M. Knoppers, Melissa A. Konopko, Kenjiro Kosaki, Martin Kuba, Jonathan Lawson, Rasko Leinonen, Stephanie Li, Michael F. Lin, Mikael Linden, Xianglin Liu, Isuru Udara Liyanage, Javier Lopez, Anneke M. Lucassen, Michael Lukowski, Alice L. Mann, John Marshall, Michele Mattioni, Alejandro Metke-Jimenez, Anna Middleton, Richard J. Milne, Fruzsina Molnár-Gábor, Nicola Mulder, Monica C. Munoz-Torres, Rishi Nag, Hidewaki Nakagawa, Jamal Nasir, Arcadi Navarro, Tristan H. Nelson, Ania Niewielska, Amy Nisselle, Jeffrey Niu, Tommi H. Nyrönen, Brian D. O’Connor, Sabine Oesterle, Soichi Ogishima, Vivian Ota Wang, Laura A.D. Paglione, Emilio Palumbo, Helen E. Parkinson, Anthony A. Philippakis, Angel D. Pizarro, Andreas Prlic, Jordi Rambla, Augusto Rendon, Renee A. Rider, Peter N. Robinson, Kurt W. Rodarmer, Laura Lyman Rodriguez, Alan F. Rubin, Manuel Rueda, Gregory A. Rushton, Rosalyn S. Ryan, Gary I. Saunders, Helen Schuilenburg, Torsten Schwede, Serena Scollen, Alexander Senf, Nathan C. Sheffield, Neerjah Skantharajah, Albert V. Smith, Heidi J. Sofia, Dylan Spalding, Amanda B. Spurdle, Zornitza Stark, Lincoln D. Stein, Makoto Suematsu, Patrick Tan, Jonathan A. Tedds, Alastair A. Thomson, Adrian Thorogood, Timothy L. Tickle, Katsushi Tokunaga, Juha Törnroos, David Torrents, Sean Upchurch, Alfonso Valencia, Roman Valls Guimera, Jessica Vamathevan, Susheel Varma, Danya F. Vears, Coby Viner, Craig Voisin, Alex H. Wagner, Susan E. Wallace, Brian P. Walsh, Marc S. Williams, Eva C. Winkler, Barbara J. Wold, Grant M. Wood, J. Patrick Woolley, Chisato Yamasaki, Andrew D. Yates, Christina K. Yung, Lyndon J. Zass, Ksenia Zaytseva, Junjun Zhang, Peter Goodhand, Kathryn North, Ewan Birney (2021):\\
@@ -1750,11 +1759,17 @@ of workflows in various languages in bioinformatics}~[version 1; peer review: 1 
 \emph{F1000Research} \textbf{11}:889\\
 \url{https://doi.org/10.12688/f1000research.122924.1}
 
-\bibitem[Suetake et al., 2023]{Suetake 2023}
+\bibitem[Suetake et al., 2023a]{Suetake 2023}
  Hirotaka Suetake, Tsukasa Fukusato, Takeo Igarashi, Tazro Ohta (2023):\\
 \textbf{A workflow reproducibility scale for automatic validation of biological interpretation results}.\\
 \emph{GigaScience} \textbf{12}:iad031\\
 \url{https://doi.org/10.1093/gigascience/giad031}
+
+\bibitem[Suetake et al., 2023b]{Suetake 2023b}
+[Suetake 2023b] Hirotaka Suetake, Tazro Inutano Ohta, Tomoya Tanjo, Manabu ISHII, Bruno P. Kinoshita, DrYak (2023):\\
+\textbf{sapporo-wes/sapporo-service}: 1.5.1\\
+\emph{Zenodo}\\
+https://doi.org/10.5281/zenodo.10134452
 
 \bibitem[Vivian et al., 2017]{Vivian 2017}
 John Vivian, Arjun Arkal Rao, Frank Austin Nothaft, Christopher Ketchum, Joel Armstrong, Adam Novak, Jacob Pfeil, Jake Narkizian, Alden D Deran, Audrey Musselman-Brown, Hannes Schmidt, Peter Amstutz, Brian Craft, Mary Goldman, Kate Rosenbloom, Melissa Cline, Brian O'Connor, Megan Hanna, Chet Birger, W James Kent, David A Patterson, Anthony D Joseph, Jingchun Zhu, Sasha Zaranek, Gad Getz, David Haussler, Benedict Paten (2017):\\
