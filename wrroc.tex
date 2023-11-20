@@ -1017,35 +1017,81 @@ Our aim is to be compatible with both Schema.org and W3C PROV. Provenance Run Cr
   \begin{adjustwidth}{-1.5cm}{0in}
   \centering
   \caption{
-  {\bf Mapping between W3C PROV concepts and their equivalents in Workflow Run RO-Crate.}}
+  {\bf Mapping from Workflow Run RO-Crate to equivalent W3C PROV concepts} using SKOS \cite{Isaac 2009}. For instance, \emph{CreateAction} has \textbf{broader} match PROV's \emph{Activity}, meaning that \emph{Activity} is more general.}
   \begin{tabular}{p{35mm}|p{40mm}|p{40mm}}
   \hline
-  {\bf W3C PROV} & {\bf RO-Crate} & \textbf{Relationship} \\
+%  {\bf W3C PROV} & {\bf RO-Crate} & \textbf{Relationship} \\
+  {\bf RO-Crate} & \textbf{Relationship} & {\bf W3C PROV-O} \\
   \thickhline
+  
   
 %% OLD
 
-  \emph{activity} (workflow/ \newline process execution) 
-    & \emph{CreateAction}, \emph{OrganizeAction} & Broader than \\ \hline
-  \emph{agent} (WMS) & \emph{instrument} of \emph{OrganizeAction} & Equivalent \\ \hline
-  \emph{agent} -- \emph{Person} & \emph{Person}  & Equivalent \\ \hline
-  \emph{agent} -- \emph{Organization} & \emph{Organization}  & Equivalent \\ \hline
-  \emph{agent} -- \emph{SoftwareAgent} & \emph{SoftwareApplication}  & Broader than \\ \hline
-  \emph{entity} -- \emph{Plan} & 
-    \emph{ComputationalWorkflow} \emph{SoftwareApplication, HowTo}  
-    & Broader than \\ \hline
-  \emph{entity} (other) & \emph{File}, \emph{Dataset}, \emph{PropertyValue} & Broader than \\ \hline
-  \emph{wasStartedBy} & \emph{agent} and \emph{startTime} on  \emph{CreateAction} & Narrower than  \\ \hline
-  \emph{wasEndedBy} & \emph{agent} and \emph{endTime} on  \emph{CreateAction} & Narrower than \\ \hline
-  \emph{wasAssociatedWith} & \emph{agent} and \emph{instrument} on  \emph{CreateAction} & Broader than \\ \hline
-  \emph{hadPlan} + \emph{Association} &  \emph{instrument} on \emph{CreateAction} & 
-    Complex mapping: an instrument implies the existence of a qualified association (\texttt{prov:Association}) linked to a \texttt{prov:Plan} through \texttt{prov:hadPlan}
+  \emph{Action} (superclass of \emph{CreateAction}, \emph{OrganizeAction}) & 
+    Has close match 
+    \begin{small}
+      (schema.org Actions may also be potential actions in the future)
+    \end{small}
+    & 
+    \emph{Activity}
     \\ \hline
-  \emph{Agent} + \emph{Association} &  \emph{agent} on \emph{CreateAction} & 
-    Complex mapping: an agent implies the existence of a qualified association (\texttt{prov:Association}) linked to a \texttt{prov:Plan} through \texttt{prov:agent}
-    \\ \hline  
-  \emph{used} & \emph{object} on \emph{CreateAction} & Equivalent \\ \hline 
-  \emph{wasGeneratedBy} & \emph{result} on  \emph{CreateAction} & Equivalent \\ \hline
+  \emph{CreateAction}, \emph{OrganizeAction} & 
+    Has broader match & 
+    \emph{Activity}
+    \\ \hline
+  \emph{Person} & 
+    Has exact match & 
+    \emph{Person}
+    \\ \hline
+  \emph{Organization} & 
+    Has exact match & 
+    \emph{OrganizeAction} 
+    \\ \hline
+  \emph{SoftwareApplication} & 
+    Has related match & 
+    \emph{SoftwareAgent}
+    \\ \hline
+  \emph{ComputationalWorkflow}, \emph{SoftwareApplication}, \emph{HowTo} & 
+    Has broader match & 
+    \emph{Plan},
+    \emph{Entity}
+    \\ \hline
+  \emph{File}, \emph{Dataset}, \emph{PropertyValue} & 
+    Has broader match & 
+    \emph{Entity}
+    \\ \hline
+  \emph{startTime} on \emph{CreateAction} & 
+    Has close match & 
+    \emph{startedAtTime}
+    \\ \hline
+  \emph{endTime} on \emph{CreateAction} & 
+    Has close match & 
+    \emph{endedAtTime}
+    \\ \hline
+  \emph{agent} on \emph{CreateAction} & 
+    Has related match & 
+    \emph{wasStartedBy}, \emph{wasEndedBy}
+    \\ \hline
+  \emph{agent} and \emph{instrument} on \emph{CreateAction} & 
+    Has broader match & 
+    \emph{wasAssociatedWith}
+    \\ \hline
+  \emph{instrument} on \emph{CreateAction} & 
+    Has related match 
+    \begin{small}
+      (Complex mapping: an instrument implies a qualified association with the agent, linked to a plan)
+    \end{small}
+    & 
+    \emph{hadPlan} on \emph{Association}
+    \\ \hline
+
+  \emph{object} on \emph{CreateAction} &
+    Has exact match & 
+    \emph{used} 
+    \\ \hline
+  \emph{result} on CreateAction & 
+    Has close match & 
+    inverse \emph{wasGeneratedBy} 
   
   \end{tabular}
   %\begin{flushleft} Table notes \end{flushleft}
