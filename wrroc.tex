@@ -310,36 +310,38 @@ PROV-O has been widely extended for workflows (D-PROV \cite{Missier 2013}, ProvO
 \emph{Retrospective provenance} refers to what actually happened during an execution, i.e.~what were the values of the input parameters, which outputs were produced, which tools were executed, how much time did the execution take, whether the execution was successful or not, etc.
 Retrospective provenance can also be represented at different levels of abstraction depending on available computing resources: for instance, by the workflow execution becoming a single activity which produces results, by specifying the individual execution of each workflow step, or by going a step further and indicating how each step is divided into sub-processes when a workflow is deployed in a cluster.
 
-Different workflow systems have adopted and extended PROV (and its PROV-O representation) to the workflow domain (Pegasus \cite{Deelman 2005}, WINGS \cite{Garijo 2014}, VisTrails \cite{Scheidegger 2008,Costa 2013}), in order to ease the burden of provenance collection from tool developers to workflow management systems (WMS) \cite{Atkinson 2017,Pérez 2018}.
+Different workflow systems have adopted and extended PROV (and its PROV-O representation) to the workflow domain (Pegasus \cite{Deelman 2005}, WINGS \cite{Gil 2011, Garijo 2014}, VisTrails \cite{Scheidegger 2008,Costa 2013}), in order to ease the burden of provenance collection from tool developers to workflow management systems (WMS) \cite{Atkinson 2017,Pérez 2018}.
 
 D-PROV, PROV-ONE, OPMW-PROV, P-Plan propose representations of workflow plans and their respective executions, taking into account the features of the workflow systems implementing them (e.g., hierarchical representations, sub-processes, etc.).
 Other data models like \emph{wfprov} and \emph{wfdesc}
 \cite{Belhajjame 2015} go a step further by considering not only the link between plans and executions, but how to package the various artefacts as a Research Object (RO) ~\cite{Bechhofer 2013} in order to ease portability while keeping the context of a digital experiment.
 
-However, while these models address some workflow provenance representation issues, they have two main limitations: firstly, the extensions of PROV are not directly interoperable because of differences in granularity or different assumptions in their workflow representations; secondly, their support from WMS are typically one system per model.  An early approach to unify and integrate workflow provenance traces across WMS was WEST (Workflow Ecosystems through STandards) \cite{Garijo 2014}, through the use of WINGS \cite{Gil 2011} to build workflow templates and different converters. In all of these workflow provenance models, the emphasis is on the workflow execution structure as a directed graph, with only partial references for the data items. Several do not bundle the executable workflow definition or actual output files in their provenance output.
+However, while these models address some workflow provenance representation issues, they have two main limitations: firstly, the extensions of PROV are not directly interoperable because of differences in granularity or different assumptions in their workflow representations; secondly, their support from WMS are typically one system per model.  An early approach to unify and integrate workflow provenance traces across WMS was WEST (Workflow Ecosystems through STandards) \cite{Garijo 2014}, through the use of WINGS \cite{Gil 2011} to build workflow templates and different converters. In all of these workflow provenance models, the emphasis is on the workflow execution structure as a directed graph, with only partial references for the data items. 
 
-These problems have been partially addressed by CWLProv~\cite{Khan 2019}, which represents workflow enactments as ROs serialised according to the BDBag approach~\cite{Chard 2016}.
+More recently, interoperability have been partially addressed by Common Worlflow Language Prov (CWLProv)~\cite{Khan 2019}, which represents workflow enactments as ROs serialised according to the Big Dta Bag (BDBag) approach~\cite{Chard 2016}.
 The resulting format is a folder containing several data and metadata files~\cite{Soiland-Reyes 2018}, expanding on the RO Bundle approach of Taverna \cite{Soiland-Reyes 2016}.
 CWLProv also extends PROV with a representation of executed processes (activities), their inputs and outputs (entities) and their executors (agents), together with their Common Workflow Language specification
 \cite{Crusoe 2022} -- a standard workflow specification adopted by at least a dozen different workflow systems (\url{https://www.commonwl.org/implementations/}). Although CWLProv includes prospective provenance as a \emph{plan}
 within PROV (based on the \emph{wfdesc} model), in practice its implementation does not include tool definitions or file formats, as proposed by the wfdesc extension Roterms (\url{https://wf4ever.github.io/ro/2016-01-28/roterms}).
 In order for CWLProv consumers to reconstruct the full prospective provenance for understanding the workflow, they would also need to inspect the separate workflow definition in the native language of the WMS.
-Additionally, the CWLProv RO may include several other BagIt metadata files and PROV serialisations conforming to different formats, complicating its generation and consumption.
-CWLProv proposed multiple levels of provenance \cite[figure 2]{Khan 2019}, from Level 0 (capturing workflow definition) to Level 3 (domain-specific annotations). 
+Additionally, the CWLProv RO may include several other metadata files and PROV serialisations conforming to different formats, complicating its generation and consumption.
+
+As for granularity, CWLProv proposed multiple levels of provenance \cite[figure 2]{Khan 2019}, from Level 0 (capturing workflow definition) to Level 3 (domain-specific annotations). 
 In practice, the CWL reference implementation \emph{cwltool} \cite{Amstutz 2023} and the corresponding CWLProv specification \cite{Soiland-Reyes 2018} records provenance details of all task executions together with the intermediate data and any nested workflows (CWLProv level 2), a granularity level that requires substantial support from the WMS
 \cite{Soiland-Reyes 2022a}.
-This approach, while appropriate for workflow languages where the execution plan, including its distribution among the various tasks, is well known in advance (such as CWL), can be at odds with other systems where the execution is more dynamic, depending on the verification of specific runtime conditions, such as the size and distribution of the data (e.g., COMPSs~\cite{Lordan 2014}).
+This approach is appropriate for workflow languages where the execution plan, including its distribution among the various tasks, is well known in advance (such as CWL).
+However, it can be at odds with other systems where the execution is more dynamic, depending on the verification of specific runtime conditions, such as the size and distribution of the data (e.g., COMPSs~\cite{Lordan 2014}).
 This makes the implementation of CWLProv challenging, as shown by the fact that at the time of writing the format is supported only by cwltool.
 Finally, being based on the PROV model, CWLProv is highly focused on the interaction between agents, processes and related entities, while support for contextual metadata (such as workflow authors, licence or creation date) in the Research Object Bundle is limited (\url{https://w3id.org/bundle/context}) and stored in a separate manifest file, that includes the data identifier mapping to filenames.
 A project that uses Bagit-serialised ROs similar to those used by CWLProv is Whole Tale \cite{Chard 2019}, a web platform with a focus on the narrative around scientific studies and their reproducibility, where the serialised ROs are used to export data and metadata from the platform. In contrast, our work is primarily focused on the ability to capture the provenance of computational workflow execution including its data and executable workflow definitions.
 
 RO-Crate~\cite{Soiland-Reyes 2022a} is a recent approach to packaging research data together with their metadatal; it extends Schema.org~\cite{Guha 2015}, a popular vocabulary for describing resources on the Web.
-In its simplest form, an RO-Crate is a directory structure that contains a single JSON-LD metadata file at the top level.
+In its simplest form, an RO-Crate is a directory structure that contains a single JSON-LD \cite{Sporny 2020} metadata file at the top level.
 The metadata file describes all entities stored in the RO-Crate along with their relationships; it is both machine-readable and human-readable.
-The format is general enough to be able to describe any dataset, but can also be made as specific as needed through the use of extensions called
+RO-Crate is general enough to be able to describe any dataset, but can also be made as specific as needed through the use of extensions called
 \emph{profiles}.
 At the same time, the broad set of types and properties from Schema.org, complemented by a few additional terms from other vocabularies, make the RO-Crate model capable of expressing a wide range of contextual information that complements and enriches the core information specified by the profile.
-This might include, for instance, the workflow authors and their affiliations, associated publications, licensing information, related software, etc.
+This may include, among others, the workflow authors and their affiliations, associated publications, licensing information, related software, etc.
 This is an approach used by WorkflowHub \cite{Goble 2021}, a workflow system agnostic workflow registry which specifies a Workflow RO-Crate profile \cite{Bacall 2022} to gather the workflow definition with such metadata in an archived RO-Crate. 
 
 In this work, we present \textbf{Workflow Run RO-Crate} (WRROC), an extension of RO-Crate for representing computational workflow execution provenance.
@@ -347,14 +349,14 @@ Our main contributions are the following:
 
 \begin{itemize}
 \item   A collection of RO-Crate profiles to represent both the prospective and the retrospective provenance of a computational   workflow run in a way that is machine-actionable \cite{Batista 2022},  independent of the specific  workflow language or   execution system, and including support for rerunnability.
-\item   Implementations of the model in six workflow systems.
-\item   A governance and sustainability community (Workflow Run RO-Crate) to discuss extensions,  issues and new implementations for the proposed   profiles.
+\item   Implementations of the model in six workflow systems, and a mapping against the W3C PROV-O Standard
+\item   A governance model, held by an open community (Workflow Run RO-Crate) to discuss extensions,  issues and new implementations for the proposed   profiles.
 \end{itemize}
 
 To foster usability, the profiles are characterised by different levels of detail, and the set of mandatory metadata items is kept to a minimum in order to ease the implementation.
 This flexible approach increases the model's adaptability to the diverse landscape of WMS used in practice.
 The base profile, in particular, is applicable to any kind of computational process, not necessarily described in a formal workflow language.
-In this work we describe several implementations and demonstrate the application of the profiles to multiple use cases.
+In this work we describe seven implementations (six in WMS and one in a conversion tool) and demonstrate the application of the profiles to multiple use cases.
 
 The rest of this paper is organised as follows: we first describe the Workflow Run RO-Crate profiles; we then illustrate implementations and usage examples; this is followed by a discussion and plans for future work.
 
@@ -411,6 +413,7 @@ It relates with the application itself via \emph{instrument}, with the entity th
 and \emph{result}, respectively. 
 \emph{File} is an RO-Crate alias for Schema.org's \emph{MediaObject}.
 Some inputs (and, less commonly, outputs), however, are not stored as files or directories, but passed to the application (e.g., via a command line interface) as values of various types (e.g., a number or string). In this case, the profile recommends a representation via \emph{PropertyValue}. 
+For simplicity, we left out the rest of the RO-Crate structure. Diagram uses UML class notation where $\Diamond$ arrows indicate aggregation and regular arrows indicate references, $*$ indicates multiple instances, $1$ means single instance.  For brevity, the RO-Crate root Dataset is not shown.
 }
 \label{fig:process_crate_er}
 \end{figure}
@@ -487,6 +490,7 @@ Fig~\ref{fig:workflow_crate_er} shows the entities used in Workflow Run Crate to
 \caption{{\bf Entity-Relationship diagram for Workflow Run Crate.}
 The main differences with Process Run Crate are the representation of formal parameters and the fact that the application is expected to be an entity with types \emph{File}, \emph{SoftwareSourceCode} and \emph{ComputationalWorkflow}.
 Effectively, the entity belongs to all three types, and its properties are the union of the properties of the individual types.
+UML diagram where the filled diamond $\blacklozenge$ indicates composition, empty diamond $\Diamond$ aggregation, and other arrows relations.
 }
 \label{fig:workflow_crate_er}
 \end{figure}
