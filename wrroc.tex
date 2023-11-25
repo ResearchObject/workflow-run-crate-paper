@@ -863,7 +863,6 @@ action: #ae2163a8-1a2a-4d78-9c81-caad76a72e47
 \end{figure}
 
 
-
 The \emph{exampleOfWork} link between input / output values and parameter slots is used by \texttt{runcrate run} to reconstruct the CWL input parameters document needed to rerun the computation.
 The
 \emph{alternateName} property (a Schema.org property applicable to all entities), which records the original name (i.e., at the time the computation was run) of data entities, is also crucial for reproducibility in this case: both StreamFlow and CWLProv, to avoid clashes, record input and output files and directories using their SHA1
@@ -965,8 +964,6 @@ The results of the analysis are summarised in Table
 Overall, most of the information contained in CWLProv RDF is transferred to the RO-Crate metadata.
 In addition, the representation of some categories of metadata has improved, notably Workflow parameters (WF2), which were insufficiently described in CWLProv RDF but defined with type and format in RO-Crate.
 Moreover, the format of input files (D2), which was absent in CWLProv RDF, is represented in RO-Crate.
-%One aspect in which RO-Crate RDF is less descriptive than CWLProv is computational environment (T5): whereas in CWLProv names of container images were preserved (ENV3), this information is not carried over to the RO-Crate metadata file in the current runcrate version, as the representation of container images in the profiles is under discussion.
-%It should be noted, however, that reproducibility is still supported by the presence of container image information in the CWL workflow file included in the RO-Crate.
 
 In conclusion, our analysis shows that runcrate preserves most provenance metadata previously shown to be relevant in realistic RO use case scenarios.
 The full results of the analysis can be found at \cite{de Wit 2023}.
@@ -1033,9 +1030,6 @@ Our aim is to be compatible with both Schema.org and W3C PROV. Provenance Run Cr
 %  {\bf W3C PROV} & {\bf RO-Crate} & \textbf{Relationship} \\
   {\bf RO-Crate} & \textbf{Relationship} & {\bf W3C PROV-O} \\
   \thickhline
-  
-  
-%% OLD
 
   \emph{Action} (superclass of \emph{CreateAction}, \emph{OrganizeAction}) & 
     Has close match 
@@ -1136,7 +1130,7 @@ Further work is being planned with the BCO community to update the BCO-RO profil
 \hypertarget{conclusion}{%
 \section{Conclusion and Future Work}\label{conclusion}}
 
-In this paper we presented Workflow Run RO-Crate, a collection of RO-Crate profiles to represent the provenance of the execution of computational workflows at different levels of granularity.
+In this work we presented Workflow Run RO-Crate, a collection of RO-Crate profiles to represent the provenance of the execution of computational workflows at different levels of granularity.
 We described each profile and their corresponding implementations, shown how they apply to real use cases and described the community behind their development process.
 Workflow Run RO-Crate has already been adopted by six WMS, including Galaxy, StreamFlow and COMPSs. The flexibility of our model eases its implementation in more systems, allowing interoperability between their workflow run descriptions.
 
