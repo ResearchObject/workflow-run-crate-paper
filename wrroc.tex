@@ -293,7 +293,7 @@ Finally, we illustrate the application of Workflow Run RO-Crate in two use cases
 
 
 
-\emph{The below is a snapshot as of ``Overleaf 2023-12-04'' from
+\emph{The below is a snapshot as of ``Overleaf 2023-12-05'' from
 \url{https://docs.google.com/document/d/1rq22Vu_lmmRLkmnZivsKVdRidq4aoePs-l20gHFYpu0/edit}} -- continue to do edits (except LaTeX/table bugs) in Google Docs and Stian moves them over to Overleaf periodically.
 
 \section{Introduction}\label{introduction}
@@ -699,7 +699,7 @@ Recent releases of Autosubmit 4 include an updated YAML configuration management
 While this gave users flexibility, it also increased the complexity to track the configuration changes and to relate these to the provenance data.
 Another feature added in Autosubmit 4 is the option to use only the experiment manager features of Autosubmit, delegating the workflow execution to a different backend workflow engine, like ecFlow~\cite{Bahra 2011}, Cylc~\cite{Oliver 2019}, or a CWL runner.
 
-In order to give users a more structured way to archive provenance, which includes the complete experiment configuration and the parameters used to generate the unified experiment configuration, and also to allow interoperability between workflow managers, the archive feature received a new flag in Autosubmit 4.0.100 \cite{Beltran 2023} to generate Workflow Run RO-Crates.
+In order to give users a more structured way to archive provenance, which includes the complete experiment configuration and the parameters used to generate the unified experiment configuration, and also to allow interoperability between workflow managers, the archive feature received a new flag in Autosubmit 4.0.100 \cite{Beltrán 2023} to generate Workflow Run RO-Crates.
 
 The prospective provenance data is extracted from the Autosubmit experiment configuration.
 This includes the multiple YAML files, and the unified YAML configuration, as well as the parameters used to preprocess each file -- preprocessing replaces placeholders in script templates with values from the experiment configuration.
@@ -1494,16 +1494,6 @@ Peter Amstutz, Michael R. Crusoe, Farah Zaib Khan, Stian Soiland-Reyes, Manvendr
 \textbf{common-workflow-language/cwltool: 3.1.20230127121939.}\\
 \url{https://doi.org/10.5281/zenodo.7575947}
 
-\bibitem{Soiland-Reyes 2022a}
-Stian Soiland-Reyes, Peter Sefton, Mercè
-Crosas, Leyla Jael Castro, Frederik Coppens, José M. Fernández, Daniel
-Garijo, Björn Grüning, Marco La Rosa, Simone Leo, Eoghan Ó Carragáin,
-Marc Portier, Ana Trisovic, RO-Crate Community, Paul Groth, Carole Goble
-(2022):\\
-\textbf{Packaging research artefacts with RO-Crate}.\\
-\emph{Data Science} \textbf{5}(2) pp. 97--138\\
-\url{https://doi.org/10.3233/DS-210053}
-
 \bibitem{Lordan 2014}
  Francesc Lordan, Enric Tejedor, Jorge Ejarque, Roger
 Rafanell, Javier Álvarez, Fabrizio Marozzo, Daniele Lezzi, Raül Sirvent,
@@ -1513,7 +1503,6 @@ cloud.}\\
 \emph{Journal of Grid Computing}, 12(1)\\
 \url{https://doi.org/10.1007/s10723-013-9272-5}
 
-
 \bibitem{Chard 2019}
 Kyle Chard, Niall Gaffney, Matthew B. Jones, Kacper
 Kowalik, Bertram Ludäscher, Timothy McPhillips, Jarek Nabrzyski,
@@ -1522,6 +1511,16 @@ Willis (2019):\\
 \textbf{Application of BagIt-Serialized Research Object Bundles for Packaging and Re-Execution of Computational Analyses}.\\
 \emph{2019 15th International Conference on eScience (eScience)}\\
 \url{https://doi.org/10.1109/eScience.2019.00068}
+
+\bibitem{Soiland-Reyes 2022a}
+Stian Soiland-Reyes, Peter Sefton, Mercè
+Crosas, Leyla Jael Castro, Frederik Coppens, José M. Fernández, Daniel
+Garijo, Björn Grüning, Marco La Rosa, Simone Leo, Eoghan Ó Carragáin,
+Marc Portier, Ana Trisovic, RO-Crate Community, Paul Groth, Carole Goble
+(2022):\\
+\textbf{Packaging research artefacts with RO-Crate}.\\
+\emph{Data Science} \textbf{5}(2) pp. 97--138\\
+\url{https://doi.org/10.3233/DS-210053}
 
 \bibitem{Guha 2015}
 R.V. Guha, Dan Brickley and Steve Macbeth (2015):\\
@@ -1535,8 +1534,6 @@ Manu Sporny, Dave Longley, Gregg Kellogg, Markus Lanthaler, Pierre-Antoine Champ
 \emph{W3C Recommendation} 16 July 2020\\
 \url{https://www.w3.org/TR/2020/REC-json-ld11-20200716/}
 
-
-% p3
 
 \bibitem{Goble 2021}
 Carole Goble, Stian Soiland-Reyes, Finn Bacall, Stuart Owen, Alan Williams, Ignacio Eguinoa, Bert Droesbeke, Simone Leo, Luca Pireddu, Laura Rodriguez-Navas, José Mª Fernández, Salvador Capella-Gutierrez, Hervé Ménager, Björn Grüning, Beatriz Serrano-Solano, Philip Ewels, Frederik Coppens (2021):\\
@@ -1572,8 +1569,6 @@ Research Ideas and Outcomes \textbf{8}:e93937.\\
 \url{https://doi.org/10.3897/rio.8.e93937}
 
 
-% p5
-
 \bibitem{Gray 2017}
 Alasdair JG Gray, Carole Goble, Rafael C Jimenez, The
 Bioschemas Community (2017):\\
@@ -1593,10 +1588,6 @@ Marjan Meurisse, Francisco Estupiñán-Romero, Javier González-Galindo, Natalia
 \emph{BMC Medical Research Methodology} \textbf{23}:248\\
 \url{https://doi.org/10.1186/s12874-023-02068-3}\\
 
-
-
-% p5
-
 \bibitem{WRROC 2023b}
  Workflow Run RO-Crate working group (2023):\\
 \textbf{Workflow Run Crate specification.} Version 0.4\\
@@ -1609,9 +1600,6 @@ Johannes Köster, Sven Rahmann \\
 \textbf{Snakemake--a scalable bioinformatics workflow engine}.\\
 \emph{Bioinformatics} \textbf{28}(10) pp. 2520--2522.\\
 \url{https://doi.org/10.1093/bioinformatics/bts480}
-
-
-% p6
 
 \bibitem{Colonnelli 2021}
 Iacopo Colonnelli, Barbara Cantalupo, Ivan Merelli, Marco Aldinucci (2021):\\
@@ -1631,23 +1619,11 @@ The Galaxy Community, Enis Afgan, Anton Nekrutenko, Bjórn A Grüning, Daniel Bl
 \emph{Zenodo} \\
 \url{https://doi.org/10.5281/zenodo.10203978}
 
-
-% p7
-% p8
-% p9
-% p10
-
 \bibitem{runcrate}
 Simone Leo, Stian Soiland-Reyes (2023):\\
 \textbf{Runcrate}. version 0.5.0\\
 \emph{Zenodo}.\\
 \url{https://doi.org/10.5281/zenodo.10203433}
-
-% p11
-%p12
-%p13
-
-
 
 \bibitem{ro-crate-py}
 Paul De Geest, Bert Droesbeke, Ignacio Eguinoa, Alban Gaignard, Sebastiaan Huber, Bruno Kinoshita, Simone Leo, Luca Pireddu, Laura Rodríguez-Navas, Raül Sirvent, Stian Soiland-Reyes~(2023):\\
@@ -1668,8 +1644,6 @@ Paul De Geest (2023):\\
 \emph{Zenodo}.\\
 \url{https://doi.org/10.5281/zenodo.7785861}
 
-
-%p14
 
 \bibitem{Sirvent 2022}
 Raul Sirvent, Javier Conejero, Francesc Lordan, Jorge Ejarque, Laura Rodriguez-Navas, Jose M. Fernandez, Salvador Capella-Gutierrez, Rosa M. Badia (2022):\\
@@ -1715,20 +1689,17 @@ alpha-unito/streamflow version 0.2.0.dev10\\
 \url{https://github.com/alpha-unito/streamflow/releases/tag/0.2.0.dev10}\\
 \url{https://identifiers.org/swh:1:rev:b2014add57189900fa5a0a0403b7ae3a384df73b}
 
-%p15
-%p16
+\bibitem{Fernández 2023b}
+José María Fernández González (2023):\\
+\textbf{RO-Crate from staged WfExS working directory} 047b6dfc-3547-4e09-92f8-df7143038ff4 (overbridging templon).\\
+\emph{Zenodo}
+\url{https://doi.org/10.5281/zenodo.10091550}
 
 \bibitem{Bouyssié 2023} 
 David Bouyssié, Pınar Altıner, Salvador Capella-Gutierrez, José M. Fernández, Yanick Paco Hagemeijer, Peter Horvatovich, Martin Hubálek, Fredrik Levander, Pierluigi Mauri, Magnus Palmblad, Wolfgang Raffelsberger, Laura Rodríguez-Navas, Dario Di Silvestre, Balázs Tibor Kunkli, Julian Uszkoreit, Yves Vandenbrouck, Juan Antonio Vizcaíno, Dirk Winkelhardt, Veit Schwämmle (2023):\\
 \textbf{WOMBAT-P: Benchmarking Label-Free Proteomics Data Analysis Workflows}.\\
 \emph{bioRxiv} 2023.10.02.560412 \\
 \url{https://doi.org/10.1101/2023.10.02.560412}
-
-\bibitem{Fernández 2023b}
-José María Fernández González (2023):\\
-\textbf{RO-Crate from staged WfExS working directory} 047b6dfc-3547-4e09-92f8-df7143038ff4 (overbridging templon).\\
-\emph{Zenodo}
-\url{https://doi.org/10.5281/zenodo.10091550}
 
 \bibitem{Suetake 2022a}
  Hirotaka Suetake, Tomoya Tanjo, Manabu Ishii, Bruno
@@ -1757,6 +1728,12 @@ John Vivian, Arjun Arkal Rao, Frank Austin Nothaft, Christopher Ketchum, Joel Ar
 \textbf{A workflow reproducibility scale for automatic validation of biological interpretation results}.\\
 \emph{GigaScience} \textbf{12}:iad031\\
 \url{https://doi.org/10.1093/gigascience/giad031}
+
+\bibitem{Suetake 2023b}
+Hirotaka Suetake, Tazro Inutano Ohta, Tomoya Tanjo, Manabu ISHII, Bruno P. Kinoshita, DrYak (2023):\\
+\textbf{sapporo-wes/sapporo-service}: 1.5.1\\
+\emph{Zenodo}\\
+\url{https://doi.org/10.5281/zenodo.10134452}
 
 \bibitem{Ohta 2023}
 Tazro Ohta, Hirotaka Suetake (2023):\\
@@ -1787,8 +1764,6 @@ Hanhua Feng, Vishal Misra, Dan Rubenstein (2007):\\
 
 
 
-% p17
-
 \bibitem{Bahra 2011}
 Avi Bahra (2011):\\
 \textbf{Managing work flows with ecFlow.}\\
@@ -1804,16 +1779,17 @@ Hilary Oliver, Matthew Shin, David Matthews, Oliver Sanders, Sadie Bartholomew, 
 \url{https://doi.org/10.1109/MCSE.2019.2906593}
 
 
+\bibitem{Beltrán 2023} Daniel Beltrán Mora, Miguel Castrillo, Manuel G. Marciani, Bruno P. Kinoshita, Luiggi Tenorio Ku, Aina Gaya-Àvila, Francesc Roura Adserias,  Pierre-Antoine Bretonnière, Oriol Mula Valls, Pablo Goitia, Julian Rodrigo Berlin,  Miguel Andrés-Martínez, Kim Serradell, Wilmer Uruchi Ticona,  Domingo Manubens-Gil, Larissa Batista Leite, Isabel Andreu-Burillo, Javier Vegas-Regidor, Hui Du, Danila Volpi, Fabian Lienert, Joan Giralt, Joan Lopez, Muhammad Asif, Virginie Guemas, Xavier Abellan Ecija (2023):\\
+\textbf{Autosubmit v4.0.100}.\\
+\emph{Zenodo}
+\url{https://doi.org/10.5281/zenodo.10199020}
+
 
 \bibitem{Goble 2020}
 Carole Goble, Sarah Cohen-Boulakia, Stian Soiland-Reyes, Daniel Garijo, Yolanda Gil, Michael R. Crusoe, Kristian Peters, Daniel Schober (2020):\\
 \textbf{FAIR Computational Workflows}.\\
 \emph{Data Intelligence} \textbf{2}(1):108--121\\
 \url{https://doi.org/10.1162/dint_a_00033}
-
-
-% p18
-
 
 \bibitem{Kinoshita 2023}
 Bruno P. Kinoshita (2023):\\
@@ -1858,29 +1834,12 @@ José María Fernández, Laura Rodríguez-Navas, Adrián Muñoz-Cívico, Paula I
 \emph{Zenodo}
 \url{https://doi.org/10.5281/zenodo.10068956}
 
-\bibitem{Suetake 2023b}
-Hirotaka Suetake, Tazro Inutano Ohta, Tomoya Tanjo, Manabu ISHII, Bruno P. Kinoshita, DrYak (2023):\\
-\textbf{sapporo-wes/sapporo-service}: 1.5.1\\
-\emph{Zenodo}\\
-\url{https://doi.org/10.5281/zenodo.10134452}
-
-\bibitem{Beltrán 2023} Daniel Beltrán Mora, Miguel Castrillo, Manuel G. Marciani, Bruno P. Kinoshita, Luiggi Tenorio Ku, Aina Gaya-Àvila, Francesc Roura Adserias,  Pierre-Antoine Bretonnière, Oriol Mula Valls, Pablo Goitia, Julian Rodrigo Berlin,  Miguel Andrés-Martínez, Kim Serradell, Wilmer Uruchi Ticona,  Domingo Manubens-Gil, Larissa Batista Leite, Isabel Andreu-Burillo, Javier Vegas-Regidor, Hui Du, Danila Volpi, Fabian Lienert, Joan Giralt, Joan Lopez, Muhammad Asif, Virginie Guemas, Xavier Abellan Ecija (2023):\\
-\textbf{Autosubmit v4.0.100}.\\
-\emph{Zenodo}
-\url{https://doi.org/10.5281/zenodo.10199020}
-
 \bibitem{Del Rio 2022}
 Mauro Del Rio, Luca Lianas, Oskar Aspegren, Giovanni Busonera, Francesco Versaci, Renata Zelic, Per H. Vincent, Simone Leo, Andreas Pettersson, Olof Akre, Luca Pireddu (2022):\\
 \textbf{AI Support for Accelerating Histopathological Slide Examinations of Prostate Cancer in Clinical Studies.}\\
 \emph{Image Analysis and Processing}. ICIAP 2022 Workshops. ICIAP 2022. \\
 \emph{Lecture Notes in Computer Science} \textbf{13373}\\
 \url{https://doi.org/10.1007/978-3-031-13321-3_48}
-
-
-% p19
-% p20
-% p21
-
 
 \bibitem{Wittner 2022}
 Rudolf Wittner, Cecilia Mascia, Matej Gallo, Francesca Frexia, Heimo Müller, Markus Plass, Jörg Geiger, Petr Holub (2022):\\
@@ -1896,16 +1855,12 @@ Life Sciences}.\\
 \emph{Learning Health Systems} e10365\\
 \url{https://doi.org/10.1002/lrh2.10365}
 
-
 \bibitem{Wittner 2023a}
  Rudolf Wittner, Matej Rudolf, Simone Leo, Stian Soiland-Reyes (2023).\\
 \textbf{Packing provenance using CPM RO-Crate profile} (Version 1.1)
 Dataset\\
 \emph{Zenodo}.\\
 \url{https://doi.org/10.5281/zenodo.8095888}
-
-%p22
-%p23
 
 \bibitem{Ferreira 2022}
 Rafael Ferreira da Silva, Rosa M. Badia, Venkat Bala, Debbie Bard, Peer-Timo Bremer, Ian Buckley, Silvina Caino-Lores, Kyle Chard, Carole Goble, Shantenu Jha, Daniel S. Katz, Daniel Laney, Manish Parashar, Frederic Suter, Nick Tyler, Thomas Uram, Ilkay Altintas, Stefan Andersson, William Arndt, Juan Aznar, Jonathan Bader, Bartosz Balis, Chris Blanton, Kelly Rosa Braghetto, Aharon Brodutch, Paul Brunk, Henri Casanova, Alba Cervera Lierta, Justin Chigu, Taina Coleman, Nick Collier, Iacopo Colonnelli, Frederik Coppens, Michael Crusoe, Will Cunningham, Bruno de Paula Kinoshita, Paolo Di Tommaso, Charles Doutriaux, Matthew Downton, Wael Elwasif, Bjoern Enders, Chris Erdmann, Thomas Fahringer, Ludmilla Figueiredo, Rosa Filgueira, Martin Foltin, Anne Fouilloux, Luiz Gadelha, Andy Gallo, Artur Garcia Saez, Daniel Garijo, Roman Gerlach, Ryan Grant, Samuel Grayson, Patricia Grubel, Johan Gustafsson, Valerie Hayot-Sasson, Oscar Hernandez, Marcus Hilbrich, AnnMary Justine, Ian Laflotte, Fabian Lehmann, Andre Luckow, Jakob Luettgau, Ketan Maheshwari, Motohiko Matsuda, Doriana Medic, Pete Mendygral, Marek Michalewicz, Jorji Nonaka, Maciej Pawlik, Loic Pottier, Line Pouchard, Mathias Putz, Santosh Kumar Radha, Lavanya Ramakrishnan, Sashko Ristov, Paul Romano, Daniel Rosendo, Martin Ruefenacht, Katarzyna Rycerz, Nishant Saurabh, Volodymyr Savchenko, Martin Schulz, Christine Simpson, Raul Sirvent, Tyler Skluzacek, Stian Soiland-Reyes, Renan Souza, Sreenivas Rangan Sukumar, Ziheng Sun, Alan Sussman, Douglas Thain, Mikhail Titov, Benjamin Tovar, Aalap Tripathy, Matteo Turilli, Bartosz Tuznik, Hubertus van Dam, Aurelio Vivas , Logan Ward, Patrick Widener, Sean Wilkinson, Justyna Zawalska, Mahnoor Zulfiqar (2023):\\
@@ -1920,7 +1875,6 @@ across genomic research and healthcare}.\\
 \emph{Cell Genomics} \textbf{1}(2)\\
 \url{https://doi.org/10.1016/j.xgen.2021.100029}
 
-
 \bibitem{De Wit 2022}
 Renske de Wit (2022):\\
 \textbf{A Non-Intimidating Approach to Workflow Reproducibility in Bioinformatics}: Adding Metadata to Research Objects through the Design and Evaluation of Use-Focused Extensions to CWLProv.\\
@@ -1933,17 +1887,17 @@ Renske de Wit, Michael R Crusoe (2023):\\
 \emph{Zenodo}\\
 \url{https://doi.org/10.5281/zenodo.10251812}
 
-\bibitem{trefx}
-Thomas Giles, Stian Soiland-Reyes, Jonathan Couldridge, Stuart Wheater, Blaise Thomson, Jillian Beggs, Suzy Gallier, Sam Cox, Daniel Lea, Justin Biddle, Rima Doal, Naaman Tammuz, Becca Wilson, Christian Cole, Elizabeth Sapey, Simon Thompson, Professor Emily Jefferson, Phillip Quinlan, Carole Goble (2023):\\
-\textbf{TRE-FX: Delivering a federated network of trusted research environments to enable safe data analytics}.\\
-\emph{Zenodo} \\
-\url{https://doi.org/10.5281/zenodo.10055354}
-
 \bibitem{5s-crate}
 Stian Soiland-Reyes, Stuart Wheater (2023):\\
 \textbf{Five Safes RO-Crate profile}, version 0.4.\\
 \emph{TRE-FX Candidate Recommendation} \\
 \url{https://w3id.org/5s-crate/0.4}
+
+\bibitem{trefx}
+Thomas Giles, Stian Soiland-Reyes, Jonathan Couldridge, Stuart Wheater, Blaise Thomson, Jillian Beggs, Suzy Gallier, Sam Cox, Daniel Lea, Justin Biddle, Rima Doal, Naaman Tammuz, Becca Wilson, Christian Cole, Elizabeth Sapey, Simon Thompson, Professor Emily Jefferson, Phillip Quinlan, Carole Goble (2023):\\
+\textbf{TRE-FX: Delivering a federated network of trusted research environments to enable safe data analytics}.\\
+\emph{Zenodo} \\
+\url{https://doi.org/10.5281/zenodo.10055354}
 
 \bibitem{Desai 2016}
 Tanvi Desai, Felix Ritchie, Richard Welpton (2016):\\
@@ -1964,25 +1918,17 @@ Raja Mazumder, Vahan Simonyan (eds), IEEE P2791 BioCompute Working Group (BCOWG)
 \emph{IEEE} Std 2791-2020 \\
 \url{https://doi.org/10.1109/IEEESTD.2020.9094416}
 
-
 \bibitem{Alterovitz 2018}
 Gil Alterovitz, Dennis A Dean II, Carole Goble, Michael R Crusoe, Stian Soiland-Reyes, Amanda Bell, Anais Hayes, Anita Suresh, Charles Hadley S King IV, Dan Taylor, KanakaDurga Addepalli, Elaine Johanson, Elaine E Thompson, Eric Donaldson, Hiroki Morizono, Hsinyi Tsang, Jeet K Vora, Jeremy Goecks, Jianchao Yao, Jonas S Almeida, Jonathon Keeney, KanakaDurga Addepalli, Konstantinos Krampis, Krista Smith, Lydia Guo, Mark Walderhaug, Marco Schito, Matthew Ezewudo, Nuria Guimera, Paul Walsh, Robel Kahsay, Srikanth Gottipati, Timothy C Rodwell, Toby Bloom, Yuching Lai, Vahan Simonyan, Raja Mazumder (2018):\\
 \textbf{Enabling Precision Medicine via standard communication of NGS provenance, analysis, and results}.\\
 \emph{PLOS Biology} \textbf{16}(12):e3000099 \\
 \url{https://doi.org/10.1371/journal.pbio.3000099}
 
-% p24
-
-
-
-
 \bibitem{Soiland-Reyes 2021}
 Stian Soiland-Reyes (2021):\\
 \textbf{Describing and packaging workflows using RO-Crate and BioCompute Objects}.\\
 Webinar, U.S. Food and Drug Administration (FDA), 2021-05-12.\\
 \url{https://doi.org/10.5281/zenodo.4633732}
-
-% p25
 
 \bibitem{runcrate-intro}
 Simone Leo (2023):\\
