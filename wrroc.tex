@@ -329,8 +329,7 @@ In order for CWLProv consumers to reconstruct the full prospective provenance fo
 Additionally, the CWLProv RO may include several other metadata files and PROV serialisations conforming to different formats, complicating its generation and consumption.
 
 As for granularity, CWLProv proposed multiple levels of provenance \cite[figure 2]{Khan 2019}, from Level 0 (capturing workflow definition) to Level 3 (domain-specific annotations). 
-In practice, the CWL reference implementation \emph{cwltool} \cite{Amstutz 2023} and the corresponding CWLProv specification \cite{Soiland-Reyes 2018} records provenance details of all task executions together with the intermediate data and any nested workflows (CWLProv level 2), a granularity level that requires substantial support from the WMS
-\cite{Soiland-Reyes 2022a}.
+In practice, the CWL reference implementation \emph{cwltool} \cite{Amstutz 2023} and the corresponding CWLProv specification \cite{Soiland-Reyes 2018} records provenance details of all task executions together with the intermediate data and any nested workflows (CWLProv level 2), a granularity level that requires substantial support from the WMS.
 This approach is appropriate for workflow languages where the execution plan, including its distribution among the various tasks, is well known in advance (such as CWL).
 However, it can be at odds with other systems where the execution is more dynamic, depending on the verification of specific runtime conditions, such as the size and distribution of the data (e.g., COMPSs~\cite{Lordan 2014}).
 This makes the implementation of CWLProv challenging, as shown by the fact that at the time of writing the format is supported only by cwltool.
@@ -962,6 +961,7 @@ Because runcrate only generates RO-Crates \emph{after} workflow execution, we on
 
 The results of the analysis are summarised in Table
 \ref{analysis_table}.
+The three dots (…) in the WRROC column indicate that  the concept is supported in an RO-Crate using existing schema.org vocabulary (e.g. \url{https://schema.org/softwareHelp}) but is not required by WRROC profiles.
 Overall, most of the information contained in CWLProv RDF is transferred to the RO-Crate metadata.
 In addition, the representation of some categories of metadata has improved, notably Workflow parameters (WF2), which were insufficiently described in CWLProv RDF but defined with type and format in RO-Crate.
 Moreover, the format of input files (D2), which was absent in CWLProv RDF, is represented in RO-Crate.
@@ -979,40 +979,42 @@ The full results of the analysis can be found at \cite{de Wit 2023}.
 \begin{tabular}{r|l|l|c|c|c|c}
 \hline
 %% TODO: Check ticks are in right places
-{\bf Type} & {\bf Subtype} & {\bf Name} & {\bf CWL} & {\bf CWLProv} & {\bf RO-Crate} & {\bf WRROC}  \\ \thickhline
-T1 & SC1 & Workflow design & $\bullet$ &  $\cdot$  &  $\cdot$ & $\dots$ \\ 
-& SC2 & Entity annotations & $\circ$ &  $\cdot$  &  $\cdot$  & $\dots$ \\ 
-& SC3 & Workflow execution ann.  &  $\circ$  & $\cdot$ &  $\cdot$ & $\dots$ \\ \hline
-T2 & D1 & Data identification & $\circ$ & $\cdot$ &  $\cdot$ & $\dots$ \\
-& D2 & File characteristics & $\circ$ & $\cdot$ & $\circ$ & $\circ$ \\
-& D3 & Data access & $\circ$ &  $\cdot$  &  $\cdot$  & $\dots$ \\ 
-& D4 & Parameter mapping & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ \\ \hline 
+{\bf Type} & {\bf Subtype}      & {\bf Name} & {\bf CWL} & {\bf CWLProv} & {\bf RO-Crate} & {\bf WRROC}  \\ \thickhline
+T1 & SC1 & Workflow design      & ($\bullet$) &  $\cdot$ & $\cdot$ & $\dots$ \\ 
+& SC2 & Entity annotations      & ($\circ$) &  $\cdot$ &  $\cdot$  & $\dots$ \\ 
+& SC3 & Workflow execution ann. &  $\cdot$  & $\cdot$ &  $\cdot$ & $\dots$ \\ \hline
+T2 & D1 & Data identification   & ($\circ$) & $\cdot$ &  $\cdot$ & $\dots$ \\
+& D2 & File characteristics     & ($\circ$) & $\cdot$ & $\circ$ & $\circ$ \\
+& D3 & Data access              & ($\circ$) &  $\cdot$ &  $\cdot$  & $\dots$ \\ 
+& D4 & Parameter mapping        & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ \\ \hline 
 T3 & SW1 & Software identification & $\circ$ &  $\cdot$ & $\cdot$ & $\dots$ \\ 
-& SW2 & Software documentation & $\circ$ &  $\cdot$ & $\cdot$ & $\dots$ \\  
-& SW3 & Software access & $\circ$ &  $\cdot$ & $\cdot$ & $\dots$ \\ \hline 
-T4 & WF1 & Workflow software & $\circ$ & $\circ$ & $\circ$ & $\dots$ \\ 
-& WF2 & Workflow parameters & $\circ$ & $\circ$ & $\bullet$ & $\bullet$ \\ 
-& WF3 & Workflow requirements & $\dots$ &  $\cdot$  &  $\circ$  & $\dots$ \\ \hline 
-T5 & ENV1 & Software environment & $\dots$ & $\cdot$ &  $\circ$ & $\circ$ \\ 
-& ENV2 & Hardware environment & $\dots$ & $\cdot$ &  $\circ$  & $\dots$\\ 
-& ENV3 & Container image & $\circ$ & $\circ$ &  $\circ$ & $\bullet$ \\ \hline 
+& SW2 & Software documentation  & $\circ$ &  $\cdot$ & $\cdot$ & $\dots$ \\  
+& SW3 & Software access         & $\circ$ &  $\cdot$ & $\cdot$ & $\dots$ \\ \hline 
+T4 & WF1 & Workflow software    & ($\bullet$) & $\circ$ & $\circ$ & $\dots$ \\ 
+& WF2 & Workflow parameters     & ($\bullet$) & $\circ$ & $\bullet$ & $\bullet$ \\ 
+& WF3 & Workflow requirements   & ($\bullet$) &  $\cdot$  &  $\circ$  & $\dots$ \\ \hline 
+T5 & ENV1 & Software environment & ($\circ$) & $\cdot$ &  $\circ$ & $\circ$ \\ 
+& ENV2 & Hardware environment   & $\cdot$ & $\cdot$ &  $\circ$  & $\dots$\\ 
+& ENV3 & Container image        & $\circ$ & $\circ$ &  $\circ$ & $\bullet$ \\ \hline 
 T6 & EX1 & Execution timestamps & $\cdot$ & $\bullet$ & $\bullet$ & $\bullet$ \\ 
-& EX2 & Consumed resources &  $\cdot$ & $\cdot$ & $\cdot$ & $\cdot$  \\ 
-& EX3 & Workflow engine & $\cdot$ & $\circ$ & $\circ$ & $\circ$  \\  
-& EX4 & Human agent & $\circ$ & $\bullet$ & $\bullet$ & $\bullet$ \\ \hline
+& EX2 & Consumed resources      & $\cdot$ & $\cdot$ & $\cdot$ & $\cdot$  \\ 
+& EX3 & Workflow engine         & $\cdot$ & $\circ$ & $\circ$ & $\circ$  \\  
+& EX4 & Human agent             & $\cdot$ & $\bullet$ & $\bullet$ & $\bullet$ \\ \hline
 \end{tabular}
 \begin{flushleft} We compared RO-Crates with the CWLProv ROs from which they were generated.
-The analysis was based on a provenance taxonomy reflecting relevant provenance metadata based on realistic use cases for ROs associated with a real-life bioinformatics workflow.
+The analysis was based on a provenance taxonomy reflecting relevant provenance metadata based on realistic use cases for ROs associated with a real-life bioinformatics workflow \cite{De Wit 2022}.
 We only considered provenance metadata which was already represented in CWLProv RDF or CWL-specific documents: \texttt{packed.cwl} (the workflow), \texttt{primary-job.json} (the inputs file), and \texttt{primary-output.json} (the outputs file).
 Since \texttt{packed.cwl} is also included in RO-Crate, we only considered how the metadata was represented in \texttt{ro-crate-metadata.json}.\\
-For completeness we also show the theoretical capability of the Provenance Run Crate profile (WRROC column) assuming only its MUST/SHOULD requirements are complete.\\
-\textbf{Legend:} $\bullet$ fully represented/MUST  $\;\;\circ$ partially represented/SHOULD  $\;\;\dots$ optional/MAY (e.g. schema.org attribute) $\;\;\cdot$ missing or unstructured representation
+For completeness we also show the theoretical capability of the Provenance Run Crate profile (WRROC column) assuming only its MUST/SHOULD requirements are complete.
+The categories in the first two columns are explained in \cite{De Wit 2022}.
+\\
+\textbf{Legend:} $\bullet$ fully represented  $\;\;\circ$ partially represented   $\;\;\cdot$ missing or unstructured representation $\;\;\dots$ optional (e.g. schema.org attribute)
 \end{flushleft}
 \label{analysis_table}
 \end{adjustwidth}
 \end{table}
 
-From this analysis it is worth highlighting the gaps and potential for Workflow Run RO-Crates. Several areas have been flagged by this study as important aspects of workflow metadata, such as Data Access (D3), Software Documentation (SW2) and Workflow Requirements (WF3). The three dots ($\dots$) in the WRROC column indicate that  the concept is supported in an RO-Crate using existing schema.org vocabulary (e.g. \url{https://schema.org/softwareHelp}) but is not required by WRROC profiles. Additionally, many such aspects require human annotation and cannot be provided by workflow engines alone, although they may be propagated from workflow and tool definitions. Some areas like Consumed Resources (EX2) require additional terms to be defined, and are part of future work.
+From this analysis it is worth highlighting the gaps and potential for Workflow Run RO-Crates. Several areas have been flagged by this study as important aspects of workflow metadata, such as Data Access (D3), Software Documentation (SW2) and Workflow Requirements (WF3). Many such aspects require human annotation and cannot be provided by workflow engines alone, although they may be propagated from workflow and tool definitions. Some areas like Consumed Resources (EX2) require additional terms to be defined, and are part of future work.
 
 
 \subsection{Workflow Run RO-Crate and the W3C PROV standard}
@@ -1604,8 +1606,8 @@ Marjan Meurisse, Francisco Estupiñán-Romero, Javier González-Galindo, Natalia
 
 \bibitem{Koster 2012}
 Johannes Köster, Sven Rahmann \\
-\textbf{Snakemake-\/-a scalable bioinformatics workflow engine}.\\
-\emph{Bioinformatics} 28(10) 2520--2522.\\
+\textbf{Snakemake--a scalable bioinformatics workflow engine}.\\
+\emph{Bioinformatics} \textbf{28}(10) pp. 2520--2522.\\
 \url{https://doi.org/10.1093/bioinformatics/bts480}
 
 
