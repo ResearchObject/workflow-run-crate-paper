@@ -208,11 +208,11 @@ Tazro Ohta\textsuperscript{14,15},
 Hirotaka Suetake\textsuperscript{16}, 
 Salvador Capella-Gutierrez\textsuperscript{5}, 
 Renske de Wit\textsuperscript{2}, 
-Bruno de Paula Kinoshita\textsuperscript{5}, 
+Bruno P. Kinoshita\textsuperscript{5}, 
 Stian Soiland-Reyes\textsuperscript{17,18}
 \\
 \bigskip
-\textbf{1} Center for Advanced Studies, Research, and Development in Sardinia (CRS4), Pula, Sardinia, Italy
+\textbf{1} Center for Advanced Studies, Research, and Development in Sardinia (CRS4), Pula (CA), Italy
 \\
 \textbf{2} Vrije Universiteit Amsterdam, Amsterdam, The Netherlands
 \\
@@ -226,7 +226,7 @@ Stian Soiland-Reyes\textsuperscript{17,18}
 \\
 \textbf{7} Swiss Institute of Bioinformatics, Lausanne, Switzerland
 \\
-\textbf{8} VIB-UGent Center for Plant Systems Biology, Gent, Belgium
+\textbf{8} VIB Data Core, Gent, Belgium
 \\
 \textbf{9} Faculty of Informatics, Masaryk University, Brno, Czech Republic
 \\
@@ -242,7 +242,7 @@ Stian Soiland-Reyes\textsuperscript{17,18}
 \\
 \textbf{15} Institute for Advanced Academic Research, Chiba University, Chiba, Japan
 \\
-\textbf{16} Department of Creative Informatics, Graduate School of Information Science and Technology, The University of Tokyo, Tokyo, Japan
+\textbf{16} Sator, Inc., Tokyo, Japan
 \\
 \textbf{17} Department of Computer Science, The University of Manchester, Manchester, United Kingdom
 \\
@@ -293,8 +293,8 @@ Finally, we illustrate the application of Workflow Run RO-Crate in two use cases
 
 
 
-\emph{The below is a snapshot as of ``Overleaf 2023-12-05'' from
-\url{https://docs.google.com/document/d/1rq22Vu_lmmRLkmnZivsKVdRidq4aoePs-l20gHFYpu0/edit}} -- continue to do edits (except LaTeX/table bugs) in Google Docs and Stian moves them over to Overleaf periodically.
+% \emph{The below is a snapshot as of ``Overleaf 2023-12-07'' from
+% \url{https://docs.google.com/document/d/1rq22Vu_lmmRLkmnZivsKVdRidq4aoePs-l20gHFYpu0/edit}}
 
 \section{Introduction}\label{introduction}
 
@@ -318,7 +318,7 @@ Other data models like \emph{wfprov} and \emph{wfdesc}
 \cite{Belhajjame 2015} go a step further by considering not only the link between plans and executions, but how to package the various artefacts as a Research Object (RO) ~\cite{Bechhofer 2013} in order to ease portability while keeping the context of a digital experiment.
 
 However, while these models address some workflow provenance representation issues, they have two main limitations: firstly, the extensions of PROV are not directly interoperable because of differences in granularity or different assumptions in their workflow representations; secondly, their support from WMS is typically one system per model.  An early approach to unify and integrate workflow provenance traces across WMS was WEST (Workflow Ecosystems through STandards) \cite{Garijo 2014}, through the use of WINGS \cite{Gil 2011} to build workflow templates and different converters. In all of these workflow provenance models, the emphasis is on the workflow execution structure as a directed graph, with only partial references for the data items. 
-The REPRODUCE-ME ontology \cite{Samuel 2022} extended PROV and P-Plan to explain the overall scientific process with the experimental context including real life objects (e.g. instruments, specimens) and human activities (e.g. lab protocols, screening), demonstrating provenance of individual Jupyter Notebook cells (https://sheeba-samuel.github.io/REPRODUCE-ME/research/provbook.html) and highlighting the need for provenance also where there is no workflow management system. 
+The REPRODUCE-ME ontology \cite{Samuel 2022} extended PROV and P-Plan to explain the overall scientific process with the experimental context including real life objects (e.g. instruments, specimens) and human activities (e.g. lab protocols, screening), demonstrating provenance of individual Jupyter Notebook cells (\url{https://sheeba-samuel.github.io/REPRODUCE-ME/research/provbook.html}) and highlighting the need for provenance also where there is no workflow management system. 
 
 More recently, interoperability have been partially addressed by Common Worlflow Language Prov (CWLProv)~\cite{Khan 2019}, which represents workflow enactments as ROs serialised according to the Big Dta Bag (BDBag) approach~\cite{Chard 2016}.
 The resulting format is a folder containing several data and metadata files~\cite{Soiland-Reyes 2018}, expanding on the RO Bundle approach of Taverna \cite{Soiland-Reyes 2016}.
@@ -405,9 +405,10 @@ The \emph{Person} or
 \emph{Organization} entity that performed the action is referred to via the \emph{agent} property.
 Fig~\ref{fig:process_crate_er} shows the entities used in Process Run Crate together with their relationships.
 
-\begin{figure}[!ht]
+\begin{figure}[!h]
 %\includegraphics[width=\textwidth]{image1.png}
-\includegraphics[width=26em]{wrroc-figure1.drawio.pdf}
+%\includegraphics[width=26em]{wrroc-figure1.drawio.pdf}
+\includegraphics[width=26em]{process_crate_er.eps}
 \caption{{\bf UML class diagram for Process Run Crate.}
 The central entity is the \emph{CreateAction}, which represents the execution of an application.
 It relates with the application itself via \emph{instrument}, with the entity that executed it via \emph{agent} and with its inputs and outputs via \emph{object}
@@ -428,7 +429,8 @@ Note how the actions are connected by the fact that the output of ``Run Head'' i
 
 \begin{figure}[!ht]
 %\includegraphics[width=29em]{image2.png}
-\includegraphics[width=29em]{wrroc-figure-example.drawio.pdf}
+%\includegraphics[width=29em]{wrroc-figure-example.drawio.pdf}
+\includegraphics[width=29em]{head_sort.eps}
 \caption{{\bf Diagram of a simple workflow} where the \texttt{head} and \texttt{sort} programs were run manually by a user.
 The executions of the individual software programs are connected by the fact that the file output by \texttt{head} was used as input for \texttt{sort}, documenting the computational flow in an implicit way.
 Such executions can be represented with Process Run Crate.}
@@ -486,7 +488,8 @@ Additionally, the inheritance mechanism allows to reuse the specifications alrea
 Fig~\ref{fig:workflow_crate_er} shows the entities used in Workflow Run Crate together with their relationships.
 
 \begin{figure}[!h]
-\includegraphics[width=26em]{wrroc-figure2.drawio.pdf}
+%\includegraphics[width=26em]{wrroc-figure2.drawio.pdf}
+\includegraphics[width=26em]{workflow_crate_er.eps}
 \caption{{\bf UML class diagram for Workflow Run Crate.}
 The main differences with Process Run Crate are the representation of formal parameters and the fact that the application is expected to be an entity with types \emph{File}, \emph{SoftwareSourceCode} and \emph{ComputationalWorkflow}.
 Effectively, the entity belongs to all three types, and its properties are the union of the properties of the individual types.
@@ -519,7 +522,8 @@ Fig~\ref{fig:provenance_crate_er} shows the various entities involved in the rep
 
 \begin{figure}[!h]
 %\includegraphics[width=21em]{image4.png}
-\includegraphics[width=\textwidth]{wrroc-figure3.drawio.pdf}
+%\includegraphics[width=\textwidth]{wrroc-figure3.drawio.pdf}
+\includegraphics[width=\textwidth]{provenance_crate_er.eps}
 \caption{{\bf UML class diagram for Provenance Run Crate.}
 In addition to the workflow run, this profile represents the execution of individual steps and their related tools.}
 \label{fig:provenance_crate_er}
@@ -542,7 +546,8 @@ This profile is the most detailed of the three, and offers the highest level of 
 
 \begin{figure}[!h]
 %  \includegraphics[width=21em]{venn.png}
-  \includegraphics[width=26em]{wrroc-venn.drawio.pdf}
+  %\includegraphics[width=26em]{wrroc-venn.drawio.pdf}
+  \includegraphics[width=26em]{profile_venn.eps}
   \caption{{\bf Venn diagram of the specifications for the various RO-Crate profiles.}
   Workflow Run Crate inherits the specifications of both Process Run Crate and Workflow RO-Crate. Provenance Run Crate, in turn, inherits the specifications of Workflow Run Crate.}
   \label{fig:profile_venn}
@@ -668,7 +673,7 @@ An example of Workflow Run Crate generated by WfExS-backend from a Nextflow work
 
 \subsection{Sapporo}\label{sapporo}
 
-Sapporo~\cite{Suetake 2022a} is an implementation of the Workflow Execution Service (WES) API specification \cite{Magee 2018}.
+Sapporo~\cite{Suetake 2022a} is an implementation of the Workflow Execution Service (WES) API specification (\url{https://www.ga4gh.org/product/workflow-execution-service-wes/}).
 WES is a standard proposed by the Global Alliance for Genomics and Health (GA4GH) for cloud-based data analysis platforms that receive requests to execute workflows.
 Sapporo supports the execution of several workflow engines, including cwltool \cite{Amstutz 2023}, Toil \cite{Vivian 2017}, and StreamFlow \cite{Colonnelli 2021}.
 Sapporo includes features specifically tailored to bioinformatics applications, including the calculation of feature statistics from specific types of outputs generated by workflow runs.
@@ -727,7 +732,7 @@ And by modifying ro-crate-py, future implementers of RO-Crate that have a simila
 
 A workflow was created using an example Autosubmit Project~\cite{Kinoshita 2023} designed using UFZ's mHM (mesoscale Hydrological Model)
 \cite{Samaniego 2010,Kumar 2013}. This workflow was used to validate the RO-Crate produced by Autosubmit.
-This validation was performed by the Workflow Run RO-Crate community in a public GitHub repository (https://github.com/ResearchObject/workflow-run-crate/) and also using the aforementioned Runcrate.
+This validation was performed by the Workflow Run RO-Crate community in a public GitHub repository (\url{https://github.com/ResearchObject/workflow-run-crate/}) and also using the aforementioned Runcrate.
 
 
 \subsection{Summary of implementations}
@@ -746,7 +751,7 @@ Table \ref{implementation_summary_table} shows an overview of the different impl
   {\bf Example}\\
   \thickhline
   runcrate & Provenance & \footnotesize \cite{runcrate}  & \footnotesize \cite{run-pathology} \\
-  Galaxy & Workflow & \footnotesize \cite{Afgan 2023} & \footnotesize \cite{De Geest 2023} \\
+  Galaxy & Workflow & \footnotesize \cite{Galaxy 2023} & \footnotesize \cite{De Geest 2023} \\
   COMPSs & Workflow & \footnotesize \cite{Ejarque 2023} & \footnotesize \cite{Poiata 2023} \\
   Streamflow & Provenance & \footnotesize \cite{Colonnelli 2023b} & \footnotesize \cite{Colonnelli 2023} \\
   WfExS & Workflow & \footnotesize \cite{Fernández 2023a} & \footnotesize \cite{Fernández 2023b} \\
@@ -935,7 +940,7 @@ Another advantage of RO-Crate is that the files corresponding to the data entiti
 
 The derivation of Workflow Run Crate from Workflow RO-Crate and, in turn, of Provenance Run Crate from Workflow Run Crate makes RO-Crates that conform to these profiles compatible with the WorkflowHub workflow registry, allowing workflow runs to be registered and easily found and shared with other researchers. Additionally, the inheritance mechanism allows reusing the specifications already developed for Workflow RO-Crate, which form part of the guidelines on representing the prospective provenance
 
-The Workflows Community Summit \cite{Ferreira 2022} identified as one of the current open challenges in the Scientific Workflows domain the ability to build FAIR into Workflow Management Systems, with the objective of achieving FAIR Computational Workflows. The profiles introduced in this article are able to help tackle this by introducing interoperable metadata among WMSs that captures the provenance of their corresponding workflow executions.
+The Workflows Community Summit \cite{Ferreira 2023} identified as one of the current open challenges in the Scientific Workflows domain the ability to build FAIR into Workflow Management Systems, with the objective of achieving FAIR Computational Workflows. The profiles introduced in this article are able to help tackle this by introducing interoperable metadata among WMSs that captures the provenance of their corresponding workflow executions.
 
 The Workflow Run RO-Crate profiles, the associated tooling, the implementations and the examples are developed by a community that runs regular virtual meetings (every two weeks at the time of writing) and coordinates on Slack and the RO-Crate mailing list.
 The WRROC community brings together members of the RO-Crate community~\cite{Soiland-Reyes 2022a}, WMS users and developers, Workflow users and developers, GA4GH~\cite{Rehm 2021} Cloud developers and provenance model authors, and is open to anyone who is interested in the representation of workflow provenance.
@@ -950,24 +955,21 @@ In the following subsections, we provide an evaluation of the metadata coverage 
 
 In order to assess the metadata coverage of runcrate, we performed a qualitative analysis of the tool's \emph{convert} mode, in which we evaluated how the generated RO-Crates preserve the metadata contained in the CWLProv ROs from which they are derived.
 For this analysis, we followed the same approach as for an earlier evaluation of CWLProv~\cite{De Wit 2022}.
-We identified and analysed three levels of representation:
+In that work, we identified and analysed three levels of representation:
 firstly, in RDF; secondly, in a structured, but CWL-specific document;
 and finally, in an unstructured, human readable format.
 From this earlier analysis, we concluded that the CWLProv RDF representation of the workflow runs lacked many provenance metadata that was included in CWL-specific documents, such as the packed workflow and input parameter file.
 For example, the CWLProv RDF only contained the name of each workflow step, without including the link to the underlying CommandLineTool or nested Workflow that was executed; information that could be extracted from the packed workflow.
 
-In our analysis of runcrate, we compared the CWLProv RDF provenance graph with the RO-Crate metadata file.
-Because runcrate only generates RO-Crates \emph{after} workflow execution, we only considered components that in CWLProv were at least partially represented in structured format (CWL-specific or RDF), and analysed their presence in RDF in RO-Crate (the packed CWL workflow is identical between CWLProv and RO-Crate).
-
-The results of the analysis are summarised in Table
+In our analysis of runcrate, we compared the CWLProv RDF provenance graph with the RO-Crate metadata file. The results of the analysis are summarised in Table
 \ref{analysis_table}.
-The three dots (…) in the WRROC column indicate that  the concept is supported in an RO-Crate using existing schema.org vocabulary (e.g. \url{https://schema.org/softwareHelp}) but is not required by WRROC profiles.
+The three dots (…) in the WRROC column indicate that  the concept is supported in an RO-Crate using existing schema.org vocabulary (e.g. \url{https://schema.org/softwareHelp}) but is not required or recommended by the WRROC profiles.
 Overall, most of the information contained in CWLProv RDF is transferred to the RO-Crate metadata.
 In addition, the representation of some categories of metadata has improved, notably Workflow parameters (WF2), which were insufficiently described in CWLProv RDF but defined with type and format in RO-Crate.
-Moreover, the format of input files (D2), which was absent in CWLProv RDF, is represented in RO-Crate.
+Moreover, the format of input files (D2), which was partially represented in CWLProv RDF, is fully represented in RO-Crate.
 
 In conclusion, our analysis shows that runcrate preserves most provenance metadata previously shown to be relevant in realistic RO use case scenarios.
-The full results of the analysis can be found at \cite{de Wit 2023}.
+The full results of the analysis can be found in \cite{de Wit 2023}.
 
 
 % Place tables after the first paragraph in which they are cited.
@@ -980,21 +982,21 @@ The full results of the analysis can be found at \cite{de Wit 2023}.
 \hline
 %% TODO: Check ticks are in right places
 {\bf Type} & {\bf Subtype}      & {\bf Name} & {\bf CWL} & {\bf CWLProv} & {\bf RO-Crate} & {\bf WRROC}  \\ \thickhline
-T1 & SC1 & Workflow design      & ($\bullet$) &  $\cdot$ & $\cdot$ & $\dots$ \\ 
-& SC2 & Entity annotations      & ($\circ$) &  $\cdot$ &  $\cdot$  & $\dots$ \\ 
+T1 & SC1 & Workflow design      & $\bullet$ &  $\cdot$ & $\circ$ & $\dots$ \\ 
+& SC2 & Entity annotations      & $\cdot$ &  $\cdot$ &  $\cdot$  & $\dots$ \\ 
 & SC3 & Workflow execution ann. &  $\cdot$  & $\cdot$ &  $\cdot$ & $\dots$ \\ \hline
-T2 & D1 & Data identification   & ($\circ$) & $\cdot$ &  $\cdot$ & $\dots$ \\
-& D2 & File characteristics     & ($\circ$) & $\cdot$ & $\circ$ & $\circ$ \\
-& D3 & Data access              & ($\circ$) &  $\cdot$ &  $\cdot$  & $\dots$ \\ 
+T2 & D1 & Data identification   & $\circ$ & $\cdot$ &  $\cdot$ & $\dots$ \\
+& D2 & File characteristics     & $\circ$ & $\circ$ & $\bullet$ & $\circ$ \\
+& D3 & Data access              & $\circ$ &  $\cdot$ &  $\cdot$  & $\dots$ \\ 
 & D4 & Parameter mapping        & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ \\ \hline 
-T3 & SW1 & Software identification & $\circ$ &  $\cdot$ & $\cdot$ & $\dots$ \\ 
-& SW2 & Software documentation  & $\circ$ &  $\cdot$ & $\cdot$ & $\dots$ \\  
-& SW3 & Software access         & $\circ$ &  $\cdot$ & $\cdot$ & $\dots$ \\ \hline 
-T4 & WF1 & Workflow software    & ($\bullet$) & $\circ$ & $\circ$ & $\dots$ \\ 
-& WF2 & Workflow parameters     & ($\bullet$) & $\circ$ & $\bullet$ & $\bullet$ \\ 
-& WF3 & Workflow requirements   & ($\bullet$) &  $\cdot$  &  $\circ$  & $\dots$ \\ \hline 
-T5 & ENV1 & Software environment & ($\circ$) & $\cdot$ &  $\circ$ & $\circ$ \\ 
-& ENV2 & Hardware environment   & $\cdot$ & $\cdot$ &  $\circ$  & $\dots$\\ 
+T3 & SW1 & Software identification & $\circ$ &  $\cdot$ & $\circ$ & $\dots$ \\ 
+& SW2 & Software documentation  & $\cdot$ &  $\cdot$ & $\cdot$ & $\dots$ \\  
+& SW3 & Software access         & $\cdot$ &  $\cdot$ & $\cdot$ & $\dots$ \\ \hline 
+T4 & WF1 & Workflow software    & $\bullet$ & $\circ$ & $\circ$ & $\dots$ \\ 
+& WF2 & Workflow parameters     & $\bullet$ & $\circ$ & $\bullet$ & $\bullet$ \\ 
+& WF3 & Workflow requirements   & $\bullet$ &  $\cdot$  &  $\circ$  & $\circ$ \\ \hline 
+T5 & ENV1 & Software environment & $\cdot$ & $\cdot$ &  $\cdot$ & $\cdot$ \\ 
+& ENV2 & Hardware environment   & $\cdot$ & $\cdot$ &  $\cdot$  & $\cdot$\\ 
 & ENV3 & Container image        & $\circ$ & $\circ$ &  $\circ$ & $\bullet$ \\ \hline 
 T6 & EX1 & Execution timestamps & $\cdot$ & $\bullet$ & $\bullet$ & $\bullet$ \\ 
 & EX2 & Consumed resources      & $\cdot$ & $\cdot$ & $\cdot$ & $\cdot$  \\ 
@@ -1003,10 +1005,10 @@ T6 & EX1 & Execution timestamps & $\cdot$ & $\bullet$ & $\bullet$ & $\bullet$ \\
 \end{tabular}
 \begin{flushleft} We compared RO-Crates with the CWLProv ROs from which they were generated.
 The analysis was based on a provenance taxonomy reflecting relevant provenance metadata based on realistic use cases for ROs associated with a real-life bioinformatics workflow \cite{De Wit 2022}.
-We only considered provenance metadata which was already represented in CWLProv RDF or CWL-specific documents: \texttt{packed.cwl} (the workflow), \texttt{primary-job.json} (the inputs file), and \texttt{primary-output.json} (the outputs file).
+CWL-specific documents are: \texttt{packed.cwl} (the workflow), \texttt{primary-job.json} (the inputs file), and \texttt{primary-output.json} (the outputs file).
 Since \texttt{packed.cwl} is also included in RO-Crate, we only considered how the metadata was represented in \texttt{ro-crate-metadata.json}.\\
-For completeness we also show the theoretical capability of the Provenance Run Crate profile (WRROC column) assuming only its MUST/SHOULD requirements are complete.
-The categories in the first two columns are explained in \cite{De Wit 2022}.
+For completeness we also show the theoretical capability of the Provenance Run Crate profile (WRROC column) assuming all its MUST/SHOULD requirements are complete.
+The categories in the first three columns are explained in \cite{De Wit 2022}.
 \\
 \textbf{Legend:} $\bullet$ fully represented  $\;\;\circ$ partially represented   $\;\;\cdot$ missing or unstructured representation $\;\;\dots$ optional (e.g. schema.org attribute)
 \end{flushleft}
@@ -1172,41 +1174,52 @@ valuable feedback.
 
 % Include for preprint, Remove when submitting to PLOS One:
 The authors acknowledge funding from: 
-  Sardinian Regional Government through the XData Project;
-  Spanish Government (contract PID2019-107255GB);
-  MCIN/AEI/10.13039/501100011033 (CEX2021- 001148-S);
-  Generalitat de Catalunya (contract 2021-SGR-00412);
+  Sardinian Regional Government through the XData Project (S.L., L.P.);
+  Spanish Government (contract PID2019-107255GB) (R.S.);
+  MCIN/AEI/10.13039/501100011033 (CEX2021- 001148-S) (R.S.);
+  Generalitat de Catalunya (contract 2021-SGR-00412) (R.S.);
+  European High-Performance Computing Joint Undertaking (JU) (No 955558) (R.S.);
+  EU Horizon research and innovation programme under Grant agreement No 101058129 (DT-GEO) (R.S.);
   ELIXIR Platform Task 2022-2023 funding for Task ``Container
-  Orchestration'';
+  Orchestration'' (A.K.);
+  Research Foundation - Flanders (FWO) for ELIXIR Belgium (I000323N and I002819N) (P.D.G.);
+  Multiannual Agreement with Universidad Politécnica de Madrid in the line Support for R\&D projects for Beatriz Galindo researchers, in the context of the V PRICIT (Regional Programme of Research and Technological Innovation) (D.G.);
+  Comunidad de Madrid through the call Research Grants for Young Investigators from Universidad Politécnica de Madrid (D.G.);
+  ICSC - Centro Nazionale di Ricerca in High-Performance Computing, Big Data and Quantum Computing, funded by European Union - NextGenerationEU (I.C.);
+  ACROSS project, HPC Big Data Artificial Intelligence Cross Stack Platform Towards Exascale, funded by the European High-Performance Computing Joint Undertaking (JU) under G.A. n. 955648 (I.C.);
+  EUPEX project, European Pilot for Exascale, funded by the European High-Performance Computing Joint Undertaking (JU) under G.A. n. 101033975 (I.C.);
   Life Science Database Integration Project, NBDC of Japan Science and
-  Technology Agency;
-  JSPS KAKENHI (Grant Number 20J22439);
+  Technology Agency (T.O.);
+  %JSPS KAKENHI (Grant Number 20J22439);
   European Commission Horizon 2020 
   %H2020-SC1-2018-Single-Stage-RTD
-  825575 (European Joint Programme on Rare Diseases; SC1-BHC-04-2018 Rare Disease European Joint Programme Cofund),
+  825575 (European Joint Programme on Rare Diseases; SC1-BHC-04-2018 Rare Disease European Joint Programme Cofund) (L.R.N., J.M.F., S.C.G.),
   %  European High-Performance Computing Joint Undertaking (JU) (No 955558),
   %EU NextGenerationEU/PRTR (project eFlows4HPC)
   %H2020-JTI-EuroHPC-2019-1 
-  955558 (eFlows4HPC),
+  955558 (eFlows4HPC) (R.S.),
   %H2020-INFRAEDI-02-2018 
   823830
-  (BioExcel-2), 
+  (BioExcel-2) (S.S.R.), 
   %H2020-INFRAEOSC-2018-2 
   824087
-  (EOSC-Life);
+  (EOSC-Life) (S.L., L.R.N., P.D.G., R.W., L.P., J.M.F., S.C.G., S.S.R.);
   Horizon Europe 
   %HORIZON-INFRA-2021-EMERGENCY-01
-  101046203 (BY-COVID),
+  101046203 (BY-COVID) (S.L., L.R.N., P.D.G., R.W., L.P., J.M.F., S.C.G., S.S.R.),
   %HORIZON-INFRA-2021-EOSC-01
-  101057388 (EuroScienceGateway),
+  101057388 (EuroScienceGateway) (P.D.G., J.M.F., S.C.G., S.S.R.),
   %HORIZON-INFRA-2021-EOSC-01-05
-  101057344 (FAIR-IMPACT);
+  101057344 (FAIR-IMPACT) (D.G., S.S.R.);
   UK Research and Innovation (UKRI) under the UK government's Horizon
   Europe funding guarantee 
   10038963 (EuroScienceGateway), 
-  10038992 (FAIR-IMPACT).
+  10038992 (FAIR-IMPACT) (S.S.R.).
 %%
 
+H.S. is founder and CEO of the Software company Sator Inc., Tokyo, which did not fund the present work.
+
+The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.
 
 \subsection*{Author contributions}
 Author contributions following the CRediT Taxonomy:
@@ -1295,7 +1308,8 @@ Conceptualization, Formal Analysis, Funding Acquisition, Investigation, Methodol
 %% Our referencces
 %% 
 %% Follows https://s11.no/2021/house-rules/citation-style/ for now
-
+%% PLOS ONE requires https://www.nlm.nih.gov/bsd/uniform_requirements.html
+%% See https://journals.plos.org/plosone/s/submission-guidelines#loc-references
 
 
 
@@ -1304,80 +1318,72 @@ Conceptualization, Formal Analysis, Funding Acquisition, Investigation, Methodol
 %p1
 
 \bibitem{Moreau 2013}
-Luc Moreau, Paolo Missier, Khalid Belhajjame, Reza B'Far, James Cheney, Sam Coppens, Stephen Cresswell, Yolanda Gil, Paul Groth, Graham Klyne, Timothy Lebo, Jim McCusker, Simon Miles, James Myers, Satya Sahoo, Curt Tilmes (2013):\\
-\textbf{PROV-DM: The PROV Data Model}. \\
-\emph{W3C Recommendation 30 April 2013}.\\
-\url{https://www.w3.org/TR/2013/REC-prov-dm-20130430/}.
+Moreau L, Missier P, Belhajjame K, B'Far R, Cheney J, Coppens S, et al.
+PROV-DM: The PROV Data Model. W3C Recommendation 30 April 2013 [cited 2023 Dec 7].
+\url{https://www.w3.org/TR/2013/REC-prov-dm-20130430/}
 
 \bibitem{Herschel 2017}
- Melanie Herschel, Ralf Diestelkämper, Houssem Ben Lahmar (2017):\\
-\textbf{A survey on provenance: What for? What form? What from?}\\
-\emph{The VLDB Journal} \textbf{26}:881--906.\\
-\url{https://doi.org/10.1007/s00778-017-0486-1}
+Herschel M, Diestelkämper R, Ben Lahmar H.
+A survey on provenance: What for? What form? What from?
+The VLDB Journal, 2017;26:881--906.
+doi: \href{https://doi.org/10.1007/s00778-017-0486-1}{10.1007/s00778-017-0486-1}
 
 \bibitem{Gauthier 2019}
-Jeff Gauthier, Antony T Vincent, Steve J Charette, Nicolas Derome (2019):\\
-\textbf{A brief history of bioinformatics}.\\
-\emph{Briefings in Bioinformatics} \textbf{20}(6):1981--1996\\
-\url{https://doi.org/10.1093/bib/bby063}
+Gauthier J, Vincent AT, Charette SJ, Derome N.
+A brief history of bioinformatics.
+Briefings in Bioinformatics, 2019;20(6):1981--1996.
+doi: \href{https://doi.org/10.1093/bib/bby063}{10.1093/bib/bby063}
 
 \bibitem{Himanen 2019}
-Lauri Himanen, Amber Geurts, Adam Stuart Foster, Patrick Rinke (2019):\\
-\textbf{Data-Driven Materials Science: Status, Challenges, and Perspectives.}\\
-\emph{Advanced Science} \textbf{6}(21):1900808\\
-\url{https://doi.org/10.1002/advs.201900808}
-
+Himanen L, Geurts A, Foster AS, Rinke P.
+Data-Driven Materials Science: Status, Challenges, and Perspectives.
+Advanced Science, 2019;6(21):1900808.
+doi: \href{https://doi.org/10.1002/advs.201900808}{10.1002/advs.201900808}
 
 \bibitem{Huntingford 2019}
- Chris Huntingford, Elizabeth S Jeffers, Michael B Bonsall, Hannah M Christensen, Thomas Lees and Hui Yang (2019):\\
-\textbf{Machine learning and artificial intelligence to aid climate change research and preparedness.}\\
-\emph{Environmental Research Letters} \textbf{14}(12):124007\\
-\url{https://doi.org/10.1088/1748-9326/ab4e55}
+Huntingford C, Jeffers ES, Bonsall MB, Christensen HM, Lees T, Yang H.
+Machine learning and artificial intelligence to aid climate change research and preparedness.
+Environmental Research Letters, 2019;14(12):124007.
+doi: \href{https://doi.org/10.1088/1748-9326/ab4e55}{10.1088/1748-9326/ab4e55}
 
 \bibitem{Lebo 2013}
- Timothy Lebo, Satya Sahoo, Deborah McGuinness, Khalid
-Belhajjame, James Cheney, David Corsar, Daniel Garijo, Stian
-Soiland-Reyes, Stephan Zednik, Jun Zhao (2013):\\
-\textbf{PROV-O: The PROV Ontology}.\\
-\emph{W3C Recommendation} 30 April 2013.\\
+Lebo T, Sahoo S, McGuinness D, Belhajjame K, Cheney J, Corsar D, et al.
+PROV-O: The PROV Ontology.
+W3C Recommendation 30 April 2013 [cited 2023 Dec 7].
 \url{https://www.w3.org/TR/2013/REC-prov-o-20130430/}
 
 \bibitem{W3C OWL Working Group 2012}
-W3C OWL Working Group (2012):\\
-\textbf{OWL 2 Web Ontology Language Document Overview (Second Edition)}.
-\emph{W3C Recommendation} 11 December 2012.\\
+W3C OWL Working Group.
+OWL 2 Web Ontology Language Document Overview (Second Edition). W3C Recommendation 11 December 2012 [cited 2023 Dec 7].
 \url{http://www.w3.org/TR/2012/REC-owl2-overview-20121211/}
 
 \bibitem{Missier 2013}
-Paolo Missier, Saumen Dey, Khalid Belhajjame, Víctor Cuevas-Vicenttín, Bertram Ludäscher (2013):\\
-\textbf{D-PROV: extending the PROV provenance model with workflow structure}.\\
-\emph{Proceedings of the 5th USENIX Workshop on the Theory and Practice of Provenance (TaPP '13)}. \\
-\url{https://doi.org/10.5555/2482949.2482961}
+Missier P, Dey S, Belhajjame K, Cuevas-Vicenttín V, Ludäscher B.
+D-PROV: extending the PROV provenance model with workflow structure.
+In Proceedings of the 5th USENIX Workshop on the Theory and Practice of Provenance (TaPP '13), 2013.
 
 \bibitem{Cuevas-Vicenttín 2016}
-Víctor Cuevas-Vicenttín, Bertram Ludäscher, Paolo Missier, Khalid Belhajjame, Fernando Chirigati, Yaxing Wei, Saumen Dey, Parisa Kianmajd, David Koop, Shawn Bowers, Ilkay Altintas, Christopher Jones, Matthew B. Jones, Lauren Walker, Peter Slaughter, Ben Leinfelder, Yang Cao (2016):\\
-\textbf{ProvONE: A PROV Extension Data Model for Scientific Workflow Provenance}.\\
+Cuevas-Vicenttín V, Ludäscher B, Missier P, Belhajjame K, Chirigati F, Wei Y, et al.
+ProvONE: A PROV Extension Data Model for Scientific Workflow Provenance, 2016 [cited 2023 Dec 7].
 \url{https://purl.dataone.org/provone-v1-dev}
-accessed 2023-08-28
 
 \bibitem{Garijo 2011} 
-Daniel Garijo, Yolanda Gil (2011):\\
-\textbf{A new approach for publishing workflows: abstractions, standards, and linked data}.\\
-\emph{Proceedings of the 6th workshop on Workflows in support of large-scale science (WORKS '11)}.\\
-\url{https://doi.org/10.1145/2110497.2110504}
+Garijo D, Gil Y.
+A new approach for publishing workflows: abstractions, standards, and linked data.
+In Proceedings of the 6th workshop on Workflows in support of large-scale science (WORKS '11) 2011.
+doi: \href{https://doi.org/10.1145/2110497.2110504}{10.1145/2110497.2110504}
 
 \bibitem{Garijo 2012}
-Daniel Garijo, Yolanda Gil (2012):\\
-\textbf{Augmenting PROV with Plans in P-PLAN: Scientific Processes as Linked Data}.\\
-\emph{Proceedings of the Second International Workshop on Linked Science 2012 - Tackling Big Data}. (LISC 2021)\\
-\emph{CEUR Workshop Proceedings} \textbf{951}\\
-\url{https://ceur-ws.org/Vol-951/paper6.pdf}
+Garijo D, Gil Y.
+Augmenting PROV with Plans in P-PLAN: Scientific Processes as Linked Data.
+In Proceedings of the Second International Workshop on Linked Science, 2012.
+% \url{https://ceur-ws.org/Vol-951/paper6.pdf}
 
 \bibitem{Freire 2008}
-Juliana Freire, David Koop, Emanuele Santos, Cl Silva (2008):\\
-\textbf{Provenance for Computational Tasks: A Survey}\\
-\emph{Computing in Science \& Engineering} \textbf{10}(3) 11-21\\
-\url{https://doi.org/10.1109/MCSE.2008.79}
+Freire J, Koop D, Santos E, Silva CT.
+Provenance for Computational Tasks: A Survey.
+Computing in Science \& Engineering 2012;{10}(3):11--21.
+doi: \href{https://doi.org/10.1109/MCSE.2008.79}{10.1109/MCSE.2008.79}
 
 %\bibitem{Deelman 2005}
 %Ewa Deelman, Gurmeet Singh, Mei-Hui Su, James Blythe, Yolanda Gil, Carl Kesselman, Gaurang Mehta, Karan Vahi, G. Bruce Berriman, John Good, Anastasia Laity, Joseph C. Jacob, Daniel S. Katz (2005)\\
@@ -1386,557 +1392,510 @@ Juliana Freire, David Koop, Emanuele Santos, Cl Silva (2008):\\
 %\url{https://doi.org/10.1155/2005/128026}
 
 \bibitem{Garijo 2014}
-Daniel Garijo, Yolanda Gil, Oscar Corcho (2014):\\
-\textbf{Towards Workflow Ecosystems through Semantic and Standard Representations}.\\
-\emph{9th Workshop on Workflows in Support of Large-Scale Science (WORKS 2014)}\\
-\url{https://doi.org/10.1109/works.2014.13} 
+Garijo D, Gil Y, Corcho O.
+Towards Workflow Ecosystems through Semantic and Standard Representations.
+In Proceedings of the 9th Workshop on Workflows in Support of Large-Scale Science 2014.
+doi: \href{https://doi.org/10.1109/works.2014.13}{10.1109/works.2014.13}
 
 \bibitem{Gil 2011}
-Yolanda Gil, Varun Ratnakar, Jihie Kim, Pedro Gonzalez-Calero, Paul Groth, Joshua Moody, Ewa Deelman (2011):\\
-\textbf{Wings: Intelligent Workflow-Based Design of Computational Experiments}.\\
-\emph{IEEE Intelligent Systems} \textbf{26}(1) \\
-\url{https://doi.org/10.1109/MIS.2010.9}
-
+Gil Y, Ratnakar V, Kim J, Gonzalez-Calero P, Groth P, Moody J, et al.
+Wings: Intelligent Workflow-Based Design of Computational Experiments.
+IEEE Intelligent Systems 2011;26(1).
+doi: \href{https://doi.org/10.1109/MIS.2010.9}{10.1109/MIS.2010.9}
 
 \bibitem{Costa 2013}
-Flavio Costa, Vítor Silva, Daniel de Oliveira, Kary Ocaña, Eduardo Ogasawara, Jonas Dias, Marta Mattoso (2013):\\
-\textbf{Capturing and querying workflow runtime provenance with PROV}: a practical approach.\\
-\emph{Proceedings of the Joint EDBT/ICDT 2013 Workshops (EDBT '13)}\\
-\url{https://doi.org/10.1145/2457317.2457365} 
+Costa F, Silva V, de Oliveira D, Ocaña K, Ogasawara E, Dias J, et al.
+Capturing and querying workflow runtime provenance with PROV: a practical approach.
+In Proceedings of the Joint EDBT/ICDT 2013 Workshops 2013.
+doi: \href{https://doi.org/10.1145/2457317.2457365}{10.1145/2457317.2457365}
 
-
-\bibitem{Scheidegger 2008} Carlos E. Scheidegger, Huy T. Vo, David Koop, Juliana Freire, Claudio T. Silva (2008):\\
-\textbf{Querying and re-using workflows with VisTrails}.\\
-\emph{Proceedings of the 2008 ACM SIGMOD international conference on Management of data (SIGMOD '08)}.\\
-\url{https://doi.org/10.1145/1376616.1376747}
+\bibitem{Scheidegger 2008}
+Scheidegger CE, Vo HT, Koop D, Freire J, Silva CT.
+Querying and re-using workflows with VisTrails.
+In Proceedings of the 2008 ACM SIGMOD international conference on Management of data 2008.
+doi: \href{https://doi.org/10.1145/1376616.1376747}{10.1145/1376616.1376747}
 
 \bibitem{Atkinson 2017}
-Malcolm Atkinson, Sandra Gesing, Johan Montagnat, Ian Taylor (2017):\\
-\textbf{Scientific workflows: Past, present and future}.\\
-\emph{Future Generation Computer Systems} \textbf{75}\\
-\url{https://doi.org/10.1016/j.future.2017.05.041}
+Atkinson M, Gesing S, Montagnat J, Taylor I.
+Scientific workflows: Past, present and future.
+Future Generation Computer Systems 2017;75:216--227.
+doi: \href{https://doi.org/10.1016/j.future.2017.05.041}{10.1016/j.future.2017.05.041}
 
 \bibitem{Pérez 2018}
-Beatriz Pérez, Julio Rubio, Carlos Sáenz-Adán (2018):\\
-\textbf{A systematic review of provenance systems}.\\
-\emph{Knowledge and Information Systems} \textbf{57}\\
-\url{https://doi.org/10.1007/s10115-018-1164-3} 
-
+Pérez B, Rubio J, Sáenz-Adán C.
+A systematic review of provenance systems.
+Knowledge and Information Systems 2018;57:495--543.
+doi: \href{https://doi.org/10.1007/s10115-018-1164-3}{10.1007/s10115-018-1164-3}
 
 \bibitem{Belhajjame 2015}
-Khalid Belhajjame, Jun Zhao, Daniel Garijo, Matthew Gamble, Kristina Hettne, Raul Palma, Eleni Mina, Oscar Corcho, José Manuel Gómez-Pérez, Sean Bechhofer, Graham Klyne, Carole Goble
-(2015):\\
-\textbf{Using a suite of ontologies for preserving workflow-centric research objects}.\\
-\emph{Web Semantics: Science, Services and Agents on the World Wide Web} \textbf{32}\\
-\url{https://doi.org/10.1016/j.websem.2015.01.003}
-
+Belhajjame K, Zhao J, Garijo D, Gamble M, Hettne K, Palma R, et al.
+Using a suite of ontologies for preserving workflow-centric research objects.
+Journal of Web Semantics 2015;32:16--42.
+doi: \href{https://doi.org/10.1016/j.websem.2015.01.003}{10.1016/j.websem.2015.01.003}
 
 \bibitem{Bechhofer 2013}
-Sean Bechhofer, Iain Buchan, David De Roure, Paolo
-Missier, John Ainsworth, Jiten Bhagat, Philip Couch, Don Cruickshank,
-Mark Delderfield, Ian Dunlop, Matthew Gamble, Danius Michaelides, Stuart
-Owen, David Newman, Shoaib Sufi, Carole Goble (2013):\\
-\textbf{Why linked data is not enough for scientists.}\\
-Future Generation Computer Systems \textbf{29}(2):599-611\\
-\url{https://doi.org/10.1016/j.future.2011.08.004}
+Bechhofer S, Buchan I, De Roure D, Missier P, Ainsworth J, Bhagat J, et al.
+Why linked data is not enough for scientists.
+Future Generation Computer Systems 2013;29(2):599--611.
+doi: \href{https://doi.org/10.1016/j.future.2011.08.004}{10.1016/j.future.2011.08.004}
 
-\bibitem{Samuel 2022} Sheeba Samuel, Birgitta König-Ries (2022): \\
-\textbf{End-to-End provenance representation for the understandability and reproducibility of scientific experiments using a semantic approach}. \\
-\emph{Journal of Biomedical Semantics} \textbf{13}:1 \\
-\url{https://doi.org/10.1186/s13326-021-00253-1}
+\bibitem{Samuel 2022}
+Samuel S, König-Ries B.
+End-to-End provenance representation for the understandability and reproducibility of scientific experiments using a semantic approach.
+Journal of Biomedical Semantics 2022;13:1.
+doi: \href{https://doi.org/10.1186/s13326-021-00253-1}{10.1186/s13326-021-00253-1}
 
 
 % p2
 
 \bibitem{Khan 2019}
- Farah Zaib Khan, Stian Soiland-Reyes, Richard O.
-Sinnott, Andrew Lonie, Carole Goble, Michael R. Crusoe (2019):\\
-\textbf{Sharing interoperable workflow provenance: A review of best
-practices and their practical application in CWLProv}.\\
-\emph{GigaScience} \textbf{8}(11):giz095\\
-\url{https://doi.org/10.1093/gigascience/giz095}
+Khan FZ, Soiland-Reyes S, Sinnott RO, Lonie A, Goble C, Crusoe MR.
+Sharing interoperable workflow provenance: A review of best practices and their practical application in CWLProv.
+GigaScience 2019;8(11):giz095.
+doi: \href{https://doi.org/10.1093/gigascience/giz095}{10.1093/gigascience/giz095}
 
 \bibitem{Chard 2016}
-Kyle Chard, Mike D' Arcy, Ben Heavner, Ian Foster, Carl
-Kesselman, Ravi Madduri, Alexis Rodriguez, Stian Soiland-Reyes, Carole
-Goble, Kristi Clark, Eric W. Deutsch, Ivo Dinov, Nathan Price, Arthur
-Toga~(2016):\\
-\textbf{I'll take that to go: Big data bags and minimal identifiers for
-exchange of large, complex datasets}.\\
-\emph{2016 IEEE International Conference on Big Data (Big Data)}, IEEE,
-pp.~319--328.\\
-ISBN 978-1-4673-9005-7.\\
+Chard K, D'Arcy M, Heavner B, Foster I, Kesselman C, Madduri R, et al.
+I'll take that to go: Big data bags and minimal identifiers for exchange of large, complex datasets.
+2016 IEEE International Conference on Big Data (Big Data) 2016;319--328.
 %\url{https://static.aminer.org/pdf/fa/bigdata2016/BigD418.pdf}\\
-\url{https://doi.org/10.1109/BigData.2016.7840618}
+doi: \href{https://doi.org/10.1109/BigData.2016.7840618}{10.1109/BigData.2016.7840618}
 
 \bibitem{Soiland-Reyes 2018}
-Stian Soiland-Reyes, Farah Zaib Khan, Michael R Crusoe (2018):\\
-\textbf{common-workflow-language/cwlprov: CWLProv 0.6.0}.\\
-\emph{Zenodo}.\\
-\url{https://doi.org/10.5281/zenodo.1471585}
+Soiland-Reyes S, Khan FZ, Crusoe MR.
+common-workflow-language/cwlprov: CWLProv 0.6.0.
+Zenodo, 2018.
+doi: \href{https://doi.org/10.5281/zenodo.1471585}{10.5281/zenodo.1471585}
 
-\bibitem{Soiland-Reyes 2016} 
-Stian Soiland-Reyes, Pinar Alper, Carole Goble (2016):\\
-\textbf{Tracking workflow execution with TavernaProv}.\\
-\emph{PROV: Three Years Later (P3YL)}, ProvenanceWeek 2016, Virginia, Washington DC, United States. \\
-\url{https://doi.org/10.5281/zenodo.51314}
+\bibitem{Soiland-Reyes 2016}
+Soiland-Reyes S, Alper P, Goble C.
+Tracking workflow execution with TavernaProv.
+Zenodo, 2016.
+doi: \href{https://doi.org/10.5281/zenodo.51314}{10.5281/zenodo.51314}
 
 \bibitem{Crusoe 2022}
-Michael R. Crusoe, Sanne Abeln, Alexandru Iosup, Peter Amstutz, John Chilton, Nebojša Tijanić, Hervé Ménager, Stian Soiland-Reyes, Bogdan Gavrilović, Carole Goble, The CWL Community
-(2022):\\
-\textbf{Methods Included: Standardizing Computational Reuse and
-Portability with the Common Workflow Language}.\\
-\emph{Communications of the ACM} \textbf{65}(6)\\
-\url{https://doi.org/10.1145/3486897}
+Crusoe MR, Abeln S, Iosup A, Amstutz P, Chilton J, Tijanić N, et al.
+Methods Included: Standardizing Computational Reuse and Portability with the Common Workflow Language.
+Communications of the ACM, 2022;65(6):54--63.
+doi: \href{https://doi.org/10.1145/3486897}{10.1145/3486897}
 
 \bibitem{Amstutz 2023}
-Peter Amstutz, Michael R. Crusoe, Farah Zaib Khan, Stian Soiland-Reyes, Manvendra Singh, Kapil kumar, John Chilton, Thomas Hickman, boysha, Tomoya Tanjo, Rupert Nash, Kevin Hannon, ash, Michael Kotliar, Brad Chapman, Andrey Kartashov, Guillermo Carrasco, Dan Leehr, Nebojsa Tijanic, Joshua C. Randall, Miguel Boland, bogdang989, Chuck McCallum, Hervé Ménager, Pau Ruiz Safont, Bruno P. Kinoshita, Denis Yuen, Gijs Molenaar (2023):\\
-\textbf{common-workflow-language/cwltool: 3.1.20230127121939.}\\
-\url{https://doi.org/10.5281/zenodo.7575947}
+Amstutz P, Crusoe MR, Khan FZ, Soiland-Reyes S, Singh M, Kumar K, et al.
+common-workflow-language/cwltool: 3.1.20230127121939.
+Zenodo, 2023.
+doi: \href{https://doi.org/10.5281/zenodo.7575947}{10.5281/zenodo.7575947}
 
 \bibitem{Lordan 2014}
- Francesc Lordan, Enric Tejedor, Jorge Ejarque, Roger
-Rafanell, Javier Álvarez, Fabrizio Marozzo, Daniele Lezzi, Raül Sirvent,
-Domenico Talia, Rosa M. Badia (2014):\\
-\textbf{ServiceSs: An interoperable programming framework for the
-cloud.}\\
-\emph{Journal of Grid Computing}, 12(1)\\
-\url{https://doi.org/10.1007/s10723-013-9272-5}
+Lordan F, Tejedor E, Ejarque J, Rafanell R, Álvarez J, Marozzo F, et al.
+ServiceSs: An interoperable programming framework for the cloud.
+Journal of Grid Computing 2014;12:67--91.
+doi: \href{https://doi.org/10.1007/s10723-013-9272-5}{10.1007/s10723-013-9272-5}
 
 \bibitem{Chard 2019}
-Kyle Chard, Niall Gaffney, Matthew B. Jones, Kacper
-Kowalik, Bertram Ludäscher, Timothy McPhillips, Jarek Nabrzyski,
-Victoria Stodden, Ian Taylor, Thomas Thelen, Matthew J. Turk, Craig
-Willis (2019):\\
-\textbf{Application of BagIt-Serialized Research Object Bundles for Packaging and Re-Execution of Computational Analyses}.\\
-\emph{2019 15th International Conference on eScience (eScience)}\\
-\url{https://doi.org/10.1109/eScience.2019.00068}
+Chard K, Gaffney N, Jones MB, Kowalik K, Ludäscher B, McPhillips T, et al.
+Application of BagIt-Serialized Research Object Bundles for Packaging and Re-Execution of Computational Analyses.
+2019 15th International Conference on eScience (eScience) 2019.
+doi: \href{https://doi.org/10.1109/eScience.2019.00068}{10.1109/eScience.2019.00068}
 
 \bibitem{Soiland-Reyes 2022a}
-Stian Soiland-Reyes, Peter Sefton, Mercè
-Crosas, Leyla Jael Castro, Frederik Coppens, José M. Fernández, Daniel
-Garijo, Björn Grüning, Marco La Rosa, Simone Leo, Eoghan Ó Carragáin,
-Marc Portier, Ana Trisovic, RO-Crate Community, Paul Groth, Carole Goble
-(2022):\\
-\textbf{Packaging research artefacts with RO-Crate}.\\
-\emph{Data Science} \textbf{5}(2) pp. 97--138\\
-\url{https://doi.org/10.3233/DS-210053}
+Soiland-Reyes S, Sefton P, Crosas M, Castro LJ, Coppens F, Fernández JM, et al.
+Packaging research artefacts with RO-Crate.
+Data Science 2022;5(2):97--138.
+doi: \href{https://doi.org/10.3233/DS-210053}{10.3233/DS-210053}
 
 \bibitem{Guha 2015}
-R.V. Guha, Dan Brickley and Steve Macbeth (2015):\\
-\textbf{Schema.org: Evolution of Structured Data on the Web: Big data makes common schemas even more necessary.}\\
-\emph{Queue} \textbf{13}(9) pp. 10--37\\
-\url{https://doi.org/doi:10.1145/2857274.2857276}
+Guha RV, Brickley D, Macbeth S.
+Schema.org: Evolution of Structured Data on the Web: Big data makes common schemas even more necessary.
+Queue 2015;13(9):10--37.
+doi: \href{https://doi.org/doi:10.1145/2857274.2857276}{doi:10.1145/2857274.2857276}
 
 \bibitem{w3-json-ld}
-Manu Sporny, Dave Longley, Gregg Kellogg, Markus Lanthaler, Pierre-Antoine Champin, Niklas Lindström (2020):\\
-\textbf{JSON-LD 1.1: A JSON-based Serialization for Linked Data}.\\
-\emph{W3C Recommendation} 16 July 2020\\
+Sporny M, Longley D, Kellogg G, Lanthaler M, Champin PA, Lindström N.
+JSON-LD 1.1: A JSON-based Serialization for Linked Data.
+W3C Recommendation 16 July 2020 [cited 2023 Dec 11].
 \url{https://www.w3.org/TR/2020/REC-json-ld11-20200716/}
 
-
 \bibitem{Goble 2021}
-Carole Goble, Stian Soiland-Reyes, Finn Bacall, Stuart Owen, Alan Williams, Ignacio Eguinoa, Bert Droesbeke, Simone Leo, Luca Pireddu, Laura Rodriguez-Navas, José Mª Fernández, Salvador Capella-Gutierrez, Hervé Ménager, Björn Grüning, Beatriz Serrano-Solano, Philip Ewels, Frederik Coppens (2021):\\
-\textbf{Implementing FAIR Digital Objects in the EOSC-Life Workflow Collaboratory}.\\
-\emph{Zenodo}\\
-\url{https://doi.org/10.5281/zenodo.4605654}
+Goble C, Soiland-Reyes S, Bacall F, Owen S, Williams A, Eguinoa I, et al.
+Implementing FAIR Digital Objects in the EOSC-Life Workflow Collaboratory.
+Zenodo, 2021.
+doi: \href{https://doi.org/10.5281/zenodo.4605654}{10.5281/zenodo.4605654}
 
-\bibitem{Bacall 2022} 
-Finn Bacall, Alan R. Williams, Stuart Owen, Stian Soiland-Reyes (2022):\\
-\textbf{Workflow RO-Crate Profile 1.0}.\\
-WorkflowHub community\\
+\bibitem{Bacall 2022}
+Bacall F, Williams AR, Owen S, Soiland-Reyes S.
+Workflow RO-Crate Profile 1.0.
+WorkflowHub community, 2022 [cited 2023 Dec 11].
 \url{https://w3id.org/workflowhub/workflow-ro-crate/1.0}
 
 \bibitem{Batista 2022}
-Dominique Batista, Alejandra Gonzalez-Beltran, Susanna-Assunta Sansone, Philippe Rocca-Serra (2022):\\
-\textbf{Machine actionable metadata models}.\\
-\emph{Scientific Data} \textbf{9}, 592.\\
-\url{https://doi.org/10.1038/s41597-022-01707-6}
+Batista D, Gonzalez-Beltran A, Sansone SA, Rocca-Serra P.
+Machine actionable metadata models.
+Scientific Data, 2022;9:592.
+doi: \href{https://doi.org/10.1038/s41597-022-01707-6}{10.1038/s41597-022-01707-6}
 
-\bibitem{Isaac 2009} 
-Antoine Isaac, Ed Summers (2009):\\
-\textbf{SKOS Simple Knowledge Organization System Primer}.\\
-\emph{W3C Working Group Note} 18 August 2009\\
-\url{https://www.w3.org/TR/2009/NOTE-skos-primer-20090818/} 
-
+\bibitem{Isaac 2009}
+Isaac A, Summers E.
+SKOS Simple Knowledge Organization System Primer.
+W3C Working Group Note 18 August 2009 [cited 2023 Dec 11].
+\url{https://www.w3.org/TR/2009/NOTE-skos-primer-20090818/}
 
 \bibitem{Soiland-Reyes 2022b}
- Stian Soiland-Reyes, Peter Sefton, Leyla Jael
-Castro, Frederik Coppens, Daniel Garijo, Simone Leo, Marc Portier, Paul
-Groth (2022):\\
-\textbf{Creating lightweight FAIR Digital Objects with RO-Crate.}\\
-Research Ideas and Outcomes \textbf{8}:e93937.\\
-\url{https://doi.org/10.3897/rio.8.e93937}
-
+Soiland-Reyes S, Sefton P, Castro LJ, Coppens F, Garijo D, Leo S, et al.
+Creating lightweight FAIR Digital Objects with RO-Crate.
+Research Ideas and Outcomes, 2022;8:e93937.
+doi: \href{https://doi.org/10.3897/rio.8.e93937}{10.3897/rio.8.e93937}
 
 \bibitem{Gray 2017}
-Alasdair JG Gray, Carole Goble, Rafael C Jimenez, The
-Bioschemas Community (2017):\\
-\textbf{Bioschemas: From Potato Salad to Protein Annotation.}\\
-ISWC (Posters, Demos \& Industry Tracks)\\
+Gray A, Goble C, Jimenez R, The Bioschemas Community (2017).
+Bioschemas: From Potato Salad to Protein Annotation.
+ISWC (Posters, Demos \& Industry Tracks), 2017.
 \url{https://iswc2017.semanticweb.org/paper-579/}
 
 \bibitem{WRROC 2023a}
- Workflow Run RO-Crate working group (2023):\\
-\textbf{Process Run Crate specification.} Version 0.4 \\
-\emph{Zenodo} \\
-\url{https://doi.org/10.5281/zenodo.10203944}
+Workflow Run RO-Crate working group.
+Process Run Crate specification. Version 0.4.
+Zenodo, 2023.
+doi: \href{https://doi.org/10.5281/zenodo.10203944}{10.5281/zenodo.10203944}
 
 \bibitem{Meurisse 2023}
-Marjan Meurisse, Francisco Estupiñán-Romero, Javier González-Galindo, Natalia Martínez-Lizaga, Santiago Royo-Sierra, Simon Saldner, Lorenz Dolanski-Aghamanoukjan, Alexander Degelsegger-Marquez, Stian Soiland-Reyes, Nina Van Goethem, Enrique Bernal-Delgado, On Behalf of BeYond-COVID project contributors~(2023): \\
-\textbf{Federated causal inference based on real-world observational data sources: application to a SARS-CoV-2 vaccine effectiveness assessment}.  \\
-\emph{BMC Medical Research Methodology} \textbf{23}:248\\
-\url{https://doi.org/10.1186/s12874-023-02068-3}\\
+Meurisse M, Estupiñán-Romero F, González-Galindo J, Martínez-Lizaga N, Royo-Sierra S, Saldner S, et al.
+Federated causal inference based on real-world observational data sources: application to a SARS-CoV-2 vaccine effectiveness assessment.
+BMC Medical Research Methodology 2023;23:248.
+doi: \href{https://doi.org/10.1186/s12874-023-02068-3}{10.1186/s12874-023-02068-3}
 
 \bibitem{WRROC 2023b}
- Workflow Run RO-Crate working group (2023):\\
-\textbf{Workflow Run Crate specification.} Version 0.4\\
-\emph{Zenodo} \\
-\url{https://doi.org/10.5281/zenodo.10203971}
-
+Workflow Run RO-Crate working group.
+Workflow Run Crate specification. Version 0.4.
+Zenodo, 2023.
+doi: \href{https://doi.org/10.5281/zenodo.10203971}{10.5281/zenodo.10203971}
 
 \bibitem{Koster 2012}
-Johannes Köster, Sven Rahmann \\
-\textbf{Snakemake--a scalable bioinformatics workflow engine}.\\
-\emph{Bioinformatics} \textbf{28}(10) pp. 2520--2522.\\
-\url{https://doi.org/10.1093/bioinformatics/bts480}
+Köster J, Rahmann S.
+Snakemake--a scalable bioinformatics workflow engine.
+Bioinformatics 2012;28(19):2520--2522.
+doi: \href{https://doi.org/10.1093/bioinformatics/bts480}{10.1093/bioinformatics/bts480}
 
 \bibitem{Colonnelli 2021}
-Iacopo Colonnelli, Barbara Cantalupo, Ivan Merelli, Marco Aldinucci (2021):\\
-\textbf{StreamFlow: cross-breeding Cloud with HPC}.\\
-\emph{IEEE Transactions on Emerging Topics in Computing} \textbf{9}(4) pp. 1723--1737\\
-\url{https://doi.org/10.1109/TETC.2020.3019202}
+Colonnelli I, Cantalupo B, Merelli I, Aldinucci M.
+StreamFlow: cross-breeding Cloud with HPC.
+IEEE Transactions on Emerging Topics in Computing, 2021;9(4):1723--1737.
+doi: \href{https://doi.org/10.1109/TETC.2020.3019202}{10.1109/TETC.2020.3019202}
 
 \bibitem{Galaxy 2022}
-The Galaxy Community, Enis Afgan, Anton Nekrutenko, Bjórn A Grüning, Daniel Blankenberg, Jeremy Goecks, Michael C Schatz, Alexander E Ostrovsky, Alexandru Mahmoud, Andrew J Lonie, Anna Syme, Anne Fouilloux, Anthony Bretaudeau, Anton Nekrutenko, Anup Kumar, Arthur C Eschenlauer, Assunta D DeSanto, Aysam Guerler, Beatriz Serrano-Solano, Bérénice Batut, Björn A Grüning, Bradley W Langhorst, Bridget Carr, Bryan A Raubenolt, Cameron J Hyde, Catherine J Bromhead, Christopher B Barnett, Coline Royaux, Cristóbal Gallardo, Daniel Blankenberg, Daniel J Fornika, Dannon Baker, Dave Bouvier, Dave Clements, David A de Lima Morais, David Lopez Tabernero, Delphine Lariviere, Engy Nasr, Enis Afgan, Federico Zambelli, Florian Heyl, Fotis Psomopoulos, Frederik Coppens, Gareth R Price, Gianmauro Cuccuru, Gildas Le Corguillé, Greg Von Kuster, Gulsum Gudukbay Akbulut, Helena Rasche, Hans-Rudolf Hotz, Ignacio Eguinoa, Igor Makunin, Isuru J Ranawaka, James P Taylor, Jayadev Joshi, Jennifer Hillman-Jackson, Jeremy Goecks, John M Chilton, Kaivan Kamali, Keith Suderman, Krzysztof Poterlowicz, Le Bras Yvan, Lucille Lopez-Delisle, Luke Sargent, Madeline E Bassetti, Marco Antonio Tangaro, Marius van den Beek, Martin Čech, Matthias Bernt, Matthias Fahrner, Mehmet Tekman, Melanie C Föll, Michael C Schatz, Michael R Crusoe, Miguel Roncoroni, Natalie Kucher, Nate Coraor, Nicholas Stoler, Nick Rhodes, Nicola Soranzo, Niko Pinter, Nuwan A Goonasekera, Pablo A Moreno, Pavankumar Videm, Petera Melanie, Pietro Mandreoli, Pratik D Jagtap, Qiang Gu, Ralf J M Weber, Ross Lazarus, Ruben H P Vorderman, Saskia Hiltemann, Sergey Golitsynskiy, Shilpa Garg, Simon A Bray, Simon L Gladman, Simone Leo, Subina P Mehta, Timothy J Griffin, Vahid Jalili, Vandenbrouck Yves, Victor Wen, Vijay K Nagampalli, Wendi A Bacon, Willem de Koning, Wolfgang Maier, Peter J Briggs (2022):\\
-\textbf{The Galaxy platform for accessible, reproducible and collaborative biomedical analyses: 2022 update}.\\
-\emph{Nucleic Acids Research} \textbf{50}(W1) pp. W345--51. \\
-\url{https://doi.org/10.1093/nar/gkac247}
+The Galaxy Community.
+The Galaxy platform for accessible, reproducible and collaborative biomedical analyses: 2022 update.
+Nucleic Acids Research 2022;50(W1):W345--W351.
+doi: \href{https://doi.org/10.1093/nar/gkac247}{10.1093/nar/gkac247}
 
 \bibitem{WRROC 2023c}
- Workflow Run RO-Crate working group (2023):\\
-\textbf{Provenance Run Crate specification.} Version 0.4\\
-\emph{Zenodo} \\
-\url{https://doi.org/10.5281/zenodo.10203978}
+Workflow Run RO-Crate working group.
+Provenance Run Crate specification. Version 0.4.
+Zenodo, 2023.
+doi: \href{https://doi.org/10.5281/zenodo.10203978}{10.5281/zenodo.10203978}
 
 \bibitem{runcrate}
-Simone Leo, Stian Soiland-Reyes (2023):\\
-\textbf{Runcrate}. version 0.5.0\\
-\emph{Zenodo}.\\
-\url{https://doi.org/10.5281/zenodo.10203433}
+Leo S, Soiland-Reyes S, Crusoe MR.
+Runcrate. Version 0.5.0.
+Zenodo, 2023.
+doi: \href{https://doi.org/10.5281/zenodo.10203433}{10.5281/zenodo.10203433}
 
 \bibitem{ro-crate-py}
-Paul De Geest, Bert Droesbeke, Ignacio Eguinoa, Alban Gaignard, Sebastiaan Huber, Bruno Kinoshita, Simone Leo, Luca Pireddu, Laura Rodríguez-Navas, Raül Sirvent, Stian Soiland-Reyes~(2023):\\
-\textbf{GitHub -- ResearchObject/ro-crate-py: Python library for
-RO-Crate}, version 0.9.0.\\
-\url{https://github.com/researchobject/ro-crate-py}\\
-\url{https://doi.org/10.5281/zenodo.10017862}
+De Geest P, Droesbeke B, Eguinoa I, Gaignard A, Huber S, Kinoshita B, et al.
+ResearchObject/ro-crate-py: ro-crate-py 0.9.0.
+Zenodo, 2023.
+doi: \href{https://doi.org/10.5281/zenodo.10017862}{10.5281/zenodo.10017862}
 
-\bibitem{De Geest 2022b} Paul De Geest, Frederik Coppens, Stian Soiland-Reyes, Ignacio Eguinoa, Simone Leo (2022):\\
-\textbf{Enhancing RDM in Galaxy by integrating RO-Crate}.\\
-\emph{Research Ideas and Outcomes} \textbf{8}:e95164\\
-\url{https://doi.org/10.3897/rio.8.e95164}
-
+\bibitem{De Geest 2022b}
+De Geest P, Coppens F, Soiland-Reyes S, Eguinoa I, Leo S.
+Enhancing RDM in Galaxy by integrating RO-Crate.
+Research Ideas and Outcomes, 2022;8:e95164.
+doi: \href{https://doi.org/10.3897/rio.8.e95164}{10.3897/rio.8.e95164}
 
 \bibitem{De Geest 2023}
-Paul De Geest (2023):\\
-\textbf{Run of an example Galaxy collection workflow}.\\
-\emph{Zenodo}.\\
-\url{https://doi.org/10.5281/zenodo.7785861}
-
+De Geest P.
+Run of an example Galaxy collection workflow.
+Zenodo, 2023.
+doi: \href{https://doi.org/10.5281/zenodo.7785861}{10.5281/zenodo.7785861}
 
 \bibitem{Sirvent 2022}
-Raul Sirvent, Javier Conejero, Francesc Lordan, Jorge Ejarque, Laura Rodriguez-Navas, Jose M. Fernandez, Salvador Capella-Gutierrez, Rosa M. Badia (2022):\\
-\textbf{Automatic, Efficient, and Scalable Provenance Registration for
-FAIR HPC Workflows.}\\
-\emph{2022 IEEE/ACM Workshop on Workflows in Support of Large-Scale Science (WORKS)} IEEE.\\
-\url{https://doi.org/10.1109/works56498.2022.00006}\\
+Sirvent R, Conejero J, Lordan F, Ejarque J, Rodriguez-Navas L, Fernandez JM, et al.
+Automatic, Efficient, and Scalable Provenance Registration for FAIR HPC Workflows.
+2022 IEEE/ACM Workshop on Workflows in Support of Large-Scale Science (WORKS), 2022.
+doi: \href{https://doi.org/10.1109/works56498.2022.00006}{10.1109/works56498.2022.00006}
 %\url{http://hdl.handle.net/2117/384589}
 
 \bibitem{Poiata 2016}
-Natalia Poiata, Claudio Satriano, Jean-Pierre Vilotte, Pascal Bernard, Kazushige Obara (2016):\\
-\textbf{Multiband array detection and location of seismic sources recorded by dense seismic networks}.\\
-\emph{Geophysical Journal International} \textbf{205}(3) pp. 1548--1573\\
-\url{https://doi.org/10.1093/gji/ggw071}
+Poiata N, Satriano C, Vilotte JP, Bernard P, Obara K.
+Multiband array detection and location of seismic sources recorded by dense seismic networks.
+Geophysical Journal International, 2016;205(3):1548--1573.
+doi: \href{https://doi.org/10.1093/gji/ggw071}{10.1093/gji/ggw071}
 
 \bibitem{Poiata 2023}
-Natalia Poiata, Claudio Satriano, Javier Conejero (2023):\\
-\textbf{BackTrackBB: Multi-band array detection and location of seismic sources (PyCOMPSs implementation).}\\
-\emph{Zenodo}\\
-\url{https://doi.org/10.5281/zenodo.7788030}
+Poiata N, Satriano C, Conejero J.
+BackTrackBB: Multi-band array detection and location of seismic sources (PyCOMPSs implementation).
+Zenodo, 2023.
+doi: \href{https://doi.org/10.5281/zenodo.7788030}{10.5281/zenodo.7788030}
 
 \bibitem{Ejarque 2023}
-Jorge Ejarque, Francesc Lordan, Rosa Maria Badia, Raul Sirvent, Daniele Lezzi, Fernando Vazquez, Cristian Tatu,  Gabriel Puigdemunt, Nihad Mammadli, Javier Conejero (2023):\\
-\textbf{COMPSs}. bsc-wdc/compss. Version 3.2\\
-\emph{Zenodo} \\
-\url{https://doi.org/10.5281/zenodo.7975340}
+Ejarque J, Lordan F, Badia RM, Sirvent R, Lezzi D, Vazquez F, et al.
+COMPSs. Version v3.2.
+Zenodo, 2023.
+doi: \href{https://doi.org/10.5281/zenodo.7975340}{10.5281/zenodo.7975340}
 
 \bibitem{Reis 2022}
-David Reis, Bruno Piedade, Filipe F, Correia, João Pedro Dias, Ademar Aguiar (2022):
-\textbf{Developing Docker and Docker-Compose Specifications}: A Developers’ Survey.\\
-\emph{IEEE Access} \textbf{10} pp. 2318--2329 \\
-\url{https://doi.org/10.1109/ACCESS.2021.3137671}
+Reis D, Piedade B, Correia FF, Dias JP, Aguiar A.
+Developing Docker and Docker-Compose Specifications: A Developers’ Survey.
+IEEE Access, 2022;10:2318--2329.
+doi: \href{https://doi.org/10.1109/ACCESS.2021.3137671}{10.1109/ACCESS.2021.3137671}
 
 \bibitem{Zerouali 2023}
-Ahmed Zerouali, Ruben Opdebeeck, Coen De Roover (2023):\\
-\textbf{Helm Charts for Kubernetes Applications: Evolution, Outdatedness and Security Risks}.\\
-\emph{IEEE/ACM 20th International Conference on Mining Software Repositories} (MSR), Melbourne, Australia \\
-\url{https://doi.org/10.1109/MSR59073.2023.00078}
+Zerouali A, Opdebeeck R, De Roover C.
+Helm Charts for Kubernetes Applications: Evolution, Outdatedness and Security Risks.
+2023 IEEE/ACM 20th International Conference on Mining Software Repositories, 2023;523--533.
+doi: \href{https://doi.org/10.1109/MSR59073.2023.00078}{10.1109/MSR59073.2023.00078}
 
-\bibitem{Colonnelli 2023b} Iacopo Colonnelli, Barbara Cantalupo, Marco Aldinucci, Gaetano Saitta, Alberto Mulone (2023):\\
-alpha-unito/streamflow version 0.2.0.dev10\\
-\emph{GitHub}\\
-\url{https://github.com/alpha-unito/streamflow/releases/tag/0.2.0.dev10}\\
+\bibitem{Colonnelli 2023b}
+Colonnelli I, Cantalupo B, Aldinucci M, Saitta G, Mulone A (2023):
+StreamFlow. Version 0.2.0.dev10.
+Software Heritage Archive, 2023.
+% \url{https://github.com/alpha-unito/streamflow/releases/tag/0.2.0.dev10}\\
 \url{https://identifiers.org/swh:1:rev:b2014add57189900fa5a0a0403b7ae3a384df73b}
 
 \bibitem{Fernández 2023b}
-José María Fernández González (2023):\\
-\textbf{RO-Crate from staged WfExS working directory} 047b6dfc-3547-4e09-92f8-df7143038ff4 (overbridging templon).\\
-\emph{Zenodo} \\
-\url{https://doi.org/10.5281/zenodo.10091550}
+Fernández González JM.
+RO-Crate from staged WfExS working directory 047b6dfc-3547-4e09-92f8-df7143038ff4 (overbridging templon).
+Zenodo, 2023.
+doi: \href{https://doi.org/10.5281/zenodo.10091550}{10.5281/zenodo.10091550}
 
-\bibitem{Bouyssié 2023} 
-David Bouyssié, Pınar Altıner, Salvador Capella-Gutierrez, José M. Fernández, Yanick Paco Hagemeijer, Peter Horvatovich, Martin Hubálek, Fredrik Levander, Pierluigi Mauri, Magnus Palmblad, Wolfgang Raffelsberger, Laura Rodríguez-Navas, Dario Di Silvestre, Balázs Tibor Kunkli, Julian Uszkoreit, Yves Vandenbrouck, Juan Antonio Vizcaíno, Dirk Winkelhardt, Veit Schwämmle (2023):\\
-\textbf{WOMBAT-P: Benchmarking Label-Free Proteomics Data Analysis Workflows}.\\
-\emph{bioRxiv} 2023.10.02.560412 \\
-\url{https://doi.org/10.1101/2023.10.02.560412}
+%\bibitem{Bouyssié 2023}
+%David Bouyssié, Pınar Altıner, Salvador Capella-Gutierrez, José M. Fernández, Yanick Paco Hagemeijer, Peter Horvatovich, Martin Hubálek, Fredrik Levander, Pierluigi Mauri, Magnus Palmblad, Wolfgang Raffelsberger, Laura Rodríguez-Navas, Dario Di Silvestre, Balázs Tibor Kunkli, Julian Uszkoreit, Yves Vandenbrouck, Juan Antonio Vizcaíno, Dirk Winkelhardt, Veit Schwämmle (2023):\\
+%\textbf{WOMBAT-P: Benchmarking Label-Free Proteomics Data Analysis Workflows}.\\
+%\emph{bioRxiv} 2023.10.02.560412 \\
+%\url{https://doi.org/10.1101/2023.10.02.560412}
+
+\bibitem{Bouyssié 2023}
+Bouyssié D, Altıner P, Capella-Gutierrez S, Fernández JM, Hagemeijer YP, Horvatovich P, et al.
+WOMBAT-P: Benchmarking Label-Free Proteomics Data Analysis Workflows.
+Journal of Proteome Research, 2023.
+doi: \href{https://doi.org/10.1021/acs.jproteome.3c00636}{10.1021/acs.jproteome.3c00636}
 
 \bibitem{Suetake 2022a}
- Hirotaka Suetake, Tomoya Tanjo, Manabu Ishii, Bruno
-P. Kinoshita, Takeshi Fujino, Tsuyoshi Hachiya, Yuichi Kodama, Takatomo
-Fujisawa, Osamu Ogasawara, Atsushi Shimizu, Masanori Arita, Tsukasa
-Fukusato, Takeo Igarashi, Tazro Ohta (2022):\\
-\textbf{Sapporo: A workflow execution service that encourages the reuse
-of workflows in various languages in bioinformatics}~[version 1; peer review: 2 approved with reservations].\\
-\emph{F1000Research} \textbf{11}:889\\
-\url{https://doi.org/10.12688/f1000research.122924.1}
+Suetake H, Tanjo T, Ishii M, Kinoshita BP, Fujino T, Hachiya T, et al.
+Sapporo: A workflow execution service that encourages the reuse of workflows in various languages in bioinformatics~[version 1; peer review: 2 approved with reservations].
+F1000Research 2022;11:889.
+doi: \href{https://doi.org/10.12688/f1000research.122924.1}{10.12688/f1000research.122924.1}
 
-\bibitem{Magee 2018}
-Patrick Magee, Lee Pang, Sarah Salahi (2018):\\
-\textbf{Workflow Execution Service (WES)}. Version 1.0\\
-\emph{Global Alliance for Genomics \& Health} (GA4GH)\\
-\url{https://www.ga4gh.org/product/workflow-execution-service-wes/}
-accessed 2023-12-05
+%\bibitem{Magee 2018}
+%Patrick Magee, Lee Pang, Sarah Salahi (2018):\\
+%\textbf{Workflow Execution Service (WES)}. Version 1.0\\
+%\emph{Global Alliance for Genomics \& Health} (GA4GH)\\
+%\url{https://www.ga4gh.org/product/workflow-execution-service-wes/}
+%accessed 2023-12-05
 
 \bibitem{Vivian 2017}
-John Vivian, Arjun Arkal Rao, Frank Austin Nothaft, Christopher Ketchum, Joel Armstrong, Adam Novak, Jacob Pfeil, Jake Narkizian, Alden D Deran, Audrey Musselman-Brown, Hannes Schmidt, Peter Amstutz, Brian Craft, Mary Goldman, Kate Rosenbloom, Melissa Cline, Brian O'Connor, Megan Hanna, Chet Birger, W James Kent, David A Patterson, Anthony D Joseph, Jingchun Zhu, Sasha Zaranek, Gad Getz, David Haussler, Benedict Paten (2017):\\
-\textbf{Toil enables reproducible, open source, big biomedical data analyses}.\\
-\emph{Nature Biotechnology} \textbf{35}(4) pp. 314--316 \\
-\url{https://doi.org/10.1038/nbt.3772}
+Vivian J, Rao AA, Nothaft FA, Ketchum C, Armstrong J, Novak A, et al.
+Toil enables reproducible, open source, big biomedical data analyses.
+Nature Biotechnology 2017;35(4):314--316.
+doi: \href{https://doi.org/10.1038/nbt.3772}{10.1038/nbt.3772}
 
 \bibitem{Suetake 2023}
- Hirotaka Suetake, Tsukasa Fukusato, Takeo Igarashi, Tazro Ohta (2023):\\
-\textbf{A workflow reproducibility scale for automatic validation of biological interpretation results}.\\
-\emph{GigaScience} \textbf{12}:iad031\\
-\url{https://doi.org/10.1093/gigascience/giad031}
+Suetake H, Fukusato T, Igarashi T, Ohta T.
+A workflow reproducibility scale for automatic validation of biological interpretation results.
+GigaScience 2023;12:giad031.
+doi: \href{https://doi.org/10.1093/gigascience/giad031}{10.1093/gigascience/giad031}
 
 \bibitem{Suetake 2023b}
-Hirotaka Suetake, Tazro Inutano Ohta, Tomoya Tanjo, Manabu ISHII, Bruno P. Kinoshita, DrYak (2023):\\
-\textbf{sapporo-wes/sapporo-service}: 1.5.1\\
-\emph{Zenodo}\\
-\url{https://doi.org/10.5281/zenodo.10134452}
+Suetake H, Ohta TI, Tanjo T, Ishii M, Kinoshita BP, DrYak.
+sapporo-wes/sapporo-service: 1.5.1.
+Zenodo, 2023.
+doi: \href{https://doi.org/10.5281/zenodo.10134452}{10.5281/zenodo.10134452}
 
 \bibitem{Ohta 2023}
-Tazro Ohta, Hirotaka Suetake (2023):\\
-\textbf{Example of Workflow Run RO-Crate Output in Sapporo}\\
-\emph{Zenodo}\\
-\url{https://doi.org/10.5281/zenodo.10134581}
-
+Ohta T, Suetake H.
+Example of Workflow Run RO-Crate Output in Sapporo.
+Zenodo, 2023.
+doi: \href{https://doi.org/10.5281/zenodo.10134581}{10.5281/zenodo.10134581}
 
 \bibitem{Manubens-Gil 2016}
-Domingo Manubens-Gil, Javier Vegas-Regidor, Chloe Prodhomme, Oriol Mula-Valls, Francisco J. Doblas-Reyes (2016):\\
-\textbf{Seamless management of ensemble climate prediction experiments on HPC platforms}.\\
-\emph{2016 International Conference on High Performance Computing & Simulation} (HPCS), Innsbruck, Austria, pp. 895-900 \\
-\url{https://doi.org/10.1109/HPCSim.2016.7568429}
+Manubens-Gil D, Vegas-Regidor J, Prodhomme C, Mula-Valls O, Doblas-Reyes FJ.
+Seamless management of ensemble climate prediction experiments on HPC platforms.
+2016 International Conference on High Performance Computing \& Simulation (HPCS), 2016;895-900.
+doi: \href{https://doi.org/10.1109/HPCSim.2016.7568429}{10.1109/HPCSim.2016.7568429}
 
 \bibitem{Yoo 2003} 
-Andy B. Yoo, Morris A. Jette, Mark Grondona (2003):\\
-\textbf{SLURM: Simple Linux Utility for Resource Management}.\\
-\emph{Job Scheduling Strategies for Parallel Processing} (JSSPP 2003). \\
-\emph{Lecture Notes in Computer Science} \textbf{2862}\\
-\url{https://doi.org/10.1007/10968987_3}
-
+Yoo AB, Jette MA, Grondona M.
+SLURM: Simple Linux Utility for Resource Management.
+Job Scheduling Strategies for Parallel Processing (JSSPP 2003). Lecture Notes in Computer Science, 2003;2862.
+doi: \href{https://doi.org/10.1007/10968987_3}{10.1007/10968987\_3}
 
 \bibitem{Feng 2007}
-Hanhua Feng, Vishal Misra, Dan Rubenstein (2007):\\
-\textbf{PBS: a unified priority-based scheduler}.\\
-\emph{Proceedings of the 2007 ACM SIGMETRICS international conference on Measurement and modeling of computer systems} (SIGMETRICS '07)\\
-\url{https://doi.org/10.1145/1254882.1254906} 
-
-
+Feng H, Misra V, Rubenstein D.
+PBS: a unified priority-based scheduler.
+Proceedings of the 2007 ACM SIGMETRICS international conference on Measurement and modeling of computer systems, 2007;203--214.
+doi: \href{https://doi.org/10.1145/1254882.1254906}{10.1145/1254882.1254906}
 
 \bibitem{Bahra 2011}
-Avi Bahra (2011):\\
-\textbf{Managing work flows with ecFlow.}\\
-\emph{ECMWF Newsletter} \textbf{129} pp. 30--32\\
-\url{https://doi.org/10.21957/nr843dob}
-
+Bahra A.
+Managing work flows with ecFlow.
+ECMWF Newsletter, 2011;129:30--32.
+doi: \href{https://doi.org/10.21957/nr843dob}{10.21957/nr843dob}
 
 \bibitem{Oliver 2019}
-Hilary Oliver, Matthew Shin, David Matthews, Oliver Sanders, Sadie Bartholomew, Andrew Clark, Ben Fitzpatrick, Ronald van Haren, Rolf Hut, Niels Drost
-(2019).\\
-\textbf{Workflow Automation for Cycling Systems.}\\
-\emph{Computing in Science & Engineering} \textbf{21}(4) pp. 7--21
-\url{https://doi.org/10.1109/MCSE.2019.2906593}
+Oliver H, Shin M, Matthews D, Sanders O, Bartholomew S, Clark A, et al.
+Workflow Automation for Cycling Systems.
+Computing in Science \& Engineering 2019;21(4):7--21.
+doi: \href{https://doi.org/10.1109/MCSE.2019.2906593}{10.1109/MCSE.2019.2906593}
 
-
-\bibitem{Beltrán 2023} Daniel Beltrán Mora, Miguel Castrillo, Manuel G. Marciani, Bruno P. Kinoshita, Luiggi Tenorio Ku, Aina Gaya-Àvila, Francesc Roura Adserias,  Pierre-Antoine Bretonnière, Oriol Mula Valls, Pablo Goitia, Julian Rodrigo Berlin,  Miguel Andrés-Martínez, Kim Serradell, Wilmer Uruchi Ticona,  Domingo Manubens-Gil, Larissa Batista Leite, Isabel Andreu-Burillo, Javier Vegas-Regidor, Hui Du, Danila Volpi, Fabian Lienert, Joan Giralt, Joan Lopez, Muhammad Asif, Virginie Guemas, Xavier Abellan Ecija (2023):\\
-\textbf{Autosubmit v4.0.100}.\\
-\emph{Zenodo} \\
-\url{https://doi.org/10.5281/zenodo.10199020}
-
+\bibitem{Beltrán 2023}
+Beltrán Mora D, Castrillo M, Marciani MG, Kinoshita BP, Tenorio-Ku L, Gaya-Àvila A, et al.
+Autosubmit 4.0.100.
+Zenodo, 2023.
+doi: \href{https://doi.org/10.5281/zenodo.10199020}{10.5281/zenodo.10199020}
 
 \bibitem{Goble 2020}
-Carole Goble, Sarah Cohen-Boulakia, Stian Soiland-Reyes, Daniel Garijo, Yolanda Gil, Michael R. Crusoe, Kristian Peters, Daniel Schober (2020):\\
-\textbf{FAIR Computational Workflows}.\\
-\emph{Data Intelligence} \textbf{2}(1):108--121\\
-\url{https://doi.org/10.1162/dint_a_00033}
+Goble C, Cohen-Boulakia S, Soiland-Reyes S, Garijo D, Gil Y, Crusoe MR, et al.
+FAIR Computational Workflows.
+Data Intelligence 2020;2(1-2):108--121.
+doi: \href{https://doi.org/10.1162/dint_a_00033}{10.1162/dint\_a\_00033}
 
 \bibitem{Kinoshita 2023}
-Bruno P. Kinoshita (2023):\\
-\textbf{RO-Crate created using Autosubmit version 4.0.100 workflow running kinow/auto-mhm-test-domains}.\\
-\emph{Zenodo}\\
-\url{https://doi.org/10.5281/zenodo.8144612}
+Kinoshita BP.
+RO-Crate created using Autosubmit version 4.0.100 workflow running kinow/auto-mhm-test-domains.
+Zenodo, 2023.
+doi: \href{https://doi.org/10.5281/zenodo.8144612}{10.5281/zenodo.8144612}
 
 \bibitem{Kumar 2013}
- Rohini Kumar, Luis Samaniego, Sabine Attinger (2013):\\
-\textbf{Implications of distributed hydrologic model parameterization on water fluxes at multiple scales and locations}.\\
-\emph{Water Resources Research} \textbf{49}(1) pp. 360--379\\
-\url{https://doi.org/10.1029/2012WR012195}
+Kumar R, Samaniego L, Attinger S.
+Implications of distributed hydrologic model parameterization on water fluxes at multiple scales and locations.
+Water Resources Research 2013;49(1):360--379.
+doi: \href{https://doi.org/10.1029/2012WR012195}{10.1029/2012WR012195}
 
 \bibitem{Samaniego 2010}
-Luis Samaniego, Rohini Kumar, Sabine Attinger (2010):\\
-\textbf{Multiscale parameter regionalization of a grid-based hydrologic model at the mesoscale}.\\
-\emph{Water Resources Research} \textbf{46}(5)\\
-\url{https://doi.org/10.1029/2008WR007327}
+Samaniego L, Kumar R, Attinger S.
+Multiscale parameter regionalization of a grid-based hydrologic model at the mesoscale.
+Water Resources Research, 2010;46(5).
+doi: \href{https://doi.org/10.1029/2008WR007327}{10.1029/2008WR007327}
 
 \bibitem{run-pathology}
-Simone Leo (2023):\\
-\textbf{Run of digital pathology tissue/tumor prediction workflow}.\\
-\emph{Zenodo}\\
-\url{https://doi.org/10.5281/zenodo.7774351}
+Leo S.
+Run of digital pathology tissue/tumor prediction workflow.
+Zenodo, 2023.
+doi: \href{https://doi.org/10.5281/zenodo.7774351}{10.5281/zenodo.7774351}
 
-\bibitem{Afgan 2023} 
-Enis Afgan, Istvan Albert, Renato Alves et al. (2023):\\
-\textbf{galaxyproject/galaxy} version 23.1.1\\
-\emph{GitHub}\\
-\url{https://github.com/galaxyproject/galaxy/releases/tag/v23.1.1}\\
+\bibitem{Galaxy 2023}
+The Galaxy Community.
+Galaxy. Version 23.1
+Software Heritage Archive, 2023.
+%\url{https://github.com/galaxyproject/galaxy/releases/tag/v23.1.1}\\
 \url{https://identifiers.org/swh:1:rel:33ce0ce4f6e3d77d5c0af8cff24b2f68ba8d57e9}
 
 \bibitem{Colonnelli 2023}
-Iacopo Colonnelli (2023):\\
-\textbf{StreamFlow run of digital pathology tissue/tumor prediction workflow}.\\
-\emph{Zenodo}\\
-\url{https://doi.org/10.5281/zenodo.7911906}
+Colonnelli I.
+StreamFlow run of digital pathology tissue/tumor prediction workflow.
+Zenodo, 2023.
+doi: \href{https://doi.org/10.5281/zenodo.7911906}{10.5281/zenodo.7911906}
 
 \bibitem{Fernández 2023a}
-José María Fernández, Laura Rodríguez-Navas, Adrián Muñoz-Cívico, Paula Iborra, Daniel Lea (2023):\\
-\textbf{inab/WfExS-backend}. Version 0.10.1\\
-\emph{Zenodo} \\
-\url{https://doi.org/10.5281/zenodo.10068956}
+Fernández JM, Rodríguez-Navas L, Muñoz-Cívico A, Iborra P, Lea D.
+WfExS-backend. Version 0.10.1.
+Zenodo, 2023.
+doi: \href{https://doi.org/10.5281/zenodo.10068956}{10.5281/zenodo.10068956}
 
 \bibitem{Del Rio 2022}
-Mauro Del Rio, Luca Lianas, Oskar Aspegren, Giovanni Busonera, Francesco Versaci, Renata Zelic, Per H. Vincent, Simone Leo, Andreas Pettersson, Olof Akre, Luca Pireddu (2022):\\
-\textbf{AI Support for Accelerating Histopathological Slide Examinations of Prostate Cancer in Clinical Studies.}\\
-\emph{Image Analysis and Processing}. ICIAP 2022 Workshops. ICIAP 2022. \\
-\emph{Lecture Notes in Computer Science} \textbf{13373}\\
-\url{https://doi.org/10.1007/978-3-031-13321-3_48}
+Del Rio M, Lianas L, Aspegren O, Busonera G, Versaci F, Zelic R, et al.
+AI Support for Accelerating Histopathological Slide Examinations of Prostate Cancer in Clinical Studies.
+Image Analysis and Processing. ICIAP 2022 Workshops. ICIAP 2022. Lecture Notes in Computer Science 2022;13373.
+doi: \href{https://doi.org/10.1007/978-3-031-13321-3_48}{10.1007/978-3-031-13321-3\_48}
 
 \bibitem{Wittner 2022}
-Rudolf Wittner, Cecilia Mascia, Matej Gallo, Francesca Frexia, Heimo Müller, Markus Plass, Jörg Geiger, Petr Holub (2022):\\
-\textbf{Lightweight Distributed Provenance Model for Complex Real--world
-Environments.\\
-}\emph{Scientific Data} \textbf{9:}503 (2022).\\
-\url{https://doi.org/10.1038/s41597-022-01537-6}
+Wittner R, Mascia C, Gallo M, Frexia F, Müller H, Plass M, et al.
+Lightweight Distributed Provenance Model for Complex Real--world Environments.
+Scientific Data 2022;9:503.
+doi: \href{https://doi.org/10.1038/s41597-022-01537-6}{10.1038/s41597-022-01537-6}
 
 \bibitem{Wittner 2023b}
-Rudolf Wittner, Petr Holub, Cecilia Mascia, Francesca Frexia, Heimo Müller, Markus Plass, Clare Allocca, Fay Betsou, Tony Burdett, Ibon Cancio, Adriane Chapman, Martin Chapman, Mélanie Courtot, Vasa Curcin, Johann Eder, Mark Elliot, Katrina Exter, Carole Goble, Martin Golebiewski, Bron Kisler, Andreas Kremer, Simone Leo, Sheng Lin-Gibson, Anna Marsano, Marco Mattavelli, Josh Moore, Hiroki Nakae, Isabelle Perseil, Ayat Salman, James Sluka, Stian Soiland-Reyes, Caterina Strambio-De-Castillia, Michael Sussman, Jason R. Swedlow, Kurt Zatloukal, Jörg Geiger (2023):\\
-\textbf{Towards a Common Standard for Data and Specimen Provenance in
-Life Sciences}.\\
-\emph{Learning Health Systems} e10365\\
-\url{https://doi.org/10.1002/lrh2.10365}
+Wittner R, Holub P, Mascia C, Frexia F, Müller H, Plass M. et al.
+Towards a Common Standard for Data and Specimen Provenance in Life Sciences.
+Learning Health Systems 2023;e10365.
+doi: \href{https://doi.org/10.1002/lrh2.10365}{10.1002/lrh2.10365}
 
 \bibitem{Wittner 2023a}
- Rudolf Wittner, Matej Rudolf, Simone Leo, Stian Soiland-Reyes (2023).\\
-\textbf{Packing provenance using CPM RO-Crate profile} (Version 1.1).\\
-Dataset\\
-\emph{Zenodo}\\
-\url{https://doi.org/10.5281/zenodo.8095888}
+Wittner R, Gallo M, Leo S, Soiland-Reyes S.
+Packing provenance using CPM RO-Crate profile. Version 1.1.
+Zenodo, 2023.
+doi: \href{https://doi.org/10.5281/zenodo.8095888}{10.5281/zenodo.8095888}
 
-\bibitem{Ferreira 2022}
-Rafael Ferreira da Silva, Rosa M. Badia, Venkat Bala, Debbie Bard, Peer-Timo Bremer, Ian Buckley, Silvina Caino-Lores, Kyle Chard, Carole Goble, Shantenu Jha, Daniel S. Katz, Daniel Laney, Manish Parashar, Frederic Suter, Nick Tyler, Thomas Uram, Ilkay Altintas, Stefan Andersson, William Arndt, Juan Aznar, Jonathan Bader, Bartosz Balis, Chris Blanton, Kelly Rosa Braghetto, Aharon Brodutch, Paul Brunk, Henri Casanova, Alba Cervera Lierta, Justin Chigu, Taina Coleman, Nick Collier, Iacopo Colonnelli, Frederik Coppens, Michael Crusoe, Will Cunningham, Bruno de Paula Kinoshita, Paolo Di Tommaso, Charles Doutriaux, Matthew Downton, Wael Elwasif, Bjoern Enders, Chris Erdmann, Thomas Fahringer, Ludmilla Figueiredo, Rosa Filgueira, Martin Foltin, Anne Fouilloux, Luiz Gadelha, Andy Gallo, Artur Garcia Saez, Daniel Garijo, Roman Gerlach, Ryan Grant, Samuel Grayson, Patricia Grubel, Johan Gustafsson, Valerie Hayot-Sasson, Oscar Hernandez, Marcus Hilbrich, AnnMary Justine, Ian Laflotte, Fabian Lehmann, Andre Luckow, Jakob Luettgau, Ketan Maheshwari, Motohiko Matsuda, Doriana Medic, Pete Mendygral, Marek Michalewicz, Jorji Nonaka, Maciej Pawlik, Loic Pottier, Line Pouchard, Mathias Putz, Santosh Kumar Radha, Lavanya Ramakrishnan, Sashko Ristov, Paul Romano, Daniel Rosendo, Martin Ruefenacht, Katarzyna Rycerz, Nishant Saurabh, Volodymyr Savchenko, Martin Schulz, Christine Simpson, Raul Sirvent, Tyler Skluzacek, Stian Soiland-Reyes, Renan Souza, Sreenivas Rangan Sukumar, Ziheng Sun, Alan Sussman, Douglas Thain, Mikhail Titov, Benjamin Tovar, Aalap Tripathy, Matteo Turilli, Bartosz Tuznik, Hubertus van Dam, Aurelio Vivas , Logan Ward, Patrick Widener, Sean Wilkinson, Justyna Zawalska, Mahnoor Zulfiqar (2023):\\
-\textbf{Workflows Community Summit 2022}: A Roadmap Revolution.\\
-\emph{arXiv}:2304.00019\\
-\url{https://doi.org/10.48550/arXiv.2304.00019}
+\bibitem{Ferreira 2023}
+Ferreira da Silva R, Badia RM, Bala V, Bard D, Bremer PT, Buckley I, et al.
+Workflows Community Summit 2022: A Roadmap Revolution.
+arXiv:2304.00019, 2023.
+doi: \href{https://doi.org/10.48550/arXiv.2304.00019}{10.48550/arXiv.2304.00019}
 
 \bibitem{Rehm 2021}
-Heidi L. Rehm, Angela J.H. Page, Lindsay Smith, Jeremy B. Adams, Gil Alterovitz, Lawrence J. Babb, Maxmillian P. Barkley, Michael Baudis, Michael J.S. Beauvais, Tim Beck, Jacques S. Beckmann, Sergi Beltran, David Bernick, Alexander Bernier, James K. Bonfield, Tiffany F. Boughtwood, Guillaume Bourque, Sarion R. Bowers, Anthony J. Brookes, Michael Brudno, Matthew H. Brush, David Bujold, Tony Burdett, Orion J. Buske, Moran N. Cabili, Daniel L. Cameron, Robert J. Carroll, Esmeralda Casas-Silva, Debyani Chakravarty, Bimal P. Chaudhari, Shu Hui Chen, J. Michael Cherry, Justina Chung, Melissa Cline, Hayley L. Clissold, Robert M. Cook-Deegan, Mélanie Courtot, Fiona Cunningham, Miro Cupak, Robert M. Davies, Danielle Denisko, Megan J. Doerr, Lena I. Dolman, Edward S. Dove, L. Jonathan Dursi, Stephanie O.M. Dyke, James A. Eddy, Karen Eilbeck, Kyle P. Ellrott, Susan Fairley, Khalid A. Fakhro, Helen V. Firth, Michael S. Fitzsimons, Marc Fiume, Paul Flicek, Ian M. Fore, Mallory A. Freeberg, Robert R. Freimuth, Lauren A. Fromont, Jonathan Fuerth, Clara L. Gaff, Weiniu Gan, Elena M. Ghanaim, David Glazer, Robert C. Green, Malachi Griffith, Obi L. Griffith, Robert L. Grossman, Tudor Groza, Jaime M. Guidry Auvil, Roderic Guigó, Dipayan Gupta, Melissa A. Haendel, Ada Hamosh, David P. Hansen, Reece K. Hart, Dean Mitchell Hartley, David Haussler, Rachele M. Hendricks-Sturrup, Calvin W.L. Ho, Ashley E. Hobb, Michael M. Hoffman, Oliver M. Hofmann, Petr Holub, Jacob Shujui Hsu, Jean-Pierre Hubaux, Sarah E. Hunt, Ammar Husami, Julius O. Jacobsen, Saumya S. Jamuar, Elizabeth L. Janes, Francis Jeanson, Aina Jené, Amber L. Johns, Yann Joly, Steven J.M. Jones, Alexander Kanitz, Kazuto Kato, Thomas M. Keane, Kristina Kekesi-Lafrance, Jerome Kelleher, Giselle Kerry, Seik-Soon Khor, Bartha M. Knoppers, Melissa A. Konopko, Kenjiro Kosaki, Martin Kuba, Jonathan Lawson, Rasko Leinonen, Stephanie Li, Michael F. Lin, Mikael Linden, Xianglin Liu, Isuru Udara Liyanage, Javier Lopez, Anneke M. Lucassen, Michael Lukowski, Alice L. Mann, John Marshall, Michele Mattioni, Alejandro Metke-Jimenez, Anna Middleton, Richard J. Milne, Fruzsina Molnár-Gábor, Nicola Mulder, Monica C. Munoz-Torres, Rishi Nag, Hidewaki Nakagawa, Jamal Nasir, Arcadi Navarro, Tristan H. Nelson, Ania Niewielska, Amy Nisselle, Jeffrey Niu, Tommi H. Nyrönen, Brian D. O’Connor, Sabine Oesterle, Soichi Ogishima, Vivian Ota Wang, Laura A.D. Paglione, Emilio Palumbo, Helen E. Parkinson, Anthony A. Philippakis, Angel D. Pizarro, Andreas Prlic, Jordi Rambla, Augusto Rendon, Renee A. Rider, Peter N. Robinson, Kurt W. Rodarmer, Laura Lyman Rodriguez, Alan F. Rubin, Manuel Rueda, Gregory A. Rushton, Rosalyn S. Ryan, Gary I. Saunders, Helen Schuilenburg, Torsten Schwede, Serena Scollen, Alexander Senf, Nathan C. Sheffield, Neerjah Skantharajah, Albert V. Smith, Heidi J. Sofia, Dylan Spalding, Amanda B. Spurdle, Zornitza Stark, Lincoln D. Stein, Makoto Suematsu, Patrick Tan, Jonathan A. Tedds, Alastair A. Thomson, Adrian Thorogood, Timothy L. Tickle, Katsushi Tokunaga, Juha Törnroos, David Torrents, Sean Upchurch, Alfonso Valencia, Roman Valls Guimera, Jessica Vamathevan, Susheel Varma, Danya F. Vears, Coby Viner, Craig Voisin, Alex H. Wagner, Susan E. Wallace, Brian P. Walsh, Marc S. Williams, Eva C. Winkler, Barbara J. Wold, Grant M. Wood, J. Patrick Woolley, Chisato Yamasaki, Andrew D. Yates, Christina K. Yung, Lyndon J. Zass, Ksenia Zaytseva, Junjun Zhang, Peter Goodhand, Kathryn North, Ewan Birney (2021):\\
-\textbf{GA4GH: International policies and standards for data sharing
-across genomic research and healthcare}.\\
-\emph{Cell Genomics} \textbf{1}(2)\\
-\url{https://doi.org/10.1016/j.xgen.2021.100029}
+Rehm HL, Page AJH, Smith L, Adams JB, Alterovitz G, Babb LJ, et al.
+GA4GH: International policies and standards for data sharing across genomic research and healthcare.
+Cell Genomics 2021;1(2):100029.
+doi: \href{https://doi.org/10.1016/j.xgen.2021.100029}{10.1016/j.xgen.2021.100029}
 
 \bibitem{De Wit 2022}
-Renske de Wit (2022):\\
-\textbf{A Non-Intimidating Approach to Workflow Reproducibility in Bioinformatics}: Adding Metadata to Research Objects through the Design and Evaluation of Use-Focused Extensions to CWLProv.\\
-\emph{Zenodo}\\
-\url{https://doi.org/10.5281/zenodo.7113250}
+De Wit R.
+A Non-Intimidating Approach to Workflow Reproducibility in Bioinformatics: Adding Metadata to Research Objects through the Design and Evaluation of Use-Focused Extensions to CWLProv.
+Zenodo, 2022.
+doi: \href{https://doi.org/10.5281/zenodo.7113250}{10.5281/zenodo.7113250}
 
 \bibitem{de Wit 2023} 
-Renske de Wit, Michael R Crusoe (2023):\\
-\textbf{Analysis of runcrate}.\\
-\emph{Zenodo}\\
-\url{https://doi.org/10.5281/zenodo.10251812}
+De Wit R, Crusoe MR.
+Analysis of runcrate.
+Zenodo, 2023.
+doi: \href{https://doi.org/10.5281/zenodo.10251812}{10.5281/zenodo.10251812}
 
 \bibitem{5s-crate}
-Stian Soiland-Reyes, Stuart Wheater (2023):\\
-\textbf{Five Safes RO-Crate profile}, version 0.4.\\
-\emph{TRE-FX Candidate Recommendation} \\
+Soiland-Reyes S, Wheater S.
+Five Safes RO-Crate profile. Version 0.4.
+TRE-FX Candidate Recommendation, 2023 [cited 2023 Dec 11].
 \url{https://w3id.org/5s-crate/0.4}
 
 \bibitem{trefx}
-Thomas Giles, Stian Soiland-Reyes, Jonathan Couldridge, Stuart Wheater, Blaise Thomson, Jillian Beggs, Suzy Gallier, Sam Cox, Daniel Lea, Justin Biddle, Rima Doal, Naaman Tammuz, Becca Wilson, Christian Cole, Elizabeth Sapey, Simon Thompson, Professor Emily Jefferson, Phillip Quinlan, Carole Goble (2023):\\
-\textbf{TRE-FX: Delivering a federated network of trusted research environments to enable safe data analytics}.\\
-\emph{Zenodo} \\
-\url{https://doi.org/10.5281/zenodo.10055354}
+Giles T, Soiland-Reyes S, Couldridge J, Wheater S, Thomson B, Beggs J, et al.
+TRE-FX: Delivering a federated network of trusted research environments to enable safe data analytics.
+Zenodo, 2023.
+doi: \href{https://doi.org/10.5281/zenodo.10055354}{10.5281/zenodo.10055354}
 
 \bibitem{Desai 2016}
-Tanvi Desai, Felix Ritchie, Richard Welpton (2016):\\
-\textbf{Five Safes: designing data access for research}.\\
-\emph{Economics Working Paper Series} \textbf{1601}\\
+Desai T, Ritchie F, Welpton R.
+Five Safes: designing data access for research.
+Economics Working Paper Series, 2016;1601.
 \url{https://econpapers.repec.org/RePEc:uwe:wpaper:20161601}
 
 \bibitem{Snowley 2023} 
-Kay Snowley, Lara Edwards, Ben Crosby, Helen Tatlow (2023):\\
-\textbf{Integrating Our Community}. Year 1 \\
-\emph{Health Data Research UK} (report) \\
+Snowley K, Edwards L, Crosby B, Tatlow H.
+Integrating Our Community. Year 1.
+Health Data Research UK, 2023 (report) [cited 2023 Dec 11].
 \url{https://www.hdruk.ac.uk/wp-content/uploads/2023/10/Integrating-Our-Community_v1-Oct-2023-compressed.pdf}
-accessed 2023-11-21
 
 \bibitem{Mazumder 2020}
-Raja Mazumder, Vahan Simonyan (eds), IEEE P2791 BioCompute Working Group (BCOWG) (2020):\\
-\textbf{IEEE Standard for Bioinformatics Analyses Generated by High-Throughput Sequencing (HTS) to Facilitate Communication}.\\
-\emph{IEEE} Std 2791-2020 \\
-\url{https://doi.org/10.1109/IEEESTD.2020.9094416}
+Mazumder R, Simonyan V (eds). IEEE P2791 BioCompute Working Group (BCOWG).
+IEEE Standard for Bioinformatics Analyses Generated by High-Throughput Sequencing (HTS) to Facilitate Communication.
+IEEE Std 2791-2020, 2020.
+doi: \href{https://doi.org/10.1109/IEEESTD.2020.9094416}{10.1109/IEEESTD.2020.9094416}
 
 \bibitem{Alterovitz 2018}
-Gil Alterovitz, Dennis A Dean II, Carole Goble, Michael R Crusoe, Stian Soiland-Reyes, Amanda Bell, Anais Hayes, Anita Suresh, Charles Hadley S King IV, Dan Taylor, KanakaDurga Addepalli, Elaine Johanson, Elaine E Thompson, Eric Donaldson, Hiroki Morizono, Hsinyi Tsang, Jeet K Vora, Jeremy Goecks, Jianchao Yao, Jonas S Almeida, Jonathon Keeney, KanakaDurga Addepalli, Konstantinos Krampis, Krista Smith, Lydia Guo, Mark Walderhaug, Marco Schito, Matthew Ezewudo, Nuria Guimera, Paul Walsh, Robel Kahsay, Srikanth Gottipati, Timothy C Rodwell, Toby Bloom, Yuching Lai, Vahan Simonyan, Raja Mazumder (2018):\\
-\textbf{Enabling Precision Medicine via standard communication of NGS provenance, analysis, and results}.\\
-\emph{PLOS Biology} \textbf{16}(12):e3000099 \\
-\url{https://doi.org/10.1371/journal.pbio.3000099}
+Alterovitz G, Dean D, Goble C, Crusoe MR, Soiland-Reyes S, Bell A.
+Enabling Precision Medicine via standard communication of NGS provenance, analysis, and results.
+PLOS Biology 2018;16(12):e3000099.
+doi: \href{https://doi.org/10.1371/journal.pbio.3000099}{10.1371/journal.pbio.3000099}
 
 \bibitem{Soiland-Reyes 2021}
-Stian Soiland-Reyes (2021):\\
-\textbf{Describing and packaging workflows using RO-Crate and BioCompute Objects}.\\
-Webinar, U.S. Food and Drug Administration (FDA), 2021-05-12.\\
-\url{https://doi.org/10.5281/zenodo.4633732}
+Soiland-Reyes S.
+Describing and packaging workflows using RO-Crate and BioCompute Objects.
+Zenodo, 2021.
+doi: \href{https://doi.org/10.5281/zenodo.4633732}{10.5281/zenodo.4633732}
 
 \bibitem{runcrate-intro}
-Simone Leo (2023):\\
-\textbf{Workflow Run RO-Crate Introduction} \\
-\emph{Galaxy Training Materials}.\\
-\url{https://training.galaxyproject.org/training-material/topics/fair/tutorials/ro-crate-workflow-run-ro-crate/tutorial.html} accessed 2023-10-19
-
+Leo S.
+Workflow Run RO-Crate Introduction.
+Galaxy Training Materials, 2023 [cited 2023 Dec 11].
+\url{https://training.galaxyproject.org/training-material/topics/fair/tutorials/ro-crate-workflow-run-ro-crate/tutorial.html}
 
 
 %% new ones: REORDER
