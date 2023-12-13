@@ -12,6 +12,12 @@
       "Standard": "http://purl.org/dc/terms/Standard",
       "Profile": "http://www.w3.org/ns/dx/prof/Profile",
       "MappingSet": "https://w3id.org/sssom/schema/MappingSet"
+    },
+    {
+      "copyrightNotice": "http://schema.org/copyrightNotice",
+      "interpretedAsClaim": "http://schema.org/interpretedAsClaim",
+      "archivedAt": "http://schema.org/archivedAt",
+      "creditText": "http://schema.org/creditText"
     }
   ],
   "@graph": [
@@ -33,6 +39,10 @@
     },
     {
       "@id": "./",
+      "identifier": {
+        "@id": "https://doi.org/10.5281/zenodo.10368990"
+      },
+      "url": "https://w3id.org/ro/doi/10.5281/zenodo.10368989",
       "@type": "Dataset",
       "about": {
         "@id": "https://researchobject.org/workflow-run-crate/"
@@ -93,7 +103,7 @@
           "@id": "https://orcid.org/0000-0001-9842-9718"
         }
       ],
-      "description": "RO-Crate for the manuscript that describes Workflow Run Crate",
+      "description": "RO-Crate for the manuscript that describes Workflow Run Crate, includes mapping to PROV using SKOS/SSSOM",
       "hasPart": [
         {
           "@id": "https://w3id.org/ro/wfrun/process/0.3"
@@ -105,31 +115,15 @@
           "@id": "https://w3id.org/ro/wfrun/provenance/0.3"
         },
         {
-          "@id": "mapping/environment.yml"
-        },
-        {
-          "@id": "mapping/environment.lock.yml"
-        },
-        {
-          "@id": "mapping/prov-mapping.tsv"
-        },
-        {
-          "@id": "mapping/prov-mapping.yml"
-        },
-        {
-          "@id": "mapping/prov-mapping-w-metadata.tsv"
-        },
-        {
-          "@id": "mapping/prov-mapping.ttl"
-        },
-        {
-          "@id": "mapping/prov-mapping.rdf"
-        },
-        {
-          "@id": "mapping/prov-mapping.json"
+          "@id": "mapping/"
         }
       ],
-      "name": "Recording provenance of workflow runs with RO-Crate (RO-Crate)",
+      "name": "Recording provenance of workflow runs with RO-Crate (RO-Crate and mapping)",
+      "datePublished": "2023-12-12T21:08",
+      "license": {
+        "@id": "https://www.apache.org/licenses/LICENSE-2.0"
+      },
+      "creator": [],
       "@reverse": {
         "about": [
           {
@@ -139,206 +133,16 @@
       }
     },
     {
-      "@id": "http://www.w3.org/TR/owl2-mapping-to-rdf/",
-      "@type": "CreativeWork",
-      "name": "OWL 2 (in RDF)",
+      "@id": "https://doi.org/10.5281/zenodo.10368990",
+      "@type": "PropertyValue",
+      "name": "doi",
+      "propertyID": "https://registry.identifiers.org/registry/doi",
+      "value": "doi:10.5281/zenodo.10368990",
+      "url": "https://doi.org/10.5281/zenodo.10368990",
       "@reverse": {
-        "conformsTo": [
-          {
-            "@id": "mapping/prov-mapping.rdf"
-          },
-          {
-            "@id": "mapping/prov-mapping.ttl"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "http://www.w3.org/TR/skos-reference",
-      "@type": "CreativeWork",
-      "alternateName": "SKOS Simple Knowledge Organization System Reference",
-      "name": "SKOS",
-      "@reverse": {
-        "conformsTo": [
-          {
-            "@id": "mapping/prov-mapping.ttl"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "http://www.w3.org/ns/dx/prof/Profile",
-      "@type": "DefinedTerm",
-      "name": "Profile",
-      "url": "https://www.w3.org/TR/dx-prof/"
-    },
-    {
-      "@id": "https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually",
-      "@type": "CreativeWork",
-      "name": "Conda environment file format",
-      "@reverse": {
-        "conformsTo": [
-          {
-            "@id": "mapping/environment.lock.yml"
-          },
-          {
-            "@id": "mapping/environment.yml"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://mapping-commons.github.io/sssom/spec/#json",
-      "@type": "WebPageElement",
-      "name": "SSSOM JSON",
-      "@reverse": {
-        "conformsTo": [
-          {
-            "@id": "mapping/prov-mapping.json"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://mapping-commons.github.io/sssom/spec/#rdfxml-serialised-re-ified-owl-axioms",
-      "@type": "WebPageElement",
-      "name": "SSSOM RDF/XML serialised re-ified OWL axioms",
-      "@reverse": {
-        "conformsTo": [
-          {
-            "@id": "mapping/prov-mapping.rdf"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://mapping-commons.github.io/sssom/spec/#tsv",
-      "@type": "WebPageElement",
-      "name": "SSSOM TSV",
-      "@reverse": {
-        "conformsTo": [
-          {
-            "@id": "mapping/prov-mapping-w-metadata.tsv"
-          },
-          {
-            "@id": "mapping/prov-mapping.tsv"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0001-5845-8880",
-      "@type": "Person",
-      "name": "Sebastiaan Huber",
-      "@reverse": {
-        "member": [
-          {
-            "@id": "https://researchobject.org/workflow-run-crate/"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0001-6740-9212",
-      "@type": "Person",
-      "name": "Samuel Lampa",
-      "@reverse": {
-        "member": [
-          {
-            "@id": "https://researchobject.org/workflow-run-crate/"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0001-8172-8981",
-      "@type": "Person",
-      "name": "Jasper Koehorst",
-      "@reverse": {
-        "member": [
-          {
-            "@id": "https://researchobject.org/workflow-run-crate/"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0001-8250-4074",
-      "@type": "Person",
-      "affiliation": "Barcelona Supercomputing Center, Barcelona, Spain",
-      "name": [
-        "Bruno P. Kinoshita",
-        "Bruno de Paula Kinoshita"
-      ],
-      "@reverse": {
-        "author": [
+        "identifier": [
           {
             "@id": "./"
-          }
-        ],
-        "member": [
-          {
-            "@id": "https://researchobject.org/workflow-run-crate/"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0001-8271-5429",
-      "@type": "Person",
-      "affiliation": "Center for Advanced Studies, Research, and Development in Sardinia (CRS4), Pula, Sardinia, Italy",
-      "name": "Simone Leo",
-      "@reverse": {
-        "author": [
-          {
-            "@id": "./"
-          }
-        ],
-        "member": [
-          {
-            "@id": "https://researchobject.org/workflow-run-crate/"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0001-9228-2882",
-      "@type": "Person",
-      "name": "Abigail Miller",
-      "@reverse": {
-        "member": [
-          {
-            "@id": "https://researchobject.org/workflow-run-crate/"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0001-9290-2017",
-      "@type": "Person",
-      "affiliation": "Computer Science Dept., Università degli Studi di Torino, Torino, Italy",
-      "name": "Iacopo Colonnelli",
-      "@reverse": {
-        "author": [
-          {
-            "@id": "./"
-          }
-        ],
-        "member": [
-          {
-            "@id": "https://researchobject.org/workflow-run-crate/"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0001-9818-9320",
-      "@type": "Person",
-      "name": "Johannes Köster",
-      "@reverse": {
-        "member": [
-          {
-            "@id": "https://researchobject.org/workflow-run-crate/"
           }
         ]
       }
@@ -371,443 +175,6 @@
         "creator": [
           {
             "@id": "mapping/prov-mapping.tsv"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0002-0003-2024",
-      "@type": "Person",
-      "affiliation": [
-        "Faculty of Informatics, Masaryk University, Brno, Czech Republic",
-        "Institute of Computer Science, Masaryk University, Brno, Czech Republic",
-        "BBMRI-ERIC, Graz, Austria"
-      ],
-      "name": "Rudolf Wittner",
-      "@reverse": {
-        "author": [
-          {
-            "@id": "./"
-          }
-        ],
-        "member": [
-          {
-            "@id": "https://researchobject.org/workflow-run-crate/"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0002-0309-604X",
-      "@type": "Person",
-      "affiliation": "Barcelona Supercomputing Center, Barcelona, Spain",
-      "name": "Salvador Capella-Gutierrez",
-      "@reverse": {
-        "author": [
-          {
-            "@id": "./"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0002-1119-1792",
-      "@type": "Person",
-      "affiliation": "Faculty of Informatics, Masaryk University, Brno, Czech Republic",
-      "name": "Matej Gallo",
-      "@reverse": {
-        "author": [
-          {
-            "@id": "./"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0002-2961-9670",
-      "@type": "Person",
-      "affiliation": [
-        "Vrije Universiteit Amsterdam, Amsterdam, The Netherlands",
-        "DTL Projects, The Netherlands",
-        "Forschungszentrum Jülich, Germany"
-      ],
-      "name": "Michael R Crusoe",
-      "@reverse": {
-        "author": [
-          {
-            "@id": "./"
-          }
-        ],
-        "member": [
-          {
-            "@id": "https://researchobject.org/workflow-run-crate/"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0002-3468-0652",
-      "@type": "Person",
-      "affiliation": [
-        "Biozentrum, University of Basel, Basel, Switzerland",
-        "Swiss Institute of Bioinformatics, Lausanne, Switzerland"
-      ],
-      "name": "Alexander Kanitz",
-      "@reverse": {
-        "author": [
-          {
-            "@id": "./"
-          }
-        ],
-        "member": [
-          {
-            "@id": "https://researchobject.org/workflow-run-crate/"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0002-4405-6802",
-      "@type": "Person",
-      "name": "Haris Zafeiropoulos",
-      "@reverse": {
-        "member": [
-          {
-            "@id": "https://researchobject.org/workflow-run-crate/"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0002-4663-5613",
-      "@type": "Person",
-      "affiliation": "Center for Advanced Studies, Research, and Development in Sardinia (CRS4), Pula, Sardinia, Italy",
-      "name": "Luca Pireddu",
-      "@reverse": {
-        "author": [
-          {
-            "@id": "./"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0002-4806-5140",
-      "@type": "Person",
-      "affiliation": "Barcelona Supercomputing Center, Barcelona, Spain",
-      "name": [
-        "José María Fernández",
-        "José M. Fernández"
-      ],
-      "@reverse": {
-        "author": [
-          {
-            "@id": "./"
-          }
-        ],
-        "member": [
-          {
-            "@id": "https://researchobject.org/workflow-run-crate/"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0002-5358-616X",
-      "@type": "Person",
-      "name": "Petr Holub",
-      "@reverse": {
-        "member": [
-          {
-            "@id": "https://researchobject.org/workflow-run-crate/"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0002-5432-2748",
-      "@type": "Person",
-      "name": "Paul Brack",
-      "@reverse": {
-        "member": [
-          {
-            "@id": "https://researchobject.org/workflow-run-crate/"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0002-5477-287X",
-      "@type": "Person",
-      "name": "Milan Markovic",
-      "@reverse": {
-        "member": [
-          {
-            "@id": "https://researchobject.org/workflow-run-crate/"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0002-6190-122X",
-      "@type": "Person",
-      "name": "Ignacio Eguinoa",
-      "@reverse": {
-        "member": [
-          {
-            "@id": "https://researchobject.org/workflow-run-crate/"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0002-8122-9522",
-      "@type": "Person",
-      "name": "Luiz Gadelha",
-      "@reverse": {
-        "member": [
-          {
-            "@id": "https://researchobject.org/workflow-run-crate/"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0002-8330-4071",
-      "@type": "Person",
-      "name": "Mahnoor Zulfiqar",
-      "@reverse": {
-        "member": [
-          {
-            "@id": "https://researchobject.org/workflow-run-crate/"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0002-8940-4946",
-      "@type": "Person",
-      "affiliation": "VIB-UGent Center for Plant Systems Biology, Gent, Belgium",
-      "name": "Paul De Geest",
-      "@reverse": {
-        "author": [
-          {
-            "@id": "./"
-          }
-        ],
-        "member": [
-          {
-            "@id": "https://researchobject.org/workflow-run-crate/"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0002-9464-6640",
-      "@type": "Person",
-      "name": "Wolfgang Maier",
-      "@reverse": {
-        "member": [
-          {
-            "@id": "https://researchobject.org/workflow-run-crate/"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0003-0454-7145",
-      "@type": "Person",
-      "affiliation": "Ontology Engineering Group, Universidad Politécnica de Madrid, Madrid, Spain",
-      "name": "Daniel Garijo",
-      "@reverse": {
-        "author": [
-          {
-            "@id": "./"
-          },
-          {
-            "@id": "mapping/prov-mapping.tsv"
-          }
-        ],
-        "member": [
-          {
-            "@id": "https://researchobject.org/workflow-run-crate/"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0003-0606-2512",
-      "@type": "Person",
-      "affiliation": "Barcelona Supercomputing Center, Barcelona, Spain",
-      "name": "Raül Sirvent",
-      "@reverse": {
-        "author": [
-          {
-            "@id": "./"
-          }
-        ],
-        "member": [
-          {
-            "@id": "https://researchobject.org/workflow-run-crate/"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0003-0617-9219",
-      "@type": "Person",
-      "name": "Jake Emerson",
-      "@reverse": {
-        "member": [
-          {
-            "@id": "https://researchobject.org/workflow-run-crate/"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0003-0902-0086",
-      "@type": "Person",
-      "affiliation": "Vrije Universiteit Amsterdam, Amsterdam, The Netherlands",
-      "name": "Renske de Wit",
-      "@reverse": {
-        "author": [
-          {
-            "@id": "./"
-          }
-        ],
-        "member": [
-          {
-            "@id": "https://researchobject.org/workflow-run-crate/"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0003-1361-7301",
-      "@type": "Person",
-      "name": "Maciek Bąk",
-      "@reverse": {
-        "member": [
-          {
-            "@id": "https://researchobject.org/workflow-run-crate/"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0003-2765-0049",
-      "@type": "Person",
-      "affiliation": "Department of Creative Informatics, Graduate School of Information Science and Technology, The University of Tokyo, Tokyo, Japan",
-      "name": "Hirotaka Suetake",
-      "@reverse": {
-        "author": [
-          {
-            "@id": "./"
-          }
-        ],
-        "member": [
-          {
-            "@id": "https://researchobject.org/workflow-run-crate/"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0003-3156-2105",
-      "@type": "Person",
-      "name": "Alan R Williams",
-      "@reverse": {
-        "member": [
-          {
-            "@id": "https://researchobject.org/workflow-run-crate/"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0003-3777-5945",
-      "@type": "Person",
-      "affiliation": [
-        "Database Center for Life Science, Joint Support-Center for Data Science Research, Research Organization of Information and Systems, Shizuoka, Japan",
-        "Institute for Advanced Academic Research, Chiba University, Chiba, Japan"
-      ],
-      "name": "Tazro Ohta",
-      "@reverse": {
-        "author": [
-          {
-            "@id": "./"
-          }
-        ],
-        "member": [
-          {
-            "@id": "https://researchobject.org/workflow-run-crate/"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0003-3898-9451",
-      "@type": "Person",
-      "name": "Stelios Ninidakis",
-      "@reverse": {
-        "member": [
-          {
-            "@id": "https://researchobject.org/workflow-run-crate/"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0003-3986-0510",
-      "@type": "Person",
-      "name": "LJ Garcia Castro",
-      "@reverse": {
-        "member": [
-          {
-            "@id": "https://researchobject.org/workflow-run-crate/"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0003-4073-7456",
-      "@type": "Person",
-      "name": "Romain David",
-      "@reverse": {
-        "member": [
-          {
-            "@id": "https://researchobject.org/workflow-run-crate/"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0003-4894-4660",
-      "@type": "Person",
-      "name": "Kevin Jablonka",
-      "@reverse": {
-        "member": [
-          {
-            "@id": "https://researchobject.org/workflow-run-crate/"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://orcid.org/0000-0003-4929-1219",
-      "@type": "Person",
-      "affiliation": "Barcelona Supercomputing Center, Barcelona, Spain",
-      "name": "Laura Rodríguez-Navas",
-      "@reverse": {
-        "author": [
-          {
-            "@id": "./"
-          }
-        ],
-        "member": [
-          {
-            "@id": "https://researchobject.org/workflow-run-crate/"
           }
         ]
       }
@@ -937,10 +304,324 @@
             "@id": "https://w3id.org/ro/wfrun/process/0.3"
           },
           {
-            "@id": "https://w3id.org/ro/wfrun/provenance/0.3"
+            "@id": "https://w3id.org/ro/wfrun/workflow/0.3"
           },
           {
-            "@id": "https://w3id.org/ro/wfrun/workflow/0.3"
+            "@id": "https://w3id.org/ro/wfrun/provenance/0.3"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0001-8271-5429",
+      "@type": "Person",
+      "affiliation": "Center for Advanced Studies, Research, and Development in Sardinia (CRS4), Pula, Sardinia, Italy",
+      "name": "Simone Leo",
+      "@reverse": {
+        "author": [
+          {
+            "@id": "./"
+          }
+        ],
+        "member": [
+          {
+            "@id": "https://researchobject.org/workflow-run-crate/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0002-2961-9670",
+      "@type": "Person",
+      "affiliation": [
+        "Vrije Universiteit Amsterdam, Amsterdam, The Netherlands",
+        "DTL Projects, The Netherlands",
+        "Forschungszentrum Jülich, Germany"
+      ],
+      "name": "Michael R Crusoe",
+      "@reverse": {
+        "author": [
+          {
+            "@id": "./"
+          }
+        ],
+        "member": [
+          {
+            "@id": "https://researchobject.org/workflow-run-crate/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0003-4929-1219",
+      "@type": "Person",
+      "affiliation": "Barcelona Supercomputing Center, Barcelona, Spain",
+      "name": "Laura Rodríguez-Navas",
+      "@reverse": {
+        "author": [
+          {
+            "@id": "./"
+          }
+        ],
+        "member": [
+          {
+            "@id": "https://researchobject.org/workflow-run-crate/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0003-0606-2512",
+      "@type": "Person",
+      "affiliation": "Barcelona Supercomputing Center, Barcelona, Spain",
+      "name": "Raül Sirvent",
+      "@reverse": {
+        "author": [
+          {
+            "@id": "./"
+          }
+        ],
+        "member": [
+          {
+            "@id": "https://researchobject.org/workflow-run-crate/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0002-3468-0652",
+      "@type": "Person",
+      "affiliation": [
+        "Biozentrum, University of Basel, Basel, Switzerland",
+        "Swiss Institute of Bioinformatics, Lausanne, Switzerland"
+      ],
+      "name": "Alexander Kanitz",
+      "@reverse": {
+        "author": [
+          {
+            "@id": "./"
+          }
+        ],
+        "member": [
+          {
+            "@id": "https://researchobject.org/workflow-run-crate/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0002-8940-4946",
+      "@type": "Person",
+      "affiliation": "VIB-UGent Center for Plant Systems Biology, Gent, Belgium",
+      "name": "Paul De Geest",
+      "@reverse": {
+        "author": [
+          {
+            "@id": "./"
+          }
+        ],
+        "member": [
+          {
+            "@id": "https://researchobject.org/workflow-run-crate/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0002-0003-2024",
+      "@type": "Person",
+      "affiliation": [
+        "Faculty of Informatics, Masaryk Universit, Brno, Czech Republic",
+        "Institute of Computer Science, Masaryk University, Brno, Czech Republic",
+        "BBMRI-ERIC, Graz, Austria"
+      ],
+      "name": "Rudolf Wittner",
+      "@reverse": {
+        "author": [
+          {
+            "@id": "./"
+          }
+        ],
+        "member": [
+          {
+            "@id": "https://researchobject.org/workflow-run-crate/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0002-4663-5613",
+      "@type": "Person",
+      "affiliation": "Center for Advanced Studies, Research, and Development in Sardinia (CRS4), Pula, Sardinia, Italy",
+      "name": "Luca Pireddu",
+      "@reverse": {
+        "author": [
+          {
+            "@id": "./"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0003-0454-7145",
+      "@type": "Person",
+      "affiliation": "Ontology Engineering Group, Universidad Politécnica de Madrid, Madrid, Spain",
+      "name": "Daniel Garijo",
+      "@reverse": {
+        "author": [
+          {
+            "@id": "./"
+          },
+          {
+            "@id": "mapping/prov-mapping.tsv"
+          }
+        ],
+        "member": [
+          {
+            "@id": "https://researchobject.org/workflow-run-crate/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0002-4806-5140",
+      "@type": "Person",
+      "affiliation": "Barcelona Supercomputing Center, Barcelona, Spain",
+      "name": [
+        "José María Fernández",
+        "José M. Fernández"
+      ],
+      "@reverse": {
+        "author": [
+          {
+            "@id": "./"
+          }
+        ],
+        "member": [
+          {
+            "@id": "https://researchobject.org/workflow-run-crate/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0001-9290-2017",
+      "@type": "Person",
+      "affiliation": "Computer Science Dept., Università degli Studi di Torino, Torino, Italy",
+      "name": "Iacopo Colonnelli",
+      "@reverse": {
+        "author": [
+          {
+            "@id": "./"
+          }
+        ],
+        "member": [
+          {
+            "@id": "https://researchobject.org/workflow-run-crate/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0002-1119-1792",
+      "@type": "Person",
+      "affiliation": "Faculty of Informatics, Masaryk University, Brno, Czech Republic",
+      "name": "Matej Gallo",
+      "@reverse": {
+        "author": [
+          {
+            "@id": "./"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0003-3777-5945",
+      "@type": "Person",
+      "affiliation": [
+        "Database Center for Life Science, Joint Support-Center for Data Science Research, Research Organization of Information and Systems, Shizuoka, Japan",
+        "Institute for Advanced Academic Research, Chiba University, Chiba, Japan"
+      ],
+      "name": "Tazro Ohta",
+      "@reverse": {
+        "author": [
+          {
+            "@id": "./"
+          }
+        ],
+        "member": [
+          {
+            "@id": "https://researchobject.org/workflow-run-crate/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0003-2765-0049",
+      "@type": "Person",
+      "affiliation": "Sator Inc., Tokyo, Japan",
+      "name": "Hirotaka Suetake",
+      "@reverse": {
+        "author": [
+          {
+            "@id": "./"
+          }
+        ],
+        "member": [
+          {
+            "@id": "https://researchobject.org/workflow-run-crate/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0002-0309-604X",
+      "@type": "Person",
+      "affiliation": "Barcelona Supercomputing Center, Barcelona, Spain",
+      "name": "Salvador Capella-Gutierrez",
+      "@reverse": {
+        "author": [
+          {
+            "@id": "./"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0003-0902-0086",
+      "@type": "Person",
+      "affiliation": "Vrije Universiteit Amsterdam, Amsterdam, The Netherlands",
+      "name": "Renske de Wit",
+      "@reverse": {
+        "author": [
+          {
+            "@id": "./"
+          }
+        ],
+        "member": [
+          {
+            "@id": "https://researchobject.org/workflow-run-crate/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0001-8250-4074",
+      "@type": "Person",
+      "affiliation": "Barcelona Supercomputing Center, Barcelona, Spain",
+      "name": [
+        "Bruno P. Kinoshita",
+        "Bruno de Paula Kinoshita"
+      ],
+      "@reverse": {
+        "author": [
+          {
+            "@id": "./"
+          }
+        ],
+        "member": [
+          {
+            "@id": "https://researchobject.org/workflow-run-crate/"
           }
         ]
       }
@@ -952,22 +633,6 @@
         "@id": "https://researchobject.org/workflow-run-crate/"
       },
       "name": "Process Run Crate",
-      "version": "0.3",
-      "@reverse": {
-        "hasPart": [
-          {
-            "@id": "./"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://w3id.org/ro/wfrun/provenance/0.3",
-      "@type": "Profile",
-      "author": {
-        "@id": "https://researchobject.org/workflow-run-crate/"
-      },
-      "name": "Provenance Run Crate",
       "version": "0.3",
       "@reverse": {
         "hasPart": [
@@ -994,64 +659,13 @@
       }
     },
     {
-      "@id": "https://w3id.org/sssom/",
-      "@type": [
-        "WebPage",
-        "Standard"
-      ],
-      "alternateName": "Simple Standard for Sharing Ontological Mappings",
-      "name": "SSSOM",
-      "version": "0.15.0",
-      "@reverse": {
-        "conformsTo": [
-          {
-            "@id": "mapping/prov-mapping-w-metadata.tsv"
-          },
-          {
-            "@id": "mapping/prov-mapping.json"
-          },
-          {
-            "@id": "mapping/prov-mapping.rdf"
-          },
-          {
-            "@id": "mapping/prov-mapping.tsv"
-          },
-          {
-            "@id": "mapping/prov-mapping.yml"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://w3id.org/sssom/schema/MappingSet",
-      "@type": "DefinedTerm",
-      "url": "https://mapping-commons.github.io/sssom/MappingSet/"
-    },
-    {
-      "@id": "https://www.researchobject.org/ro-crate/community",
-      "@type": "Project",
-      "name": "RO-Crate Community",
-      "@reverse": {
-        "parentOrganization": [
-          {
-            "@id": "https://researchobject.org/workflow-run-crate/"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "mapping/environment.lock.yml",
-      "@type": "File",
-      "conformsTo": {
-        "@id": "https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually"
+      "@id": "https://w3id.org/ro/wfrun/provenance/0.3",
+      "@type": "Profile",
+      "author": {
+        "@id": "https://researchobject.org/workflow-run-crate/"
       },
-      "encodingFormat": [
-        "application/yaml",
-        {
-          "@id": "https://www.nationalarchives.gov.uk/PRONOM/fmt/818"
-        }
-      ],
-      "name": "Conda environment for sssom, version-pinned",
+      "name": "Provenance Run Crate",
+      "version": "0.3",
       "@reverse": {
         "hasPart": [
           {
@@ -1076,117 +690,28 @@
       "@reverse": {
         "hasPart": [
           {
-            "@id": "./"
+            "@id": "mapping/"
           }
         ]
       }
     },
     {
-      "@id": "mapping/prov-mapping-w-metadata.tsv",
-      "@type": [
-        "File",
-        "MappingSet"
-      ],
-      "conformsTo": [
-        {
-          "@id": "https://w3id.org/sssom/"
-        },
-        {
-          "@id": "https://mapping-commons.github.io/sssom/spec/#tsv"
-        }
-      ],
-      "encodingFormat": "text/tab-separated-values",
-      "isBasedOn": [
-        {
-          "@id": "mapping/prov-mapping.tsv"
-        },
-        {
-          "@id": "mapping/prov-mapping.yml"
-        }
-      ],
-      "name": "PROV mapping to Workflow Run Crate (SSSOM TSV with metadata)",
-      "@reverse": {
-        "hasPart": [
-          {
-            "@id": "./"
-          }
-        ],
-        "isBasedOn": [
-          {
-            "@id": "mapping/prov-mapping.json"
-          },
-          {
-            "@id": "mapping/prov-mapping.rdf"
-          },
-          {
-            "@id": "mapping/prov-mapping.ttl"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "mapping/prov-mapping.json",
-      "@type": [
-        "File",
-        "MappingSet"
-      ],
-      "conformsTo": [
-        {
-          "@id": "https://w3id.org/sssom/"
-        },
-        {
-          "@id": "https://mapping-commons.github.io/sssom/spec/#json"
-        }
-      ],
-      "encodingFormat": [
-        "application/json",
-        {
-          "@id": "https://www.nationalarchives.gov.uk/PRONOM/fmt/817"
-        }
-      ],
-      "isBasedOn": {
-        "@id": "mapping/prov-mapping-w-metadata.tsv"
+      "@id": "mapping/environment.lock.yml",
+      "@type": "File",
+      "conformsTo": {
+        "@id": "https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually"
       },
-      "name": "PROV mapping to Workflow Run Crate (SSSOM JSON)",
-      "@reverse": {
-        "hasPart": [
-          {
-            "@id": "./"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "mapping/prov-mapping.rdf",
-      "@type": [
-        "File",
-        "MappingSet"
-      ],
-      "conformsTo": [
-        {
-          "@id": "http://www.w3.org/TR/owl2-mapping-to-rdf/"
-        },
-        {
-          "@id": "https://w3id.org/sssom/"
-        },
-        {
-          "@id": "https://mapping-commons.github.io/sssom/spec/#rdfxml-serialised-re-ified-owl-axioms"
-        }
-      ],
       "encodingFormat": [
-        "application/rdf+xml",
+        "application/yaml",
         {
-          "@id": "https://www.nationalarchives.gov.uk/PRONOM/fmt/875"
+          "@id": "https://www.nationalarchives.gov.uk/PRONOM/fmt/818"
         }
       ],
-      "isBasedOn": {
-        "@id": "mapping/prov-mapping-w-metadata.tsv"
-      },
-      "name": "PROV mapping to Workflow Run Crate (SSSOM OWL axioms)",
+      "name": "Conda environment for sssom, version-pinned",
       "@reverse": {
         "hasPart": [
           {
-            "@id": "./"
+            "@id": "mapping/"
           }
         ]
       }
@@ -1224,14 +749,86 @@
       ],
       "name": "PROV mapping to Workflow Run Crate (SSSOM TSV)",
       "@reverse": {
-        "hasPart": [
-          {
-            "@id": "./"
-          }
-        ],
         "isBasedOn": [
           {
             "@id": "mapping/prov-mapping-w-metadata.tsv"
+          }
+        ],
+        "hasPart": [
+          {
+            "@id": "mapping/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "mapping/prov-mapping.yml",
+      "@type": [
+        "File",
+        "MappingSet"
+      ],
+      "conformsTo": {
+        "@id": "https://w3id.org/sssom/"
+      },
+      "encodingFormat": [
+        "text/yaml",
+        {
+          "@id": "https://www.nationalarchives.gov.uk/PRONOM/fmt/818"
+        }
+      ],
+      "name": "PROV mapping to Workflow Run Crate (SSSOM metadata)",
+      "@reverse": {
+        "isBasedOn": [
+          {
+            "@id": "mapping/prov-mapping-w-metadata.tsv"
+          }
+        ],
+        "hasPart": [
+          {
+            "@id": "mapping/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "mapping/prov-mapping-w-metadata.tsv",
+      "@type": [
+        "File",
+        "MappingSet"
+      ],
+      "conformsTo": [
+        {
+          "@id": "https://w3id.org/sssom/"
+        },
+        {
+          "@id": "https://mapping-commons.github.io/sssom/spec/#tsv"
+        }
+      ],
+      "encodingFormat": "text/tab-separated-values",
+      "isBasedOn": [
+        {
+          "@id": "mapping/prov-mapping.tsv"
+        },
+        {
+          "@id": "mapping/prov-mapping.yml"
+        }
+      ],
+      "name": "PROV mapping to Workflow Run Crate (SSSOM TSV with metadata)",
+      "@reverse": {
+        "isBasedOn": [
+          {
+            "@id": "mapping/prov-mapping.ttl"
+          },
+          {
+            "@id": "mapping/prov-mapping.rdf"
+          },
+          {
+            "@id": "mapping/prov-mapping.json"
+          }
+        ],
+        "hasPart": [
+          {
+            "@id": "mapping/"
           }
         ]
       }
@@ -1263,36 +860,556 @@
       "@reverse": {
         "hasPart": [
           {
+            "@id": "mapping/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "mapping/prov-mapping.rdf",
+      "@type": [
+        "File",
+        "MappingSet"
+      ],
+      "conformsTo": [
+        {
+          "@id": "http://www.w3.org/TR/owl2-mapping-to-rdf/"
+        },
+        {
+          "@id": "https://w3id.org/sssom/"
+        },
+        {
+          "@id": "https://mapping-commons.github.io/sssom/spec/#rdfxml-serialised-re-ified-owl-axioms"
+        }
+      ],
+      "encodingFormat": [
+        "application/rdf+xml",
+        {
+          "@id": "https://www.nationalarchives.gov.uk/PRONOM/fmt/875"
+        }
+      ],
+      "isBasedOn": {
+        "@id": "mapping/prov-mapping-w-metadata.tsv"
+      },
+      "name": "PROV mapping to Workflow Run Crate (SSSOM OWL axioms)",
+      "@reverse": {
+        "hasPart": [
+          {
+            "@id": "mapping/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "mapping/prov-mapping.json",
+      "@type": [
+        "File",
+        "MappingSet"
+      ],
+      "conformsTo": [
+        {
+          "@id": "https://w3id.org/sssom/"
+        },
+        {
+          "@id": "https://mapping-commons.github.io/sssom/spec/#json"
+        }
+      ],
+      "encodingFormat": [
+        "application/json",
+        {
+          "@id": "https://www.nationalarchives.gov.uk/PRONOM/fmt/817"
+        }
+      ],
+      "isBasedOn": {
+        "@id": "mapping/prov-mapping-w-metadata.tsv"
+      },
+      "name": "PROV mapping to Workflow Run Crate (SSSOM JSON)",
+      "@reverse": {
+        "hasPart": [
+          {
+            "@id": "mapping/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "http://www.w3.org/TR/owl2-mapping-to-rdf/",
+      "@type": "CreativeWork",
+      "name": "OWL 2 (in RDF)",
+      "@reverse": {
+        "conformsTo": [
+          {
+            "@id": "mapping/prov-mapping.ttl"
+          },
+          {
+            "@id": "mapping/prov-mapping.rdf"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "http://www.w3.org/TR/skos-reference",
+      "@type": "CreativeWork",
+      "alternateName": "SKOS Simple Knowledge Organization System Reference",
+      "name": "SKOS",
+      "@reverse": {
+        "conformsTo": [
+          {
+            "@id": "mapping/prov-mapping.ttl"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "http://www.w3.org/ns/dx/prof/Profile",
+      "@type": "DefinedTerm",
+      "name": "Profile",
+      "url": "https://www.w3.org/TR/dx-prof/"
+    },
+    {
+      "@id": "https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually",
+      "@type": "CreativeWork",
+      "name": "Conda environment file format",
+      "@reverse": {
+        "conformsTo": [
+          {
+            "@id": "mapping/environment.yml"
+          },
+          {
+            "@id": "mapping/environment.lock.yml"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://mapping-commons.github.io/sssom/spec/#json",
+      "@type": "WebPageElement",
+      "name": "SSSOM JSON",
+      "@reverse": {
+        "conformsTo": [
+          {
+            "@id": "mapping/prov-mapping.json"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://mapping-commons.github.io/sssom/spec/#rdfxml-serialised-re-ified-owl-axioms",
+      "@type": "WebPageElement",
+      "name": "SSSOM RDF/XML serialised re-ified OWL axioms",
+      "@reverse": {
+        "conformsTo": [
+          {
+            "@id": "mapping/prov-mapping.rdf"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://mapping-commons.github.io/sssom/spec/#tsv",
+      "@type": "WebPageElement",
+      "name": "SSSOM TSV",
+      "@reverse": {
+        "conformsTo": [
+          {
+            "@id": "mapping/prov-mapping.tsv"
+          },
+          {
+            "@id": "mapping/prov-mapping-w-metadata.tsv"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0001-5845-8880",
+      "@type": "Person",
+      "name": "Sebastiaan Huber",
+      "@reverse": {
+        "member": [
+          {
+            "@id": "https://researchobject.org/workflow-run-crate/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0001-6740-9212",
+      "@type": "Person",
+      "name": "Samuel Lampa",
+      "@reverse": {
+        "member": [
+          {
+            "@id": "https://researchobject.org/workflow-run-crate/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0001-8172-8981",
+      "@type": "Person",
+      "name": "Jasper Koehorst",
+      "@reverse": {
+        "member": [
+          {
+            "@id": "https://researchobject.org/workflow-run-crate/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0001-9228-2882",
+      "@type": "Person",
+      "name": "Abigail Miller",
+      "@reverse": {
+        "member": [
+          {
+            "@id": "https://researchobject.org/workflow-run-crate/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0001-9818-9320",
+      "@type": "Person",
+      "name": "Johannes Köster",
+      "@reverse": {
+        "member": [
+          {
+            "@id": "https://researchobject.org/workflow-run-crate/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0002-4405-6802",
+      "@type": "Person",
+      "name": "Haris Zafeiropoulos",
+      "@reverse": {
+        "member": [
+          {
+            "@id": "https://researchobject.org/workflow-run-crate/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0002-5358-616X",
+      "@type": "Person",
+      "name": "Petr Holub",
+      "@reverse": {
+        "member": [
+          {
+            "@id": "https://researchobject.org/workflow-run-crate/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0002-5432-2748",
+      "@type": "Person",
+      "name": "Paul Brack",
+      "@reverse": {
+        "member": [
+          {
+            "@id": "https://researchobject.org/workflow-run-crate/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0002-5477-287X",
+      "@type": "Person",
+      "name": "Milan Markovic",
+      "@reverse": {
+        "member": [
+          {
+            "@id": "https://researchobject.org/workflow-run-crate/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0002-6190-122X",
+      "@type": "Person",
+      "name": "Ignacio Eguinoa",
+      "@reverse": {
+        "member": [
+          {
+            "@id": "https://researchobject.org/workflow-run-crate/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0002-8122-9522",
+      "@type": "Person",
+      "name": "Luiz Gadelha",
+      "@reverse": {
+        "member": [
+          {
+            "@id": "https://researchobject.org/workflow-run-crate/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0002-8330-4071",
+      "@type": "Person",
+      "name": "Mahnoor Zulfiqar",
+      "@reverse": {
+        "member": [
+          {
+            "@id": "https://researchobject.org/workflow-run-crate/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0002-9464-6640",
+      "@type": "Person",
+      "name": "Wolfgang Maier",
+      "@reverse": {
+        "member": [
+          {
+            "@id": "https://researchobject.org/workflow-run-crate/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0003-0617-9219",
+      "@type": "Person",
+      "name": "Jake Emerson",
+      "@reverse": {
+        "member": [
+          {
+            "@id": "https://researchobject.org/workflow-run-crate/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0003-1361-7301",
+      "@type": "Person",
+      "name": "Maciek Bąk",
+      "@reverse": {
+        "member": [
+          {
+            "@id": "https://researchobject.org/workflow-run-crate/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0003-3156-2105",
+      "@type": "Person",
+      "name": "Alan R Williams",
+      "@reverse": {
+        "member": [
+          {
+            "@id": "https://researchobject.org/workflow-run-crate/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0003-3898-9451",
+      "@type": "Person",
+      "name": "Stelios Ninidakis",
+      "@reverse": {
+        "member": [
+          {
+            "@id": "https://researchobject.org/workflow-run-crate/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0003-3986-0510",
+      "@type": "Person",
+      "name": "LJ Garcia Castro",
+      "@reverse": {
+        "member": [
+          {
+            "@id": "https://researchobject.org/workflow-run-crate/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0003-4073-7456",
+      "@type": "Person",
+      "name": "Romain David",
+      "@reverse": {
+        "member": [
+          {
+            "@id": "https://researchobject.org/workflow-run-crate/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0003-4894-4660",
+      "@type": "Person",
+      "name": "Kevin Jablonka",
+      "@reverse": {
+        "member": [
+          {
+            "@id": "https://researchobject.org/workflow-run-crate/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://www.researchobject.org/ro-crate/community",
+      "@type": "Project",
+      "name": "RO-Crate Community",
+      "@reverse": {
+        "parentOrganization": [
+          {
+            "@id": "https://researchobject.org/workflow-run-crate/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://w3id.org/sssom/",
+      "@type": [
+        "WebPage",
+        "Standard"
+      ],
+      "alternateName": "Simple Standard for Sharing Ontological Mappings",
+      "name": "SSSOM",
+      "version": "0.15.0",
+      "@reverse": {
+        "conformsTo": [
+          {
+            "@id": "mapping/prov-mapping.tsv"
+          },
+          {
+            "@id": "mapping/prov-mapping.yml"
+          },
+          {
+            "@id": "mapping/prov-mapping-w-metadata.tsv"
+          },
+          {
+            "@id": "mapping/prov-mapping.rdf"
+          },
+          {
+            "@id": "mapping/prov-mapping.json"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://w3id.org/sssom/schema/MappingSet",
+      "@type": "DefinedTerm",
+      "url": "https://mapping-commons.github.io/sssom/MappingSet/"
+    },
+    {
+      "@id": "https://www.apache.org/licenses/LICENSE-2.0",
+      "@type": "CreativeWork",
+      "name": "Apache License, Version 2.0",
+      "version": "2.0",
+      "identifier": {
+        "@id": "http://spdx.org/licenses/Apache-2.0"
+      },
+      "@reverse": {
+        "license": [
+          {
             "@id": "./"
           }
         ]
       }
     },
     {
-      "@id": "mapping/prov-mapping.yml",
-      "@type": [
-        "File",
-        "MappingSet"
-      ],
-      "conformsTo": {
-        "@id": "https://w3id.org/sssom/"
+      "@id": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "@type": "CreativeWork",
+      "identifier": {
+        "@id": "http://spdx.org/licenses/CC0-1.0"
       },
-      "encodingFormat": [
-        "text/yaml",
+      "name": "Creative Commons Zero v1.0 Universal",
+      "version": "1.0",
+      "@reverse": {
+        "license": [
+          {
+            "@id": "ro-crate-metadata.json"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://creativecommons.org/licenses/by/4.0/",
+      "@type": "CreativeWork",
+      "identifier": {
+        "@id": "http://spdx.org/licenses/CC-BY-4.0"
+      },
+      "name": "Creative Commons Attribution 4.0 International",
+      "version": "4.0"
+    },
+    {
+      "@id": "http://spdx.org/licenses/Apache-2.0",
+      "@type": "PropertyValue",
+      "propertyID": "http://spdx.org/rdf/terms#licenseId",
+      "name": "spdx",
+      "value": "Apache-2.0",
+      "@reverse": {
+        "identifier": [
+          {
+            "@id": "https://www.apache.org/licenses/LICENSE-2.0"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "http://spdx.org/licenses/CC0-1.0",
+      "@type": "PropertyValue",
+      "propertyID": "http://spdx.org/rdf/terms#licenseId",
+      "name": "spdx",
+      "value": "CC0-1.0",
+      "@reverse": {
+        "identifier": [
+          {
+            "@id": "https://creativecommons.org/publicdomain/zero/1.0/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "mapping/",
+      "@type": "Dataset",
+      "name": "PROV mapping to Workflow Run Crate",
+      "description": "Mapping using SKOS and SSSOM",
+      "hasPart": [
         {
-          "@id": "https://www.nationalarchives.gov.uk/PRONOM/fmt/818"
+          "@id": "mapping/environment.yml"
+        },
+        {
+          "@id": "mapping/environment.lock.yml"
+        },
+        {
+          "@id": "mapping/prov-mapping.tsv"
+        },
+        {
+          "@id": "mapping/prov-mapping.yml"
+        },
+        {
+          "@id": "mapping/prov-mapping-w-metadata.tsv"
+        },
+        {
+          "@id": "mapping/prov-mapping.ttl"
+        },
+        {
+          "@id": "mapping/prov-mapping.rdf"
+        },
+        {
+          "@id": "mapping/prov-mapping.json"
         }
       ],
-      "name": "PROV mapping to Workflow Run Crate (SSSOM metadata)",
       "@reverse": {
         "hasPart": [
           {
             "@id": "./"
-          }
-        ],
-        "isBasedOn": [
-          {
-            "@id": "mapping/prov-mapping-w-metadata.tsv"
           }
         ]
       }
@@ -1324,17 +1441,17 @@ table.table {
   <nav class="navbar">
 
     <ul class="nav navbar-nav" >
-        <li ><a href="#"><span class="glyphicon glyphicon-home dataset_name">&nbsp;Recording provenance of workflow runs with RO-Crate (RO-Crate)</span></a></li>
+        <li ><a href="#"><span class="glyphicon glyphicon-home dataset_name">&nbsp;Recording provenance of workflow runs with RO-Crate (RO-Crate and mapping)</span></a></li>
     </ul>
 
   </nav>
 <div class="container">
 <div class="jumbotron">
 <h4 class="citation"></h3>
-<h3 class="item_name">Recording provenance of workflow runs with RO-Crate (RO-Crate)</h4>
+<h3 class="item_name">Recording provenance of workflow runs with RO-Crate (RO-Crate and mapping)</h4>
 
 
-<a href="./ro-crate-metadata.json">⬇️🏷️ Download all the metadata for <span class='name'>Recording provenance of workflow runs with RO-Crate (RO-Crate)</span> in JSON-LD format</a>
+<a href="./ro-crate-metadata.json">⬇️🏷️ Download all the metadata for <span class='name'>Recording provenance of workflow runs with RO-Crate (RO-Crate and mapping)</span> in JSON-LD format</a>
 
 
 <div id="check"></div>
@@ -1347,7 +1464,7 @@ table.table {
 <div id="summary">
 <div class='all-meta'>
            <div>
-            <h3> Recording provenance of workflow runs with RO-Crate (RO-Crate)</h3>
+            <h3> Recording provenance of workflow runs with RO-Crate (RO-Crate and mapping)</h3>
             
             
             
@@ -1360,13 +1477,16 @@ table.table {
             <td style='text-align:left'><span>./</span></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">name<span>&nbsp;</span><a href="http://schema.org/name">[?]</a></th>
-            <td style='text-align:left'><span>Recording provenance of workflow runs with RO-Crate (RO-Crate)</span></td>
+            <td style='text-align:left'><span>Recording provenance of workflow runs with RO-Crate (RO-Crate and mapping)</span></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">@type</th>
             <td style='text-align:left'><span>Dataset</span></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">description<span>&nbsp;</span><a href="http://schema.org/description">[?]</a></th>
-            <td style='text-align:left'><span>RO-Crate for the manuscript that describes Workflow Run Crate</span></td>
+            <td style='text-align:left'><span>RO-Crate for the manuscript that describes Workflow Run Crate, includes mapping to PROV using SKOS/SSSOM</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">datePublished<span>&nbsp;</span><a href="http://schema.org/datePublished">[?]</a></th>
+            <td style='text-align:left'><span>2023-12-12T21:08</span></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">author<span>&nbsp;</span><a href="http://schema.org/author">[?]</a></th>
             <td style='text-align:left'><ul>
@@ -1407,6 +1527,12 @@ table.table {
                         <li><a href="#https%3A//orcid.org/0000-0001-9842-9718">Stian Soiland-Reyes</a></li>
                         </ul></td>
             </tr><tr>
+            <th style="text-align:left;" class="prop">identifier<span>&nbsp;</span><a href="http://schema.org/identifier">[?]</a></th>
+            <td style='text-align:left'>doi: doi:10.5281/zenodo.10368990</td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">url<span>&nbsp;</span><a href="http://schema.org/url">[?]</a></th>
+            <td style='text-align:left'><a href="https://w3id.org/ro/doi/10.5281/zenodo.10368989">https://w3id.org/ro/doi/10.5281/zenodo.10368989</a></td>
+            </tr><tr>
             <th style="text-align:left;" class="prop">about<span>&nbsp;</span><a href="http://schema.org/about">[?]</a></th>
             <td style='text-align:left'><a href="#https%3A//researchobject.org/workflow-run-crate/">Workflow Run Crate task force</a></td>
             </tr><tr>
@@ -1418,22 +1544,14 @@ table.table {
                         
                         <li><a href="#https%3A//w3id.org/ro/wfrun/provenance/0.3">Provenance Run Crate</a></li>
                         
-                        <li><a href="#mapping/environment.yml">Conda environment for sssom</a></li>
-                        
-                        <li><a href="#mapping/environment.lock.yml">Conda environment for sssom, version-pinned</a></li>
-                        
-                        <li><a href="#mapping/prov-mapping.tsv">PROV mapping to Workflow Run Crate (SSSOM TSV)</a></li>
-                        
-                        <li><a href="#mapping/prov-mapping.yml">PROV mapping to Workflow Run Crate (SSSOM metadata)</a></li>
-                        
-                        <li><a href="#mapping/prov-mapping-w-metadata.tsv">PROV mapping to Workflow Run Crate (SSSOM TSV with metadata)</a></li>
-                        
-                        <li><a href="#mapping/prov-mapping.ttl">PROV to Workflow Run Crate (SKOS and SSSOM OWL axioms)</a></li>
-                        
-                        <li><a href="#mapping/prov-mapping.rdf">PROV mapping to Workflow Run Crate (SSSOM OWL axioms)</a></li>
-                        
-                        <li><a href="#mapping/prov-mapping.json">PROV mapping to Workflow Run Crate (SSSOM JSON)</a></li>
+                        <li><a href="#mapping/">PROV mapping to Workflow Run Crate</a></li>
                         </ul></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">license<span>&nbsp;</span><a href="http://schema.org/license">[?]</a></th>
+            <td style='text-align:left'><a href="#https%3A//www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">creator<span>&nbsp;</span><a href="http://schema.org/creator">[?]</a></th>
+            <td style='text-align:left'></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">about<span>&nbsp;</span><a href="http://schema.org/about">[?]</a></th>
             <td style='text-align:left'><a href="#ro-crate-metadata.json">ro-crate-metadata.json</a></td>
@@ -1466,7 +1584,7 @@ table.table {
             <td style='text-align:left'><span>Center for Advanced Studies, Research, and Development in Sardinia (CRS4), Pula, Sardinia, Italy</span></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">author<span>&nbsp;</span><a href="http://schema.org/author">[?]</a></th>
-            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate)</a></td>
+            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate and mapping)</a></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">member<span>&nbsp;</span><a href="http://schema.org/member">[?]</a></th>
             <td style='text-align:left'><a href="#https%3A//researchobject.org/workflow-run-crate/">Workflow Run Crate task force</a></td>
@@ -1505,7 +1623,7 @@ table.table {
                         </ul></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">author<span>&nbsp;</span><a href="http://schema.org/author">[?]</a></th>
-            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate)</a></td>
+            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate and mapping)</a></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">member<span>&nbsp;</span><a href="http://schema.org/member">[?]</a></th>
             <td style='text-align:left'><a href="#https%3A//researchobject.org/workflow-run-crate/">Workflow Run Crate task force</a></td>
@@ -1538,7 +1656,7 @@ table.table {
             <td style='text-align:left'><span>Barcelona Supercomputing Center, Barcelona, Spain</span></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">author<span>&nbsp;</span><a href="http://schema.org/author">[?]</a></th>
-            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate)</a></td>
+            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate and mapping)</a></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">member<span>&nbsp;</span><a href="http://schema.org/member">[?]</a></th>
             <td style='text-align:left'><a href="#https%3A//researchobject.org/workflow-run-crate/">Workflow Run Crate task force</a></td>
@@ -1571,7 +1689,7 @@ table.table {
             <td style='text-align:left'><span>Barcelona Supercomputing Center, Barcelona, Spain</span></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">author<span>&nbsp;</span><a href="http://schema.org/author">[?]</a></th>
-            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate)</a></td>
+            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate and mapping)</a></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">member<span>&nbsp;</span><a href="http://schema.org/member">[?]</a></th>
             <td style='text-align:left'><a href="#https%3A//researchobject.org/workflow-run-crate/">Workflow Run Crate task force</a></td>
@@ -1608,7 +1726,7 @@ table.table {
                         </ul></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">author<span>&nbsp;</span><a href="http://schema.org/author">[?]</a></th>
-            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate)</a></td>
+            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate and mapping)</a></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">member<span>&nbsp;</span><a href="http://schema.org/member">[?]</a></th>
             <td style='text-align:left'><a href="#https%3A//researchobject.org/workflow-run-crate/">Workflow Run Crate task force</a></td>
@@ -1641,7 +1759,7 @@ table.table {
             <td style='text-align:left'><span>VIB-UGent Center for Plant Systems Biology, Gent, Belgium</span></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">author<span>&nbsp;</span><a href="http://schema.org/author">[?]</a></th>
-            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate)</a></td>
+            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate and mapping)</a></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">member<span>&nbsp;</span><a href="http://schema.org/member">[?]</a></th>
             <td style='text-align:left'><a href="#https%3A//researchobject.org/workflow-run-crate/">Workflow Run Crate task force</a></td>
@@ -1672,7 +1790,7 @@ table.table {
             </tr><tr>
             <th style="text-align:left;" class="prop">affiliation<span>&nbsp;</span><a href="http://schema.org/affiliation">[?]</a></th>
             <td style='text-align:left'><ul>
-                        <li><span>Faculty of Informatics, Masaryk University, Brno, Czech Republic</span></li>
+                        <li><span>Faculty of Informatics, Masaryk Universit, Brno, Czech Republic</span></li>
                         
                         <li><span>Institute of Computer Science, Masaryk University, Brno, Czech Republic</span></li>
                         
@@ -1680,7 +1798,7 @@ table.table {
                         </ul></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">author<span>&nbsp;</span><a href="http://schema.org/author">[?]</a></th>
-            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate)</a></td>
+            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate and mapping)</a></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">member<span>&nbsp;</span><a href="http://schema.org/member">[?]</a></th>
             <td style='text-align:left'><a href="#https%3A//researchobject.org/workflow-run-crate/">Workflow Run Crate task force</a></td>
@@ -1713,7 +1831,7 @@ table.table {
             <td style='text-align:left'><span>Center for Advanced Studies, Research, and Development in Sardinia (CRS4), Pula, Sardinia, Italy</span></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">author<span>&nbsp;</span><a href="http://schema.org/author">[?]</a></th>
-            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate)</a></td>
+            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate and mapping)</a></td>
             </tr></tbody>
             </table>
         </div>
@@ -1744,7 +1862,7 @@ table.table {
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">author<span>&nbsp;</span><a href="http://schema.org/author">[?]</a></th>
             <td style='text-align:left'><ul>
-                        <li><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate)</a></li>
+                        <li><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate and mapping)</a></li>
                         
                         <li><a href="#mapping/prov-mapping.tsv">PROV mapping to Workflow Run Crate (SSSOM TSV)</a></li>
                         </ul></td>
@@ -1784,7 +1902,7 @@ table.table {
             <td style='text-align:left'><span>Barcelona Supercomputing Center, Barcelona, Spain</span></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">author<span>&nbsp;</span><a href="http://schema.org/author">[?]</a></th>
-            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate)</a></td>
+            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate and mapping)</a></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">member<span>&nbsp;</span><a href="http://schema.org/member">[?]</a></th>
             <td style='text-align:left'><a href="#https%3A//researchobject.org/workflow-run-crate/">Workflow Run Crate task force</a></td>
@@ -1817,7 +1935,7 @@ table.table {
             <td style='text-align:left'><span>Computer Science Dept., Università degli Studi di Torino, Torino, Italy</span></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">author<span>&nbsp;</span><a href="http://schema.org/author">[?]</a></th>
-            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate)</a></td>
+            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate and mapping)</a></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">member<span>&nbsp;</span><a href="http://schema.org/member">[?]</a></th>
             <td style='text-align:left'><a href="#https%3A//researchobject.org/workflow-run-crate/">Workflow Run Crate task force</a></td>
@@ -1850,7 +1968,7 @@ table.table {
             <td style='text-align:left'><span>Faculty of Informatics, Masaryk University, Brno, Czech Republic</span></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">author<span>&nbsp;</span><a href="http://schema.org/author">[?]</a></th>
-            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate)</a></td>
+            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate and mapping)</a></td>
             </tr></tbody>
             </table>
         </div>
@@ -1884,7 +2002,7 @@ table.table {
                         </ul></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">author<span>&nbsp;</span><a href="http://schema.org/author">[?]</a></th>
-            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate)</a></td>
+            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate and mapping)</a></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">member<span>&nbsp;</span><a href="http://schema.org/member">[?]</a></th>
             <td style='text-align:left'><a href="#https%3A//researchobject.org/workflow-run-crate/">Workflow Run Crate task force</a></td>
@@ -1914,10 +2032,10 @@ table.table {
             <td style='text-align:left'><span>Person</span></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">affiliation<span>&nbsp;</span><a href="http://schema.org/affiliation">[?]</a></th>
-            <td style='text-align:left'><span>Department of Creative Informatics, Graduate School of Information Science and Technology, The University of Tokyo, Tokyo, Japan</span></td>
+            <td style='text-align:left'><span>Sator Inc., Tokyo, Japan</span></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">author<span>&nbsp;</span><a href="http://schema.org/author">[?]</a></th>
-            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate)</a></td>
+            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate and mapping)</a></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">member<span>&nbsp;</span><a href="http://schema.org/member">[?]</a></th>
             <td style='text-align:left'><a href="#https%3A//researchobject.org/workflow-run-crate/">Workflow Run Crate task force</a></td>
@@ -1950,7 +2068,7 @@ table.table {
             <td style='text-align:left'><span>Barcelona Supercomputing Center, Barcelona, Spain</span></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">author<span>&nbsp;</span><a href="http://schema.org/author">[?]</a></th>
-            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate)</a></td>
+            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate and mapping)</a></td>
             </tr></tbody>
             </table>
         </div>
@@ -1980,7 +2098,7 @@ table.table {
             <td style='text-align:left'><span>Vrije Universiteit Amsterdam, Amsterdam, The Netherlands</span></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">author<span>&nbsp;</span><a href="http://schema.org/author">[?]</a></th>
-            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate)</a></td>
+            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate and mapping)</a></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">member<span>&nbsp;</span><a href="http://schema.org/member">[?]</a></th>
             <td style='text-align:left'><a href="#https%3A//researchobject.org/workflow-run-crate/">Workflow Run Crate task force</a></td>
@@ -2017,7 +2135,7 @@ table.table {
             <td style='text-align:left'><span>Barcelona Supercomputing Center, Barcelona, Spain</span></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">author<span>&nbsp;</span><a href="http://schema.org/author">[?]</a></th>
-            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate)</a></td>
+            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate and mapping)</a></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">member<span>&nbsp;</span><a href="http://schema.org/member">[?]</a></th>
             <td style='text-align:left'><a href="#https%3A//researchobject.org/workflow-run-crate/">Workflow Run Crate task force</a></td>
@@ -2057,7 +2175,7 @@ table.table {
             <td style='text-align:left'><ul>
                         <li><a href="#ro-crate-metadata.json">ro-crate-metadata.json</a></li>
                         
-                        <li><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate)</a></li>
+                        <li><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate and mapping)</a></li>
                         
                         <li><a href="#mapping/prov-mapping.tsv">PROV mapping to Workflow Run Crate (SSSOM TSV)</a></li>
                         </ul></td>
@@ -2067,6 +2185,42 @@ table.table {
             </tr><tr>
             <th style="text-align:left;" class="prop">creator<span>&nbsp;</span><a href="http://schema.org/creator">[?]</a></th>
             <td style='text-align:left'><a href="#mapping/prov-mapping.tsv">PROV mapping to Workflow Run Crate (SSSOM TSV)</a></td>
+            </tr></tbody>
+            </table>
+        </div>
+
+        </div>
+        <hr/><br/><br/>
+           <div>
+            <h3><a href="https://doi.org/10.5281/zenodo.10368990">Go to: </a> doi</h3>
+            
+            
+            
+            
+        <div id="https://doi.org/10.5281/zenodo.10368990">
+            
+            <table class="table metadata table-striped" >
+                <tbody><tr>
+            <th style="text-align:left;" class="prop">@id</th>
+            <td style='text-align:left'><a href="https://doi.org/10.5281/zenodo.10368990">https://doi.org/10.5281/zenodo.10368990</a></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">name<span>&nbsp;</span><a href="http://schema.org/name">[?]</a></th>
+            <td style='text-align:left'><span>doi</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">@type</th>
+            <td style='text-align:left'><span>PropertyValue</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">propertyID<span>&nbsp;</span><a href="http://schema.org/propertyID">[?]</a></th>
+            <td style='text-align:left'><a href="https://registry.identifiers.org/registry/doi">https://registry.identifiers.org/registry/doi</a></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">value<span>&nbsp;</span><a href="http://schema.org/value">[?]</a></th>
+            <td style='text-align:left'><span>doi:10.5281/zenodo.10368990</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">url<span>&nbsp;</span><a href="http://schema.org/url">[?]</a></th>
+            <td style='text-align:left'><a href="https://doi.org/10.5281/zenodo.10368990">https://doi.org/10.5281/zenodo.10368990</a></td>
+            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
+            <th style="text-align:left;" class="prop">identifier<span>&nbsp;</span><a href="http://schema.org/identifier">[?]</a></th>
+            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate and mapping)</a></td>
             </tr></tbody>
             </table>
         </div>
@@ -2169,15 +2323,15 @@ table.table {
             <td style='text-align:left'><a href="#https%3A//www.researchobject.org/ro-crate/community">RO-Crate Community</a></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">about<span>&nbsp;</span><a href="http://schema.org/about">[?]</a></th>
-            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate)</a></td>
+            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate and mapping)</a></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">author<span>&nbsp;</span><a href="http://schema.org/author">[?]</a></th>
             <td style='text-align:left'><ul>
                         <li><a href="#https%3A//w3id.org/ro/wfrun/process/0.3">Process Run Crate</a></li>
                         
-                        <li><a href="#https%3A//w3id.org/ro/wfrun/provenance/0.3">Provenance Run Crate</a></li>
-                        
                         <li><a href="#https%3A//w3id.org/ro/wfrun/workflow/0.3">Workflow Run Crate</a></li>
+                        
+                        <li><a href="#https%3A//w3id.org/ro/wfrun/provenance/0.3">Provenance Run Crate</a></li>
                         </ul></td>
             </tr></tbody>
             </table>
@@ -2211,7 +2365,7 @@ table.table {
             <td style='text-align:left'><span>0.3</span></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
-            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate)</a></td>
+            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate and mapping)</a></td>
             </tr></tbody>
             </table>
         </div>
@@ -2244,7 +2398,7 @@ table.table {
             <td style='text-align:left'><span>0.3</span></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
-            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate)</a></td>
+            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate and mapping)</a></td>
             </tr></tbody>
             </table>
         </div>
@@ -2277,7 +2431,7 @@ table.table {
             <td style='text-align:left'><span>0.3</span></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
-            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate)</a></td>
+            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate and mapping)</a></td>
             </tr></tbody>
             </table>
         </div>
@@ -2285,232 +2439,48 @@ table.table {
         </div>
         <hr/><br/><br/>
            <div>
-            <h3><a href="mapping/environment.yml">⬇️ Download: </a> Conda environment for sssom</h3>
+            <h3> PROV mapping to Workflow Run Crate</h3>
             
             
             
             
-        <div id="mapping/environment.yml">
+        <div id="mapping/">
             
             <table class="table metadata table-striped" >
                 <tbody><tr>
             <th style="text-align:left;" class="prop">@id</th>
-            <td style='text-align:left'><span>mapping/environment.yml</span></td>
+            <td style='text-align:left'><span>mapping/</span></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">name<span>&nbsp;</span><a href="http://schema.org/name">[?]</a></th>
-            <td style='text-align:left'><span>Conda environment for sssom</span></td>
+            <td style='text-align:left'><span>PROV mapping to Workflow Run Crate</span></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">@type</th>
-            <td style='text-align:left'><span>File</span></td>
+            <td style='text-align:left'><span>Dataset</span></td>
             </tr><tr>
-            <th style="text-align:left;" class="prop">encodingFormat<span>&nbsp;</span><a href="http://schema.org/encodingFormat">[?]</a></th>
-            <td style='text-align:left'><ul>
-                        <li><span>application/yaml</span></li>
-                        
-                        <li><a href="https://www.nationalarchives.gov.uk/PRONOM/fmt/818">https://www.nationalarchives.gov.uk/PRONOM/fmt/818</a></li>
-                        </ul></td>
+            <th style="text-align:left;" class="prop">description<span>&nbsp;</span><a href="http://schema.org/description">[?]</a></th>
+            <td style='text-align:left'><span>Mapping using SKOS and SSSOM</span></td>
             </tr><tr>
-            <th style="text-align:left;" class="prop">conformsTo<span>&nbsp;</span><a href="http://purl.org/dc/terms/conformsTo">[?]</a></th>
-            <td style='text-align:left'><a href="#https%3A//docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html%23create-env-file-manually">Conda environment file format</a></td>
-            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
-            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate)</a></td>
-            </tr></tbody>
-            </table>
-        </div>
-
-        </div>
-        <hr/><br/><br/>
-           <div>
-            <h3><a href="mapping/environment.lock.yml">⬇️ Download: </a> Conda environment for sssom, version-pinned</h3>
-            
-            
-            
-            
-        <div id="mapping/environment.lock.yml">
-            
-            <table class="table metadata table-striped" >
-                <tbody><tr>
-            <th style="text-align:left;" class="prop">@id</th>
-            <td style='text-align:left'><span>mapping/environment.lock.yml</span></td>
-            </tr><tr>
-            <th style="text-align:left;" class="prop">name<span>&nbsp;</span><a href="http://schema.org/name">[?]</a></th>
-            <td style='text-align:left'><span>Conda environment for sssom, version-pinned</span></td>
-            </tr><tr>
-            <th style="text-align:left;" class="prop">@type</th>
-            <td style='text-align:left'><span>File</span></td>
-            </tr><tr>
-            <th style="text-align:left;" class="prop">encodingFormat<span>&nbsp;</span><a href="http://schema.org/encodingFormat">[?]</a></th>
             <td style='text-align:left'><ul>
-                        <li><span>application/yaml</span></li>
+                        <li><a href="#mapping/environment.yml">Conda environment for sssom</a></li>
                         
-                        <li><a href="https://www.nationalarchives.gov.uk/PRONOM/fmt/818">https://www.nationalarchives.gov.uk/PRONOM/fmt/818</a></li>
-                        </ul></td>
-            </tr><tr>
-            <th style="text-align:left;" class="prop">conformsTo<span>&nbsp;</span><a href="http://purl.org/dc/terms/conformsTo">[?]</a></th>
-            <td style='text-align:left'><a href="#https%3A//docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html%23create-env-file-manually">Conda environment file format</a></td>
-            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
-            <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
-            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate)</a></td>
-            </tr></tbody>
-            </table>
-        </div>
-
-        </div>
-        <hr/><br/><br/>
-           <div>
-            <h3><a href="mapping/prov-mapping.tsv">⬇️ Download: </a> PROV mapping to Workflow Run Crate (SSSOM TSV)</h3>
-            
-            
-            
-            
-        <div id="mapping/prov-mapping.tsv">
-            
-            <table class="table metadata table-striped" >
-                <tbody><tr>
-            <th style="text-align:left;" class="prop">@id</th>
-            <td style='text-align:left'><span>mapping/prov-mapping.tsv</span></td>
-            </tr><tr>
-            <th style="text-align:left;" class="prop">name<span>&nbsp;</span><a href="http://schema.org/name">[?]</a></th>
-            <td style='text-align:left'><span>PROV mapping to Workflow Run Crate (SSSOM TSV)</span></td>
-            </tr><tr>
-            <th style="text-align:left;" class="prop">@type</th>
-            <td style='text-align:left'><ul>
-                        <li><span>File</span></li>
+                        <li><a href="#mapping/environment.lock.yml">Conda environment for sssom, version-pinned</a></li>
                         
-                        <li><span>MappingSet</span></li>
-                        </ul></td>
-            </tr><tr>
-            <th style="text-align:left;" class="prop">author<span>&nbsp;</span><a href="http://schema.org/author">[?]</a></th>
-            <td style='text-align:left'><ul>
-                        <li><a href="#https%3A//orcid.org/0000-0003-0454-7145">Daniel Garijo</a></li>
-                        
-                        <li><a href="#https%3A//orcid.org/0000-0001-9842-9718">Stian Soiland-Reyes</a></li>
-                        </ul></td>
-            </tr><tr>
-            <th style="text-align:left;" class="prop">encodingFormat<span>&nbsp;</span><a href="http://schema.org/encodingFormat">[?]</a></th>
-            <td style='text-align:left'><ul>
-                        <li><span>text/tab-separated-values</span></li>
-                        
-                        <li><a href="https://www.nationalarchives.gov.uk/PRONOM/x-fmt/13">https://www.nationalarchives.gov.uk/PRONOM/x-fmt/13</a></li>
-                        </ul></td>
-            </tr><tr>
-            <th style="text-align:left;" class="prop">conformsTo<span>&nbsp;</span><a href="http://purl.org/dc/terms/conformsTo">[?]</a></th>
-            <td style='text-align:left'><ul>
-                        <li><a href="#https%3A//w3id.org/sssom/">SSSOM</a></li>
-                        
-                        <li><a href="#https%3A//mapping-commons.github.io/sssom/spec/%23tsv">SSSOM TSV</a></li>
-                        </ul></td>
-            </tr><tr>
-            <th style="text-align:left;" class="prop">creator<span>&nbsp;</span><a href="http://schema.org/creator">[?]</a></th>
-            <td style='text-align:left'><a href="#https%3A//orcid.org/0000-0001-9842-9718">Stian Soiland-Reyes</a></td>
-            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
-            <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
-            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate)</a></td>
-            </tr><tr>
-            <th style="text-align:left;" class="prop">isBasedOn<span>&nbsp;</span><a href="http://schema.org/isBasedOn">[?]</a></th>
-            <td style='text-align:left'><a href="#mapping/prov-mapping-w-metadata.tsv">PROV mapping to Workflow Run Crate (SSSOM TSV with metadata)</a></td>
-            </tr></tbody>
-            </table>
-        </div>
-
-        </div>
-        <hr/><br/><br/>
-           <div>
-            <h3><a href="mapping/prov-mapping.yml">⬇️ Download: </a> PROV mapping to Workflow Run Crate (SSSOM metadata)</h3>
-            
-            
-            
-            
-        <div id="mapping/prov-mapping.yml">
-            
-            <table class="table metadata table-striped" >
-                <tbody><tr>
-            <th style="text-align:left;" class="prop">@id</th>
-            <td style='text-align:left'><span>mapping/prov-mapping.yml</span></td>
-            </tr><tr>
-            <th style="text-align:left;" class="prop">name<span>&nbsp;</span><a href="http://schema.org/name">[?]</a></th>
-            <td style='text-align:left'><span>PROV mapping to Workflow Run Crate (SSSOM metadata)</span></td>
-            </tr><tr>
-            <th style="text-align:left;" class="prop">@type</th>
-            <td style='text-align:left'><ul>
-                        <li><span>File</span></li>
-                        
-                        <li><span>MappingSet</span></li>
-                        </ul></td>
-            </tr><tr>
-            <th style="text-align:left;" class="prop">encodingFormat<span>&nbsp;</span><a href="http://schema.org/encodingFormat">[?]</a></th>
-            <td style='text-align:left'><ul>
-                        <li><span>text/yaml</span></li>
-                        
-                        <li><a href="https://www.nationalarchives.gov.uk/PRONOM/fmt/818">https://www.nationalarchives.gov.uk/PRONOM/fmt/818</a></li>
-                        </ul></td>
-            </tr><tr>
-            <th style="text-align:left;" class="prop">conformsTo<span>&nbsp;</span><a href="http://purl.org/dc/terms/conformsTo">[?]</a></th>
-            <td style='text-align:left'><a href="#https%3A//w3id.org/sssom/">SSSOM</a></td>
-            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
-            <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
-            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate)</a></td>
-            </tr><tr>
-            <th style="text-align:left;" class="prop">isBasedOn<span>&nbsp;</span><a href="http://schema.org/isBasedOn">[?]</a></th>
-            <td style='text-align:left'><a href="#mapping/prov-mapping-w-metadata.tsv">PROV mapping to Workflow Run Crate (SSSOM TSV with metadata)</a></td>
-            </tr></tbody>
-            </table>
-        </div>
-
-        </div>
-        <hr/><br/><br/>
-           <div>
-            <h3><a href="mapping/prov-mapping-w-metadata.tsv">⬇️ Download: </a> PROV mapping to Workflow Run Crate (SSSOM TSV with metadata)</h3>
-            
-            
-            
-            
-        <div id="mapping/prov-mapping-w-metadata.tsv">
-            
-            <table class="table metadata table-striped" >
-                <tbody><tr>
-            <th style="text-align:left;" class="prop">@id</th>
-            <td style='text-align:left'><span>mapping/prov-mapping-w-metadata.tsv</span></td>
-            </tr><tr>
-            <th style="text-align:left;" class="prop">name<span>&nbsp;</span><a href="http://schema.org/name">[?]</a></th>
-            <td style='text-align:left'><span>PROV mapping to Workflow Run Crate (SSSOM TSV with metadata)</span></td>
-            </tr><tr>
-            <th style="text-align:left;" class="prop">@type</th>
-            <td style='text-align:left'><ul>
-                        <li><span>File</span></li>
-                        
-                        <li><span>MappingSet</span></li>
-                        </ul></td>
-            </tr><tr>
-            <th style="text-align:left;" class="prop">encodingFormat<span>&nbsp;</span><a href="http://schema.org/encodingFormat">[?]</a></th>
-            <td style='text-align:left'><span>text/tab-separated-values</span></td>
-            </tr><tr>
-            <th style="text-align:left;" class="prop">conformsTo<span>&nbsp;</span><a href="http://purl.org/dc/terms/conformsTo">[?]</a></th>
-            <td style='text-align:left'><ul>
-                        <li><a href="#https%3A//w3id.org/sssom/">SSSOM</a></li>
-                        
-                        <li><a href="#https%3A//mapping-commons.github.io/sssom/spec/%23tsv">SSSOM TSV</a></li>
-                        </ul></td>
-            </tr><tr>
-            <th style="text-align:left;" class="prop">isBasedOn<span>&nbsp;</span><a href="http://schema.org/isBasedOn">[?]</a></th>
-            <td style='text-align:left'><ul>
                         <li><a href="#mapping/prov-mapping.tsv">PROV mapping to Workflow Run Crate (SSSOM TSV)</a></li>
                         
                         <li><a href="#mapping/prov-mapping.yml">PROV mapping to Workflow Run Crate (SSSOM metadata)</a></li>
-                        </ul></td>
-            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
-            <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
-            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate)</a></td>
-            </tr><tr>
-            <th style="text-align:left;" class="prop">isBasedOn<span>&nbsp;</span><a href="http://schema.org/isBasedOn">[?]</a></th>
-            <td style='text-align:left'><ul>
-                        <li><a href="#mapping/prov-mapping.json">PROV mapping to Workflow Run Crate (SSSOM JSON)</a></li>
+                        
+                        <li><a href="#mapping/prov-mapping-w-metadata.tsv">PROV mapping to Workflow Run Crate (SSSOM TSV with metadata)</a></li>
+                        
+                        <li><a href="#mapping/prov-mapping.ttl">PROV to Workflow Run Crate (SKOS and SSSOM OWL axioms)</a></li>
                         
                         <li><a href="#mapping/prov-mapping.rdf">PROV mapping to Workflow Run Crate (SSSOM OWL axioms)</a></li>
                         
-                        <li><a href="#mapping/prov-mapping.ttl">PROV to Workflow Run Crate (SKOS and SSSOM OWL axioms)</a></li>
+                        <li><a href="#mapping/prov-mapping.json">PROV mapping to Workflow Run Crate (SSSOM JSON)</a></li>
                         </ul></td>
+            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
+            <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
+            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate and mapping)</a></td>
             </tr></tbody>
             </table>
         </div>
@@ -2518,145 +2488,32 @@ table.table {
         </div>
         <hr/><br/><br/>
            <div>
-            <h3><a href="mapping/prov-mapping.ttl">⬇️ Download: </a> PROV to Workflow Run Crate (SKOS and SSSOM OWL axioms)</h3>
+            <h3><a href="https://www.apache.org/licenses/LICENSE-2.0">Go to: </a> Apache License, Version 2.0</h3>
             
             
             
             
-        <div id="mapping/prov-mapping.ttl">
-            
-            <table class="table metadata table-striped" >
-                <tbody><tr>
-            <th style="text-align:left;" class="prop">@id</th>
-            <td style='text-align:left'><span>mapping/prov-mapping.ttl</span></td>
-            </tr><tr>
-            <th style="text-align:left;" class="prop">name<span>&nbsp;</span><a href="http://schema.org/name">[?]</a></th>
-            <td style='text-align:left'><span>PROV to Workflow Run Crate (SKOS and SSSOM OWL axioms)</span></td>
-            </tr><tr>
-            <th style="text-align:left;" class="prop">@type</th>
-            <td style='text-align:left'><ul>
-                        <li><span>File</span></li>
-                        
-                        <li><span>MappingSet</span></li>
-                        </ul></td>
-            </tr><tr>
-            <th style="text-align:left;" class="prop">encodingFormat<span>&nbsp;</span><a href="http://schema.org/encodingFormat">[?]</a></th>
-            <td style='text-align:left'><ul>
-                        <li><span>text/turtle</span></li>
-                        
-                        <li><a href="https://www.nationalarchives.gov.uk/PRONOM/fmt/874">https://www.nationalarchives.gov.uk/PRONOM/fmt/874</a></li>
-                        </ul></td>
-            </tr><tr>
-            <th style="text-align:left;" class="prop">conformsTo<span>&nbsp;</span><a href="http://purl.org/dc/terms/conformsTo">[?]</a></th>
-            <td style='text-align:left'><ul>
-                        <li><a href="#http%3A//www.w3.org/TR/owl2-mapping-to-rdf/">OWL 2 (in RDF)</a></li>
-                        
-                        <li><a href="#http%3A//www.w3.org/TR/skos-reference">SKOS</a></li>
-                        </ul></td>
-            </tr><tr>
-            <th style="text-align:left;" class="prop">isBasedOn<span>&nbsp;</span><a href="http://schema.org/isBasedOn">[?]</a></th>
-            <td style='text-align:left'><a href="#mapping/prov-mapping-w-metadata.tsv">PROV mapping to Workflow Run Crate (SSSOM TSV with metadata)</a></td>
-            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
-            <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
-            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate)</a></td>
-            </tr></tbody>
-            </table>
-        </div>
-
-        </div>
-        <hr/><br/><br/>
-           <div>
-            <h3><a href="mapping/prov-mapping.rdf">⬇️ Download: </a> PROV mapping to Workflow Run Crate (SSSOM OWL axioms)</h3>
-            
-            
-            
-            
-        <div id="mapping/prov-mapping.rdf">
+        <div id="https://www.apache.org/licenses/LICENSE-2.0">
             
             <table class="table metadata table-striped" >
                 <tbody><tr>
             <th style="text-align:left;" class="prop">@id</th>
-            <td style='text-align:left'><span>mapping/prov-mapping.rdf</span></td>
+            <td style='text-align:left'><a href="https://www.apache.org/licenses/LICENSE-2.0">https://www.apache.org/licenses/LICENSE-2.0</a></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">name<span>&nbsp;</span><a href="http://schema.org/name">[?]</a></th>
-            <td style='text-align:left'><span>PROV mapping to Workflow Run Crate (SSSOM OWL axioms)</span></td>
+            <td style='text-align:left'><span>Apache License, Version 2.0</span></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">@type</th>
-            <td style='text-align:left'><ul>
-                        <li><span>File</span></li>
-                        
-                        <li><span>MappingSet</span></li>
-                        </ul></td>
+            <td style='text-align:left'><span>CreativeWork</span></td>
             </tr><tr>
-            <th style="text-align:left;" class="prop">encodingFormat<span>&nbsp;</span><a href="http://schema.org/encodingFormat">[?]</a></th>
-            <td style='text-align:left'><ul>
-                        <li><span>application/rdf+xml</span></li>
-                        
-                        <li><a href="https://www.nationalarchives.gov.uk/PRONOM/fmt/875">https://www.nationalarchives.gov.uk/PRONOM/fmt/875</a></li>
-                        </ul></td>
+            <th style="text-align:left;" class="prop">version<span>&nbsp;</span><a href="http://schema.org/version">[?]</a></th>
+            <td style='text-align:left'><span>2.0</span></td>
             </tr><tr>
-            <th style="text-align:left;" class="prop">conformsTo<span>&nbsp;</span><a href="http://purl.org/dc/terms/conformsTo">[?]</a></th>
-            <td style='text-align:left'><ul>
-                        <li><a href="#http%3A//www.w3.org/TR/owl2-mapping-to-rdf/">OWL 2 (in RDF)</a></li>
-                        
-                        <li><a href="#https%3A//w3id.org/sssom/">SSSOM</a></li>
-                        
-                        <li><a href="#https%3A//mapping-commons.github.io/sssom/spec/%23rdfxml-serialised-re-ified-owl-axioms">SSSOM RDF/XML serialised re-ified OWL axioms</a></li>
-                        </ul></td>
-            </tr><tr>
-            <th style="text-align:left;" class="prop">isBasedOn<span>&nbsp;</span><a href="http://schema.org/isBasedOn">[?]</a></th>
-            <td style='text-align:left'><a href="#mapping/prov-mapping-w-metadata.tsv">PROV mapping to Workflow Run Crate (SSSOM TSV with metadata)</a></td>
+            <th style="text-align:left;" class="prop">identifier<span>&nbsp;</span><a href="http://schema.org/identifier">[?]</a></th>
+            <td style='text-align:left'>spdx: Apache-2.0</td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
-            <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
-            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate)</a></td>
-            </tr></tbody>
-            </table>
-        </div>
-
-        </div>
-        <hr/><br/><br/>
-           <div>
-            <h3><a href="mapping/prov-mapping.json">⬇️ Download: </a> PROV mapping to Workflow Run Crate (SSSOM JSON)</h3>
-            
-            
-            
-            
-        <div id="mapping/prov-mapping.json">
-            
-            <table class="table metadata table-striped" >
-                <tbody><tr>
-            <th style="text-align:left;" class="prop">@id</th>
-            <td style='text-align:left'><span>mapping/prov-mapping.json</span></td>
-            </tr><tr>
-            <th style="text-align:left;" class="prop">name<span>&nbsp;</span><a href="http://schema.org/name">[?]</a></th>
-            <td style='text-align:left'><span>PROV mapping to Workflow Run Crate (SSSOM JSON)</span></td>
-            </tr><tr>
-            <th style="text-align:left;" class="prop">@type</th>
-            <td style='text-align:left'><ul>
-                        <li><span>File</span></li>
-                        
-                        <li><span>MappingSet</span></li>
-                        </ul></td>
-            </tr><tr>
-            <th style="text-align:left;" class="prop">encodingFormat<span>&nbsp;</span><a href="http://schema.org/encodingFormat">[?]</a></th>
-            <td style='text-align:left'><ul>
-                        <li><span>application/json</span></li>
-                        
-                        <li><a href="https://www.nationalarchives.gov.uk/PRONOM/fmt/817">https://www.nationalarchives.gov.uk/PRONOM/fmt/817</a></li>
-                        </ul></td>
-            </tr><tr>
-            <th style="text-align:left;" class="prop">conformsTo<span>&nbsp;</span><a href="http://purl.org/dc/terms/conformsTo">[?]</a></th>
-            <td style='text-align:left'><ul>
-                        <li><a href="#https%3A//w3id.org/sssom/">SSSOM</a></li>
-                        
-                        <li><a href="#https%3A//mapping-commons.github.io/sssom/spec/%23json">SSSOM JSON</a></li>
-                        </ul></td>
-            </tr><tr>
-            <th style="text-align:left;" class="prop">isBasedOn<span>&nbsp;</span><a href="http://schema.org/isBasedOn">[?]</a></th>
-            <td style='text-align:left'><a href="#mapping/prov-mapping-w-metadata.tsv">PROV mapping to Workflow Run Crate (SSSOM TSV with metadata)</a></td>
-            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
-            <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
-            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate)</a></td>
+            <th style="text-align:left;" class="prop">license<span>&nbsp;</span><a href="http://schema.org/license">[?]</a></th>
+            <td style='text-align:left'><a href="#./">Recording provenance of workflow runs with RO-Crate (RO-Crate and mapping)</a></td>
             </tr></tbody>
             </table>
         </div>

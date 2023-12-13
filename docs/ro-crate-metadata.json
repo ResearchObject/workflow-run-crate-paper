@@ -32,6 +32,10 @@
     },
     {
       "@id": "./",
+      "identifier": {
+        "@id": "https://doi.org/10.5281/zenodo.10368990"
+      },
+      "url": "https://w3id.org/ro/doi/10.5281/zenodo.10368989",
       "@type": "Dataset",
       "about": {
         "@id": "https://researchobject.org/workflow-run-crate/"
@@ -92,7 +96,7 @@
           "@id": "https://orcid.org/0000-0001-9842-9718"
         }
       ],
-      "description": "RO-Crate for the manuscript that describes Workflow Run Crate",
+      "description": "RO-Crate for the manuscript that describes Workflow Run Crate, includes mapping to PROV using SKOS/SSSOM",
       "hasPart": [
         {
           "@id": "https://w3id.org/ro/wfrun/process/0.3"
@@ -107,12 +111,20 @@
           "@id": "mapping/"
         }
       ],
-      "name": "Recording provenance of workflow runs with RO-Crate (RO-Crate)",
+      "name": "Recording provenance of workflow runs with RO-Crate (RO-Crate and mapping)",
       "datePublished": "2023-12-12T21:08",
       "license": {
         "@id": "https://www.apache.org/licenses/LICENSE-2.0"
       },
       "creator": []
+    },
+    {
+      "@id": "https://doi.org/10.5281/zenodo.10368990",
+      "@type": "PropertyValue",
+      "name": "doi",
+      "propertyID": "https://registry.identifiers.org/registry/doi",
+      "value": "doi:10.5281/zenodo.10368990",
+      "url": "https://doi.org/10.5281/zenodo.10368990"
     },
     {
       "@id": "https://orcid.org/0000-0001-9842-9718",
@@ -336,7 +348,7 @@
     {
       "@id": "https://orcid.org/0000-0003-2765-0049",
       "@type": "Person",
-      "affiliation": "Department of Creative Informatics, Graduate School of Information Science and Technology, The University of Tokyo, Tokyo, Japan",
+      "affiliation": "Sator Inc., Tokyo, Japan",
       "name": "Hirotaka Suetake"
     },
     {
@@ -729,16 +741,38 @@
       "@id": "https://www.apache.org/licenses/LICENSE-2.0",
       "@type": "CreativeWork",
       "name": "Apache License, Version 2.0",
-      "sameAs": [],
+      "version": "2.0",
       "identifier": {
-        "@id": "https://spdx.org/licenses/Apache-2.0"
+        "@id": "http://spdx.org/licenses/Apache-2.0"
       }
     },
     {
-      "@id": "https://spdx.org/licenses/Apache-2.0",
+      "@id": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "@type": "CreativeWork",
+      "identifier": { "@id": "http://spdx.org/licenses/CC0-1.0"},
+      "name": "Creative Commons Zero v1.0 Universal",
+      "version": "1.0"
+    },
+    {
+      "@id": "https://creativecommons.org/licenses/by/4.0/",
+      "@type": "CreativeWork",
+      "identifier": { "@id": "http://spdx.org/licenses/CC-BY-4.0"},
+      "name": "Creative Commons Attribution 4.0 International",
+      "version": "4.0"
+    },
+    {
+      "@id": "http://spdx.org/licenses/Apache-2.0",
       "@type": "PropertyValue",
+      "propertyID": "http://spdx.org/rdf/terms#licenseId",
       "name": "spdx",
       "value": "Apache-2.0"
+    },
+    {
+      "@id": "http://spdx.org/licenses/CC0-1.0",
+      "@type": "PropertyValue",
+      "propertyID": "http://spdx.org/rdf/terms#licenseId",
+      "name": "spdx",
+      "value": "CC0-1.0"
     },
     {
       "@id": "mapping/",
