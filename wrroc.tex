@@ -320,7 +320,7 @@ Other data models like \emph{wfprov} and \emph{wfdesc}
 However, while these models address some workflow provenance representation issues, they have two main limitations: firstly, the extensions of PROV are not directly interoperable because of differences in granularity or different assumptions in their workflow representations; secondly, their support from WMS is typically one system per model.  An early approach to unify and integrate workflow provenance traces across WMS was WEST (Workflow Ecosystems through STandards) \cite{Garijo 2014}, through the use of WINGS \cite{Gil 2011} to build workflow templates and different converters. In all of these workflow provenance models, the emphasis is on the workflow execution structure as a directed graph, with only partial references for the data items. 
 The REPRODUCE-ME ontology \cite{Samuel 2022} extended PROV and P-Plan to explain the overall scientific process with the experimental context including real life objects (e.g. instruments, specimens) and human activities (e.g. lab protocols, screening), demonstrating provenance of individual Jupyter Notebook cells (\url{https://sheeba-samuel.github.io/REPRODUCE-ME/research/provbook.html}) and highlighting the need for provenance also where there is no workflow management system. 
 
-More recently, interoperability have been partially addressed by Common Worlflow Language Prov (CWLProv)~\cite{Khan 2019}, which represents workflow enactments as ROs serialised according to the Big Dta Bag (BDBag) approach~\cite{Chard 2016}.
+More recently, interoperability have been partially addressed by Common Worlflow Language Prov (CWLProv)~\cite{Khan 2019}, which represents workflow enactments as ROs serialised according to the Big Data Bag (BDBag) approach~\cite{Chard 2016}.
 The resulting format is a folder containing several data and metadata files~\cite{Soiland-Reyes 2018}, expanding on the RO Bundle approach of Taverna \cite{Soiland-Reyes 2016}.
 CWLProv also extends PROV with a representation of executed processes (activities), their inputs and outputs (entities) and their executors (agents), together with their Common Workflow Language specification
 \cite{Crusoe 2022} -- a standard workflow specification adopted by at least a dozen different workflow systems (\url{https://www.commonwl.org/implementations/}). Although CWLProv includes prospective provenance as a \emph{plan}
@@ -408,7 +408,7 @@ Fig~\ref{fig:process_crate_er} shows the entities used in Process Run Crate toge
 \begin{figure}[!h]
 %\includegraphics[width=\textwidth]{image1.png}
 %\includegraphics[width=26em]{wrroc-figure1.drawio.pdf}
-\includegraphics[width=26em]{process_crate_er.eps}
+%\includegraphics[width=26em]{Fig1.eps}
 \caption{{\bf UML class diagram for Process Run Crate.}
 The central entity is the \emph{CreateAction}, which represents the execution of an application.
 It relates with the application itself via \emph{instrument}, with the entity that executed it via \emph{agent} and with its inputs and outputs via \emph{object}
@@ -430,7 +430,7 @@ Note how the actions are connected by the fact that the output of ``Run Head'' i
 \begin{figure}[!ht]
 %\includegraphics[width=29em]{image2.png}
 %\includegraphics[width=29em]{wrroc-figure-example.drawio.pdf}
-\includegraphics[width=29em]{head_sort.eps}
+%\includegraphics[width=29em]{Fig2.eps}
 \caption{{\bf Diagram of a simple workflow} where the \texttt{head} and \texttt{sort} programs were run manually by a user.
 The executions of the individual software programs are connected by the fact that the file output by \texttt{head} was used as input for \texttt{sort}, documenting the computational flow in an implicit way.
 Such executions can be represented with Process Run Crate.}
@@ -489,7 +489,7 @@ Fig~\ref{fig:workflow_crate_er} shows the entities used in Workflow Run Crate to
 
 \begin{figure}[!h]
 %\includegraphics[width=26em]{wrroc-figure2.drawio.pdf}
-\includegraphics[width=26em]{workflow_crate_er.eps}
+%\includegraphics[width=26em]{Fig3.eps}
 \caption{{\bf UML class diagram for Workflow Run Crate.}
 The main differences with Process Run Crate are the representation of formal parameters and the fact that the application is expected to be an entity with types \emph{File}, \emph{SoftwareSourceCode} and \emph{ComputationalWorkflow}.
 Effectively, the entity belongs to all three types, and its properties are the union of the properties of the individual types.
@@ -523,7 +523,7 @@ Fig~\ref{fig:provenance_crate_er} shows the various entities involved in the rep
 \begin{figure}[!h]
 %\includegraphics[width=21em]{image4.png}
 %\includegraphics[width=\textwidth]{wrroc-figure3.drawio.pdf}
-\includegraphics[width=\textwidth]{provenance_crate_er.eps}
+%\includegraphics[width=\textwidth]{Fig4.eps}
 \caption{{\bf UML class diagram for Provenance Run Crate.}
 In addition to the workflow run, this profile represents the execution of individual steps and their related tools.}
 \label{fig:provenance_crate_er}
@@ -547,7 +547,7 @@ This profile is the most detailed of the three, and offers the highest level of 
 \begin{figure}[!h]
 %  \includegraphics[width=21em]{venn.png}
   %\includegraphics[width=26em]{wrroc-venn.drawio.pdf}
-  \includegraphics[width=26em]{profile_venn.eps}
+  %\includegraphics[width=26em]{Fig5.eps}
   \caption{{\bf Venn diagram of the specifications for the various RO-Crate profiles.}
   Workflow Run Crate inherits the specifications of both Process Run Crate and Workflow RO-Crate. Provenance Run Crate, in turn, inherits the specifications of Workflow Run Crate.}
   \label{fig:profile_venn}
@@ -1118,7 +1118,7 @@ The crate then goes through multiple phases internal to the TRE, including valid
 At this stage the crate is also conforming to the Workflow Run Crate profile.
 The final crate is then safe to be made public.
 This extension of Workflow Run Crate documents and supports the \emph{human review process} -- important for transparency on TRE data usage. 
-The initial implementatiopn of this profile used WfExS as the workflow execution backend, and this approach will form the basis for further work on implementing federated workflow execution in the British initiatives DARE UK and HDR UK \cite{Snowley 2023} and in the European EOSC-ENTRUST project for Trusted Research Environments (\url{https://esciencelab.org.uk/projects/eosc-entrust/}).
+The initial implementation of this profile used WfExS as the workflow execution backend, and this approach will form the basis for further work on implementing federated workflow execution in the British initiatives DARE UK and HDR UK \cite{Snowley 2023} and in the European EOSC-ENTRUST project for Trusted Research Environments (\url{https://esciencelab.org.uk/projects/eosc-entrust/}).
 
 
 \subsection{Biocompute Object RO-Crate}\label{bco-crate}
@@ -1180,10 +1180,11 @@ RO-Crate working group meetings for the fruitful discussions and
 valuable feedback.
 
 % Include for preprint, Remove when submitting to PLOS One:
+\iftrue
 The authors acknowledge funding from: 
   Sardinian Regional Government through the XData Project (S.L., L.P.);
   Spanish Government (contract PID2019-107255GB) (R.S.);
-  MCIN/AEI/10.13039/501100011033 (CEX2021- 001148-S) (R.S.);
+  Spanish Government MCIN/AEI/10.13039/501100011033 (CEX2021- 001148-S) (R.S.);
   Generalitat de Catalunya (contract 2021-SGR-00412) (R.S.);
   European High-Performance Computing Joint Undertaking (JU) (No 955558) (R.S.);
   EU Horizon research and innovation programme under Grant agreement No 101058129 (DT-GEO) (R.S.);
@@ -1227,6 +1228,7 @@ The authors acknowledge funding from:
 H.S. is founder and CEO of the Software company Sator Inc., Tokyo, which did not fund the present work.
 
 The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.
+\fi
 
 \subsection*{Author contributions}
 Author contributions following the CRediT Taxonomy:
@@ -1662,7 +1664,7 @@ Helm Charts for Kubernetes Applications: Evolution, Outdatedness and Security Ri
 doi: \href{https://doi.org/10.1109/MSR59073.2023.00078}{10.1109/MSR59073.2023.00078}
 
 \bibitem{Colonnelli 2023b}
-Colonnelli I, Cantalupo B, Aldinucci M, Saitta G, Mulone A (2023):
+Colonnelli I, Cantalupo B, Aldinucci M, Saitta G, Mulone A.
 StreamFlow. Version 0.2.0.dev10.
 Software Heritage Archive, 2023.
 % \url{https://github.com/alpha-unito/streamflow/releases/tag/0.2.0.dev10}\\
@@ -1857,7 +1859,7 @@ Zenodo, 2023.
 doi: \href{https://doi.org/10.5281/zenodo.10251812}{10.5281/zenodo.10251812}
 
 \bibitem{wrroc-crate}
-Leo S, Crusoe MR, Rodríguez-Navas L, Sirvent R, et al.
+Leo S, Crusoe MR, Rodríguez-Navas L, Sirvent R, Kanitz A, De Geest P, et al.
 Recording provenance of workflow runs with RO-Crate (RO-Crate and mapping).
 Zenodo, 2023.
 doi: \href{https://doi.org/10.5281/zenodo.10368990}{10.5281/zenodo.10368990}
