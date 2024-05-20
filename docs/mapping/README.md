@@ -1,5 +1,12 @@
 # SSSOM mapping from PROV to Workflow Run Crate
 
+* [PROV mapping to Workflow Run Crate](prov-mapping.tsv) (SSSOM TSV)
+* [PROV mapping to Workflow Run Crate](prov-mapping.yml) (SSSOM metadata)
+* [PROV mapping to Workflow Run Crate](prov-mapping-w-metadata.tsv) (SSSOM TSV with metadata)
+* [PROV to Workflow Run Crate](prov-mapping.ttl) (SKOS and SSSOM OWL axioms)
+* [PROV mapping to Workflow Run Crate](prov-mapping.rdf) (SSSOM OWL axioms)
+* [PROV mapping to Workflow Run Crate](prov-mapping.json) (SSSOM JSON)
+
 ## About SSSOM
 
 SSSOM is a way to specify semantic mappings, typically based on SKOS. 
