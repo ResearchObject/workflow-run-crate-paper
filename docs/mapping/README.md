@@ -6,6 +6,7 @@
 * [PROV to Workflow Run Crate](prov-mapping.ttl) (SKOS and SSSOM OWL axioms)
 * [PROV mapping to Workflow Run Crate](prov-mapping.rdf) (SSSOM OWL axioms)
 * [PROV mapping to Workflow Run Crate](prov-mapping.json) (SSSOM JSON)
+* [RO-Crate w/ all mappings](https://w3id.org/ro/doi/10.5281/zenodo.10368989)
 
 ## About SSSOM
 
